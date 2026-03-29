@@ -1,0 +1,51 @@
+Log_ID,Timestamp,Equipment_ID,Equipment_Type,Location,Operator_Shift_Hours,Payload_Weight_lbs,Reported_Incident
+LOG-1000,2026-03-29 06:00,FOR-28,Forklift,Maintenance Track,6.0,36118,Load Imbalance
+LOG-1001,2026-03-29 06:28,TER-75,Terminal Tractor,High-Voltage Line B,8.4,46275,None
+LOG-1002,2026-03-29 06:30,REA-84,Reach Stacker,Bay 4,10.7,42150,Load Imbalance
+LOG-1003,2026-03-29 07:15,GAN-27,Gantry Crane,High-Voltage Line B,9.3,62083,Load Imbalance
+LOG-1004,2026-03-29 07:04,TER-48,Terminal Tractor,Bay 1,10.7,41311,Proximity Warning
+LOG-1005,2026-03-29 07:55,TER-92,Terminal Tractor,Bay 1,10.4,14591,None
+LOG-1006,2026-03-29 06:48,GAN-30,Gantry Crane,High-Voltage Line B,11.5,38656,None
+LOG-1007,2026-03-29 07:24,TER-69,Terminal Tractor,Bay 4,10.5,10335,Proximity Warning
+LOG-1008,2026-03-29 07:28,GAN-78,Gantry Crane,Main Pedestrian Crosswalk,7.0,29159,None
+LOG-1009,2026-03-29 07:12,TER-30,Terminal Tractor,Main Pedestrian Crosswalk,8.6,57807,Proximity Warning
+LOG-1010,2026-03-29 09:10,FOR-83,Forklift,Bay 2,7.9,51187,None
+LOG-1011,2026-03-29 07:17,TER-76,Terminal Tractor,Bay 4,10.2,62022,Proximity Warning
+LOG-1012,2026-03-29 11:00,REA-53,Reach Stacker,Bay 2,14.5,27880,None
+LOG-1013,2026-03-29 10:33,TER-99,Terminal Tractor,Bay 4,10.2,16846,None
+LOG-1014,2026-03-29 13:00,TER-26,Terminal Tractor,Bay 4,7.9,23776,Load Imbalance
+LOG-1015,2026-03-29 10:15,FOR-61,Forklift,High-Voltage Line B,9.8,40642,None
+LOG-1016,2026-03-29 07:20,GAN-22,Gantry Crane,Bay 1,10.0,30341,None
+LOG-1017,2026-03-29 14:13,TER-93,Terminal Tractor,Bay 2,8.1,38594,Proximity Warning
+LOG-1018,2026-03-29 15:00,TER-57,Terminal Tractor,High-Voltage Line B,10.0,38193,Proximity Warning
+LOG-1019,2026-03-29 09:48,GAN-24,Gantry Crane,Bay 4,10.8,48187,Hydraulic Leak
+LOG-1020,2026-03-29 12:40,FOR-46,Forklift,Bay 1,10.2,19211,None
+LOG-1021,2026-03-29 10:33,REA-72,Reach Stacker,Bay 4,9.4,16184,Load Imbalance
+LOG-1022,2026-03-29 14:26,TER-95,Terminal Tractor,High-Voltage Line B,11.3,11829,Proximity Warning
+LOG-1023,2026-03-29 12:08,REA-10,Reach Stacker,Bay 2,6.2,26017,None
+LOG-1024,2026-03-29 09:36,TER-96,Terminal Tractor,High-Voltage Line B,6.4,13842,None
+LOG-1025,2026-03-29 09:45,FOR-90,Forklift,Bay 1,11.0,12777,None
+LOG-1026,2026-03-29 14:40,REA-95,Reach Stacker,High-Voltage Line B,8.1,60495,Proximity Warning
+LOG-1027,2026-03-29 13:12,GAN-48,Gantry Crane,Main Pedestrian Crosswalk,8.0,63264,Hydraulic Leak
+LOG-1028,2026-03-29 15:20,TER-73,Terminal Tractor,Bay 2,7.1,20900,None
+LOG-1029,2026-03-29 16:09,GAN-11,Gantry Crane,Bay 2,8.6,62936,Proximity Warning
+LOG-1030,2026-03-29 09:00,REA-76,Reach Stacker,Maintenance Track,9.1,58687,Load Imbalance
+LOG-1031,2026-03-29 14:47,FOR-76,Forklift,Bay 4,7.4,62781,None
+LOG-1032,2026-03-29 15:04,TER-63,Terminal Tractor,Bay 4,7.6,15727,None
+LOG-1033,2026-03-29 22:30,GAN-81,Gantry Crane,Main Pedestrian Crosswalk,8.6,40178,Hydraulic Leak
+LOG-1034,2026-03-29 09:58,GAN-57,Gantry Crane,Bay 1,9.1,52663,None
+LOG-1035,2026-03-29 20:35,GAN-29,Gantry Crane,Main Pedestrian Crosswalk,9.2,27253,Hydraulic Leak
+LOG-1036,2026-03-29 17:24,FOR-39,Forklift,Bay 2,6.1,13860,None
+LOG-1037,2026-03-29 14:38,TER-56,Terminal Tractor,Bay 1,7.0,51089,Load Imbalance
+LOG-1038,2026-03-29 11:42,FOR-15,Forklift,Main Pedestrian Crosswalk,10.3,35387,Load Imbalance
+LOG-1039,2026-03-29 15:45,TER-41,Terminal Tractor,Main Pedestrian Crosswalk,8.5,16012,Hydraulic Leak
+LOG-1040,2026-03-30 01:20,REA-61,Reach Stacker,Main Pedestrian Crosswalk,8.4,17765,Proximity Warning
+LOG-1041,2026-03-29 23:46,GAN-74,Gantry Crane,Bay 1,10.6,50848,Proximity Warning
+LOG-1042,2026-03-30 00:12,REA-84,Reach Stacker,High-Voltage Line B,10.0,12877,Proximity Warning
+LOG-1043,2026-03-29 15:19,FOR-73,Forklift,Main Pedestrian Crosswalk,6.0,44797,Hydraulic Leak
+LOG-1044,2026-03-29 14:48,REA-80,Reach Stacker,Bay 2,8.6,53478,Load Imbalance
+LOG-1045,2026-03-29 14:15,REA-29,Reach Stacker,Bay 4,6.3,46280,None
+LOG-1046,2026-03-30 05:00,TER-87,Terminal Tractor,Bay 4,9.2,17249,Load Imbalance
+LOG-1047,2026-03-29 22:27,FOR-88,Forklift,Bay 1,7.5,49860,None
+LOG-1048,2026-03-30 01:12,FOR-83,Forklift,High-Voltage Line B,6.2,60516,None
+LOG-1049,2026-03-29 18:15,REA-93,Reach Stacker,Bay 2,11.4,51726,Proximity Warning
