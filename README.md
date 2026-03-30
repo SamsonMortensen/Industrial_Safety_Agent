@@ -32,7 +32,7 @@ Operations managers cannot realistically cross‑reference thousands of daily eq
 
 This project addresses that gap through three tightly integrated components:
 
-1. **Regulatory ETL Pipeline** (`wrangle.ipynb`)
+1. **Regulatory ETL Pipeline** (`main.ipynb`)
 
 Parses and structures unstructured OSHA and FRA regulatory text into a queryable, machine‑interpretable format.
 
