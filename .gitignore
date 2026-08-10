@@ -207,3 +207,11 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# Local env files -- never commit these, and never let the ETL glob them
+.env
+env.txt
+env*.json
+
+# Cached embeddings (regenerate with code/audit_agent.py)
+json/reg_embeddings.npz
