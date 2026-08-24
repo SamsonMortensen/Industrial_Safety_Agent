@@ -2,31 +2,7 @@
   "strategy": "triangulated",
   "rows": [
     {
-      "log_id": "LOG-1014",
-      "type": "spill",
-      "expected": "29 CFR 1910.22",
-      "rank": 2,
-      "matched_section": "1910.22",
-      "caught": 1
-    },
-    {
-      "log_id": "LOG-1017",
-      "type": "fatigue",
-      "expected": "49 CFR 228",
-      "rank": 1,
-      "matched_section": "228.5",
-      "caught": 1
-    },
-    {
-      "log_id": "LOG-1026",
-      "type": "fatigue",
-      "expected": "49 CFR 228",
-      "rank": 1,
-      "matched_section": "228.5",
-      "caught": 1
-    },
-    {
-      "log_id": "LOG-1027",
+      "log_id": "LOG-1006",
       "type": "electrical",
       "expected": "29 CFR 1910.333",
       "rank": 3,
@@ -34,49 +10,481 @@
       "caught": 1
     },
     {
-      "log_id": "LOG-1029",
-      "type": "spill",
-      "expected": "29 CFR 1910.22",
-      "rank": 2,
-      "matched_section": "1910.22",
-      "caught": 1
-    },
-    {
-      "log_id": "LOG-1036",
-      "type": "spill",
-      "expected": "29 CFR 1910.22",
-      "rank": 2,
-      "matched_section": "1910.22",
-      "caught": 1
-    },
-    {
-      "log_id": "LOG-1041",
-      "type": "electrical",
-      "expected": "29 CFR 1910.333",
-      "rank": 3,
-      "matched_section": "1910.333",
-      "caught": 1
-    },
-    {
-      "log_id": "LOG-1046",
-      "type": "electrical",
-      "expected": "29 CFR 1910.333",
-      "rank": 3,
-      "matched_section": "1910.333",
-      "caught": 1
-    },
-    {
-      "log_id": "LOG-1047",
+      "log_id": "LOG-1011",
       "type": "fatigue",
       "expected": "49 CFR 228",
       "rank": 1,
       "matched_section": "228.5",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1051",
+      "type": "spill",
+      "expected": "29 CFR 1910.22",
+      "rank": 2,
+      "matched_section": "1910.22",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1093",
+      "type": "fatigue",
+      "expected": "49 CFR 228",
+      "rank": 1,
+      "matched_section": "228.5",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1224",
+      "type": "electrical",
+      "expected": "29 CFR 1910.333",
+      "rank": 3,
+      "matched_section": "1910.333",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1228",
+      "type": "electrical",
+      "expected": "29 CFR 1910.333",
+      "rank": 3,
+      "matched_section": "1910.333",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1233",
+      "type": "spill",
+      "expected": "29 CFR 1910.22",
+      "rank": 2,
+      "matched_section": "1910.22",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1258",
+      "type": "spill",
+      "expected": "29 CFR 1910.22",
+      "rank": 2,
+      "matched_section": "1910.22",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1262",
+      "type": "spill",
+      "expected": "29 CFR 1910.22",
+      "rank": 2,
+      "matched_section": "1910.22",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1277",
+      "type": "electrical",
+      "expected": "29 CFR 1910.333",
+      "rank": 3,
+      "matched_section": "1910.333",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1279",
+      "type": "electrical",
+      "expected": "29 CFR 1910.333",
+      "rank": 3,
+      "matched_section": "1910.333",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1282",
+      "type": "electrical",
+      "expected": "29 CFR 1910.333",
+      "rank": 3,
+      "matched_section": "1910.333",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1290",
+      "type": "electrical",
+      "expected": "29 CFR 1910.333",
+      "rank": 3,
+      "matched_section": "1910.333",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1301",
+      "type": "fatigue",
+      "expected": "49 CFR 228",
+      "rank": 1,
+      "matched_section": "228.5",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1314",
+      "type": "electrical",
+      "expected": "29 CFR 1910.333",
+      "rank": 3,
+      "matched_section": "1910.333",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1317",
+      "type": "fatigue",
+      "expected": "49 CFR 228",
+      "rank": 1,
+      "matched_section": "228.5",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1322",
+      "type": "spill",
+      "expected": "29 CFR 1910.22",
+      "rank": 2,
+      "matched_section": "1910.22",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1342",
+      "type": "electrical",
+      "expected": "29 CFR 1910.333",
+      "rank": 3,
+      "matched_section": "1910.333",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1348",
+      "type": "fatigue",
+      "expected": "49 CFR 228",
+      "rank": 1,
+      "matched_section": "228.5",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1421",
+      "type": "electrical",
+      "expected": "29 CFR 1910.333",
+      "rank": 3,
+      "matched_section": "1910.333",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1429",
+      "type": "spill",
+      "expected": "29 CFR 1910.22",
+      "rank": 2,
+      "matched_section": "1910.22",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1434",
+      "type": "fatigue",
+      "expected": "49 CFR 228",
+      "rank": 1,
+      "matched_section": "228.5",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1439",
+      "type": "electrical",
+      "expected": "29 CFR 1910.333",
+      "rank": 3,
+      "matched_section": "1910.333",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1442",
+      "type": "spill",
+      "expected": "29 CFR 1910.22",
+      "rank": 2,
+      "matched_section": "1910.22",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1463",
+      "type": "fatigue",
+      "expected": "49 CFR 228",
+      "rank": 1,
+      "matched_section": "228.5",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1472",
+      "type": "spill",
+      "expected": "29 CFR 1910.22",
+      "rank": 2,
+      "matched_section": "1910.22",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1474",
+      "type": "electrical",
+      "expected": "29 CFR 1910.333",
+      "rank": 3,
+      "matched_section": "1910.333",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1485",
+      "type": "spill",
+      "expected": "29 CFR 1910.22",
+      "rank": 2,
+      "matched_section": "1910.22",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1540",
+      "type": "fatigue",
+      "expected": "49 CFR 228",
+      "rank": 1,
+      "matched_section": "228.5",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1544",
+      "type": "spill",
+      "expected": "29 CFR 1910.22",
+      "rank": 2,
+      "matched_section": "1910.22",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1558",
+      "type": "electrical",
+      "expected": "29 CFR 1910.333",
+      "rank": 3,
+      "matched_section": "1910.333",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1565",
+      "type": "fatigue",
+      "expected": "49 CFR 228",
+      "rank": 1,
+      "matched_section": "228.5",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1588",
+      "type": "fatigue",
+      "expected": "49 CFR 228",
+      "rank": 1,
+      "matched_section": "228.5",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1623",
+      "type": "fatigue",
+      "expected": "49 CFR 228",
+      "rank": 1,
+      "matched_section": "228.5",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1670",
+      "type": "fatigue",
+      "expected": "49 CFR 228",
+      "rank": 1,
+      "matched_section": "228.5",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1676",
+      "type": "fatigue",
+      "expected": "49 CFR 228",
+      "rank": 1,
+      "matched_section": "228.5",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1690",
+      "type": "spill",
+      "expected": "29 CFR 1910.22",
+      "rank": 2,
+      "matched_section": "1910.22",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1692",
+      "type": "spill",
+      "expected": "29 CFR 1910.22",
+      "rank": 2,
+      "matched_section": "1910.22",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1705",
+      "type": "electrical",
+      "expected": "29 CFR 1910.333",
+      "rank": 3,
+      "matched_section": "1910.333",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1721",
+      "type": "electrical",
+      "expected": "29 CFR 1910.333",
+      "rank": 3,
+      "matched_section": "1910.333",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1724",
+      "type": "fatigue",
+      "expected": "49 CFR 228",
+      "rank": 1,
+      "matched_section": "228.5",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1754",
+      "type": "electrical",
+      "expected": "29 CFR 1910.333",
+      "rank": 3,
+      "matched_section": "1910.333",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1755",
+      "type": "spill",
+      "expected": "29 CFR 1910.22",
+      "rank": 2,
+      "matched_section": "1910.22",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1759",
+      "type": "spill",
+      "expected": "29 CFR 1910.22",
+      "rank": 2,
+      "matched_section": "1910.22",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1787",
+      "type": "spill",
+      "expected": "29 CFR 1910.22",
+      "rank": 2,
+      "matched_section": "1910.22",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1810",
+      "type": "fatigue",
+      "expected": "49 CFR 228",
+      "rank": 1,
+      "matched_section": "228.5",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1817",
+      "type": "fatigue",
+      "expected": "49 CFR 228",
+      "rank": 1,
+      "matched_section": "228.5",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1824",
+      "type": "fatigue",
+      "expected": "49 CFR 228",
+      "rank": 1,
+      "matched_section": "228.5",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1829",
+      "type": "fatigue",
+      "expected": "49 CFR 228",
+      "rank": 1,
+      "matched_section": "228.5",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1863",
+      "type": "spill",
+      "expected": "29 CFR 1910.22",
+      "rank": 2,
+      "matched_section": "1910.22",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1869",
+      "type": "spill",
+      "expected": "29 CFR 1910.22",
+      "rank": 2,
+      "matched_section": "1910.22",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1894",
+      "type": "fatigue",
+      "expected": "49 CFR 228",
+      "rank": 1,
+      "matched_section": "228.5",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1906",
+      "type": "fatigue",
+      "expected": "49 CFR 228",
+      "rank": 1,
+      "matched_section": "228.5",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1915",
+      "type": "spill",
+      "expected": "29 CFR 1910.22",
+      "rank": 2,
+      "matched_section": "1910.22",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1916",
+      "type": "electrical",
+      "expected": "29 CFR 1910.333",
+      "rank": 3,
+      "matched_section": "1910.333",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1918",
+      "type": "electrical",
+      "expected": "29 CFR 1910.333",
+      "rank": 3,
+      "matched_section": "1910.333",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1953",
+      "type": "spill",
+      "expected": "29 CFR 1910.22",
+      "rank": 2,
+      "matched_section": "1910.22",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1960",
+      "type": "spill",
+      "expected": "29 CFR 1910.22",
+      "rank": 2,
+      "matched_section": "1910.22",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1980",
+      "type": "electrical",
+      "expected": "29 CFR 1910.333",
+      "rank": 3,
+      "matched_section": "1910.333",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1989",
+      "type": "electrical",
+      "expected": "29 CFR 1910.333",
+      "rank": 3,
+      "matched_section": "1910.333",
       "caught": 1
     }
   ],
   "summary": {
-    "violations": 9,
-    "in_corpus": 9,
+    "violations": 60,
+    "in_corpus": 60,
     "not_in_corpus": 0,
     "recall_at": {
       "1": 0.3333333333333333,
@@ -88,7 +496,7 @@
       "64": 1.0
     },
     "quadrants": {
-      "caught_retrieved": 9,
+      "caught_retrieved": 60,
       "caught_not_retrieved": 0,
       "missed_retrieved": 0,
       "missed_not_retrieved": 0
@@ -96,36 +504,12 @@
     "median_rank": 2,
     "worst_rank": 3,
     "citations": {
-      "caught": 9,
-      "cited_a_real_section": 9,
-      "cited_the_correct_rule": 9,
+      "caught": 60,
+      "cited_a_real_section": 60,
+      "cited_the_correct_rule": 60,
       "detail": [
         {
-          "log_id": "LOG-1014",
-          "type": "spill",
-          "expected": "29 CFR 1910.22",
-          "cited": "1910.22",
-          "exists": true,
-          "correct": true
-        },
-        {
-          "log_id": "LOG-1017",
-          "type": "fatigue",
-          "expected": "49 CFR 228",
-          "cited": "228.405",
-          "exists": true,
-          "correct": true
-        },
-        {
-          "log_id": "LOG-1026",
-          "type": "fatigue",
-          "expected": "49 CFR 228",
-          "cited": "228.405",
-          "exists": true,
-          "correct": true
-        },
-        {
-          "log_id": "LOG-1027",
+          "log_id": "LOG-1006",
           "type": "electrical",
           "expected": "29 CFR 1910.333",
           "cited": "1910.333",
@@ -133,42 +517,474 @@
           "correct": true
         },
         {
-          "log_id": "LOG-1029",
-          "type": "spill",
-          "expected": "29 CFR 1910.22",
-          "cited": "1910.22",
-          "exists": true,
-          "correct": true
-        },
-        {
-          "log_id": "LOG-1036",
-          "type": "spill",
-          "expected": "29 CFR 1910.22",
-          "cited": "1910.22",
-          "exists": true,
-          "correct": true
-        },
-        {
-          "log_id": "LOG-1041",
-          "type": "electrical",
-          "expected": "29 CFR 1910.333",
-          "cited": "1910.333",
-          "exists": true,
-          "correct": true
-        },
-        {
-          "log_id": "LOG-1046",
-          "type": "electrical",
-          "expected": "29 CFR 1910.333",
-          "cited": "1910.333",
-          "exists": true,
-          "correct": true
-        },
-        {
-          "log_id": "LOG-1047",
+          "log_id": "LOG-1011",
           "type": "fatigue",
           "expected": "49 CFR 228",
           "cited": "228.405",
+          "exists": true,
+          "correct": true
+        },
+        {
+          "log_id": "LOG-1051",
+          "type": "spill",
+          "expected": "29 CFR 1910.22",
+          "cited": "1910.22",
+          "exists": true,
+          "correct": true
+        },
+        {
+          "log_id": "LOG-1093",
+          "type": "fatigue",
+          "expected": "49 CFR 228",
+          "cited": "228.405",
+          "exists": true,
+          "correct": true
+        },
+        {
+          "log_id": "LOG-1224",
+          "type": "electrical",
+          "expected": "29 CFR 1910.333",
+          "cited": "1910.333",
+          "exists": true,
+          "correct": true
+        },
+        {
+          "log_id": "LOG-1228",
+          "type": "electrical",
+          "expected": "29 CFR 1910.333",
+          "cited": "1910.333",
+          "exists": true,
+          "correct": true
+        },
+        {
+          "log_id": "LOG-1233",
+          "type": "spill",
+          "expected": "29 CFR 1910.22",
+          "cited": "1910.22",
+          "exists": true,
+          "correct": true
+        },
+        {
+          "log_id": "LOG-1258",
+          "type": "spill",
+          "expected": "29 CFR 1910.22",
+          "cited": "1910.22",
+          "exists": true,
+          "correct": true
+        },
+        {
+          "log_id": "LOG-1262",
+          "type": "spill",
+          "expected": "29 CFR 1910.22",
+          "cited": "1910.22",
+          "exists": true,
+          "correct": true
+        },
+        {
+          "log_id": "LOG-1277",
+          "type": "electrical",
+          "expected": "29 CFR 1910.333",
+          "cited": "1910.333",
+          "exists": true,
+          "correct": true
+        },
+        {
+          "log_id": "LOG-1279",
+          "type": "electrical",
+          "expected": "29 CFR 1910.333",
+          "cited": "1910.333",
+          "exists": true,
+          "correct": true
+        },
+        {
+          "log_id": "LOG-1282",
+          "type": "electrical",
+          "expected": "29 CFR 1910.333",
+          "cited": "1910.333",
+          "exists": true,
+          "correct": true
+        },
+        {
+          "log_id": "LOG-1290",
+          "type": "electrical",
+          "expected": "29 CFR 1910.333",
+          "cited": "1910.333",
+          "exists": true,
+          "correct": true
+        },
+        {
+          "log_id": "LOG-1301",
+          "type": "fatigue",
+          "expected": "49 CFR 228",
+          "cited": "228.405",
+          "exists": true,
+          "correct": true
+        },
+        {
+          "log_id": "LOG-1314",
+          "type": "electrical",
+          "expected": "29 CFR 1910.333",
+          "cited": "1910.333",
+          "exists": true,
+          "correct": true
+        },
+        {
+          "log_id": "LOG-1317",
+          "type": "fatigue",
+          "expected": "49 CFR 228",
+          "cited": "228.405",
+          "exists": true,
+          "correct": true
+        },
+        {
+          "log_id": "LOG-1322",
+          "type": "spill",
+          "expected": "29 CFR 1910.22",
+          "cited": "1910.22",
+          "exists": true,
+          "correct": true
+        },
+        {
+          "log_id": "LOG-1342",
+          "type": "electrical",
+          "expected": "29 CFR 1910.333",
+          "cited": "1910.333",
+          "exists": true,
+          "correct": true
+        },
+        {
+          "log_id": "LOG-1348",
+          "type": "fatigue",
+          "expected": "49 CFR 228",
+          "cited": "228.405",
+          "exists": true,
+          "correct": true
+        },
+        {
+          "log_id": "LOG-1421",
+          "type": "electrical",
+          "expected": "29 CFR 1910.333",
+          "cited": "1910.333",
+          "exists": true,
+          "correct": true
+        },
+        {
+          "log_id": "LOG-1429",
+          "type": "spill",
+          "expected": "29 CFR 1910.22",
+          "cited": "1910.22",
+          "exists": true,
+          "correct": true
+        },
+        {
+          "log_id": "LOG-1434",
+          "type": "fatigue",
+          "expected": "49 CFR 228",
+          "cited": "228.405",
+          "exists": true,
+          "correct": true
+        },
+        {
+          "log_id": "LOG-1439",
+          "type": "electrical",
+          "expected": "29 CFR 1910.333",
+          "cited": "1910.333",
+          "exists": true,
+          "correct": true
+        },
+        {
+          "log_id": "LOG-1442",
+          "type": "spill",
+          "expected": "29 CFR 1910.22",
+          "cited": "1910.22",
+          "exists": true,
+          "correct": true
+        },
+        {
+          "log_id": "LOG-1463",
+          "type": "fatigue",
+          "expected": "49 CFR 228",
+          "cited": "228.405",
+          "exists": true,
+          "correct": true
+        },
+        {
+          "log_id": "LOG-1472",
+          "type": "spill",
+          "expected": "29 CFR 1910.22",
+          "cited": "1910.22",
+          "exists": true,
+          "correct": true
+        },
+        {
+          "log_id": "LOG-1474",
+          "type": "electrical",
+          "expected": "29 CFR 1910.333",
+          "cited": "1910.333",
+          "exists": true,
+          "correct": true
+        },
+        {
+          "log_id": "LOG-1485",
+          "type": "spill",
+          "expected": "29 CFR 1910.22",
+          "cited": "1910.22",
+          "exists": true,
+          "correct": true
+        },
+        {
+          "log_id": "LOG-1540",
+          "type": "fatigue",
+          "expected": "49 CFR 228",
+          "cited": "228.405",
+          "exists": true,
+          "correct": true
+        },
+        {
+          "log_id": "LOG-1544",
+          "type": "spill",
+          "expected": "29 CFR 1910.22",
+          "cited": "1910.22",
+          "exists": true,
+          "correct": true
+        },
+        {
+          "log_id": "LOG-1558",
+          "type": "electrical",
+          "expected": "29 CFR 1910.333",
+          "cited": "1910.333",
+          "exists": true,
+          "correct": true
+        },
+        {
+          "log_id": "LOG-1565",
+          "type": "fatigue",
+          "expected": "49 CFR 228",
+          "cited": "228.405",
+          "exists": true,
+          "correct": true
+        },
+        {
+          "log_id": "LOG-1588",
+          "type": "fatigue",
+          "expected": "49 CFR 228",
+          "cited": "228.405",
+          "exists": true,
+          "correct": true
+        },
+        {
+          "log_id": "LOG-1623",
+          "type": "fatigue",
+          "expected": "49 CFR 228",
+          "cited": "228.405",
+          "exists": true,
+          "correct": true
+        },
+        {
+          "log_id": "LOG-1670",
+          "type": "fatigue",
+          "expected": "49 CFR 228",
+          "cited": "228.405",
+          "exists": true,
+          "correct": true
+        },
+        {
+          "log_id": "LOG-1676",
+          "type": "fatigue",
+          "expected": "49 CFR 228",
+          "cited": "228.405",
+          "exists": true,
+          "correct": true
+        },
+        {
+          "log_id": "LOG-1690",
+          "type": "spill",
+          "expected": "29 CFR 1910.22",
+          "cited": "1910.22",
+          "exists": true,
+          "correct": true
+        },
+        {
+          "log_id": "LOG-1692",
+          "type": "spill",
+          "expected": "29 CFR 1910.22",
+          "cited": "1910.22",
+          "exists": true,
+          "correct": true
+        },
+        {
+          "log_id": "LOG-1705",
+          "type": "electrical",
+          "expected": "29 CFR 1910.333",
+          "cited": "1910.333",
+          "exists": true,
+          "correct": true
+        },
+        {
+          "log_id": "LOG-1721",
+          "type": "electrical",
+          "expected": "29 CFR 1910.333",
+          "cited": "1910.333",
+          "exists": true,
+          "correct": true
+        },
+        {
+          "log_id": "LOG-1724",
+          "type": "fatigue",
+          "expected": "49 CFR 228",
+          "cited": "228.405",
+          "exists": true,
+          "correct": true
+        },
+        {
+          "log_id": "LOG-1754",
+          "type": "electrical",
+          "expected": "29 CFR 1910.333",
+          "cited": "1910.333",
+          "exists": true,
+          "correct": true
+        },
+        {
+          "log_id": "LOG-1755",
+          "type": "spill",
+          "expected": "29 CFR 1910.22",
+          "cited": "1910.22",
+          "exists": true,
+          "correct": true
+        },
+        {
+          "log_id": "LOG-1759",
+          "type": "spill",
+          "expected": "29 CFR 1910.22",
+          "cited": "1910.22",
+          "exists": true,
+          "correct": true
+        },
+        {
+          "log_id": "LOG-1787",
+          "type": "spill",
+          "expected": "29 CFR 1910.22",
+          "cited": "1910.22",
+          "exists": true,
+          "correct": true
+        },
+        {
+          "log_id": "LOG-1810",
+          "type": "fatigue",
+          "expected": "49 CFR 228",
+          "cited": "228.405",
+          "exists": true,
+          "correct": true
+        },
+        {
+          "log_id": "LOG-1817",
+          "type": "fatigue",
+          "expected": "49 CFR 228",
+          "cited": "228.405",
+          "exists": true,
+          "correct": true
+        },
+        {
+          "log_id": "LOG-1824",
+          "type": "fatigue",
+          "expected": "49 CFR 228",
+          "cited": "228.405",
+          "exists": true,
+          "correct": true
+        },
+        {
+          "log_id": "LOG-1829",
+          "type": "fatigue",
+          "expected": "49 CFR 228",
+          "cited": "228.405",
+          "exists": true,
+          "correct": true
+        },
+        {
+          "log_id": "LOG-1863",
+          "type": "spill",
+          "expected": "29 CFR 1910.22",
+          "cited": "1910.22",
+          "exists": true,
+          "correct": true
+        },
+        {
+          "log_id": "LOG-1869",
+          "type": "spill",
+          "expected": "29 CFR 1910.22",
+          "cited": "1910.22",
+          "exists": true,
+          "correct": true
+        },
+        {
+          "log_id": "LOG-1894",
+          "type": "fatigue",
+          "expected": "49 CFR 228",
+          "cited": "228.405",
+          "exists": true,
+          "correct": true
+        },
+        {
+          "log_id": "LOG-1906",
+          "type": "fatigue",
+          "expected": "49 CFR 228",
+          "cited": "228.405",
+          "exists": true,
+          "correct": true
+        },
+        {
+          "log_id": "LOG-1915",
+          "type": "spill",
+          "expected": "29 CFR 1910.22",
+          "cited": "1910.22",
+          "exists": true,
+          "correct": true
+        },
+        {
+          "log_id": "LOG-1916",
+          "type": "electrical",
+          "expected": "29 CFR 1910.333",
+          "cited": "1910.333",
+          "exists": true,
+          "correct": true
+        },
+        {
+          "log_id": "LOG-1918",
+          "type": "electrical",
+          "expected": "29 CFR 1910.333",
+          "cited": "1910.333",
+          "exists": true,
+          "correct": true
+        },
+        {
+          "log_id": "LOG-1953",
+          "type": "spill",
+          "expected": "29 CFR 1910.22",
+          "cited": "1910.22",
+          "exists": true,
+          "correct": true
+        },
+        {
+          "log_id": "LOG-1960",
+          "type": "spill",
+          "expected": "29 CFR 1910.22",
+          "cited": "1910.22",
+          "exists": true,
+          "correct": true
+        },
+        {
+          "log_id": "LOG-1980",
+          "type": "electrical",
+          "expected": "29 CFR 1910.333",
+          "cited": "1910.333",
+          "exists": true,
+          "correct": true
+        },
+        {
+          "log_id": "LOG-1989",
+          "type": "electrical",
+          "expected": "29 CFR 1910.333",
+          "cited": "1910.333",
           "exists": true,
           "correct": true
         }

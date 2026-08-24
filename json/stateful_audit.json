@@ -1,21 +1,73 @@
 [
   {
-    "log_id": "LOG-1017",
-    "timestamp": "2026-03-29 10:15",
-    "equipment": "TER-78",
+    "log_id": "LOG-1011",
+    "timestamp": "2026-03-29 07:50",
+    "equipment": "GAN-63",
     "findings": [
       {
         "type": "fatigue_violation",
         "citation": "49 CFR 228.405",
         "severity": "CRITICAL",
-        "detail": "Operator on duty 13.0 hrs exceeds 12.0 hr statutory limit."
+        "detail": "Operator on duty 14.9 hrs exceeds 12.0 hr statutory limit."
       }
     ]
   },
   {
-    "log_id": "LOG-1026",
-    "timestamp": "2026-03-29 19:00",
-    "equipment": "FOR-49",
+    "log_id": "LOG-1093",
+    "timestamp": "2026-03-30 02:09",
+    "equipment": "TER-52",
+    "findings": [
+      {
+        "type": "fatigue_violation",
+        "citation": "49 CFR 228.405",
+        "severity": "CRITICAL",
+        "detail": "Operator on duty 14.7 hrs exceeds 12.0 hr statutory limit."
+      }
+    ]
+  },
+  {
+    "log_id": "LOG-1296",
+    "timestamp": "2026-03-29 20:48",
+    "equipment": "GAN-21",
+    "findings": [
+      {
+        "type": "equipment_tagout_required",
+        "citation": "29 CFR 1910.178(q)(7)",
+        "severity": "WARNING",
+        "detail": "Equipment GAN-21 has logged 3 recurring defects within 8 hours without record of repair. Mandatory tag-out required."
+      }
+    ]
+  },
+  {
+    "log_id": "LOG-1301",
+    "timestamp": "2026-03-31 18:12",
+    "equipment": "FOR-23",
+    "findings": [
+      {
+        "type": "fatigue_violation",
+        "citation": "49 CFR 228.405",
+        "severity": "CRITICAL",
+        "detail": "Operator on duty 13.9 hrs exceeds 12.0 hr statutory limit."
+      }
+    ]
+  },
+  {
+    "log_id": "LOG-1317",
+    "timestamp": "2026-03-31 10:50",
+    "equipment": "FOR-35",
+    "findings": [
+      {
+        "type": "fatigue_violation",
+        "citation": "49 CFR 228.405",
+        "severity": "CRITICAL",
+        "detail": "Operator on duty 14.7 hrs exceeds 12.0 hr statutory limit."
+      }
+    ]
+  },
+  {
+    "log_id": "LOG-1348",
+    "timestamp": "2026-04-01 21:00",
+    "equipment": "REA-51",
     "findings": [
       {
         "type": "fatigue_violation",
@@ -26,15 +78,288 @@
     ]
   },
   {
-    "log_id": "LOG-1047",
-    "timestamp": "2026-03-29 11:29",
-    "equipment": "GAN-48",
+    "log_id": "LOG-1434",
+    "timestamp": "2026-03-31 08:38",
+    "equipment": "FOR-96",
+    "findings": [
+      {
+        "type": "fatigue_violation",
+        "citation": "49 CFR 228.405",
+        "severity": "CRITICAL",
+        "detail": "Operator on duty 14.3 hrs exceeds 12.0 hr statutory limit."
+      }
+    ]
+  },
+  {
+    "log_id": "LOG-1463",
+    "timestamp": "2026-04-01 11:10",
+    "equipment": "TER-54",
     "findings": [
       {
         "type": "fatigue_violation",
         "citation": "49 CFR 228.405",
         "severity": "CRITICAL",
         "detail": "Operator on duty 14.7 hrs exceeds 12.0 hr statutory limit."
+      }
+    ]
+  },
+  {
+    "log_id": "LOG-1540",
+    "timestamp": "2026-04-01 15:00",
+    "equipment": "FOR-57",
+    "findings": [
+      {
+        "type": "fatigue_violation",
+        "citation": "49 CFR 228.405",
+        "severity": "CRITICAL",
+        "detail": "Operator on duty 14.0 hrs exceeds 12.0 hr statutory limit."
+      }
+    ]
+  },
+  {
+    "log_id": "LOG-1565",
+    "timestamp": "2026-04-04 03:15",
+    "equipment": "TER-73",
+    "findings": [
+      {
+        "type": "fatigue_violation",
+        "citation": "49 CFR 228.405",
+        "severity": "CRITICAL",
+        "detail": "Operator on duty 14.6 hrs exceeds 12.0 hr statutory limit."
+      }
+    ]
+  },
+  {
+    "log_id": "LOG-1588",
+    "timestamp": "2026-04-01 02:36",
+    "equipment": "FOR-63",
+    "findings": [
+      {
+        "type": "fatigue_violation",
+        "citation": "49 CFR 228.405",
+        "severity": "CRITICAL",
+        "detail": "Operator on duty 13.2 hrs exceeds 12.0 hr statutory limit."
+      }
+    ]
+  },
+  {
+    "log_id": "LOG-1623",
+    "timestamp": "2026-03-30 23:32",
+    "equipment": "GAN-83",
+    "findings": [
+      {
+        "type": "fatigue_violation",
+        "citation": "49 CFR 228.405",
+        "severity": "CRITICAL",
+        "detail": "Operator on duty 13.9 hrs exceeds 12.0 hr statutory limit."
+      }
+    ]
+  },
+  {
+    "log_id": "LOG-1655",
+    "timestamp": "2026-03-31 12:35",
+    "equipment": "TER-92",
+    "findings": [
+      {
+        "type": "equipment_tagout_required",
+        "citation": "29 CFR 1910.178(q)(7)",
+        "severity": "WARNING",
+        "detail": "Equipment TER-92 has logged 3 recurring defects within 8 hours without record of repair. Mandatory tag-out required."
+      }
+    ]
+  },
+  {
+    "log_id": "LOG-1670",
+    "timestamp": "2026-03-31 02:40",
+    "equipment": "REA-60",
+    "findings": [
+      {
+        "type": "fatigue_violation",
+        "citation": "49 CFR 228.405",
+        "severity": "CRITICAL",
+        "detail": "Operator on duty 14.2 hrs exceeds 12.0 hr statutory limit."
+      }
+    ]
+  },
+  {
+    "log_id": "LOG-1674",
+    "timestamp": "2026-03-31 14:10",
+    "equipment": "FOR-58",
+    "findings": [
+      {
+        "type": "equipment_tagout_required",
+        "citation": "29 CFR 1910.178(q)(7)",
+        "severity": "WARNING",
+        "detail": "Equipment FOR-58 has logged 3 recurring defects within 8 hours without record of repair. Mandatory tag-out required."
+      }
+    ]
+  },
+  {
+    "log_id": "LOG-1676",
+    "timestamp": "2026-04-05 07:00",
+    "equipment": "REA-88",
+    "findings": [
+      {
+        "type": "fatigue_violation",
+        "citation": "49 CFR 228.405",
+        "severity": "CRITICAL",
+        "detail": "Operator on duty 13.8 hrs exceeds 12.0 hr statutory limit."
+      }
+    ]
+  },
+  {
+    "log_id": "LOG-1724",
+    "timestamp": "2026-04-04 06:48",
+    "equipment": "TER-24",
+    "findings": [
+      {
+        "type": "fatigue_violation",
+        "citation": "49 CFR 228.405",
+        "severity": "CRITICAL",
+        "detail": "Operator on duty 14.0 hrs exceeds 12.0 hr statutory limit."
+      }
+    ]
+  },
+  {
+    "log_id": "LOG-1810",
+    "timestamp": "2026-04-06 16:30",
+    "equipment": "REA-47",
+    "findings": [
+      {
+        "type": "fatigue_violation",
+        "citation": "49 CFR 228.405",
+        "severity": "CRITICAL",
+        "detail": "Operator on duty 14.3 hrs exceeds 12.0 hr statutory limit."
+      }
+    ]
+  },
+  {
+    "log_id": "LOG-1817",
+    "timestamp": "2026-04-04 11:47",
+    "equipment": "REA-25",
+    "findings": [
+      {
+        "type": "fatigue_violation",
+        "citation": "49 CFR 228.405",
+        "severity": "CRITICAL",
+        "detail": "Operator on duty 14.0 hrs exceeds 12.0 hr statutory limit."
+      }
+    ]
+  },
+  {
+    "log_id": "LOG-1824",
+    "timestamp": "2026-03-30 23:12",
+    "equipment": "REA-10",
+    "findings": [
+      {
+        "type": "fatigue_violation",
+        "citation": "49 CFR 228.405",
+        "severity": "CRITICAL",
+        "detail": "Operator on duty 12.7 hrs exceeds 12.0 hr statutory limit."
+      }
+    ]
+  },
+  {
+    "log_id": "LOG-1829",
+    "timestamp": "2026-04-06 07:26",
+    "equipment": "REA-94",
+    "findings": [
+      {
+        "type": "fatigue_violation",
+        "citation": "49 CFR 228.405",
+        "severity": "CRITICAL",
+        "detail": "Operator on duty 13.9 hrs exceeds 12.0 hr statutory limit."
+      }
+    ]
+  },
+  {
+    "log_id": "LOG-1848",
+    "timestamp": "2026-03-30 10:16",
+    "equipment": "TER-87",
+    "findings": [
+      {
+        "type": "equipment_tagout_required",
+        "citation": "29 CFR 1910.178(q)(7)",
+        "severity": "WARNING",
+        "detail": "Equipment TER-87 has logged 3 recurring defects within 8 hours without record of repair. Mandatory tag-out required."
+      }
+    ]
+  },
+  {
+    "log_id": "LOG-1856",
+    "timestamp": "2026-03-30 10:32",
+    "equipment": "TER-87",
+    "findings": [
+      {
+        "type": "equipment_tagout_required",
+        "citation": "29 CFR 1910.178(q)(7)",
+        "severity": "WARNING",
+        "detail": "Equipment TER-87 has logged 4 recurring defects within 8 hours without record of repair. Mandatory tag-out required."
+      }
+    ]
+  },
+  {
+    "log_id": "LOG-1881",
+    "timestamp": "2026-04-01 07:25",
+    "equipment": "REA-75",
+    "findings": [
+      {
+        "type": "equipment_tagout_required",
+        "citation": "29 CFR 1910.178(q)(7)",
+        "severity": "WARNING",
+        "detail": "Equipment REA-75 has logged 3 recurring defects within 8 hours without record of repair. Mandatory tag-out required."
+      }
+    ]
+  },
+  {
+    "log_id": "LOG-1894",
+    "timestamp": "2026-04-07 13:30",
+    "equipment": "GAN-94",
+    "findings": [
+      {
+        "type": "fatigue_violation",
+        "citation": "49 CFR 228.405",
+        "severity": "CRITICAL",
+        "detail": "Operator on duty 13.2 hrs exceeds 12.0 hr statutory limit."
+      }
+    ]
+  },
+  {
+    "log_id": "LOG-1906",
+    "timestamp": "2026-04-02 15:42",
+    "equipment": "GAN-16",
+    "findings": [
+      {
+        "type": "fatigue_violation",
+        "citation": "49 CFR 228.405",
+        "severity": "CRITICAL",
+        "detail": "Operator on duty 14.2 hrs exceeds 12.0 hr statutory limit."
+      }
+    ]
+  },
+  {
+    "log_id": "LOG-1941",
+    "timestamp": "2026-03-30 13:22",
+    "equipment": "REA-33",
+    "findings": [
+      {
+        "type": "equipment_tagout_required",
+        "citation": "29 CFR 1910.178(q)(7)",
+        "severity": "WARNING",
+        "detail": "Equipment REA-33 has logged 3 recurring defects within 8 hours without record of repair. Mandatory tag-out required."
+      }
+    ]
+  },
+  {
+    "log_id": "LOG-1978",
+    "timestamp": "2026-04-01 15:30",
+    "equipment": "REA-51",
+    "findings": [
+      {
+        "type": "equipment_tagout_required",
+        "citation": "29 CFR 1910.178(q)(7)",
+        "severity": "WARNING",
+        "detail": "Equipment REA-51 has logged 3 recurring defects within 8 hours without record of repair. Mandatory tag-out required."
       }
     ]
   }

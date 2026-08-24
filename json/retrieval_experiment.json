@@ -2,7 +2,8 @@
   "config": {
     "strategies": [
       "raw",
-      "expanded"
+      "expanded",
+      "triangulated"
     ],
     "models": [
       "mxbai-embed-large"
@@ -101,7 +102,84 @@
         {
           "log_id": "LOG-1014",
           "type": "spill",
+          "rank": 4
+        },
+        {
+          "log_id": "LOG-1017",
+          "type": "fatigue",
           "rank": 1
+        },
+        {
+          "log_id": "LOG-1026",
+          "type": "fatigue",
+          "rank": 2
+        },
+        {
+          "log_id": "LOG-1027",
+          "type": "electrical",
+          "rank": 1
+        },
+        {
+          "log_id": "LOG-1029",
+          "type": "spill",
+          "rank": 4
+        },
+        {
+          "log_id": "LOG-1036",
+          "type": "spill",
+          "rank": 2
+        },
+        {
+          "log_id": "LOG-1041",
+          "type": "electrical",
+          "rank": 1
+        },
+        {
+          "log_id": "LOG-1046",
+          "type": "electrical",
+          "rank": 2
+        },
+        {
+          "log_id": "LOG-1047",
+          "type": "fatigue",
+          "rank": 11
+        }
+      ],
+      "recall_at": {
+        "1": 0.3333333333333333,
+        "2": 0.6666666666666666,
+        "4": 0.8888888888888888,
+        "8": 0.8888888888888888,
+        "16": 1.0,
+        "32": 1.0
+      },
+      "median_rank": 2,
+      "by_type": {
+        "fatigue": [
+          1,
+          2,
+          11
+        ],
+        "spill": [
+          2,
+          4,
+          4
+        ],
+        "electrical": [
+          1,
+          1,
+          2
+        ]
+      }
+    },
+    {
+      "model": "mxbai-embed-large",
+      "strategy": "triangulated",
+      "rows": [
+        {
+          "log_id": "LOG-1014",
+          "type": "spill",
+          "rank": 2
         },
         {
           "log_id": "LOG-1017",
@@ -116,58 +194,58 @@
         {
           "log_id": "LOG-1027",
           "type": "electrical",
-          "rank": 1
+          "rank": 3
         },
         {
           "log_id": "LOG-1029",
           "type": "spill",
-          "rank": 1
+          "rank": 2
         },
         {
           "log_id": "LOG-1036",
           "type": "spill",
-          "rank": 1
+          "rank": 2
         },
         {
           "log_id": "LOG-1041",
           "type": "electrical",
-          "rank": 1
+          "rank": 3
         },
         {
           "log_id": "LOG-1046",
           "type": "electrical",
-          "rank": 4
+          "rank": 3
         },
         {
           "log_id": "LOG-1047",
           "type": "fatigue",
-          "rank": 4
+          "rank": 1
         }
       ],
       "recall_at": {
-        "1": 0.7777777777777778,
-        "2": 0.7777777777777778,
+        "1": 0.3333333333333333,
+        "2": 0.6666666666666666,
         "4": 1.0,
         "8": 1.0,
         "16": 1.0,
         "32": 1.0
       },
-      "median_rank": 1,
+      "median_rank": 2,
       "by_type": {
         "fatigue": [
           1,
           1,
-          4
-        ],
-        "spill": [
-          1,
-          1,
           1
         ],
+        "spill": [
+          2,
+          2,
+          2
+        ],
         "electrical": [
-          1,
-          1,
-          4
+          3,
+          3,
+          3
         ]
       }
     }
