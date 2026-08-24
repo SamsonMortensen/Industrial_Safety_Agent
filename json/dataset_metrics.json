@@ -1,0 +1,10 @@
+{
+  "total_sft_examples": 26,
+  "total_dpo_pairs": 28,
+  "critique_derived_pairs": 0,
+  "contrastive_pairs": 28,
+  "violations_count": 3,
+  "clears_count": 23,
+  "dpo_file_path": "[local]/rag_triangulation\\json\\dpo_training_dataset.jsonl",
+  "sft_file_path": "[local]/rag_triangulation\\json\\sft_training_dataset.jsonl"
+}

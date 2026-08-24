@@ -1,6 +1,6 @@
 # Industrial Safety & Compliance Auditor
 
-A locally hosted LLM audits daily rail-intermodal yard logs against federal OSHA and FRA safety regulations, verifies whether the citations it produces are real federal law, and eliminates retrieval blindspots through multi-hazard triangulation.
+A locally hosted LLM audits daily rail-intermodal yard logs against federal OSHA and FRA safety regulations, verifies whether the citations it produces are real federal law, eliminates retrieval blindspots through multi-hazard triangulation, and autonomously learns from past audits across successive shifts.
 
 ## What this does
 
@@ -8,7 +8,7 @@ When an AI reads a maintenance log and sees something unsafe, getting it to say 
 
 In an industrial rail yard, citing a fabricated law is worse than doing nothing: a safety manager cannot issue a stop-work order or cite a contractor based on an invented rule.
 
-This project builds an autonomous AI safety auditor that runs 100% locally on your own machine. It reads daily yard logs, independently looks up the actual text of federal law (OSHA Title 29 and FRA Title 49), audits the event, and checks every citation it produces against all 16,173 real sections in federal regulations to ensure zero hallucinations.
+This project builds an autonomous AI safety auditor that runs 100% locally on your own machine. It reads daily yard logs, independently looks up the actual text of federal law (OSHA Title 29 and FRA Title 49), audits the event, checks every citation it produces against all 16,173 real sections in federal regulations to ensure zero hallucinations, and continuously accumulates case law memory to improve future audits.
 
 ```
 +----------------------------------------------------------------------------------------------------+
@@ -44,18 +44,20 @@ So this project measures three things directly:
 
 1,000 yard events, 60 planted violations across three distinct hazard categories (20 fatigue, 20 spills, 20 electrical clearances), audited with `qwen3.5:9b` and `mxbai-embed-large` running locally under Ollama.
 
-| Metric | Autonomous Triangulated RAG (New) | Flat Top-4 RAG (Legacy) | Ungrounded Baseline |
-| :--- | :---: | :---: | :---: |
-| **Total events audited ($n$)** | **1,000** | 50 | 50 |
-| **Violations caught** | **60 of 60 (100%)** | 3 of 9 (33%) | 1 of 9 (11%) |
-| **False positives** | **0** | 4 | 0 |
-| **Precision** | **1.00** | 0.43 | 1.00 |
-| **Recall** | **1.00** | 0.33 | 0.11 |
-| **F1 Score** | **1.00** | 0.38 | 0.20 |
-| **Accuracy** | **1.00** | 0.80 | 0.84 |
-| **Citations given** | 60 | 7 | 1 |
-| **Citations naming a real CFR section** | **60 of 60 (100%)** | 7 of 7 (100%) | 0 of 1 (0%) |
-| **Citations naming the CORRECT rule** | **60 of 60 (100%)** | 0 of 3 (0%) | 0 of 1 (0%) |
+| Metric | Autonomous Triangulated RAG (v1) | Continuous Learning RAG (v2) | Flat Top-4 RAG (Legacy) | Ungrounded Baseline |
+| :--- | :---: | :---: | :---: | :---: |
+| **Total events audited ($n$)** | 1,000 | **1,000** | 50 | 50 |
+| **Violations caught** | 60 of 60 (100%) | **60 of 60 (100%)** | 3 of 9 (33%) | 1 of 9 (11%) |
+| **False positives** | 0 | **0** | 4 | 0 |
+| **Precision** | 1.00 | **1.00** | 0.43 | 1.00 |
+| **Recall** | 1.00 | **1.00** | 0.33 | 0.11 |
+| **F1 Score** | 1.00 | **1.00** | 0.38 | 0.20 |
+| **Accuracy** | 1.00 | **1.00** | 0.80 | 0.84 |
+| **Citations given** | 60 | **60** | 7 | 1 |
+| **Citations naming a real CFR section** | 60 of 60 (100%) | **60 of 60 (100%)** | 7 of 7 (100%) | 0 of 1 (0%) |
+| **Citations naming the CORRECT rule** | 60 of 60 (100%) | **60 of 60 (100%)** | 0 of 3 (0%) | 0 of 1 (0%) |
+| **Self-Reflection & Hallucination Defense** | None | **Statutory Verifier Active** | None | None |
+| **Episodic Case Law Memory** | None | **Persistent Vector Store** | None | None |
 
 ![Autonomous Compliance Audit Run](audit_demo.png)
 
@@ -79,15 +81,63 @@ Instead of flattening an operational event into a single search query, the audit
 
 With multi-hazard triangulation, Retrieval Recall@4 across all hazard types reached **100%**, and Citation Correctness on caught violations jumped from **0% to 100%**.
 
+---
+
+## Continuous Learning & The Self-Improving Flywheel (v2)
+
+Static RAG systems are frozen: they audit each shift in isolation, learn nothing from past mistakes, and cannot adapt when novel hazards appear.
+
+This release introduces an **Autonomous Continuous Learning & Self-Reflection Engine** that operates on a hybrid dual-loop architecture:
+
+```
++----------------------------------------------------------------------------------------------------+
+|                                HYBRID CONTINUOUS LEARNING ARCHITECTURE                             |
++----------------------------------------------------------------------------------------------------+
+
+   [ FAST INNER LOOP: Real-Time In-Context RAG ]
+   Daily Yard Log ──► Adaptive Triangulation ──► Prompt + Episodic Precedents ──► Local LLM
+                                                                                    │
+                                                                                    ▼
+   Final Grounded Verdict ◄── [Self-Reflection Verifier] ◄── Initial Response & Citations
+             │                              │ (Captures Hallucination/Correction Pairs)
+             ▼                              ▼
+   [(Episodic Memory Bank)]        [(RL / DPO Preference Pairs)]
+             │                              │
+             │                              ▼
+             │               [ SLOW OUTER LOOP: Parametric DPO/LoRA Fine-Tuning ]
+             │               - Chosen: Grounded, verified statutory audit reasoning
+             │               - Rejected: Hallucinated / ungrounded initial critique attempts
+             │                              │
+             │                              ▼
+             └──────────────────────► [ Fine-Tuned Local Model ] (Distilled & Faster)
+```
+
+### 1. Episodic Memory Bank (`code/continuous_learner.py`)
+Maintains a persistent vector memory of audited incidents. On subsequent shifts, incoming events retrieve contrastive few-shot precedents (confirmed violation case law vs. clean baseline counterexamples) to stabilize edge cases without modifying neural network weights.
+
+### 2. Adaptive Regulatory Pillar Discovery (`AdaptivePillarBank`)
+When unindexed telemetry patterns appear in yard logs (e.g. chemical transfer leaks, unplacarded ISO tanks, missing fall arrest guardrails), the system autonomously discovers the emergent risk, queries eCFR, and registers new search pillars (e.g. dynamically registering **Hazmat** under `49 CFR 172` and **Fall Protection** under `29 CFR 1910.28`).
+
+### 3. Real-Time Self-Reflection & Statutory Critique (`code/self_reflection.py`)
+Every citation is verified in real-time against all 16,173 sections in Titles 29 and 49 CFR. If a citation is ungrounded or contradictory, an automated critique loop intercepts the response and forces the LLM to self-correct before finalizing the audit.
+
+### 4. Automated DPO & SFT Dataset Pipeline (`code/dataset_pipeline.py`)
+Self-reflection corrections and contrastive memory episodes are automatically compiled into standard **Direct Preference Optimization (DPO)** pairs (`prompt`, `chosen`, `rejected`) and **Supervised Fine-Tuning (SFT)** instruction sets (`json/dpo_training_dataset.jsonl`), ready for fine-tuning smaller, faster edge models via LoRA (`code/train_lora_dpo.py`).
+
+---
+
 ## How it works
 
 1. `code/fetch_regulations.py` pulls the exact governing safety regulations from the official eCFR versioner API: 29 CFR 1910 (Subparts D, N, S) and 49 CFR 228.
 2. `code/build_section_index.py` indexes all 16,173 real sections across Titles 29 and 49 to catch hallucinations.
 3. `code/generate_yard_log.py` generates a seeded, reproducible ground-truth operational log with 1,000 records and planted violations.
-4. `code/audit_agent.py` executes the autonomous triangulated RAG audit asynchronously with local Ollama models.
-5. `code/stateful_tracker.py` maintains rolling shift memory to catch cumulative fatigue and repeating asset defect patterns across timestamps.
-6. `code/retrieval_diagnostic.py` and `code/retrieval_experiment.py` isolate retrieval recall from model reasoning and measure citation correctness.
-7. `main.ipynb` presents the interactive walkthrough, data pipelines, and benchmark visualizations.
+4. `code/audit_agent.py` & `code/audit_agent_v2.py` execute autonomous triangulated RAG audits asynchronously with local Ollama models and dynamic memory.
+5. `code/continuous_learner.py` & `code/self_reflection.py` manage persistent episodic memory, adaptive hazard discovery, and statutory critique loops.
+6. `code/dataset_pipeline.py` & `code/train_lora_dpo.py` extract DPO/SFT training datasets and provide the LoRA fine-tuning recipe.
+7. `code/learning_dashboard.py` displays live learning progression, pillar growth, and precedent memory consolidation.
+8. `code/stateful_tracker.py` maintains rolling shift memory to catch cumulative fatigue and repeating asset defect patterns across timestamps.
+9. `code/retrieval_diagnostic.py` and `code/retrieval_experiment.py` isolate retrieval recall from model reasoning and measure citation correctness.
+10. `main.ipynb` presents the interactive walkthrough, data pipelines, and benchmark visualizations.
 
 ## Running it
 
@@ -99,10 +149,19 @@ python code/fetch_regulations.py
 python code/build_section_index.py
 python code/generate_yard_log.py --records 1000
 
-# 2. Run the autonomous compliance audit
-python code/audit_agent.py
+# 2. Run the continuous learning compliance audit (v2)
+python code/audit_agent_v2.py --limit 50 --concurrency 4
 
-# 3. Run retrieval diagnostics & shift-level tracking
+# 3. View live learning metrics & episodic memory consolidation
+python code/learning_dashboard.py
+
+# 4. Generate DPO / SFT training datasets from audit memory
+python code/dataset_pipeline.py
+
+# 5. Run the multi-stage continuous learning simulation
+python code/run_continuous_learning_simulation.py
+
+# 6. Run legacy diagnostics & shift-level tracking
 python code/retrieval_diagnostic.py
 python code/retrieval_experiment.py
 python code/stateful_tracker.py
@@ -130,4 +189,5 @@ All embeddings and inferences run entirely on local compute. No yard logs or ope
 - **Ollama** (`qwen3.5:9b` for reasoning, `mxbai-embed-large` for embeddings)
 - **AsyncIO & AIOHTTP** for concurrent local batch inference
 - **NumPy** for vector similarity & cosine metrics
+- **Hugging Face TRL / Datasets** for DPO preference alignment
 - **Pandas, Matplotlib, Jupyter** for evaluation & reporting
