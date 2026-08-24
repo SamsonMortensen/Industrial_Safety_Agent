@@ -1,880 +1,120 @@
 {
- "metrics": {
-  "n": 50,
-  "true_positives": 3,
-  "false_positives": 4,
-  "false_negatives": 6,
-  "true_negatives": 37,
-  "precision": 0.4286,
-  "recall": 0.3333,
-  "f1": 0.375,
-  "accuracy": 0.8,
-  "citations_given": 7,
-  "citations_fabricated": 0,
-  "citations_outside_retrieved_set": 0,
-  "citation_validity": 1.0,
-  "unparsed": 0,
-  "seconds": 2989.0,
-  "chat_model": "qwen3.5:9b",
-  "embed_model": "mxbai-embed-large",
-  "top_k": 4,
-  "grounded": true
- },
- "results": [
-  {
-   "status": "CLEAR",
-   "citation_raw": "NONE",
-   "citation": null,
-   "reason": "The event report indicates no incident occurred, so there is no violation of the provided regulations regarding operator hours, spills, or high-voltage equipment.",
-   "log_id": "LOG-1000",
-   "predicted": 0,
-   "actual": 0,
-   "actual_type": "None",
-   "retrieved": [
-    "1910.178",
-    "1910.179"
-   ],
-   "top_score": 0.6069,
-   "citation_exists": null,
-   "citation_was_retrieved": null
+  "metrics": {
+    "n": 5,
+    "true_positives": 0,
+    "false_positives": 0,
+    "false_negatives": 0,
+    "true_negatives": 5,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "accuracy": 1.0,
+    "citations_given": 0,
+    "citations_fabricated": 0,
+    "citations_outside_retrieved_set": 0,
+    "citation_validity": null,
+    "citation_correctness": null,
+    "unparsed": 0,
+    "seconds": 7.3,
+    "chat_model": "qwen3.5:9b",
+    "embed_model": "mxbai-embed-large",
+    "strategy": "triangulated",
+    "grounded": true
   },
-  {
-   "status": "CLEAR",
-   "citation_raw": "NONE",
-   "citation": null,
-   "reason": "The reported tire pressure warning does not constitute a violation of any specific operational requirement listed in the provided regulatory excerpts.",
-   "log_id": "LOG-1001",
-   "predicted": 0,
-   "actual": 0,
-   "actual_type": "None",
-   "retrieved": [
-    "1910.178"
-   ],
-   "top_score": 0.646,
-   "citation_exists": null,
-   "citation_was_retrieved": null
-  },
-  {
-   "status": "VIOLATION",
-   "citation_raw": "29 CFR 1910.178 -- Powered industrial trucks.(o) Loading.(1) Only stable or safely arranged loads shall be handled. Caution shall be exercised when handling off-center loads which cannot be centered.",
-   "citation": "1910.178",
-   "reason": "The reported load imbalance indicates the forklift was likely handling an unstable, off-center, or improperly arranged load in violation of loading safety requirements.",
-   "log_id": "LOG-1002",
-   "predicted": 1,
-   "actual": 0,
-   "actual_type": "None",
-   "retrieved": [
-    "1910.178",
-    "1910.179"
-   ],
-   "top_score": 0.6142,
-   "citation_exists": true,
-   "citation_was_retrieved": true
-  },
-  {
-   "status": "CLEAR",
-   "citation_raw": "NONE",
-   "citation": null,
-   "reason": "The event report indicates no incident occurred involving operator hours violations, hazardous spills, or equipment operating near energized high-voltage lines.",
-   "log_id": "LOG-1003",
-   "predicted": 0,
-   "actual": 0,
-   "actual_type": "None",
-   "retrieved": [
-    "1910.178",
-    "1910.179",
-    "228.7"
-   ],
-   "top_score": 0.6163,
-   "citation_exists": null,
-   "citation_was_retrieved": null
-  },
-  {
-   "status": "CLEAR",
-   "citation_raw": "NONE",
-   "citation": null,
-   "reason": "The event report indicates no incident occurred, so there is no violation of crane safety regulations regarding load handling, limit switches, maintenance, or operator conduct.",
-   "log_id": "LOG-1004",
-   "predicted": 0,
-   "actual": 0,
-   "actual_type": "None",
-   "retrieved": [
-    "1910.179"
-   ],
-   "top_score": 0.6836,
-   "citation_exists": null,
-   "citation_was_retrieved": null
-  },
-  {
-   "status": "CLEAR",
-   "citation_raw": "NONE",
-   "citation": null,
-   "reason": "The reported tire pressure warning does not constitute an immediate violation of the specific inflation procedures outlined in 29 CFR 1910.177 nor any other cited regulation regarding powered industrial trucks or hazardous conditions described in this event summary.",
-   "log_id": "LOG-1005",
-   "predicted": 0,
-   "actual": 0,
-   "actual_type": "None",
-   "retrieved": [
-    "1910.177",
-    "1910.178"
-   ],
-   "top_score": 0.6562,
-   "citation_exists": null,
-   "citation_was_retrieved": null
-  },
-  {
-   "status": "CLEAR",
-   "citation_raw": "NONE",
-   "citation": null,
-   "reason": "The event report indicates no incident occurred, so there is no violation of hours-of-duty limits, spill hazards, or equipment proximity to energized lines based on the provided excerpts.",
-   "log_id": "LOG-1006",
-   "predicted": 0,
-   "actual": 0,
-   "actual_type": "None",
-   "retrieved": [
-    "1910.178",
-    "1910.179",
-    "228.7"
-   ],
-   "top_score": 0.6145,
-   "citation_exists": null,
-   "citation_was_retrieved": null
-  },
-  {
-   "status": "CLEAR",
-   "citation_raw": "NONE",
-   "citation": null,
-   "reason": "The event report indicates no incident occurred involving operator hours, hazardous spills, or proximity to energized equipment.",
-   "log_id": "LOG-1007",
-   "predicted": 0,
-   "actual": 0,
-   "actual_type": "None",
-   "retrieved": [
-    "1910.179",
-    "1910.28",
-    "228.5",
-    "228.7"
-   ],
-   "top_score": 0.6351,
-   "citation_exists": null,
-   "citation_was_retrieved": null
-  },
-  {
-   "status": "CLEAR",
-   "citation_raw": "NONE",
-   "citation": null,
-   "reason": "The event report indicates no incident occurred, so there is no violation of the provided regulations regarding operator hours, spills, or high-voltage equipment.",
-   "log_id": "LOG-1008",
-   "predicted": 0,
-   "actual": 0,
-   "actual_type": "None",
-   "retrieved": [
-    "1910.178",
-    "1910.179"
-   ],
-   "top_score": 0.6044,
-   "citation_exists": null,
-   "citation_was_retrieved": null
-  },
-  {
-   "status": "CLEAR",
-   "citation_raw": "NONE",
-   "citation": null,
-   "reason": "The event involves an intermodal yard reach stacker with no reported incident and does not present hazards related to spills, high-voltage equipment, or hours-of-service violations covered by the provided regulations.",
-   "log_id": "LOG-1009",
-   "predicted": 0,
-   "actual": 0,
-   "actual_type": "None",
-   "retrieved": [
-    "1910.179",
-    "228.405",
-    "228.7"
-   ],
-   "top_score": 0.6402,
-   "citation_exists": null,
-   "citation_was_retrieved": null
-  },
-  {
-   "status": "CLEAR",
-   "citation_raw": "NONE",
-   "citation": null,
-   "reason": "The event involves no reported incident, spills, or violations of hours-of-service limits within the scope of the provided regulations.",
-   "log_id": "LOG-1010",
-   "predicted": 0,
-   "actual": 0,
-   "actual_type": "None",
-   "retrieved": [
-    "1910.179",
-    "228.407",
-    "228.7"
-   ],
-   "top_score": 0.6579,
-   "citation_exists": null,
-   "citation_was_retrieved": null
-  },
-  {
-   "status": "CLEAR",
-   "citation_raw": "NONE",
-   "citation": null,
-   "reason": "The event report indicates no incident occurred involving operator hours, hazardous spills, or proximity to energized equipment.",
-   "log_id": "LOG-1011",
-   "predicted": 0,
-   "actual": 0,
-   "actual_type": "None",
-   "retrieved": [
-    "1910.179",
-    "1910.28",
-    "228.5",
-    "228.7"
-   ],
-   "top_score": 0.6341,
-   "citation_exists": null,
-   "citation_was_retrieved": null
-  },
-  {
-   "status": "CLEAR",
-   "citation_raw": "NONE",
-   "citation": null,
-   "reason": "The event report indicates no incident occurred involving operator hours of service limits, hazardous spills, or equipment operating near energized high-voltage equipment.",
-   "log_id": "LOG-1012",
-   "predicted": 0,
-   "actual": 0,
-   "actual_type": "None",
-   "retrieved": [
-    "1910.179",
-    "1910.28",
-    "228.5"
-   ],
-   "top_score": 0.636,
-   "citation_exists": null,
-   "citation_was_retrieved": null
-  },
-  {
-   "status": "CLEAR",
-   "citation_raw": "NONE",
-   "citation": null,
-   "reason": "The reported load imbalance does not constitute a violation of any specific provision in the provided regulatory excerpts.",
-   "log_id": "LOG-1013",
-   "predicted": 0,
-   "actual": 0,
-   "actual_type": "None",
-   "retrieved": [
-    "1910.179"
-   ],
-   "top_score": 0.7143,
-   "citation_exists": null,
-   "citation_was_retrieved": null
-  },
-  {
-   "status": "VIOLATION",
-   "citation_raw": "[29 CFR 1910.178 -- Powered industrial trucks.] (10) Industrial trucks shall be kept in a clean condition, free of lint, excess oil, and grease. No",
-   "citation": "1910.178",
-   "reason": "A hydraulic leak creates an unsafe accumulation of fluid that violates the requirement to keep industrial trucks free of excess oil and grease.",
-   "log_id": "LOG-1014",
-   "predicted": 1,
-   "actual": 1,
-   "actual_type": "spill",
-   "retrieved": [
-    "1910.178"
-   ],
-   "top_score": 0.6226,
-   "citation_exists": true,
-   "citation_was_retrieved": true
-  },
-  {
-   "status": "CLEAR",
-   "citation_raw": "NONE",
-   "citation": null,
-   "reason": "The event report indicates no incident occurred involving spills or high-voltage equipment and does not provide sufficient information to determine if hours-of-service limits were exceeded.",
-   "log_id": "LOG-1015",
-   "predicted": 0,
-   "actual": 0,
-   "actual_type": "None",
-   "retrieved": [
-    "1910.179",
-    "228.405",
-    "228.7"
-   ],
-   "top_score": 0.638,
-   "citation_exists": null,
-   "citation_was_retrieved": null
-  },
-  {
-   "status": "CLEAR",
-   "citation_raw": "NONE",
-   "citation": null,
-   "reason": "The event report indicates no incident occurred involving operator hours of service violations, hazardous spills, or equipment operating near energized high-voltage lines.",
-   "log_id": "LOG-1016",
-   "predicted": 0,
-   "actual": 0,
-   "actual_type": "None",
-   "retrieved": [
-    "1910.179",
-    "1910.28",
-    "228.5"
-   ],
-   "top_score": 0.6292,
-   "citation_exists": null,
-   "citation_was_retrieved": null
-  },
-  {
-   "status": "VIOLATION",
-   "citation_raw": "29 CFR 1910.178(o)(3)",
-   "citation": "1910.178",
-   "reason": "The reported load imbalance indicates that only stable loads were not handled as required by the regulation stating only stable or safely arranged loads shall be handled.",
-   "log_id": "LOG-1017",
-   "predicted": 1,
-   "actual": 1,
-   "actual_type": "fatigue",
-   "retrieved": [
-    "1910.178",
-    "228.7"
-   ],
-   "top_score": 0.648,
-   "citation_exists": true,
-   "citation_was_retrieved": true
-  },
-  {
-   "status": "CLEAR",
-   "citation_raw": "NONE",
-   "citation": null,
-   "reason": "The event report indicates no incident occurred, so there is no violation of the provided regulations regarding operator hours, spills, or high-voltage equipment.",
-   "log_id": "LOG-1018",
-   "predicted": 0,
-   "actual": 0,
-   "actual_type": "None",
-   "retrieved": [
-    "1910.178",
-    "1910.179"
-   ],
-   "top_score": 0.6053,
-   "citation_exists": null,
-   "citation_was_retrieved": null
-  },
-  {
-   "status": "VIOLATION",
-   "citation_raw": "[29 CFR 1910.178 -- Powered industrial trucks.] (o) Loading. (3) The long or high (including multiple-tiered) loads which may affect capacity shall be adjusted.",
-   "citation": "1910.178",
-   "reason": "A load imbalance indicates that the operator failed to properly adjust a long or high load as required by regulation when handling it, potentially affecting vehicle stability and rated capacity.",
-   "log_id": "LOG-1019",
-   "predicted": 1,
-   "actual": 0,
-   "actual_type": "None",
-   "retrieved": [
-    "1910.178"
-   ],
-   "top_score": 0.6379,
-   "citation_exists": true,
-   "citation_was_retrieved": true
-  },
-  {
-   "status": "CLEAR",
-   "citation_raw": "NONE",
-   "citation": null,
-   "reason": "The event report indicates no incident occurred involving operator hours violations, hazardous spills, or equipment operating near energized high-voltage lines.",
-   "log_id": "LOG-1020",
-   "predicted": 0,
-   "actual": 0,
-   "actual_type": "None",
-   "retrieved": [
-    "1910.179",
-    "1910.28",
-    "228.5",
-    "228.7"
-   ],
-   "top_score": 0.6279,
-   "citation_exists": null,
-   "citation_was_retrieved": null
-  },
-  {
-   "status": "CLEAR",
-   "citation_raw": "NONE",
-   "citation": null,
-   "reason": "The reported tire pressure warning does not constitute an immediate violation of the specific inflation procedures outlined in 29 CFR 1910.177 nor any other cited regulation regarding equipment operation or operator hours.",
-   "log_id": "LOG-1021",
-   "predicted": 0,
-   "actual": 0,
-   "actual_type": "None",
-   "retrieved": [
-    "1910.177",
-    "1910.178",
-    "1910.179"
-   ],
-   "top_score": 0.6521,
-   "citation_exists": null,
-   "citation_was_retrieved": null
-  },
-  {
-   "status": "CLEAR",
-   "citation_raw": "NONE",
-   "citation": null,
-   "reason": "The event report indicates no incident occurred, so none of the provided regulations regarding truck operations, training, or safety conditions are violated.",
-   "log_id": "LOG-1022",
-   "predicted": 0,
-   "actual": 0,
-   "actual_type": "None",
-   "retrieved": [
-    "1910.178"
-   ],
-   "top_score": 0.6354,
-   "citation_exists": null,
-   "citation_was_retrieved": null
-  },
-  {
-   "status": "CLEAR",
-   "citation_raw": "NONE",
-   "citation": null,
-   "reason": "The event report indicates no incident occurred, so there is no violation of the provided crane safety regulations.",
-   "log_id": "LOG-1023",
-   "predicted": 0,
-   "actual": 0,
-   "actual_type": "None",
-   "retrieved": [
-    "1910.179"
-   ],
-   "top_score": 0.6933,
-   "citation_exists": null,
-   "citation_was_retrieved": null
-  },
-  {
-   "status": "CLEAR",
-   "citation_raw": "NONE",
-   "citation": null,
-   "reason": "The event report indicates no incident occurred, so there is no violation of the provided crane safety regulations.",
-   "log_id": "LOG-1024",
-   "predicted": 0,
-   "actual": 0,
-   "actual_type": "None",
-   "retrieved": [
-    "1910.179"
-   ],
-   "top_score": 0.6796,
-   "citation_exists": null,
-   "citation_was_retrieved": null
-  },
-  {
-   "status": "CLEAR",
-   "citation_raw": "NONE",
-   "citation": null,
-   "reason": "The event report indicates no incident occurred, so there is no violation of the provided regulations regarding operator hours, spills, or high-voltage equipment.",
-   "log_id": "LOG-1025",
-   "predicted": 0,
-   "actual": 0,
-   "actual_type": "None",
-   "retrieved": [
-    "1910.178",
-    "1910.179"
-   ],
-   "top_score": 0.6226,
-   "citation_exists": null,
-   "citation_was_retrieved": null
-  },
-  {
-   "status": "CLEAR",
-   "citation_raw": "NONE",
-   "citation": null,
-   "reason": "The operator's 14.5-hour shift does not violate any cited hours-of-duty regulations as none establish specific maximum limits in the provided text, and no hazardous spills or high-voltage equipment incidents were reported.",
-   "log_id": "LOG-1026",
-   "predicted": 0,
-   "actual": 1,
-   "actual_type": "fatigue",
-   "retrieved": [
-    "1910.178",
-    "1910.179",
-    "228.7"
-   ],
-   "top_score": 0.6028,
-   "citation_exists": null,
-   "citation_was_retrieved": null
-  },
-  {
-   "status": "CLEAR",
-   "citation_raw": "NONE",
-   "citation": null,
-   "reason": "The provided event log describes only a proximity warning without reporting an actual violation of clearance distances, contact with energized lines, or failure to deenergize/ground the circuit as required by the regulations.",
-   "log_id": "LOG-1027",
-   "predicted": 0,
-   "actual": 1,
-   "actual_type": "electrical",
-   "retrieved": [
-    "1910.333"
-   ],
-   "top_score": 0.6792,
-   "citation_exists": null,
-   "citation_was_retrieved": null
-  },
-  {
-   "status": "VIOLATION",
-   "citation_raw": "29 CFR 1910.178 -- Powered industrial trucks.(o) Loading.(1) Only stable or safely arranged loads shall be handled. Caution shall be exercised when handling off-center loads which cannot be centered.",
-   "citation": "1910.178",
-   "reason": "The reported load imbalance indicates the forklift was likely handling an unstable, off-center, or improperly arranged load in violation of loading safety requirements.",
-   "log_id": "LOG-1028",
-   "predicted": 1,
-   "actual": 0,
-   "actual_type": "None",
-   "retrieved": [
-    "1910.178",
-    "1910.179"
-   ],
-   "top_score": 0.6206,
-   "citation_exists": true,
-   "citation_was_retrieved": true
-  },
-  {
-   "status": "VIOLATION",
-   "citation_raw": "[29 CFR 1910.178 -- Powered industrial trucks.] (10) Industrial trucks shall be kept in a clean condition, free of lint, excess oil, and grease. No",
-   "citation": "1910.178",
-   "reason": "A hydraulic leak creates an unsafe accumulation of fluid that violates the requirement to keep industrial trucks clean and free of excess oil or grease.",
-   "log_id": "LOG-1029",
-   "predicted": 1,
-   "actual": 1,
-   "actual_type": "spill",
-   "retrieved": [
-    "1910.178"
-   ],
-   "top_score": 0.6226,
-   "citation_exists": true,
-   "citation_was_retrieved": true
-  },
-  {
-   "status": "CLEAR",
-   "citation_raw": "NONE",
-   "citation": null,
-   "reason": "The event report indicates no incident occurred and does not describe any specific violation of hours-of-duty limits, hazardous spills near pedestrians, or operation near energized high-voltage equipment covered by the provided excerpts.",
-   "log_id": "LOG-1030",
-   "predicted": 0,
-   "actual": 0,
-   "actual_type": "None",
-   "retrieved": [
-    "1910.178",
-    "228.7"
-   ],
-   "top_score": 0.6498,
-   "citation_exists": null,
-   "citation_was_retrieved": null
-  },
-  {
-   "status": "CLEAR",
-   "citation_raw": "NONE",
-   "citation": null,
-   "reason": "The event report indicates no incident occurred and does not describe any violation of hours-of-duty limits, hazardous spills near pedestrians, or operation close to energized high-voltage equipment covered by the provided excerpts.",
-   "log_id": "LOG-1031",
-   "predicted": 0,
-   "actual": 0,
-   "actual_type": "None",
-   "retrieved": [
-    "1910.178",
-    "228.7"
-   ],
-   "top_score": 0.6445,
-   "citation_exists": null,
-   "citation_was_retrieved": null
-  },
-  {
-   "status": "CLEAR",
-   "citation_raw": "NONE",
-   "citation": null,
-   "reason": "The event report indicates no incident occurred involving spills or high-voltage equipment and does not describe hours of service violations.",
-   "log_id": "LOG-1032",
-   "predicted": 0,
-   "actual": 0,
-   "actual_type": "None",
-   "retrieved": [
-    "1910.179",
-    "228.405",
-    "228.7"
-   ],
-   "top_score": 0.6328,
-   "citation_exists": null,
-   "citation_was_retrieved": null
-  },
-  {
-   "status": "CLEAR",
-   "citation_raw": "NONE",
-   "citation": null,
-   "reason": "The reported load imbalance does not constitute a violation of any specific provision in the provided regulatory excerpts.",
-   "log_id": "LOG-1033",
-   "predicted": 0,
-   "actual": 0,
-   "actual_type": "None",
-   "retrieved": [
-    "1910.179"
-   ],
-   "top_score": 0.7187,
-   "citation_exists": null,
-   "citation_was_retrieved": null
-  },
-  {
-   "status": "CLEAR",
-   "citation_raw": "NONE",
-   "citation": null,
-   "reason": "The event report indicates no incident occurred, so there is no violation of the provided crane safety regulations.",
-   "log_id": "LOG-1034",
-   "predicted": 0,
-   "actual": 0,
-   "actual_type": "None",
-   "retrieved": [
-    "1910.179"
-   ],
-   "top_score": 0.6913,
-   "citation_exists": null,
-   "citation_was_retrieved": null
-  },
-  {
-   "status": "CLEAR",
-   "citation_raw": "NONE",
-   "citation": null,
-   "reason": "The reported load imbalance does not constitute a violation of any specific provision in the provided regulatory excerpts.",
-   "log_id": "LOG-1035",
-   "predicted": 0,
-   "actual": 0,
-   "actual_type": "None",
-   "retrieved": [
-    "1910.179"
-   ],
-   "top_score": 0.7175,
-   "citation_exists": null,
-   "citation_was_retrieved": null
-  },
-  {
-   "status": "CLEAR",
-   "citation_raw": "NONE",
-   "citation": null,
-   "reason": "The reported hydraulic leak does not constitute an immediate violation of the specific crane operation, fall protection, electrical clearance, or warning line requirements listed in the provided regulatory excerpts.",
-   "log_id": "LOG-1036",
-   "predicted": 0,
-   "actual": 1,
-   "actual_type": "spill",
-   "retrieved": [
-    "1910.179",
-    "1910.29",
-    "1910.333"
-   ],
-   "top_score": 0.6226,
-   "citation_exists": null,
-   "citation_was_retrieved": null
-  },
-  {
-   "status": "CLEAR",
-   "citation_raw": "NONE",
-   "citation": null,
-   "reason": "The event involves no reported incident of injury, spill, or equipment failure that would trigger any of the cited regulations regarding crane limit switches, fall protection, fatigue thresholds, or maintenance procedures.",
-   "log_id": "LOG-1037",
-   "predicted": 0,
-   "actual": 0,
-   "actual_type": "None",
-   "retrieved": [
-    "1910.179",
-    "1910.28",
-    "228.5"
-   ],
-   "top_score": 0.6381,
-   "citation_exists": null,
-   "citation_was_retrieved": null
-  },
-  {
-   "status": "CLEAR",
-   "citation_raw": "NONE",
-   "citation": null,
-   "reason": "The event report indicates no incident occurred involving operator hours, hazardous spills, or proximity to high-voltage equipment.",
-   "log_id": "LOG-1038",
-   "predicted": 0,
-   "actual": 0,
-   "actual_type": "None",
-   "retrieved": [
-    "1910.179",
-    "1910.28",
-    "228.5",
-    "228.7"
-   ],
-   "top_score": 0.636,
-   "citation_exists": null,
-   "citation_was_retrieved": null
-  },
-  {
-   "status": "CLEAR",
-   "citation_raw": "NONE",
-   "citation": null,
-   "reason": "The event report indicates no incident occurred, so none of the provided regulations regarding truck operations, training, or safety conditions are violated.",
-   "log_id": "LOG-1039",
-   "predicted": 0,
-   "actual": 0,
-   "actual_type": "None",
-   "retrieved": [
-    "1910.178"
-   ],
-   "top_score": 0.6325,
-   "citation_exists": null,
-   "citation_was_retrieved": null
-  },
-  {
-   "status": "CLEAR",
-   "citation_raw": "NONE",
-   "citation": null,
-   "reason": "The reported incident of low tire pressure on a gantry crane does not violate any of the provided federal regulations regarding overhead and gantry cranes.",
-   "log_id": "LOG-1040",
-   "predicted": 0,
-   "actual": 0,
-   "actual_type": "None",
-   "retrieved": [
-    "1910.179"
-   ],
-   "top_score": 0.6959,
-   "citation_exists": null,
-   "citation_was_retrieved": null
-  },
-  {
-   "status": "CLEAR",
-   "citation_raw": "NONE",
-   "citation": null,
-   "reason": "The provided event log describes only a proximity warning without reporting an actual violation of clearance distances, contact with energized lines, or failure to deenergize/ground the circuit as required by 29 CFR 1910.333(c)(3).",
-   "log_id": "LOG-1041",
-   "predicted": 0,
-   "actual": 1,
-   "actual_type": "electrical",
-   "retrieved": [
-    "1910.333"
-   ],
-   "top_score": 0.6821,
-   "citation_exists": null,
-   "citation_was_retrieved": null
-  },
-  {
-   "status": "CLEAR",
-   "citation_raw": "NONE",
-   "citation": null,
-   "reason": "The event report indicates no incident occurred and does not describe any violation of hours-of-duty limits, hazardous spills near pedestrians, or operation near energized high-voltage equipment covered by the provided regulations.",
-   "log_id": "LOG-1042",
-   "predicted": 0,
-   "actual": 0,
-   "actual_type": "None",
-   "retrieved": [
-    "1910.178",
-    "228.7"
-   ],
-   "top_score": 0.6316,
-   "citation_exists": null,
-   "citation_was_retrieved": null
-  },
-  {
-   "status": "CLEAR",
-   "citation_raw": "NONE",
-   "citation": null,
-   "reason": "The event report indicates no incident occurred involving operator hours of service limits, hazardous spills, or equipment operating near energized high-voltage equipment.",
-   "log_id": "LOG-1043",
-   "predicted": 0,
-   "actual": 0,
-   "actual_type": "None",
-   "retrieved": [
-    "1910.179",
-    "1910.28",
-    "228.19",
-    "228.5"
-   ],
-   "top_score": 0.6273,
-   "citation_exists": null,
-   "citation_was_retrieved": null
-  },
-  {
-   "status": "VIOLATION",
-   "citation_raw": "29 CFR 1910.178 -- Powered industrial trucks.(o) Loading.(1) Only stable or safely arranged loads shall be handled. Caution shall be exercised when handling off-center loads which cannot be centered.",
-   "citation": "1910.178",
-   "reason": "The reported load imbalance indicates the forklift was likely handling an unstable, off-center, or improperly arranged load in violation of loading safety requirements.",
-   "log_id": "LOG-1044",
-   "predicted": 1,
-   "actual": 0,
-   "actual_type": "None",
-   "retrieved": [
-    "1910.178",
-    "1910.179"
-   ],
-   "top_score": 0.6207,
-   "citation_exists": true,
-   "citation_was_retrieved": true
-  },
-  {
-   "status": "CLEAR",
-   "citation_raw": "NONE",
-   "citation": null,
-   "reason": "The event report indicates no incident occurred, so there is no violation of the provided regulations regarding hours-of-service, spills, or high-voltage equipment.",
-   "log_id": "LOG-1045",
-   "predicted": 0,
-   "actual": 0,
-   "actual_type": "None",
-   "retrieved": [
-    "1910.178",
-    "1910.179"
-   ],
-   "top_score": 0.6056,
-   "citation_exists": null,
-   "citation_was_retrieved": null
-  },
-  {
-   "status": "CLEAR",
-   "citation_raw": "NONE",
-   "citation": null,
-   "reason": "The reported proximity warning does not constitute a violation of any specific safety requirement listed in the provided regulatory excerpts.",
-   "log_id": "LOG-1046",
-   "predicted": 0,
-   "actual": 1,
-   "actual_type": "electrical",
-   "retrieved": [
-    "1910.179"
-   ],
-   "top_score": 0.7153,
-   "citation_exists": null,
-   "citation_was_retrieved": null
-  },
-  {
-   "status": "CLEAR",
-   "citation_raw": "NONE",
-   "citation": null,
-   "reason": "The event report indicates no incident occurred, so none of the provided crane safety regulations regarding operation, maintenance, or testing were violated.",
-   "log_id": "LOG-1047",
-   "predicted": 0,
-   "actual": 1,
-   "actual_type": "fatigue",
-   "retrieved": [
-    "1910.179"
-   ],
-   "top_score": 0.679,
-   "citation_exists": null,
-   "citation_was_retrieved": null
-  },
-  {
-   "status": "CLEAR",
-   "citation_raw": "NONE",
-   "citation": null,
-   "reason": "The reported load imbalance incident does not violate any of the specific federal regulations provided in the retrieved excerpts regarding crane limits, hours of duty definitions, or recordkeeping systems.",
-   "log_id": "LOG-1048",
-   "predicted": 0,
-   "actual": 0,
-   "actual_type": "None",
-   "retrieved": [
-    "1910.179",
-    "228.19",
-    "228.5",
-    "228.7"
-   ],
-   "top_score": 0.6458,
-   "citation_exists": null,
-   "citation_was_retrieved": null
-  },
-  {
-   "status": "CLEAR",
-   "citation_raw": "NONE",
-   "citation": null,
-   "reason": "The reported incident contains no violations of safety regulations as there was no accident, unsafe operation, or hazardous condition described.",
-   "log_id": "LOG-1049",
-   "predicted": 0,
-   "actual": 0,
-   "actual_type": "None",
-   "retrieved": [
-    "1910.178"
-   ],
-   "top_score": 0.6389,
-   "citation_exists": null,
-   "citation_was_retrieved": null
-  }
- ]
+  "results": [
+    {
+      "status": "CLEAR",
+      "citation_raw": "NONE",
+      "citation": null,
+      "reason": "The operator's shift duration of 8.3 hours is within the 12-hour limit and no other violations were reported.",
+      "log_id": "LOG-1000",
+      "predicted": 0,
+      "actual": 0,
+      "actual_type": "None",
+      "retrieved": [
+        "1910.178",
+        "1910.179",
+        "1910.22",
+        "1910.333",
+        "228.5"
+      ],
+      "citation_exists": null,
+      "citation_was_retrieved": null
+    },
+    {
+      "status": "CLEAR",
+      "citation_raw": "NONE",
+      "citation": null,
+      "reason": "The operator's shift duration of 9.3 hours is within the 12-hour limit and the reported tire pressure warning is a routine telemetry adjustment that does not constitute a violation.",
+      "log_id": "LOG-1001",
+      "predicted": 0,
+      "actual": 0,
+      "actual_type": "None",
+      "retrieved": [
+        "1910.178",
+        "1910.179",
+        "1910.22",
+        "1910.333",
+        "228.5"
+      ],
+      "citation_exists": null,
+      "citation_was_retrieved": null
+    },
+    {
+      "status": "CLEAR",
+      "citation_raw": "NONE",
+      "citation": null,
+      "reason": "The operator's shift duration of 9.8 hours is within the 12-hour limit and the reported load imbalance is a routine telemetry adjustment compliant with auditing rule 4.",
+      "log_id": "LOG-1002",
+      "predicted": 0,
+      "actual": 0,
+      "actual_type": "None",
+      "retrieved": [
+        "1910.178",
+        "1910.179",
+        "1910.22",
+        "1910.333",
+        "228.5"
+      ],
+      "citation_exists": null,
+      "citation_was_retrieved": null
+    },
+    {
+      "status": "CLEAR",
+      "citation_raw": "NONE",
+      "citation": null,
+      "reason": "The operator's shift duration of 9.7 hours is within the 12-hour limit and no other violations were reported.",
+      "log_id": "LOG-1003",
+      "predicted": 0,
+      "actual": 0,
+      "actual_type": "None",
+      "retrieved": [
+        "1910.179",
+        "1910.22",
+        "1910.333",
+        "228.5",
+        "228.7"
+      ],
+      "citation_exists": null,
+      "citation_was_retrieved": null
+    },
+    {
+      "status": "CLEAR",
+      "citation_raw": "NONE",
+      "citation": null,
+      "reason": "The operator's shift duration of 9.2 hours is within the 12-hour limit and no other violations were reported in the event data.",
+      "log_id": "LOG-1004",
+      "predicted": 0,
+      "actual": 0,
+      "actual_type": "None",
+      "retrieved": [
+        "1910.179",
+        "1910.22",
+        "1910.333",
+        "228.5"
+      ],
+      "citation_exists": null,
+      "citation_was_retrieved": null
+    }
+  ]
 }
