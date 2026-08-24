@@ -176,8 +176,8 @@ class ComplianceDatasetPipeline:
             "contrastive_pairs": sum(1 for p in dpo_data if p.get("source") == "contrastive_memory_synthesis"),
             "violations_count": sum(1 for s in sft_data if "VIOLATION" in s.get("output", "")),
             "clears_count": sum(1 for s in sft_data if "CLEAR" in s.get("output", "")),
-            "dpo_file_path": str(OUT_DPO),
-            "sft_file_path": str(OUT_SFT),
+            "dpo_file_path": "json/dpo_training_dataset.jsonl",
+            "sft_file_path": "json/sft_training_dataset.jsonl",
         }
         OUT_METRICS.write_text(json.dumps(metrics, indent=2), encoding="utf-8")
         return metrics

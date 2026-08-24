@@ -63,16 +63,14 @@ YARD EVENT TO AUDIT:
 - Operator Shift Duration: {shift_hours} hours
 - Reported Incident / Telemetry: {incident}
 
-AUDITING RULES:
-1. OPERATOR HOURS OF SERVICE: 49 CFR 228 limits consecutive duty to 12.0 hours. If Operator Shift Duration ({shift_hours} hours) > 12.0 hours, it is a VIOLATION under 49 CFR 228.
-2. WALKING-WORKING SURFACES, DOCKBOARDS & CLEARANCES: 29 CFR 1910 Subpart D (1910.22, 1910.26, 1910.28) and Subpart N (1910.176) require walking-working surfaces, dockboards, and aisleways to be clean, dry, secured, and unobstructed.
-3. ELECTRICAL CLEARANCE: 29 CFR 1910.333 prohibits equipment operating within minimum approach distances of energized high-voltage lines.
-4. RIGGING & SLINGS: Defective wire rope slings with broken wires or damaged fittings in active lifts are VIOLATIONS under 29 CFR 1910.184.
-5. ROUTINE TELEMETRY: Contained lubricants, de-energized work zones, or routine operational telemetry adjustments during regular handling are CLEAR and compliant unless an active hazard occurs.
+AUDITING INSTRUCTIONS:
+Evaluate whether the yard event violates any federal safety standard present in the retrieved excerpts above (such as Hours of Service limits, walking-working surface housekeeping, electrical clearance distances, rigging/slings, or equipment safety).
+If a condition described in the event breaches a requirement in the retrieved excerpts, mark STATUS: VIOLATION and cite the exact section number from the text.
+If no violation exists or if the event represents routine operational telemetry within legal limits, mark STATUS: CLEAR and CITATION: NONE.
 
 Answer in exactly this format and nothing else:
 STATUS: CLEAR or VIOLATION
-CITATION: exact section number copied from the excerpts above (e.g. 1910.22, 1910.26, 1910.28, 1910.176, 1910.184, 1910.333, 228.405), or NONE
+CITATION: exact section number copied from the excerpts above, or NONE
 REASON: one concise sentence.
 """
 
