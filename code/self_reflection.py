@@ -173,7 +173,7 @@ Please carefully re-evaluate the YARD EVENT against the RETRIEVED REGULATIONS.
 
 Answer strictly in this format and nothing else:
 STATUS: CLEAR or VIOLATION
-CITATION: exact section number (e.g. 1910.22, 1910.333, 228.405), or NONE
+CITATION: exact section number present in the retrieved regulations, or NONE
 REASON: one concise sentence.
 """
         async with sem:

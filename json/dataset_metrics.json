@@ -5,6 +5,6 @@
   "contrastive_pairs": 28,
   "violations_count": 3,
   "clears_count": 23,
-  "dpo_file_path": "json\\dpo_training_dataset.jsonl",
-  "sft_file_path": "json\\sft_training_dataset.jsonl"
+  "dpo_file_path": "json/dpo_training_dataset.jsonl",
+  "sft_file_path": "json/sft_training_dataset.jsonl"
 }

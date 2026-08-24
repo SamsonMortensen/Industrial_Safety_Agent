@@ -76,15 +76,14 @@ YARD EVENT
 - Operator Shift Duration: {shift_hours} hours
 - Reported Incident / Telemetry: {incident}
 
-AUDITING RULES:
-1. OPERATOR HOURS OF SERVICE: 49 CFR 228 (e.g. 228.405) limits consecutive duty to 12.0 hours. If Operator Shift Duration ({shift_hours} hours) > 12.0 hours, it is a VIOLATION under 49 CFR 228 regardless of whether an equipment incident occurred.
-2. WALKING-WORKING SURFACES & HOUSEKEEPING: 29 CFR 1910.22 requires walking-working surfaces and walkways to be kept clean, dry, and free of hazards. A hydraulic leak or fluid spill at a pedestrian walkway/crosswalk is a VIOLATION under 29 CFR 1910.22.
-3. ELECTRICAL CLEARANCE: 29 CFR 1910.333 prohibits equipment operating within minimum approach distances of energized high-voltage lines. A proximity warning at a high-voltage line is a VIOLATION under 29 CFR 1910.333.
-4. ROUTINE TELEMETRY: Routine operational telemetry adjustments (such as routine load imbalance corrections or normal tire pressure monitoring) during regular handling are CLEAR and compliant unless an active violation of rules 1-3 occurred.
+AUDITING INSTRUCTIONS:
+Evaluate whether the yard event violates any federal safety standard present in the retrieved excerpts above (such as Hours of Service limits, walking-working surface housekeeping, electrical clearance distances, or equipment safety).
+If a condition described in the event breaches a requirement in the retrieved excerpts, mark STATUS: VIOLATION and cite the exact section number from the text.
+If no violation exists or if the event represents routine operational telemetry within legal limits, mark STATUS: CLEAR and CITATION: NONE.
 
 Answer in exactly this format and nothing else:
 STATUS: CLEAR or VIOLATION
-CITATION: exact section number copied from the excerpts above (e.g. 1910.22, 1910.333, 228.405), or NONE
+CITATION: exact section number copied from the excerpts above, or NONE
 REASON: one concise sentence.
 """
 

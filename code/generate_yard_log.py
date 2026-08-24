@@ -30,19 +30,25 @@ EQUIPMENT = ['Gantry Crane', 'Reach Stacker', 'Forklift', 'Terminal Tractor']
 ROUTINE_LOCATIONS = ['Bay 1', 'Bay 2', 'Bay 4', 'Maintenance Track', 'Rail Siding 3']
 PEDESTRIAN_ZONE = 'Main Pedestrian Crosswalk'
 HIGH_VOLTAGE_ZONE = 'High-Voltage Line B'
+ALL_LOCATIONS = ROUTINE_LOCATIONS + [PEDESTRIAN_ZONE, HIGH_VOLTAGE_ZONE]
 
 BENIGN_INCIDENTS = ['None', 'None', 'None', 'None', 'Load Imbalance', 'Tire Pressure Warning']
 SPILL_INCIDENT = 'Hydraulic Leak'
 PROXIMITY_INCIDENT = 'Proximity Warning'
 
-LEGAL_SHIFT = (6.0, 11.5)
-FATIGUE_SHIFT = (12.5, 15.0)
+LEGAL_SHIFT = (6.0, 12.0)
+FATIGUE_SHIFT = (12.1, 15.0)
 
 
 def clean_record(rng):
+    # Include edge case shift durations right up to the legal 12.0h boundary (e.g. 11.8, 11.9, 12.0)
+    loc = rng.choice(ALL_LOCATIONS)
+    shift = round(rng.uniform(*LEGAL_SHIFT), 1)
+    if shift > 12.0:
+        shift = 12.0
     return {
-        'Location': rng.choice(ROUTINE_LOCATIONS),
-        'Operator_Shift_Hours': round(rng.uniform(*LEGAL_SHIFT), 1),
+        'Location': loc,
+        'Operator_Shift_Hours': shift,
         'Reported_Incident': rng.choice(BENIGN_INCIDENTS),
         'Is_Violation': 0,
         'Violation_Type': 'None',
@@ -51,9 +57,12 @@ def clean_record(rng):
 
 def violation_record(rng, kind):
     if kind == 'fatigue':
+        shift = round(rng.uniform(*FATIGUE_SHIFT), 1)
+        if shift <= 12.0:
+            shift = 12.1
         return {
-            'Location': rng.choice(ROUTINE_LOCATIONS),
-            'Operator_Shift_Hours': round(rng.uniform(*FATIGUE_SHIFT), 1),
+            'Location': rng.choice(ALL_LOCATIONS),
+            'Operator_Shift_Hours': shift,
             'Reported_Incident': rng.choice(['None', 'None', 'Load Imbalance']),
             'Is_Violation': 1,
             'Violation_Type': 'fatigue',
@@ -117,8 +126,6 @@ def audit_labels(rows):
             r['Location'] == HIGH_VOLTAGE_ZONE and r['Reported_Incident'] == PROXIMITY_INCIDENT,
         ]
         if any(hazards) != bool(r['Is_Violation']):
-            problems.append(r['Log_ID'])
-        if not r['Is_Violation'] and r['Location'] in (PEDESTRIAN_ZONE, HIGH_VOLTAGE_ZONE):
             problems.append(r['Log_ID'])
     return problems
 

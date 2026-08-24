@@ -40,24 +40,27 @@ So this project measures three things directly:
 2. **Citation validity** against all 16,173 real section numbers in Titles 29 and 49 of the Code of Federal Regulations.
 3. **Citation correctness** — verifying whether the model cited the *actual governing rule* for that specific hazard, rather than just any real section that happened to be in context.
 
-## Benchmark Results (1,000 Operational Records)
+## Benchmark Results
 
-1,000 yard events, 60 planted violations across three distinct hazard categories (20 fatigue, 20 spills, 20 electrical clearances), audited with `qwen3.5:9b` and `mxbai-embed-large` running locally under Ollama.
+> **Note on Benchmark Provenance:** These figures were measured against the pre-hardening dataset and answer-key prompt at commit `edfa370`. Re-measurement is pending against the current hardened harness.
 
-| Metric | Autonomous Triangulated RAG (v1) | Continuous Learning RAG (v2) | Flat Top-4 RAG (Legacy) | Ungrounded Baseline |
+Evaluated with `qwen3.5:9b` (reasoning) and `mxbai-embed-large` (embeddings) running locally on an isolated inference runtime.
+
+| Metric | Triangulated In-Context RAG (v1) | Continuous Learning RAG (v2 Shift Batches) | Flat Top-4 RAG (Legacy Baseline) | Ungrounded Direct Prompting |
 | :--- | :---: | :---: | :---: | :---: |
-| **Total events audited ($n$)** | 1,000 | **1,000** | 50 | 50 |
-| **Violations caught** | 60 of 60 (100%) | **60 of 60 (100%)** | 3 of 9 (33%) | 1 of 9 (11%) |
-| **False positives** | 0 | **0** | 4 | 0 |
-| **Precision** | 1.00 | **1.00** | 0.43 | 1.00 |
-| **Recall** | 1.00 | **1.00** | 0.33 | 0.11 |
-| **F1 Score** | 1.00 | **1.00** | 0.38 | 0.20 |
-| **Accuracy** | 1.00 | **1.00** | 0.80 | 0.84 |
-| **Citations given** | 60 | **60** | 7 | 1 |
-| **Citations naming a real CFR section** | 60 of 60 (100%) | **60 of 60 (100%)** | 7 of 7 (100%) | 0 of 1 (0%) |
-| **Citations naming the CORRECT rule** | 60 of 60 (100%) | **60 of 60 (100%)** | 0 of 3 (0%) | 0 of 1 (0%) |
-| **Self-Reflection & Hallucination Defense** | None | **Statutory Verifier Active** | None | None |
+| **Operational events ($n$)** | 1,000 | 50 (Batch Iterations) | 50 | 50 |
+| **Violations caught** | 60 of 60 (100%) | 3 of 3 (100%) | 3 of 9 (33%) | 1 of 9 (11%) |
+| **False positives (on noisy telemetry)** | 0 | 0 | 4 | 0 |
+| **Precision** | 1.00 | 1.00 | 0.43 | 1.00 |
+| **Recall** | 1.00 | 1.00 *(Early runs: 0.67)* | 0.33 | 0.11 |
+| **F1 Score** | 1.00 | 1.00 *(Progression: 0.80 → 1.00)* | 0.38 | 0.20 |
+| **Citations naming real CFR section** | 60 of 60 (100%) | 3 of 3 (100%) | 7 of 7 (100%) | 0 of 1 (0% - Hallucinated) |
+| **Citations grounded in retrieved text** | 40 of 60 (67%)* | 3 of 3 (100%) | 7 of 7 (100%) | N/A |
+| **Citation correctness (governing rule)**| 60 of 60 (100%) | 3 of 3 (100%) | 0 of 3 (0%) | 0 of 1 (0%) |
+| **Self-Reflection & Grounding Defense** | None | **Statutory Verifier Active** | None | None |
 | **Episodic Case Law Memory** | None | **Persistent Vector Store** | None | None |
+
+*\*Note on Grounding Transparency:* In v1, 20 of 20 fatigue violations correctly cited `49 CFR 228.405`, but the section was generated from the model's parametric knowledge rather than retrieved context chunks (`citations_outside_retrieved_set: 20`). This exact discrepancy motivated the v2 `StatutoryGroundedVerifier`, which enforces strict contextual containment and triggers critique-reflection loops when citations lack retrieved grounding.
 
 ![Autonomous Compliance Audit Run](audit_demo.png)
 
@@ -104,12 +107,12 @@ This release introduces an **Autonomous Continuous Learning & Self-Reflection En
    [(Episodic Memory Bank)]        [(RL / DPO Preference Pairs)]
              │                              │
              │                              ▼
-             │               [ SLOW OUTER LOOP: Parametric DPO/LoRA Fine-Tuning ]
+             │               [ SLOW OUTER LOOP: Automated DPO Dataset Pipeline & Recipe ]
              │               - Chosen: Grounded, verified statutory audit reasoning
              │               - Rejected: Hallucinated / ungrounded initial critique attempts
              │                              │
              │                              ▼
-             └──────────────────────► [ Fine-Tuned Local Model ] (Distilled & Faster)
+             └──────────────────────► [ LoRA / DPO Fine-Tuning Recipe ] (code/train_lora_dpo.py)
 ```
 
 ### 1. Episodic Memory Bank (`code/continuous_learner.py`)
@@ -122,7 +125,7 @@ When unindexed telemetry patterns appear in yard logs (e.g. chemical transfer le
 Every citation is verified in real-time against all 16,173 sections in Titles 29 and 49 CFR. If a citation is ungrounded or contradictory, an automated critique loop intercepts the response and forces the LLM to self-correct before finalizing the audit.
 
 ### 4. Automated DPO & SFT Dataset Pipeline (`code/dataset_pipeline.py`)
-Self-reflection corrections and contrastive memory episodes are automatically compiled into standard **Direct Preference Optimization (DPO)** pairs (`prompt`, `chosen`, `rejected`) and **Supervised Fine-Tuning (SFT)** instruction sets (`json/dpo_training_dataset.jsonl`), ready for fine-tuning smaller, faster edge models via LoRA (`code/train_lora_dpo.py`).
+Self-reflection corrections and contrastive memory episodes are automatically compiled into standard **Direct Preference Optimization (DPO)** pairs (`prompt`, `chosen`, `rejected`) and **Supervised Fine-Tuning (SFT)** instruction sets (`json/dpo_training_dataset.jsonl`), ready for fine-tuning edge models via LoRA with the provided training configuration (`code/train_lora_dpo.py`).
 
 ---
 
