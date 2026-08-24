@@ -1,18 +1,17 @@
-"""Download the federal safety regulations this project actually audits against.
+"""Download the federal safety regulations governing rail-served intermodal yard operations.
 
-Earlier versions of this repo shipped Title 14 CFR (Aeronautics and Space) as the
-"OSHA/FRA" corpus. Title 14 is the FAA. OSHA general industry is Title 29 Part
-1910 and the railroad hours-of-service rules are Title 49 Part 228, so those are
-what get pulled here.
+The compliance auditor operates under two primary federal safety titles:
+  - OSHA General Industry: Title 29 CFR Part 1910
+  - FRA Railroad Safety: Title 49 CFR Part 228
 
-Only the subparts a rail-served intermodal yard operates under are downloaded,
-which keeps the corpus at roughly 750 KB instead of several megabytes of
-irrelevant law:
+Only the specific subparts an intermodal yard operates under are downloaded,
+which keeps the corpus focused at roughly 750 KB instead of dozens of megabytes
+of irrelevant law:
 
   29 CFR 1910 Subpart D  Walking-Working Surfaces  (housekeeping, spills, slip hazards)
-  29 CFR 1910 Subpart N  Materials Handling and Storage  (powered industrial trucks)
+  29 CFR 1910 Subpart N  Materials Handling and Storage  (powered industrial trucks, cranes)
   29 CFR 1910 Subpart S  Electrical  (clearances from energized parts)
-  49 CFR 228             Hours of Service  (operator fatigue, recordkeeping)
+  49 CFR 228             Hours of Service  (operator fatigue, duty limits, recordkeeping)
 
 Each chunk carries the citation it came from, which is what lets the audit step
 verify that a model-supplied section number is real instead of taking it on
@@ -26,7 +25,6 @@ import json
 import re
 import sys
 import time
-
 from datetime import date
 from pathlib import Path
 from xml.etree import ElementTree as ET
@@ -48,7 +46,6 @@ SOURCES = [
      "topic": "Hours of Service"},
 ]
 
-#Long sections get split so an embedding covers one idea rather than ten pages
 MAX_CHARS = 1800
 
 
@@ -61,7 +58,6 @@ def fetch(src):
 
 
 def clean(text):
-    #The XML carries a literal section symbol that mangles in some encodings
     text = text.replace("§", "Sec.")
     text = re.sub(r"\s+", " ", text)
     return text.strip()
