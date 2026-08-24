@@ -1,0 +1,10 @@
+{
+  "pillars": {
+    "fatigue": "49 CFR 228 limitations on duty hours maximum 12 consecutive hours operator fatigue time on duty",
+    "housekeeping": "29 CFR 1910.22 walking-working surfaces housekeeping floors passageways clean dry spills leaks hazards",
+    "clearance": "29 CFR 1910.333 electrical safety related work practices minimum approach distance energized high-voltage line clearance",
+    "equipment": "29 CFR 1910.178 1910.179 powered industrial trucks overhead gantry cranes safe operation and maintenance",
+    "hazmat": "49 CFR 172 hazardous materials regulations placards shipping papers uncontained dangerous goods"
+  },
+  "last_updated": 1787547309.3274484
+}
