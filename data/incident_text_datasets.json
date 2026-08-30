@@ -1,0 +1,141 @@
+{
+  "schema_version": 1,
+  "reviewed_on": "2026-08-30",
+  "purpose": "Track authentic incident records for event extraction, retrieval evaluation, and reviewer-supervised training.",
+  "datasets": [
+    {
+      "id": "osha_severe_injury_reports",
+      "name": "OSHA Severe Injury Reports",
+      "agency": "Occupational Safety and Health Administration",
+      "coverage": "Federal OSHA severe nonfatal injury reports from 2015 onward",
+      "content": ["incident_description", "event_codes", "industry", "location", "injury_outcome"],
+      "official_url": "https://www.osha.gov/severe-injury-reports",
+      "access": "Bulk dashboard download",
+      "rights_status": "federal_public_data",
+      "recommended_use": "Primary authentic narrative set for observable event and hazard-term extraction.",
+      "prohibited_inferences": [
+        "Do not treat a report as proof that a specific employer violated a cited rule.",
+        "Do not infer a clean case from the absence of a report."
+      ],
+      "caveats": [
+        "Excludes fatalities.",
+        "Covers federal OSHA jurisdiction, not every state-plan incident.",
+        "Represents severe reported outcomes, so it is not a sample of normal camera-hours."
+      ]
+    },
+    {
+      "id": "osha_investigation_summaries",
+      "name": "OSHA Investigation Summaries",
+      "agency": "Occupational Safety and Health Administration",
+      "coverage": "Fatality and catastrophe inspection summaries",
+      "content": ["incident_narrative", "inspection_context", "event_keywords"],
+      "official_url": "https://www.osha.gov/data",
+      "access": "Search interface and linked summaries",
+      "rights_status": "federal_public_reports",
+      "recommended_use": "High-value hard cases for query generation and human-reviewed causal extraction.",
+      "prohibited_inferences": [
+        "Do not manufacture negative examples from unrelated summaries.",
+        "Do not map narrative keywords directly to a regulation without checking the case record and scope."
+      ],
+      "caveats": [
+        "Not presented as one clean machine-learning table.",
+        "Inspection selection and publication create sampling bias."
+      ]
+    },
+    {
+      "id": "niosh_face",
+      "name": "NIOSH Fatality Assessment and Control Evaluation Reports",
+      "agency": "National Institute for Occupational Safety and Health",
+      "coverage": "Detailed investigations of selected occupational fatalities since 1982",
+      "content": ["incident_sequence", "contributing_factors", "recommendations", "industry", "equipment"],
+      "official_url": "https://www.cdc.gov/niosh/face/",
+      "access": "Searchable full reports",
+      "rights_status": "federal_public_reports",
+      "recommended_use": "Causal sequence extraction, prevention concept retrieval, and expert-reviewed case memory.",
+      "prohibited_inferences": [
+        "Do not treat recommendations as enforcement findings.",
+        "Do not train a model to assign fault or blame from these reports."
+      ],
+      "caveats": [
+        "NIOSH FACE is a research program, not an enforcement program.",
+        "Cases are selected and do not represent all occupational fatalities."
+      ]
+    },
+    {
+      "id": "msha_accident_injury_illness",
+      "name": "MSHA Accident, Injury and Illness Data",
+      "agency": "Mine Safety and Health Administration",
+      "coverage": "Mine operator and contractor reports from 2000 onward",
+      "content": ["accident_type", "injury_degree", "lost_days", "mine_location", "coded_circumstances"],
+      "official_url": "https://arlweb.msha.gov/OpenGovernmentData/OGIMSHA.asp",
+      "access": "Bulk dataset with definitions",
+      "rights_status": "federal_public_data",
+      "recommended_use": "Structured mining-domain incident classification and external domain-shift testing.",
+      "prohibited_inferences": [
+        "Do not apply mine-specific patterns to a rail yard without domain review.",
+        "Do not equate a reported injury with a proven regulatory violation."
+      ],
+      "caveats": [
+        "Mining operations differ materially from general industry and rail operations.",
+        "Operator-reported fields may contain reporting and coding error."
+      ]
+    },
+    {
+      "id": "fra_accident_incident",
+      "name": "FRA Accident and Incident Data",
+      "agency": "Federal Railroad Administration",
+      "coverage": "Rail equipment accidents, casualties, grade-crossing incidents, and operational data",
+      "content": ["rail_accident", "casualty", "cause_codes", "equipment", "location", "operational_context"],
+      "official_url": "https://data.transportation.gov/stories/s/FRA-Safety-Data-Landing-Page/dakf-i7zd/",
+      "access": "Full dataset downloads and reports",
+      "rights_status": "federal_public_data",
+      "recommended_use": "Primary rail-domain incident corpus and retrieval vocabulary source.",
+      "prohibited_inferences": [
+        "Do not infer a duty-time violation unless the necessary duty records and statutory scope are present.",
+        "Do not use post-incident cause codes as inputs when testing pre-incident detection."
+      ],
+      "caveats": [
+        "Monthly railroad reporting is governed by 49 CFR Part 225 and has reporting thresholds.",
+        "Post-event fields can leak the answer into an early-warning benchmark."
+      ]
+    },
+    {
+      "id": "csb_incident_reports",
+      "name": "CSB Investigation and Accidental Release Reports",
+      "agency": "U.S. Chemical Safety and Hazard Investigation Board",
+      "coverage": "Major chemical investigations and reportable accidental releases",
+      "content": ["incident_sequence", "root_causes", "chemical_release", "recommendations", "property_damage"],
+      "official_url": "https://www.csb.gov/news/incident-report-rule-form-/",
+      "access": "Quarterly data download and public investigation reports",
+      "rights_status": "federal_public_data",
+      "recommended_use": "High-quality chemical process-safety cases for causal extraction and retrieval evaluation.",
+      "prohibited_inferences": [
+        "Do not generalize major chemical accident frequencies to ordinary yard operations.",
+        "Do not turn CSB recommendations into legal citations without retrieving the controlling authority."
+      ],
+      "caveats": [
+        "The accidental release database begins in March 2020.",
+        "Detailed investigations are a small, severity-selected set."
+      ]
+    },
+    {
+      "id": "ntsb_aviation_accidents",
+      "name": "NTSB Aviation Accident Database",
+      "agency": "National Transportation Safety Board",
+      "coverage": "U.S. civil aviation accidents and selected incidents from 1962 onward",
+      "content": ["narrative", "probable_cause", "findings", "injury_severity", "operation"],
+      "official_url": "https://www.ntsb.gov/safety/data/pages/Data_Stats.aspx",
+      "access": "Bulk download and API",
+      "rights_status": "federal_public_data",
+      "recommended_use": "Optional cross-domain causal-language pretraining, not rail or workplace validation.",
+      "prohibited_inferences": [
+        "Do not report aviation results as industrial safety performance.",
+        "Do not use probable-cause text as a pre-incident model input."
+      ],
+      "caveats": [
+        "The operational domain is aviation.",
+        "Narrative availability varies by time period and investigative responsibility."
+      ]
+    }
+  ]
+}

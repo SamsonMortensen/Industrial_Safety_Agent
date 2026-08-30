@@ -23,75 +23,911 @@
       "strategy": "raw",
       "rows": [
         {
-          "log_id": "LOG-1014",
-          "type": "spill",
-          "rank": 38
-        },
-        {
-          "log_id": "LOG-1017",
-          "type": "fatigue",
-          "rank": 3
-        },
-        {
-          "log_id": "LOG-1026",
-          "type": "fatigue",
-          "rank": 4
-        },
-        {
-          "log_id": "LOG-1027",
-          "type": "electrical",
-          "rank": 1
-        },
-        {
-          "log_id": "LOG-1029",
-          "type": "spill",
-          "rank": 38
-        },
-        {
-          "log_id": "LOG-1036",
-          "type": "spill",
-          "rank": 40
-        },
-        {
-          "log_id": "LOG-1041",
-          "type": "electrical",
-          "rank": 1
-        },
-        {
-          "log_id": "LOG-1046",
-          "type": "electrical",
+          "log_id": "LOG-1000",
+          "type": "approach_distance",
           "rank": 9
         },
         {
-          "log_id": "LOG-1047",
-          "type": "fatigue",
+          "log_id": "LOG-1006",
+          "type": "dockboard",
+          "rank": 14
+        },
+        {
+          "log_id": "LOG-1011",
+          "type": "housekeeping",
+          "rank": 7
+        },
+        {
+          "log_id": "LOG-1022",
+          "type": "approach_distance",
+          "rank": 23
+        },
+        {
+          "log_id": "LOG-1024",
+          "type": "rim_wheel",
+          "rank": 1
+        },
+        {
+          "log_id": "LOG-1027",
+          "type": "fall_protection",
+          "rank": 20
+        },
+        {
+          "log_id": "LOG-1043",
+          "type": "electrical_ppe",
+          "rank": 7
+        },
+        {
+          "log_id": "LOG-1046",
+          "type": "guardrail",
+          "rank": 33
+        },
+        {
+          "log_id": "LOG-1051",
+          "type": "stairway",
+          "rank": 6
+        },
+        {
+          "log_id": "LOG-1058",
+          "type": "rim_wheel",
+          "rank": 1
+        },
+        {
+          "log_id": "LOG-1071",
+          "type": "sling",
+          "rank": 12
+        },
+        {
+          "log_id": "LOG-1093",
+          "type": "dockboard",
+          "rank": 11
+        },
+        {
+          "log_id": "LOG-1127",
+          "type": "fall_protection",
+          "rank": 6
+        },
+        {
+          "log_id": "LOG-1132",
+          "type": "electrical_ppe",
+          "rank": 5
+        },
+        {
+          "log_id": "LOG-1150",
+          "type": "electrical_ppe",
+          "rank": 4
+        },
+        {
+          "log_id": "LOG-1162",
+          "type": "electrical_ppe",
+          "rank": 39
+        },
+        {
+          "log_id": "LOG-1163",
+          "type": "crane_inspection",
+          "rank": 1
+        },
+        {
+          "log_id": "LOG-1183",
+          "type": "electrical_ppe",
+          "rank": 19
+        },
+        {
+          "log_id": "LOG-1198",
+          "type": "approach_distance",
+          "rank": 17
+        },
+        {
+          "log_id": "LOG-1222",
+          "type": "truck_defect",
+          "rank": 12
+        },
+        {
+          "log_id": "LOG-1224",
+          "type": "duty_records",
+          "rank": 1
+        },
+        {
+          "log_id": "LOG-1228",
+          "type": "stairway",
+          "rank": 2
+        },
+        {
+          "log_id": "LOG-1233",
+          "type": "dockboard",
+          "rank": 1
+        },
+        {
+          "log_id": "LOG-1237",
+          "type": "truck_defect",
+          "rank": 27
+        },
+        {
+          "log_id": "LOG-1239",
+          "type": "live_parts",
+          "rank": 39
+        },
+        {
+          "log_id": "LOG-1250",
+          "type": "electrical_ppe",
+          "rank": 11
+        },
+        {
+          "log_id": "LOG-1258",
+          "type": "duty_records",
+          "rank": 8
+        },
+        {
+          "log_id": "LOG-1259",
+          "type": "sling",
+          "rank": 1
+        },
+        {
+          "log_id": "LOG-1262",
+          "type": "fall_protection",
+          "rank": 1
+        },
+        {
+          "log_id": "LOG-1263",
+          "type": "truck_defect",
+          "rank": 7
+        },
+        {
+          "log_id": "LOG-1276",
+          "type": "live_parts",
+          "rank": 34
+        },
+        {
+          "log_id": "LOG-1277",
+          "type": "housekeeping",
+          "rank": 1
+        },
+        {
+          "log_id": "LOG-1279",
+          "type": "duty_limit",
+          "rank": 5
+        },
+        {
+          "log_id": "LOG-1281",
+          "type": "aisle_obstruction",
+          "rank": 1
+        },
+        {
+          "log_id": "LOG-1282",
+          "type": "duty_records",
+          "rank": 6
+        },
+        {
+          "log_id": "LOG-1288",
+          "type": "rim_wheel",
+          "rank": 1
+        },
+        {
+          "log_id": "LOG-1290",
+          "type": "fall_protection",
+          "rank": 1
+        },
+        {
+          "log_id": "LOG-1291",
+          "type": "crane_inspection",
+          "rank": 1
+        },
+        {
+          "log_id": "LOG-1293",
+          "type": "electrical_ppe",
+          "rank": 3
+        },
+        {
+          "log_id": "LOG-1301",
+          "type": "stairway",
+          "rank": 10
+        },
+        {
+          "log_id": "LOG-1306",
+          "type": "live_parts",
+          "rank": 4
+        },
+        {
+          "log_id": "LOG-1308",
+          "type": "guardrail",
+          "rank": 38
+        },
+        {
+          "log_id": "LOG-1314",
+          "type": "dockboard",
+          "rank": 1
+        },
+        {
+          "log_id": "LOG-1317",
+          "type": "dockboard",
+          "rank": 1
+        },
+        {
+          "log_id": "LOG-1322",
+          "type": "housekeeping",
+          "rank": 4
+        },
+        {
+          "log_id": "LOG-1323",
+          "type": "live_parts",
+          "rank": 60
+        },
+        {
+          "log_id": "LOG-1338",
+          "type": "rim_wheel",
+          "rank": 1
+        },
+        {
+          "log_id": "LOG-1342",
+          "type": "ladder",
+          "rank": 2
+        },
+        {
+          "log_id": "LOG-1347",
+          "type": "fall_protection",
+          "rank": 22
+        },
+        {
+          "log_id": "LOG-1348",
+          "type": "fall_protection",
+          "rank": 11
+        },
+        {
+          "log_id": "LOG-1371",
+          "type": "electrical_ppe",
+          "rank": 3
+        },
+        {
+          "log_id": "LOG-1394",
+          "type": "approach_distance",
+          "rank": 1
+        },
+        {
+          "log_id": "LOG-1398",
+          "type": "fall_protection",
+          "rank": 1
+        },
+        {
+          "log_id": "LOG-1404",
+          "type": "truck_defect",
+          "rank": 38
+        },
+        {
+          "log_id": "LOG-1409",
+          "type": "guardrail",
+          "rank": 3
+        },
+        {
+          "log_id": "LOG-1418",
+          "type": "aisle_obstruction",
+          "rank": 2
+        },
+        {
+          "log_id": "LOG-1421",
+          "type": "duty_records",
+          "rank": 2
+        },
+        {
+          "log_id": "LOG-1425",
+          "type": "guardrail",
           "rank": 35
+        },
+        {
+          "log_id": "LOG-1429",
+          "type": "duty_records",
+          "rank": 1
+        },
+        {
+          "log_id": "LOG-1434",
+          "type": "dockboard",
+          "rank": 1
+        },
+        {
+          "log_id": "LOG-1437",
+          "type": "live_parts",
+          "rank": 39
+        },
+        {
+          "log_id": "LOG-1439",
+          "type": "ladder",
+          "rank": 2
+        },
+        {
+          "log_id": "LOG-1442",
+          "type": "duty_limit",
+          "rank": 5
+        },
+        {
+          "log_id": "LOG-1443",
+          "type": "approach_distance",
+          "rank": 1
+        },
+        {
+          "log_id": "LOG-1445",
+          "type": "rim_wheel",
+          "rank": 1
+        },
+        {
+          "log_id": "LOG-1463",
+          "type": "stairway",
+          "rank": 90
+        },
+        {
+          "log_id": "LOG-1472",
+          "type": "housekeeping",
+          "rank": 47
+        },
+        {
+          "log_id": "LOG-1474",
+          "type": "duty_limit",
+          "rank": 19
+        },
+        {
+          "log_id": "LOG-1485",
+          "type": "housekeeping",
+          "rank": 19
+        },
+        {
+          "log_id": "LOG-1487",
+          "type": "electrical_ppe",
+          "rank": 25
+        },
+        {
+          "log_id": "LOG-1490",
+          "type": "aisle_obstruction",
+          "rank": 2
+        },
+        {
+          "log_id": "LOG-1495",
+          "type": "sling",
+          "rank": 2
+        },
+        {
+          "log_id": "LOG-1496",
+          "type": "truck_defect",
+          "rank": 10
+        },
+        {
+          "log_id": "LOG-1508",
+          "type": "truck_defect",
+          "rank": 9
+        },
+        {
+          "log_id": "LOG-1517",
+          "type": "guardrail",
+          "rank": 10
+        },
+        {
+          "log_id": "LOG-1521",
+          "type": "crane_inspection",
+          "rank": 1
+        },
+        {
+          "log_id": "LOG-1534",
+          "type": "truck_defect",
+          "rank": 50
+        },
+        {
+          "log_id": "LOG-1537",
+          "type": "sling",
+          "rank": 9
+        },
+        {
+          "log_id": "LOG-1540",
+          "type": "housekeeping",
+          "rank": 55
+        },
+        {
+          "log_id": "LOG-1544",
+          "type": "stairway",
+          "rank": 17
+        },
+        {
+          "log_id": "LOG-1558",
+          "type": "fall_protection",
+          "rank": 1
+        },
+        {
+          "log_id": "LOG-1565",
+          "type": "ladder",
+          "rank": 22
+        },
+        {
+          "log_id": "LOG-1575",
+          "type": "live_parts",
+          "rank": 31
+        },
+        {
+          "log_id": "LOG-1588",
+          "type": "duty_limit",
+          "rank": 2
+        },
+        {
+          "log_id": "LOG-1589",
+          "type": "live_parts",
+          "rank": 9
+        },
+        {
+          "log_id": "LOG-1591",
+          "type": "fall_protection",
+          "rank": 2
+        },
+        {
+          "log_id": "LOG-1594",
+          "type": "crane_inspection",
+          "rank": 1
+        },
+        {
+          "log_id": "LOG-1615",
+          "type": "crane_inspection",
+          "rank": 1
+        },
+        {
+          "log_id": "LOG-1623",
+          "type": "ladder",
+          "rank": 1
+        },
+        {
+          "log_id": "LOG-1670",
+          "type": "duty_limit",
+          "rank": 4
+        },
+        {
+          "log_id": "LOG-1674",
+          "type": "guardrail",
+          "rank": 7
+        },
+        {
+          "log_id": "LOG-1676",
+          "type": "ladder",
+          "rank": 1
+        },
+        {
+          "log_id": "LOG-1677",
+          "type": "sling",
+          "rank": 12
+        },
+        {
+          "log_id": "LOG-1682",
+          "type": "sling",
+          "rank": 10
+        },
+        {
+          "log_id": "LOG-1688",
+          "type": "guardrail",
+          "rank": 1
+        },
+        {
+          "log_id": "LOG-1690",
+          "type": "dockboard",
+          "rank": 1
+        },
+        {
+          "log_id": "LOG-1692",
+          "type": "ladder",
+          "rank": 1
+        },
+        {
+          "log_id": "LOG-1696",
+          "type": "approach_distance",
+          "rank": 1
+        },
+        {
+          "log_id": "LOG-1698",
+          "type": "aisle_obstruction",
+          "rank": 2
+        },
+        {
+          "log_id": "LOG-1705",
+          "type": "stairway",
+          "rank": 27
+        },
+        {
+          "log_id": "LOG-1711",
+          "type": "approach_distance",
+          "rank": 1
+        },
+        {
+          "log_id": "LOG-1721",
+          "type": "duty_limit",
+          "rank": 2
+        },
+        {
+          "log_id": "LOG-1724",
+          "type": "duty_records",
+          "rank": 2
+        },
+        {
+          "log_id": "LOG-1733",
+          "type": "rim_wheel",
+          "rank": 1
+        },
+        {
+          "log_id": "LOG-1750",
+          "type": "rim_wheel",
+          "rank": 1
+        },
+        {
+          "log_id": "LOG-1754",
+          "type": "dockboard",
+          "rank": 1
+        },
+        {
+          "log_id": "LOG-1755",
+          "type": "duty_limit",
+          "rank": 4
+        },
+        {
+          "log_id": "LOG-1759",
+          "type": "ladder",
+          "rank": 1
+        },
+        {
+          "log_id": "LOG-1763",
+          "type": "live_parts",
+          "rank": 2
+        },
+        {
+          "log_id": "LOG-1768",
+          "type": "crane_inspection",
+          "rank": 1
+        },
+        {
+          "log_id": "LOG-1777",
+          "type": "crane_inspection",
+          "rank": 1
+        },
+        {
+          "log_id": "LOG-1779",
+          "type": "aisle_obstruction",
+          "rank": 2
+        },
+        {
+          "log_id": "LOG-1787",
+          "type": "duty_limit",
+          "rank": 4
+        },
+        {
+          "log_id": "LOG-1798",
+          "type": "rim_wheel",
+          "rank": 1
+        },
+        {
+          "log_id": "LOG-1810",
+          "type": "duty_limit",
+          "rank": 60
+        },
+        {
+          "log_id": "LOG-1817",
+          "type": "duty_records",
+          "rank": 4
+        },
+        {
+          "log_id": "LOG-1824",
+          "type": "duty_records",
+          "rank": 5
+        },
+        {
+          "log_id": "LOG-1829",
+          "type": "housekeeping",
+          "rank": 56
+        },
+        {
+          "log_id": "LOG-1832",
+          "type": "crane_inspection",
+          "rank": 1
+        },
+        {
+          "log_id": "LOG-1850",
+          "type": "aisle_obstruction",
+          "rank": 2
+        },
+        {
+          "log_id": "LOG-1859",
+          "type": "sling",
+          "rank": 4
+        },
+        {
+          "log_id": "LOG-1863",
+          "type": "duty_records",
+          "rank": 3
+        },
+        {
+          "log_id": "LOG-1869",
+          "type": "stairway",
+          "rank": 8
+        },
+        {
+          "log_id": "LOG-1887",
+          "type": "truck_defect",
+          "rank": 3
+        },
+        {
+          "log_id": "LOG-1889",
+          "type": "guardrail",
+          "rank": 8
+        },
+        {
+          "log_id": "LOG-1892",
+          "type": "aisle_obstruction",
+          "rank": 20
+        },
+        {
+          "log_id": "LOG-1894",
+          "type": "housekeeping",
+          "rank": 1
+        },
+        {
+          "log_id": "LOG-1900",
+          "type": "sling",
+          "rank": 12
+        },
+        {
+          "log_id": "LOG-1906",
+          "type": "stairway",
+          "rank": 26
+        },
+        {
+          "log_id": "LOG-1911",
+          "type": "truck_defect",
+          "rank": 1
+        },
+        {
+          "log_id": "LOG-1915",
+          "type": "dockboard",
+          "rank": 1
+        },
+        {
+          "log_id": "LOG-1916",
+          "type": "housekeeping",
+          "rank": 41
+        },
+        {
+          "log_id": "LOG-1918",
+          "type": "ladder",
+          "rank": 1
+        },
+        {
+          "log_id": "LOG-1920",
+          "type": "approach_distance",
+          "rank": 10
+        },
+        {
+          "log_id": "LOG-1926",
+          "type": "aisle_obstruction",
+          "rank": 7
+        },
+        {
+          "log_id": "LOG-1937",
+          "type": "rim_wheel",
+          "rank": 1
+        },
+        {
+          "log_id": "LOG-1953",
+          "type": "ladder",
+          "rank": 45
+        },
+        {
+          "log_id": "LOG-1954",
+          "type": "sling",
+          "rank": 4
+        },
+        {
+          "log_id": "LOG-1960",
+          "type": "stairway",
+          "rank": 5
+        },
+        {
+          "log_id": "LOG-1965",
+          "type": "aisle_obstruction",
+          "rank": 2
+        },
+        {
+          "log_id": "LOG-1979",
+          "type": "approach_distance",
+          "rank": 1
+        },
+        {
+          "log_id": "LOG-1982",
+          "type": "guardrail",
+          "rank": 2
+        },
+        {
+          "log_id": "LOG-1988",
+          "type": "live_parts",
+          "rank": 10
+        },
+        {
+          "log_id": "LOG-1995",
+          "type": "crane_inspection",
+          "rank": 1
         }
       ],
       "recall_at": {
-        "1": 0.2222222222222222,
-        "2": 0.2222222222222222,
-        "4": 0.4444444444444444,
-        "8": 0.4444444444444444,
-        "16": 0.5555555555555556,
-        "32": 0.5555555555555556
+        "1": 0.3263888888888889,
+        "2": 0.4444444444444444,
+        "4": 0.5416666666666666,
+        "8": 0.6527777777777778,
+        "16": 0.7777777777777778,
+        "32": 0.8819444444444444
       },
-      "median_rank": 9,
+      "median_rank": 4,
       "by_type": {
-        "fatigue": [
+        "aisle_obstruction": [
+          1,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          7,
+          20
+        ],
+        "approach_distance": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          9,
+          10,
+          17,
+          23
+        ],
+        "crane_inspection": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "dockboard": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          11,
+          14
+        ],
+        "duty_limit": [
+          2,
+          2,
+          4,
+          4,
+          4,
+          5,
+          5,
+          19,
+          60
+        ],
+        "duty_records": [
+          1,
+          1,
+          2,
+          2,
           3,
           4,
-          35
+          5,
+          6,
+          8
         ],
-        "spill": [
-          38,
-          38,
-          40
+        "electrical_ppe": [
+          3,
+          3,
+          4,
+          5,
+          7,
+          11,
+          19,
+          25,
+          39
         ],
-        "electrical": [
+        "fall_protection": [
           1,
           1,
-          9
+          1,
+          1,
+          2,
+          6,
+          11,
+          20,
+          22
+        ],
+        "guardrail": [
+          1,
+          2,
+          3,
+          7,
+          8,
+          10,
+          33,
+          35,
+          38
+        ],
+        "housekeeping": [
+          1,
+          1,
+          4,
+          7,
+          19,
+          41,
+          47,
+          55,
+          56
+        ],
+        "ladder": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          2,
+          2,
+          22,
+          45
+        ],
+        "live_parts": [
+          2,
+          4,
+          9,
+          10,
+          31,
+          34,
+          39,
+          39,
+          60
+        ],
+        "rim_wheel": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "sling": [
+          1,
+          2,
+          4,
+          4,
+          9,
+          10,
+          12,
+          12,
+          12
+        ],
+        "stairway": [
+          2,
+          5,
+          6,
+          8,
+          10,
+          17,
+          26,
+          27,
+          90
+        ],
+        "truck_defect": [
+          1,
+          3,
+          7,
+          9,
+          10,
+          12,
+          27,
+          38,
+          50
         ]
       }
     },
@@ -100,75 +936,911 @@
       "strategy": "expanded",
       "rows": [
         {
-          "log_id": "LOG-1014",
-          "type": "spill",
+          "log_id": "LOG-1000",
+          "type": "approach_distance",
           "rank": 4
         },
         {
-          "log_id": "LOG-1017",
-          "type": "fatigue",
+          "log_id": "LOG-1006",
+          "type": "dockboard",
+          "rank": 24
+        },
+        {
+          "log_id": "LOG-1011",
+          "type": "housekeeping",
           "rank": 1
         },
         {
-          "log_id": "LOG-1026",
-          "type": "fatigue",
-          "rank": 2
+          "log_id": "LOG-1022",
+          "type": "approach_distance",
+          "rank": 37
+        },
+        {
+          "log_id": "LOG-1024",
+          "type": "rim_wheel",
+          "rank": 1
         },
         {
           "log_id": "LOG-1027",
-          "type": "electrical",
-          "rank": 1
+          "type": "fall_protection",
+          "rank": 5
         },
         {
-          "log_id": "LOG-1029",
-          "type": "spill",
-          "rank": 4
-        },
-        {
-          "log_id": "LOG-1036",
-          "type": "spill",
-          "rank": 2
-        },
-        {
-          "log_id": "LOG-1041",
-          "type": "electrical",
-          "rank": 1
+          "log_id": "LOG-1043",
+          "type": "electrical_ppe",
+          "rank": 7
         },
         {
           "log_id": "LOG-1046",
-          "type": "electrical",
+          "type": "guardrail",
+          "rank": 11
+        },
+        {
+          "log_id": "LOG-1051",
+          "type": "stairway",
+          "rank": 7
+        },
+        {
+          "log_id": "LOG-1058",
+          "type": "rim_wheel",
+          "rank": 1
+        },
+        {
+          "log_id": "LOG-1071",
+          "type": "sling",
+          "rank": 11
+        },
+        {
+          "log_id": "LOG-1093",
+          "type": "dockboard",
+          "rank": 9
+        },
+        {
+          "log_id": "LOG-1127",
+          "type": "fall_protection",
+          "rank": 11
+        },
+        {
+          "log_id": "LOG-1132",
+          "type": "electrical_ppe",
+          "rank": 9
+        },
+        {
+          "log_id": "LOG-1150",
+          "type": "electrical_ppe",
+          "rank": 9
+        },
+        {
+          "log_id": "LOG-1162",
+          "type": "electrical_ppe",
+          "rank": 74
+        },
+        {
+          "log_id": "LOG-1163",
+          "type": "crane_inspection",
+          "rank": 1
+        },
+        {
+          "log_id": "LOG-1183",
+          "type": "electrical_ppe",
+          "rank": 42
+        },
+        {
+          "log_id": "LOG-1198",
+          "type": "approach_distance",
+          "rank": 33
+        },
+        {
+          "log_id": "LOG-1222",
+          "type": "truck_defect",
+          "rank": 9
+        },
+        {
+          "log_id": "LOG-1224",
+          "type": "duty_records",
+          "rank": 6
+        },
+        {
+          "log_id": "LOG-1228",
+          "type": "stairway",
+          "rank": 6
+        },
+        {
+          "log_id": "LOG-1233",
+          "type": "dockboard",
+          "rank": 3
+        },
+        {
+          "log_id": "LOG-1237",
+          "type": "truck_defect",
+          "rank": 26
+        },
+        {
+          "log_id": "LOG-1239",
+          "type": "live_parts",
+          "rank": 31
+        },
+        {
+          "log_id": "LOG-1250",
+          "type": "electrical_ppe",
+          "rank": 26
+        },
+        {
+          "log_id": "LOG-1258",
+          "type": "duty_records",
+          "rank": 11
+        },
+        {
+          "log_id": "LOG-1259",
+          "type": "sling",
           "rank": 2
         },
         {
-          "log_id": "LOG-1047",
-          "type": "fatigue",
+          "log_id": "LOG-1262",
+          "type": "fall_protection",
+          "rank": 2
+        },
+        {
+          "log_id": "LOG-1263",
+          "type": "truck_defect",
+          "rank": 8
+        },
+        {
+          "log_id": "LOG-1276",
+          "type": "live_parts",
+          "rank": 38
+        },
+        {
+          "log_id": "LOG-1277",
+          "type": "housekeeping",
+          "rank": 1
+        },
+        {
+          "log_id": "LOG-1279",
+          "type": "duty_limit",
+          "rank": 4
+        },
+        {
+          "log_id": "LOG-1281",
+          "type": "aisle_obstruction",
+          "rank": 12
+        },
+        {
+          "log_id": "LOG-1282",
+          "type": "duty_records",
+          "rank": 8
+        },
+        {
+          "log_id": "LOG-1288",
+          "type": "rim_wheel",
+          "rank": 1
+        },
+        {
+          "log_id": "LOG-1290",
+          "type": "fall_protection",
+          "rank": 2
+        },
+        {
+          "log_id": "LOG-1291",
+          "type": "crane_inspection",
+          "rank": 1
+        },
+        {
+          "log_id": "LOG-1293",
+          "type": "electrical_ppe",
+          "rank": 4
+        },
+        {
+          "log_id": "LOG-1301",
+          "type": "stairway",
+          "rank": 8
+        },
+        {
+          "log_id": "LOG-1306",
+          "type": "live_parts",
+          "rank": 12
+        },
+        {
+          "log_id": "LOG-1308",
+          "type": "guardrail",
+          "rank": 14
+        },
+        {
+          "log_id": "LOG-1314",
+          "type": "dockboard",
+          "rank": 1
+        },
+        {
+          "log_id": "LOG-1317",
+          "type": "dockboard",
+          "rank": 3
+        },
+        {
+          "log_id": "LOG-1322",
+          "type": "housekeeping",
+          "rank": 1
+        },
+        {
+          "log_id": "LOG-1323",
+          "type": "live_parts",
+          "rank": 46
+        },
+        {
+          "log_id": "LOG-1338",
+          "type": "rim_wheel",
+          "rank": 2
+        },
+        {
+          "log_id": "LOG-1342",
+          "type": "ladder",
+          "rank": 3
+        },
+        {
+          "log_id": "LOG-1347",
+          "type": "fall_protection",
+          "rank": 5
+        },
+        {
+          "log_id": "LOG-1348",
+          "type": "fall_protection",
+          "rank": 8
+        },
+        {
+          "log_id": "LOG-1371",
+          "type": "electrical_ppe",
+          "rank": 4
+        },
+        {
+          "log_id": "LOG-1394",
+          "type": "approach_distance",
+          "rank": 9
+        },
+        {
+          "log_id": "LOG-1398",
+          "type": "fall_protection",
+          "rank": 4
+        },
+        {
+          "log_id": "LOG-1404",
+          "type": "truck_defect",
+          "rank": 12
+        },
+        {
+          "log_id": "LOG-1409",
+          "type": "guardrail",
           "rank": 11
+        },
+        {
+          "log_id": "LOG-1418",
+          "type": "aisle_obstruction",
+          "rank": 16
+        },
+        {
+          "log_id": "LOG-1421",
+          "type": "duty_records",
+          "rank": 2
+        },
+        {
+          "log_id": "LOG-1425",
+          "type": "guardrail",
+          "rank": 11
+        },
+        {
+          "log_id": "LOG-1429",
+          "type": "duty_records",
+          "rank": 1
+        },
+        {
+          "log_id": "LOG-1434",
+          "type": "dockboard",
+          "rank": 3
+        },
+        {
+          "log_id": "LOG-1437",
+          "type": "live_parts",
+          "rank": 31
+        },
+        {
+          "log_id": "LOG-1439",
+          "type": "ladder",
+          "rank": 3
+        },
+        {
+          "log_id": "LOG-1442",
+          "type": "duty_limit",
+          "rank": 5
+        },
+        {
+          "log_id": "LOG-1443",
+          "type": "approach_distance",
+          "rank": 1
+        },
+        {
+          "log_id": "LOG-1445",
+          "type": "rim_wheel",
+          "rank": 1
+        },
+        {
+          "log_id": "LOG-1463",
+          "type": "stairway",
+          "rank": 56
+        },
+        {
+          "log_id": "LOG-1472",
+          "type": "housekeeping",
+          "rank": 42
+        },
+        {
+          "log_id": "LOG-1474",
+          "type": "duty_limit",
+          "rank": 9
+        },
+        {
+          "log_id": "LOG-1485",
+          "type": "housekeeping",
+          "rank": 4
+        },
+        {
+          "log_id": "LOG-1487",
+          "type": "electrical_ppe",
+          "rank": 50
+        },
+        {
+          "log_id": "LOG-1490",
+          "type": "aisle_obstruction",
+          "rank": 8
+        },
+        {
+          "log_id": "LOG-1495",
+          "type": "sling",
+          "rank": 16
+        },
+        {
+          "log_id": "LOG-1496",
+          "type": "truck_defect",
+          "rank": 9
+        },
+        {
+          "log_id": "LOG-1508",
+          "type": "truck_defect",
+          "rank": 8
+        },
+        {
+          "log_id": "LOG-1517",
+          "type": "guardrail",
+          "rank": 18
+        },
+        {
+          "log_id": "LOG-1521",
+          "type": "crane_inspection",
+          "rank": 1
+        },
+        {
+          "log_id": "LOG-1534",
+          "type": "truck_defect",
+          "rank": 45
+        },
+        {
+          "log_id": "LOG-1537",
+          "type": "sling",
+          "rank": 16
+        },
+        {
+          "log_id": "LOG-1540",
+          "type": "housekeeping",
+          "rank": 41
+        },
+        {
+          "log_id": "LOG-1544",
+          "type": "stairway",
+          "rank": 9
+        },
+        {
+          "log_id": "LOG-1558",
+          "type": "fall_protection",
+          "rank": 2
+        },
+        {
+          "log_id": "LOG-1565",
+          "type": "ladder",
+          "rank": 18
+        },
+        {
+          "log_id": "LOG-1575",
+          "type": "live_parts",
+          "rank": 19
+        },
+        {
+          "log_id": "LOG-1588",
+          "type": "duty_limit",
+          "rank": 2
+        },
+        {
+          "log_id": "LOG-1589",
+          "type": "live_parts",
+          "rank": 15
+        },
+        {
+          "log_id": "LOG-1591",
+          "type": "fall_protection",
+          "rank": 3
+        },
+        {
+          "log_id": "LOG-1594",
+          "type": "crane_inspection",
+          "rank": 1
+        },
+        {
+          "log_id": "LOG-1615",
+          "type": "crane_inspection",
+          "rank": 1
+        },
+        {
+          "log_id": "LOG-1623",
+          "type": "ladder",
+          "rank": 1
+        },
+        {
+          "log_id": "LOG-1670",
+          "type": "duty_limit",
+          "rank": 3
+        },
+        {
+          "log_id": "LOG-1674",
+          "type": "guardrail",
+          "rank": 11
+        },
+        {
+          "log_id": "LOG-1676",
+          "type": "ladder",
+          "rank": 1
+        },
+        {
+          "log_id": "LOG-1677",
+          "type": "sling",
+          "rank": 15
+        },
+        {
+          "log_id": "LOG-1682",
+          "type": "sling",
+          "rank": 17
+        },
+        {
+          "log_id": "LOG-1688",
+          "type": "guardrail",
+          "rank": 1
+        },
+        {
+          "log_id": "LOG-1690",
+          "type": "dockboard",
+          "rank": 2
+        },
+        {
+          "log_id": "LOG-1692",
+          "type": "ladder",
+          "rank": 5
+        },
+        {
+          "log_id": "LOG-1696",
+          "type": "approach_distance",
+          "rank": 1
+        },
+        {
+          "log_id": "LOG-1698",
+          "type": "aisle_obstruction",
+          "rank": 19
+        },
+        {
+          "log_id": "LOG-1705",
+          "type": "stairway",
+          "rank": 42
+        },
+        {
+          "log_id": "LOG-1711",
+          "type": "approach_distance",
+          "rank": 1
+        },
+        {
+          "log_id": "LOG-1721",
+          "type": "duty_limit",
+          "rank": 2
+        },
+        {
+          "log_id": "LOG-1724",
+          "type": "duty_records",
+          "rank": 10
+        },
+        {
+          "log_id": "LOG-1733",
+          "type": "rim_wheel",
+          "rank": 1
+        },
+        {
+          "log_id": "LOG-1750",
+          "type": "rim_wheel",
+          "rank": 1
+        },
+        {
+          "log_id": "LOG-1754",
+          "type": "dockboard",
+          "rank": 1
+        },
+        {
+          "log_id": "LOG-1755",
+          "type": "duty_limit",
+          "rank": 4
+        },
+        {
+          "log_id": "LOG-1759",
+          "type": "ladder",
+          "rank": 3
+        },
+        {
+          "log_id": "LOG-1763",
+          "type": "live_parts",
+          "rank": 8
+        },
+        {
+          "log_id": "LOG-1768",
+          "type": "crane_inspection",
+          "rank": 1
+        },
+        {
+          "log_id": "LOG-1777",
+          "type": "crane_inspection",
+          "rank": 1
+        },
+        {
+          "log_id": "LOG-1779",
+          "type": "aisle_obstruction",
+          "rank": 13
+        },
+        {
+          "log_id": "LOG-1787",
+          "type": "duty_limit",
+          "rank": 4
+        },
+        {
+          "log_id": "LOG-1798",
+          "type": "rim_wheel",
+          "rank": 1
+        },
+        {
+          "log_id": "LOG-1810",
+          "type": "duty_limit",
+          "rank": 46
+        },
+        {
+          "log_id": "LOG-1817",
+          "type": "duty_records",
+          "rank": 14
+        },
+        {
+          "log_id": "LOG-1824",
+          "type": "duty_records",
+          "rank": 13
+        },
+        {
+          "log_id": "LOG-1829",
+          "type": "housekeeping",
+          "rank": 43
+        },
+        {
+          "log_id": "LOG-1832",
+          "type": "crane_inspection",
+          "rank": 1
+        },
+        {
+          "log_id": "LOG-1850",
+          "type": "aisle_obstruction",
+          "rank": 15
+        },
+        {
+          "log_id": "LOG-1859",
+          "type": "sling",
+          "rank": 11
+        },
+        {
+          "log_id": "LOG-1863",
+          "type": "duty_records",
+          "rank": 7
+        },
+        {
+          "log_id": "LOG-1869",
+          "type": "stairway",
+          "rank": 4
+        },
+        {
+          "log_id": "LOG-1887",
+          "type": "truck_defect",
+          "rank": 6
+        },
+        {
+          "log_id": "LOG-1889",
+          "type": "guardrail",
+          "rank": 2
+        },
+        {
+          "log_id": "LOG-1892",
+          "type": "aisle_obstruction",
+          "rank": 29
+        },
+        {
+          "log_id": "LOG-1894",
+          "type": "housekeeping",
+          "rank": 1
+        },
+        {
+          "log_id": "LOG-1900",
+          "type": "sling",
+          "rank": 15
+        },
+        {
+          "log_id": "LOG-1906",
+          "type": "stairway",
+          "rank": 28
+        },
+        {
+          "log_id": "LOG-1911",
+          "type": "truck_defect",
+          "rank": 2
+        },
+        {
+          "log_id": "LOG-1915",
+          "type": "dockboard",
+          "rank": 1
+        },
+        {
+          "log_id": "LOG-1916",
+          "type": "housekeeping",
+          "rank": 34
+        },
+        {
+          "log_id": "LOG-1918",
+          "type": "ladder",
+          "rank": 2
+        },
+        {
+          "log_id": "LOG-1920",
+          "type": "approach_distance",
+          "rank": 25
+        },
+        {
+          "log_id": "LOG-1926",
+          "type": "aisle_obstruction",
+          "rank": 14
+        },
+        {
+          "log_id": "LOG-1937",
+          "type": "rim_wheel",
+          "rank": 2
+        },
+        {
+          "log_id": "LOG-1953",
+          "type": "ladder",
+          "rank": 43
+        },
+        {
+          "log_id": "LOG-1954",
+          "type": "sling",
+          "rank": 6
+        },
+        {
+          "log_id": "LOG-1960",
+          "type": "stairway",
+          "rank": 14
+        },
+        {
+          "log_id": "LOG-1965",
+          "type": "aisle_obstruction",
+          "rank": 15
+        },
+        {
+          "log_id": "LOG-1979",
+          "type": "approach_distance",
+          "rank": 1
+        },
+        {
+          "log_id": "LOG-1982",
+          "type": "guardrail",
+          "rank": 3
+        },
+        {
+          "log_id": "LOG-1988",
+          "type": "live_parts",
+          "rank": 8
+        },
+        {
+          "log_id": "LOG-1995",
+          "type": "crane_inspection",
+          "rank": 1
         }
       ],
       "recall_at": {
-        "1": 0.3333333333333333,
-        "2": 0.6666666666666666,
-        "4": 0.8888888888888888,
-        "8": 0.8888888888888888,
-        "16": 1.0,
-        "32": 1.0
+        "1": 0.2152777777777778,
+        "2": 0.3055555555555556,
+        "4": 0.4305555555555556,
+        "8": 0.5625,
+        "16": 0.7986111111111112,
+        "32": 0.8888888888888888
       },
-      "median_rank": 2,
+      "median_rank": 7,
       "by_type": {
-        "fatigue": [
+        "aisle_obstruction": [
+          8,
+          12,
+          13,
+          14,
+          15,
+          15,
+          16,
+          19,
+          29
+        ],
+        "approach_distance": [
+          1,
+          1,
+          1,
+          1,
+          4,
+          9,
+          25,
+          33,
+          37
+        ],
+        "crane_inspection": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "dockboard": [
+          1,
+          1,
           1,
           2,
+          3,
+          3,
+          3,
+          9,
+          24
+        ],
+        "duty_limit": [
+          2,
+          2,
+          3,
+          4,
+          4,
+          4,
+          5,
+          9,
+          46
+        ],
+        "duty_records": [
+          1,
+          2,
+          6,
+          7,
+          8,
+          10,
+          11,
+          13,
+          14
+        ],
+        "electrical_ppe": [
+          4,
+          4,
+          7,
+          9,
+          9,
+          26,
+          42,
+          50,
+          74
+        ],
+        "fall_protection": [
+          2,
+          2,
+          2,
+          3,
+          4,
+          5,
+          5,
+          8,
           11
         ],
-        "spill": [
+        "guardrail": [
+          1,
           2,
-          4,
-          4
+          3,
+          11,
+          11,
+          11,
+          11,
+          14,
+          18
         ],
-        "electrical": [
+        "housekeeping": [
           1,
           1,
+          1,
+          1,
+          4,
+          34,
+          41,
+          42,
+          43
+        ],
+        "ladder": [
+          1,
+          1,
+          2,
+          3,
+          3,
+          3,
+          5,
+          18,
+          43
+        ],
+        "live_parts": [
+          8,
+          8,
+          12,
+          15,
+          19,
+          31,
+          31,
+          38,
+          46
+        ],
+        "rim_wheel": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          2,
           2
+        ],
+        "sling": [
+          2,
+          6,
+          11,
+          11,
+          15,
+          15,
+          16,
+          16,
+          17
+        ],
+        "stairway": [
+          4,
+          6,
+          7,
+          8,
+          9,
+          14,
+          28,
+          42,
+          56
+        ],
+        "truck_defect": [
+          2,
+          6,
+          8,
+          8,
+          9,
+          9,
+          12,
+          26,
+          45
         ]
       }
     },
@@ -177,75 +1849,844 @@
       "strategy": "triangulated",
       "rows": [
         {
-          "log_id": "LOG-1014",
-          "type": "spill",
+          "log_id": "LOG-1000",
+          "type": "approach_distance",
+          "rank": 3
+        },
+        {
+          "log_id": "LOG-1006",
+          "type": "dockboard",
+          "rank": null
+        },
+        {
+          "log_id": "LOG-1011",
+          "type": "housekeeping",
           "rank": 2
         },
         {
-          "log_id": "LOG-1017",
-          "type": "fatigue",
-          "rank": 1
+          "log_id": "LOG-1022",
+          "type": "approach_distance",
+          "rank": 3
         },
         {
-          "log_id": "LOG-1026",
-          "type": "fatigue",
-          "rank": 1
+          "log_id": "LOG-1024",
+          "type": "rim_wheel",
+          "rank": 5
         },
         {
           "log_id": "LOG-1027",
-          "type": "electrical",
-          "rank": 3
+          "type": "fall_protection",
+          "rank": null
         },
         {
-          "log_id": "LOG-1029",
-          "type": "spill",
-          "rank": 2
-        },
-        {
-          "log_id": "LOG-1036",
-          "type": "spill",
-          "rank": 2
-        },
-        {
-          "log_id": "LOG-1041",
-          "type": "electrical",
-          "rank": 3
+          "log_id": "LOG-1043",
+          "type": "electrical_ppe",
+          "rank": null
         },
         {
           "log_id": "LOG-1046",
-          "type": "electrical",
+          "type": "guardrail",
+          "rank": null
+        },
+        {
+          "log_id": "LOG-1051",
+          "type": "stairway",
+          "rank": null
+        },
+        {
+          "log_id": "LOG-1058",
+          "type": "rim_wheel",
+          "rank": 5
+        },
+        {
+          "log_id": "LOG-1071",
+          "type": "sling",
+          "rank": null
+        },
+        {
+          "log_id": "LOG-1093",
+          "type": "dockboard",
+          "rank": null
+        },
+        {
+          "log_id": "LOG-1127",
+          "type": "fall_protection",
+          "rank": null
+        },
+        {
+          "log_id": "LOG-1132",
+          "type": "electrical_ppe",
+          "rank": null
+        },
+        {
+          "log_id": "LOG-1150",
+          "type": "electrical_ppe",
+          "rank": null
+        },
+        {
+          "log_id": "LOG-1162",
+          "type": "electrical_ppe",
+          "rank": null
+        },
+        {
+          "log_id": "LOG-1163",
+          "type": "crane_inspection",
+          "rank": 4
+        },
+        {
+          "log_id": "LOG-1183",
+          "type": "electrical_ppe",
+          "rank": null
+        },
+        {
+          "log_id": "LOG-1198",
+          "type": "approach_distance",
           "rank": 3
         },
         {
-          "log_id": "LOG-1047",
-          "type": "fatigue",
-          "rank": 1
+          "log_id": "LOG-1222",
+          "type": "truck_defect",
+          "rank": null
+        },
+        {
+          "log_id": "LOG-1224",
+          "type": "duty_records",
+          "rank": 5
+        },
+        {
+          "log_id": "LOG-1228",
+          "type": "stairway",
+          "rank": 6
+        },
+        {
+          "log_id": "LOG-1233",
+          "type": "dockboard",
+          "rank": 5
+        },
+        {
+          "log_id": "LOG-1237",
+          "type": "truck_defect",
+          "rank": null
+        },
+        {
+          "log_id": "LOG-1239",
+          "type": "live_parts",
+          "rank": null
+        },
+        {
+          "log_id": "LOG-1250",
+          "type": "electrical_ppe",
+          "rank": null
+        },
+        {
+          "log_id": "LOG-1258",
+          "type": "duty_records",
+          "rank": null
+        },
+        {
+          "log_id": "LOG-1259",
+          "type": "sling",
+          "rank": 5
+        },
+        {
+          "log_id": "LOG-1262",
+          "type": "fall_protection",
+          "rank": 5
+        },
+        {
+          "log_id": "LOG-1263",
+          "type": "truck_defect",
+          "rank": null
+        },
+        {
+          "log_id": "LOG-1276",
+          "type": "live_parts",
+          "rank": null
+        },
+        {
+          "log_id": "LOG-1277",
+          "type": "housekeeping",
+          "rank": 2
+        },
+        {
+          "log_id": "LOG-1279",
+          "type": "duty_limit",
+          "rank": null
+        },
+        {
+          "log_id": "LOG-1281",
+          "type": "aisle_obstruction",
+          "rank": 5
+        },
+        {
+          "log_id": "LOG-1282",
+          "type": "duty_records",
+          "rank": null
+        },
+        {
+          "log_id": "LOG-1288",
+          "type": "rim_wheel",
+          "rank": 5
+        },
+        {
+          "log_id": "LOG-1290",
+          "type": "fall_protection",
+          "rank": 5
+        },
+        {
+          "log_id": "LOG-1291",
+          "type": "crane_inspection",
+          "rank": 4
+        },
+        {
+          "log_id": "LOG-1293",
+          "type": "electrical_ppe",
+          "rank": 6
+        },
+        {
+          "log_id": "LOG-1301",
+          "type": "stairway",
+          "rank": null
+        },
+        {
+          "log_id": "LOG-1306",
+          "type": "live_parts",
+          "rank": null
+        },
+        {
+          "log_id": "LOG-1308",
+          "type": "guardrail",
+          "rank": null
+        },
+        {
+          "log_id": "LOG-1314",
+          "type": "dockboard",
+          "rank": 5
+        },
+        {
+          "log_id": "LOG-1317",
+          "type": "dockboard",
+          "rank": 5
+        },
+        {
+          "log_id": "LOG-1322",
+          "type": "housekeeping",
+          "rank": 2
+        },
+        {
+          "log_id": "LOG-1323",
+          "type": "live_parts",
+          "rank": null
+        },
+        {
+          "log_id": "LOG-1338",
+          "type": "rim_wheel",
+          "rank": 5
+        },
+        {
+          "log_id": "LOG-1342",
+          "type": "ladder",
+          "rank": 6
+        },
+        {
+          "log_id": "LOG-1347",
+          "type": "fall_protection",
+          "rank": null
+        },
+        {
+          "log_id": "LOG-1348",
+          "type": "fall_protection",
+          "rank": null
+        },
+        {
+          "log_id": "LOG-1371",
+          "type": "electrical_ppe",
+          "rank": 6
+        },
+        {
+          "log_id": "LOG-1394",
+          "type": "approach_distance",
+          "rank": 3
+        },
+        {
+          "log_id": "LOG-1398",
+          "type": "fall_protection",
+          "rank": 5
+        },
+        {
+          "log_id": "LOG-1404",
+          "type": "truck_defect",
+          "rank": null
+        },
+        {
+          "log_id": "LOG-1409",
+          "type": "guardrail",
+          "rank": null
+        },
+        {
+          "log_id": "LOG-1418",
+          "type": "aisle_obstruction",
+          "rank": 6
+        },
+        {
+          "log_id": "LOG-1421",
+          "type": "duty_records",
+          "rank": 6
+        },
+        {
+          "log_id": "LOG-1425",
+          "type": "guardrail",
+          "rank": null
+        },
+        {
+          "log_id": "LOG-1429",
+          "type": "duty_records",
+          "rank": 5
+        },
+        {
+          "log_id": "LOG-1434",
+          "type": "dockboard",
+          "rank": 5
+        },
+        {
+          "log_id": "LOG-1437",
+          "type": "live_parts",
+          "rank": null
+        },
+        {
+          "log_id": "LOG-1439",
+          "type": "ladder",
+          "rank": 6
+        },
+        {
+          "log_id": "LOG-1442",
+          "type": "duty_limit",
+          "rank": null
+        },
+        {
+          "log_id": "LOG-1443",
+          "type": "approach_distance",
+          "rank": 3
+        },
+        {
+          "log_id": "LOG-1445",
+          "type": "rim_wheel",
+          "rank": 5
+        },
+        {
+          "log_id": "LOG-1463",
+          "type": "stairway",
+          "rank": null
+        },
+        {
+          "log_id": "LOG-1472",
+          "type": "housekeeping",
+          "rank": 2
+        },
+        {
+          "log_id": "LOG-1474",
+          "type": "duty_limit",
+          "rank": null
+        },
+        {
+          "log_id": "LOG-1485",
+          "type": "housekeeping",
+          "rank": 2
+        },
+        {
+          "log_id": "LOG-1487",
+          "type": "electrical_ppe",
+          "rank": null
+        },
+        {
+          "log_id": "LOG-1490",
+          "type": "aisle_obstruction",
+          "rank": 6
+        },
+        {
+          "log_id": "LOG-1495",
+          "type": "sling",
+          "rank": 6
+        },
+        {
+          "log_id": "LOG-1496",
+          "type": "truck_defect",
+          "rank": null
+        },
+        {
+          "log_id": "LOG-1508",
+          "type": "truck_defect",
+          "rank": null
+        },
+        {
+          "log_id": "LOG-1517",
+          "type": "guardrail",
+          "rank": null
+        },
+        {
+          "log_id": "LOG-1521",
+          "type": "crane_inspection",
+          "rank": 4
+        },
+        {
+          "log_id": "LOG-1534",
+          "type": "truck_defect",
+          "rank": null
+        },
+        {
+          "log_id": "LOG-1537",
+          "type": "sling",
+          "rank": null
+        },
+        {
+          "log_id": "LOG-1540",
+          "type": "housekeeping",
+          "rank": 2
+        },
+        {
+          "log_id": "LOG-1544",
+          "type": "stairway",
+          "rank": null
+        },
+        {
+          "log_id": "LOG-1558",
+          "type": "fall_protection",
+          "rank": 5
+        },
+        {
+          "log_id": "LOG-1565",
+          "type": "ladder",
+          "rank": null
+        },
+        {
+          "log_id": "LOG-1575",
+          "type": "live_parts",
+          "rank": null
+        },
+        {
+          "log_id": "LOG-1588",
+          "type": "duty_limit",
+          "rank": 6
+        },
+        {
+          "log_id": "LOG-1589",
+          "type": "live_parts",
+          "rank": null
+        },
+        {
+          "log_id": "LOG-1591",
+          "type": "fall_protection",
+          "rank": 6
+        },
+        {
+          "log_id": "LOG-1594",
+          "type": "crane_inspection",
+          "rank": 4
+        },
+        {
+          "log_id": "LOG-1615",
+          "type": "crane_inspection",
+          "rank": 4
+        },
+        {
+          "log_id": "LOG-1623",
+          "type": "ladder",
+          "rank": 5
+        },
+        {
+          "log_id": "LOG-1670",
+          "type": "duty_limit",
+          "rank": null
+        },
+        {
+          "log_id": "LOG-1674",
+          "type": "guardrail",
+          "rank": null
+        },
+        {
+          "log_id": "LOG-1676",
+          "type": "ladder",
+          "rank": 5
+        },
+        {
+          "log_id": "LOG-1677",
+          "type": "sling",
+          "rank": null
+        },
+        {
+          "log_id": "LOG-1682",
+          "type": "sling",
+          "rank": null
+        },
+        {
+          "log_id": "LOG-1688",
+          "type": "guardrail",
+          "rank": 5
+        },
+        {
+          "log_id": "LOG-1690",
+          "type": "dockboard",
+          "rank": 5
+        },
+        {
+          "log_id": "LOG-1692",
+          "type": "ladder",
+          "rank": 5
+        },
+        {
+          "log_id": "LOG-1696",
+          "type": "approach_distance",
+          "rank": 3
+        },
+        {
+          "log_id": "LOG-1698",
+          "type": "aisle_obstruction",
+          "rank": 6
+        },
+        {
+          "log_id": "LOG-1705",
+          "type": "stairway",
+          "rank": null
+        },
+        {
+          "log_id": "LOG-1711",
+          "type": "approach_distance",
+          "rank": 3
+        },
+        {
+          "log_id": "LOG-1721",
+          "type": "duty_limit",
+          "rank": 6
+        },
+        {
+          "log_id": "LOG-1724",
+          "type": "duty_records",
+          "rank": 6
+        },
+        {
+          "log_id": "LOG-1733",
+          "type": "rim_wheel",
+          "rank": 5
+        },
+        {
+          "log_id": "LOG-1750",
+          "type": "rim_wheel",
+          "rank": 5
+        },
+        {
+          "log_id": "LOG-1754",
+          "type": "dockboard",
+          "rank": 5
+        },
+        {
+          "log_id": "LOG-1755",
+          "type": "duty_limit",
+          "rank": null
+        },
+        {
+          "log_id": "LOG-1759",
+          "type": "ladder",
+          "rank": 5
+        },
+        {
+          "log_id": "LOG-1763",
+          "type": "live_parts",
+          "rank": 6
+        },
+        {
+          "log_id": "LOG-1768",
+          "type": "crane_inspection",
+          "rank": 4
+        },
+        {
+          "log_id": "LOG-1777",
+          "type": "crane_inspection",
+          "rank": 4
+        },
+        {
+          "log_id": "LOG-1779",
+          "type": "aisle_obstruction",
+          "rank": 6
+        },
+        {
+          "log_id": "LOG-1787",
+          "type": "duty_limit",
+          "rank": null
+        },
+        {
+          "log_id": "LOG-1798",
+          "type": "rim_wheel",
+          "rank": 5
+        },
+        {
+          "log_id": "LOG-1810",
+          "type": "duty_limit",
+          "rank": null
+        },
+        {
+          "log_id": "LOG-1817",
+          "type": "duty_records",
+          "rank": null
+        },
+        {
+          "log_id": "LOG-1824",
+          "type": "duty_records",
+          "rank": null
+        },
+        {
+          "log_id": "LOG-1829",
+          "type": "housekeeping",
+          "rank": 2
+        },
+        {
+          "log_id": "LOG-1832",
+          "type": "crane_inspection",
+          "rank": 4
+        },
+        {
+          "log_id": "LOG-1850",
+          "type": "aisle_obstruction",
+          "rank": 6
+        },
+        {
+          "log_id": "LOG-1859",
+          "type": "sling",
+          "rank": null
+        },
+        {
+          "log_id": "LOG-1863",
+          "type": "duty_records",
+          "rank": null
+        },
+        {
+          "log_id": "LOG-1869",
+          "type": "stairway",
+          "rank": null
+        },
+        {
+          "log_id": "LOG-1887",
+          "type": "truck_defect",
+          "rank": null
+        },
+        {
+          "log_id": "LOG-1889",
+          "type": "guardrail",
+          "rank": null
+        },
+        {
+          "log_id": "LOG-1892",
+          "type": "aisle_obstruction",
+          "rank": null
+        },
+        {
+          "log_id": "LOG-1894",
+          "type": "housekeeping",
+          "rank": 2
+        },
+        {
+          "log_id": "LOG-1900",
+          "type": "sling",
+          "rank": null
+        },
+        {
+          "log_id": "LOG-1906",
+          "type": "stairway",
+          "rank": null
+        },
+        {
+          "log_id": "LOG-1911",
+          "type": "truck_defect",
+          "rank": 5
+        },
+        {
+          "log_id": "LOG-1915",
+          "type": "dockboard",
+          "rank": 5
+        },
+        {
+          "log_id": "LOG-1916",
+          "type": "housekeeping",
+          "rank": 2
+        },
+        {
+          "log_id": "LOG-1918",
+          "type": "ladder",
+          "rank": 5
+        },
+        {
+          "log_id": "LOG-1920",
+          "type": "approach_distance",
+          "rank": 3
+        },
+        {
+          "log_id": "LOG-1926",
+          "type": "aisle_obstruction",
+          "rank": null
+        },
+        {
+          "log_id": "LOG-1937",
+          "type": "rim_wheel",
+          "rank": 5
+        },
+        {
+          "log_id": "LOG-1953",
+          "type": "ladder",
+          "rank": null
+        },
+        {
+          "log_id": "LOG-1954",
+          "type": "sling",
+          "rank": null
+        },
+        {
+          "log_id": "LOG-1960",
+          "type": "stairway",
+          "rank": null
+        },
+        {
+          "log_id": "LOG-1965",
+          "type": "aisle_obstruction",
+          "rank": 6
+        },
+        {
+          "log_id": "LOG-1979",
+          "type": "approach_distance",
+          "rank": 3
+        },
+        {
+          "log_id": "LOG-1982",
+          "type": "guardrail",
+          "rank": 6
+        },
+        {
+          "log_id": "LOG-1988",
+          "type": "live_parts",
+          "rank": null
+        },
+        {
+          "log_id": "LOG-1995",
+          "type": "crane_inspection",
+          "rank": 4
         }
       ],
       "recall_at": {
-        "1": 0.3333333333333333,
-        "2": 0.6666666666666666,
-        "4": 1.0,
-        "8": 1.0,
-        "16": 1.0,
-        "32": 1.0
+        "1": 0.0,
+        "2": 0.0625,
+        "4": 0.1875,
+        "8": 0.5347222222222222,
+        "16": 0.5347222222222222,
+        "32": 0.5347222222222222
       },
-      "median_rank": 2,
+      "median_rank": 6,
       "by_type": {
-        "fatigue": [
-          1,
-          1,
-          1
+        "aisle_obstruction": [
+          5,
+          6,
+          6,
+          6,
+          6,
+          6,
+          6
         ],
-        "spill": [
+        "approach_distance": [
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        "crane_inspection": [
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4
+        ],
+        "dockboard": [
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5
+        ],
+        "duty_limit": [
+          6,
+          6
+        ],
+        "duty_records": [
+          5,
+          5,
+          6,
+          6
+        ],
+        "electrical_ppe": [
+          6,
+          6
+        ],
+        "fall_protection": [
+          5,
+          5,
+          5,
+          5,
+          6
+        ],
+        "guardrail": [
+          5,
+          6
+        ],
+        "housekeeping": [
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
           2,
           2,
           2
         ],
-        "electrical": [
-          3,
-          3,
-          3
+        "ladder": [
+          5,
+          5,
+          5,
+          5,
+          5,
+          6,
+          6
+        ],
+        "live_parts": [
+          6
+        ],
+        "rim_wheel": [
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5
+        ],
+        "sling": [
+          5,
+          6
+        ],
+        "stairway": [
+          6
+        ],
+        "truck_defect": [
+          5
         ]
       }
     }

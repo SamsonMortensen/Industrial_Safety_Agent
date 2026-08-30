@@ -1,0 +1,6096 @@
+{
+  "provenance": {
+    "generated_utc": "2026-08-30T18:25:41.584923+00:00",
+    "official_source": "https://www.osha.gov/severe-injury-reports",
+    "normalized_input_sha256": "f696eedf4643f478827031baa514a4b82e6018fcba5c04facfd27366472b08f4",
+    "corpus_sha256": "9e5cb3604c56b7be704f8d8a8b97b407cec20a43c4532c8c38a314b34d94b79f",
+    "statutes_sha256": "cba756e84b9ba6c5d52d55765a23de7851129d8c9602edae2987eb1172ceed8b",
+    "sample_method": "lowest SHA-256(seed:event_id)",
+    "sample_seed": 29,
+    "requested_sample": 500,
+    "retrieval": "BM25 + dense reciprocal-rank fusion",
+    "top_k": 16,
+    "oiics_codes_used_to_form_queries": false,
+    "outcome_columns_used_to_form_queries": false,
+    "regulation_labels_available": false
+  },
+  "coverage": {
+    "cases": 500,
+    "triggered": 500,
+    "trigger_rate": 1.0,
+    "nonempty_retrieval": 500,
+    "nonempty_retrieval_rate": 1.0,
+    "median_queries": 2.0,
+    "median_candidates": 16.0,
+    "unique_top_authorities": 24
+  },
+  "grounding_gate": {
+    "policy_status_counts": {
+      "REVIEW": 498,
+      "REVIEW_UNGROUNDED_POLICY": 1,
+      "VIOLATION": 1
+    },
+    "cited_policy_decisions": 2,
+    "citations_present_in_retrieved_candidates": 1,
+    "citation_grounding_rate": 0.5,
+    "unsupported_citations_allowed": 0
+  },
+  "top_retrieved_authorities": [
+    {
+      "section": "1910.28",
+      "cases": 182
+    },
+    {
+      "section": "1910.29",
+      "cases": 91
+    },
+    {
+      "section": "1910.333",
+      "cases": 46
+    },
+    {
+      "section": "1910.178",
+      "cases": 42
+    },
+    {
+      "section": "1910.335",
+      "cases": 41
+    },
+    {
+      "section": "1910.179",
+      "cases": 19
+    },
+    {
+      "section": "1910.181",
+      "cases": 16
+    },
+    {
+      "section": "228.6",
+      "cases": 9
+    },
+    {
+      "section": "1910.332",
+      "cases": 8
+    },
+    {
+      "section": "1910.307",
+      "cases": 8
+    },
+    {
+      "section": "1910.177",
+      "cases": 7
+    },
+    {
+      "section": "1910.30",
+      "cases": 5
+    }
+  ],
+  "records": [
+    {
+      "event_id": "osha-sir-20251111366",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.178",
+        "1910.335",
+        "1910.399"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2015074706",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.335",
+        "1910.333",
+        "1910.29"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-20221210930",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "1910.27",
+        "1910.23"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2020087769",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.30",
+        "1910.28",
+        "1910.29",
+        "1910.179"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2024099121",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.179",
+        "1910.180",
+        "1910.178",
+        "1910.28"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2023087529",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.335",
+        "1910.333",
+        "1910.307",
+        "1910.24"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-20181011125",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "1910.181",
+        "1910.21",
+        "1910.28"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2025010354",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.30",
+        "1910.25",
+        "1910.29"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2020032423",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.181",
+        "1910.29",
+        "1910.307"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2024043765",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "228.331",
+        "1910.179",
+        "1910.28"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-20191111652",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "228.6",
+        "1910.29",
+        "1910.178"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2015042280",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "228.5",
+        "1910.178",
+        "228.6",
+        "1910.333"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2019044134",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "1910.28",
+        "1910.22",
+        "1910.335"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2023087247",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.179",
+        "1910.183",
+        "1910.180",
+        "1910.181"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2017099070",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "1910.333",
+        "1910.335"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-20231211685",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "1910.28",
+        "1910.30",
+        "1910.21"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2024065759",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "1910.21",
+        "1910.22"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2015085772",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.180",
+        "1910.28",
+        "1910.333",
+        "228.333"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2022054382",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "1910.335",
+        "1910.28",
+        "1910.307"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2016088228",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "228.331",
+        "1910.29",
+        "1910.30"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2019021345",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "1910.30",
+        "1910.181"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-20171211580",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.179",
+        "228.5",
+        "1910.181",
+        "1910.334"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2022010676",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "228.6",
+        "1910.333"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-20161110995",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.335",
+        "228.6",
+        "1910.333",
+        "1910.181"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2023054392",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "1910.30",
+        "1910.332"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2022010415",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.178",
+        "1910.177",
+        "1910.333",
+        "228.5"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2015096968",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.179",
+        "1910.28",
+        "1910.333",
+        "1910.177"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2021109012",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.331",
+        "1910.29",
+        "1910.335"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2024076432",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "228.19",
+        "1910.335"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2021064426",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "1910.23",
+        "1910.21"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-20180910004",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "1910.178",
+        "1910.23"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2015010121",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.181",
+        "1910.29",
+        "1910.179",
+        "1910.335"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2024043045",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.21",
+        "1910.29",
+        "1910.178"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2020065384",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "1910.28",
+        "1910.21",
+        "1910.23"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2019021784",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.332",
+        "1910.335",
+        "1910.30",
+        "1910.28"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2018076861",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "1910.335",
+        "1910.305"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-20241010126",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "1910.28",
+        "1910.183",
+        "1910.21"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-20251010449",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "1910.28",
+        "1910.21",
+        "1910.23"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2018032141",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.333",
+        "1910.29",
+        "1910.23"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-20201111088",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "1910.28",
+        "1910.21",
+        "1910.23"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2016087994",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.333",
+        "1910.334",
+        "1910.335",
+        "1910.29"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2025099709",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "228.6",
+        "1910.335",
+        "1910.29"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2016010373",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "228.19",
+        "1910.28",
+        "1910.333",
+        "1910.335"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2022109361",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "1910.28",
+        "1910.23",
+        "1910.21"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2019010537",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "228.9",
+        "228.203",
+        "228.19",
+        "228.206"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2018054203",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "1910.333",
+        "1910.30"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2015096876",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "1910.30",
+        "1910.181"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2025032744",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "1910.30",
+        "1910.23"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2024109997",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.178",
+        "1910.28",
+        "1910.177",
+        "1910.29"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-20241110960",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "1910.30",
+        "228.5"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2015097247",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "1910.178",
+        "1910.307"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2021032048",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.307",
+        "1910.333",
+        "1910.335",
+        "1910.306"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2025076343",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.179",
+        "1910.29",
+        "1910.333"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2015020537",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.333",
+        "1910.181",
+        "1910.29",
+        "1910.307"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2017109563",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "228.407",
+        "1910.30"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2019021472",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "228.6",
+        "1910.335",
+        "228.19",
+        "1910.333"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2023087729",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.307",
+        "1910.399",
+        "1910.184",
+        "1910.30"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2019088425",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.334",
+        "1910.335",
+        "1910.307",
+        "1910.333"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2016021755",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.178",
+        "1910.181",
+        "1910.179",
+        "1910.180"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2022108854",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "228.5",
+        "1910.333",
+        "1910.29"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2018088793",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.180",
+        "228.6",
+        "1910.179",
+        "1910.334"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2023043578",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.179",
+        "1910.29",
+        "1910.333"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2022010678",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.333",
+        "1910.28",
+        "1910.335",
+        "1910.334"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2018043910",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.335",
+        "1910.333",
+        "1910.307",
+        "1910.28"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2025010833",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.335",
+        "1910.333",
+        "1910.28",
+        "1910.307"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2018021705",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.303",
+        "1910.335",
+        "1910.29"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2023043497",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.183",
+        "1910.28",
+        "1910.333",
+        "1910.179"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2015085836",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "1910.333",
+        "1910.179",
+        "1910.28"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2019077253",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "228.333",
+        "228.19",
+        "1910.335",
+        "1910.333"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2017032800",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "1910.333",
+        "1910.335",
+        "1910.181"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2023076125",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "1910.335",
+        "1910.333",
+        "1910.332"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2019054987",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "1910.23",
+        "1910.21"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-20171010072",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.335",
+        "1910.333",
+        "1910.334",
+        "1910.399"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2015118804",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.178",
+        "1910.28",
+        "1910.29",
+        "1910.305"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2021064610",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.335",
+        "1910.28",
+        "1910.179",
+        "1910.303"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2022087582",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "1910.30",
+        "1910.23"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2024054467",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "1910.23",
+        "1910.21"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2019021804",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "1910.30",
+        "1910.332"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2024064934",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "1910.178",
+        "1910.335"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2021065083",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.30",
+        "1910.29",
+        "1910.333"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2018065945",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "1910.181",
+        "1910.180",
+        "1910.335"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2017032820",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "1910.30",
+        "1910.27"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2017021216",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.21",
+        "228.6",
+        "1910.332"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW_UNGROUNDED_POLICY"
+    },
+    {
+      "event_id": "osha-sir-2015053074",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.307",
+        "1910.22",
+        "1910.335",
+        "1910.332"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2025032388",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "228.19",
+        "1910.23"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2022098363",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.179",
+        "1910.180",
+        "1910.29"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2018088701",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.333",
+        "1910.335",
+        "1910.307",
+        "1910.304"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2018010900",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "228.6",
+        "1910.28",
+        "1910.333"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2017021379",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "1910.22",
+        "1910.24"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2015074640",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.333",
+        "1910.177",
+        "1910.335",
+        "1910.399"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2022098328",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.335",
+        "1910.178",
+        "1910.177"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2018010217",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "228.6",
+        "1910.28",
+        "1910.22",
+        "1910.29"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2023042932",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.177",
+        "1910.333",
+        "1910.332",
+        "1910.183"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2017076498",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "1910.30",
+        "1910.22"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2023010355",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "1910.28",
+        "1910.335",
+        "1910.30"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2022054380",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.335",
+        "1910.333",
+        "1910.179",
+        "1910.27"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2023043508",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.178",
+        "1910.333",
+        "228.405"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2019088609",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "1910.28",
+        "1910.178",
+        "1910.23"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2025076990",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.335",
+        "1910.333",
+        "1910.29",
+        "1910.28"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2020043203",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.183",
+        "1910.335",
+        "1910.179",
+        "1910.181"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2024032251",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.332",
+        "1910.29",
+        "1910.30",
+        "1910.28"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-20231211028",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "1910.181",
+        "1910.179",
+        "1910.335"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2021021497",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "228.6",
+        "1910.30",
+        "1910.29"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2019055146",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "228.101",
+        "1910.184",
+        "228.5",
+        "1910.28"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2017010011",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.178",
+        "1910.28",
+        "1910.333",
+        "1910.29"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-20181212865",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "1910.304",
+        "228.19"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2020098866",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "228.333",
+        "228.5",
+        "1910.333"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2015074445",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.307",
+        "1910.181",
+        "1910.301",
+        "228.101"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2018088443",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.177",
+        "1910.24",
+        "1910.333",
+        "228.6"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-20181111295",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.333",
+        "228.333",
+        "228.323",
+        "1910.22"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2016098775",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.177",
+        "1910.28",
+        "1910.29",
+        "1910.332"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2018043880",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.177",
+        "1910.178",
+        "1910.28",
+        "228.5"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2016076063",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.333",
+        "1910.335",
+        "1910.28",
+        "1910.179"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2017031928",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.335",
+        "1910.29",
+        "1910.177"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2016076666",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.333",
+        "228.5",
+        "1910.335"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-20171010347",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.333",
+        "1910.29",
+        "1910.335",
+        "1910.181"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2021065295",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.178",
+        "1910.29",
+        "1910.26"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2020099081",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.179",
+        "1910.178",
+        "1910.29"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2021010751",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.26",
+        "1910.29",
+        "1910.24",
+        "1910.333"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2015020087",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "1910.23",
+        "1910.21"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2015021283",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.178",
+        "1910.335",
+        "1910.181",
+        "228.333"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2015010748",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "1910.178",
+        "1910.28",
+        "1910.26"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2020088213",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "1910.28",
+        "1910.21",
+        "1910.23"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2021108908",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "228.6",
+        "1910.335",
+        "1910.333",
+        "1910.307"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2022053775",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "1910.28",
+        "1910.335",
+        "1910.333"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-20211110235",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.181",
+        "1910.28",
+        "1910.29",
+        "228.6"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-20191010679",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "1910.30",
+        "1910.178"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2022109115",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "1910.28",
+        "228.6",
+        "228.19"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2024043529",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "1910.30",
+        "228.6"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2016087781",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "228.6",
+        "1910.335",
+        "1910.28",
+        "1910.332"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2015020268",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.178",
+        "1910.181",
+        "1910.23",
+        "1910.177"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2019010109",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "1910.28",
+        "1910.179",
+        "1910.178"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2020054857",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.178",
+        "228.6",
+        "1910.29",
+        "1910.180"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2015085330",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "228.333",
+        "1910.181",
+        "228.323",
+        "228.325"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-20171110839",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.333",
+        "1910.307",
+        "228.5",
+        "1910.335"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2025010466",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.178",
+        "1910.333",
+        "1910.28",
+        "1910.29"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-20181011158",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.180",
+        "1910.178",
+        "1910.179"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2017042970",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.178",
+        "1910.28",
+        "1910.26",
+        "1910.29"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2022032153",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "228.6",
+        "1910.30"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2022021674",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.335",
+        "1910.29",
+        "1910.177"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2017087809",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.335",
+        "1910.30",
+        "1910.178",
+        "1910.333"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-20211210685",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "1910.179",
+        "1910.21"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2023098877",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.178",
+        "228.5",
+        "1910.179",
+        "228.333"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-20161211800",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.332",
+        "228.405",
+        "228.11",
+        "1910.333"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2018088682",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.178",
+        "1910.335",
+        "1910.333",
+        "1910.183"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-20251010616",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "1910.28",
+        "228.6",
+        "1910.30"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2016054195",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "228.19",
+        "1910.28",
+        "1910.334",
+        "228.5"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2015129547",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "1910.333",
+        "1910.399"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2017076265",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.179",
+        "1910.29",
+        "1910.180"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2022043702",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.181",
+        "1910.29",
+        "1910.333",
+        "1910.307"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2023087459",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "1910.305",
+        "1910.335",
+        "1910.28"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2015129386",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "1910.335",
+        "1910.30"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2015074925",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.335",
+        "1910.333",
+        "1910.332",
+        "1910.30"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2024065097",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.334",
+        "1910.28",
+        "1910.335",
+        "1910.178"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2022032804",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.30",
+        "1910.28",
+        "1910.29",
+        "1910.335"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-20180910072",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "228.6",
+        "1910.335",
+        "1910.30",
+        "1910.332"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2016054157",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.307",
+        "1910.399",
+        "1910.178",
+        "1910.306"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2016076376",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.333",
+        "1910.303",
+        "1910.399",
+        "1910.307"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2022021691",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.178",
+        "1910.183",
+        "1910.333",
+        "1910.308"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2020087912",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.181",
+        "1910.176",
+        "1910.179",
+        "1910.29"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2018043582",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "228.5",
+        "228.101",
+        "1910.179",
+        "1910.178"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2022098341",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "1910.178",
+        "1910.28",
+        "228.19"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2021010667",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "1910.28",
+        "1910.21",
+        "1910.30"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2025043829",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.179",
+        "1910.307",
+        "1910.183"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2019099842",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.333",
+        "1910.178",
+        "1910.335"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2016088024",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.333",
+        "1910.179",
+        "1910.181",
+        "1910.335"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2018088836",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.179",
+        "1910.334",
+        "1910.333",
+        "1910.335"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2023043679",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.178",
+        "1910.30",
+        "1910.29",
+        "1910.28"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2025054211",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.179",
+        "1910.29",
+        "1910.21"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2022054666",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.335",
+        "1910.28",
+        "228.5",
+        "1910.333"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2018088596",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "1910.178",
+        "1910.335"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-20221110264",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "1910.179",
+        "1910.178"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-20181112063",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "228.6",
+        "1910.178"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2019066431",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.332",
+        "1910.335",
+        "1910.333",
+        "228.333"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2024099099",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.335",
+        "228.331",
+        "1910.333",
+        "1910.332"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2022087034",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.21",
+        "1910.178",
+        "1910.303"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2020021168",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "1910.30",
+        "1910.28",
+        "1910.21"
+      ],
+      "policy_status_after_grounding_gate": "VIOLATION"
+    },
+    {
+      "event_id": "osha-sir-2019043483",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.181",
+        "1910.28",
+        "1910.179",
+        "1910.304"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-20251111017",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.333",
+        "1910.29",
+        "228.331"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2017087648",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.335",
+        "228.101",
+        "1910.28",
+        "1910.307"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2025099410",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.179",
+        "1910.180",
+        "1910.178",
+        "1910.29"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2015020723",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "1910.21",
+        "1910.23"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2017043181",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "1910.30",
+        "228.6"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2023054197",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.333",
+        "1910.335",
+        "1910.184",
+        "1910.303"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2025021362",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "1910.178",
+        "1910.28",
+        "1910.30"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-20161010003",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "1910.304",
+        "1910.21"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2023087694",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.335",
+        "1910.307",
+        "1910.333",
+        "228.5"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2022054030",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.333",
+        "1910.335",
+        "1910.177",
+        "1910.28"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2018010801",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "228.5",
+        "1910.178",
+        "228.405"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2019099779",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "1910.28",
+        "1910.23",
+        "1910.21"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-20211210790",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.335",
+        "1910.181",
+        "1910.179",
+        "1910.178"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2018010788",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "1910.28",
+        "1910.178",
+        "1910.26"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-20201211883",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "1910.301",
+        "1910.23"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2015030891",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "228.5",
+        "228.6"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2016032252",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.178",
+        "228.5",
+        "1910.179",
+        "1910.335"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2022076288",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.335",
+        "1910.178",
+        "1910.29"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2016109823",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "1910.21",
+        "1910.301"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2017088087",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "1910.26",
+        "1910.178"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-20171212266",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "1910.179",
+        "228.6"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2015129412",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "1910.178",
+        "228.19"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2023076485",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.335",
+        "1910.178",
+        "1910.181",
+        "228.6"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2018010219",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.178",
+        "1910.30",
+        "1910.180"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2016053644",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "1910.28",
+        "1910.178",
+        "1910.180"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2022109107",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.333",
+        "1910.335",
+        "1910.181",
+        "1910.307"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2020076332",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.335",
+        "1910.332",
+        "1910.333",
+        "1910.29"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-20161111101",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.333",
+        "1910.29",
+        "1910.335",
+        "1910.307"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2015042011",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.179",
+        "1910.29",
+        "1910.28",
+        "1910.335"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2023032044",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "1910.23",
+        "1910.21"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-20211211093",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.335",
+        "228.5",
+        "1910.28",
+        "1910.334"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2019088154",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "1910.28",
+        "1910.23",
+        "1910.27"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2016032173",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.178",
+        "1910.28",
+        "1910.180",
+        "1910.29"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2021097933",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "1910.333",
+        "1910.177",
+        "1910.302"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2017088160",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "1910.178",
+        "1910.27"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2021086873",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.335",
+        "1910.333",
+        "1910.334",
+        "1910.306"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-20171211570",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.335",
+        "1910.27",
+        "1910.307",
+        "1910.333"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-20181010960",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.333",
+        "1910.181",
+        "1910.335",
+        "1910.29"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2022087485",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.333",
+        "1910.24",
+        "1910.335",
+        "1910.177"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2015010537",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "1910.23",
+        "1910.21"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2021020948",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.183",
+        "1910.30",
+        "1910.28",
+        "1910.181"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2017010139",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.30",
+        "1910.29",
+        "1910.22"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2016087571",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.333",
+        "1910.178",
+        "1910.181",
+        "1910.29"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2019055014",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "1910.23",
+        "1910.21"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2024109779",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.333",
+        "1910.181",
+        "1910.308",
+        "1910.335"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2023021541",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "1910.28",
+        "1910.30",
+        "1910.21"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2022065515",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "1910.30",
+        "1910.179"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2019076870",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.179",
+        "228.105",
+        "1910.181",
+        "1910.333"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2015063667",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.335",
+        "1910.333",
+        "228.107",
+        "228.203"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2017088149",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.30",
+        "1910.29",
+        "228.6"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2015118633",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "1910.179",
+        "1910.333",
+        "1910.177"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2018021258",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.22",
+        "1910.29",
+        "1910.335"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2015041881",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "1910.28",
+        "228.333",
+        "228.5"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2017021176",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.178",
+        "1910.28",
+        "1910.180",
+        "1910.335"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2025043933",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "1910.303",
+        "228.6"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2020021212",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.333",
+        "1910.307",
+        "1910.335",
+        "1910.303"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2015052932",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.178",
+        "1910.179",
+        "1910.181",
+        "1910.21"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-20191111685",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "1910.333",
+        "1910.179"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-20201110643",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.333",
+        "1910.29",
+        "1910.303"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-20171110663",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.181",
+        "1910.333",
+        "1910.399",
+        "228.19"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2016032235",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.333",
+        "1910.178",
+        "1910.28",
+        "1910.29"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2016010378",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.178",
+        "1910.29",
+        "1910.333",
+        "1910.181"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-20231110705",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.27",
+        "1910.30",
+        "1910.29"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2017099019",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.178",
+        "1910.181",
+        "1910.29",
+        "1910.179"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2017065396",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "1910.178",
+        "1910.177"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2022043709",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.179",
+        "1910.180",
+        "1910.306",
+        "1910.29"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2025076345",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "1910.28",
+        "1910.23",
+        "1910.21"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2024010586",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.333",
+        "1910.335",
+        "1910.29"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-20231010049",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "1910.30",
+        "1910.23"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2017065292",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.177",
+        "1910.178",
+        "1910.28",
+        "1910.180"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2019065990",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "1910.179",
+        "1910.28",
+        "1910.21"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2017032008",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.333",
+        "1910.28",
+        "1910.181",
+        "228.5"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2023021015",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "1910.179",
+        "1910.28",
+        "1910.180"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2022086774",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.178",
+        "1910.179",
+        "1910.333",
+        "1910.28"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2016098733",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.333",
+        "228.333",
+        "228.19",
+        "228.5"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2025076337",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.335",
+        "1910.180",
+        "1910.28",
+        "1910.333"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2022119779",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.307",
+        "1910.177",
+        "1910.301",
+        "1910.335"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2025088576",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.178",
+        "1910.180",
+        "1910.181",
+        "1910.28"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2024076404",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.335",
+        "1910.333",
+        "1910.28",
+        "1910.29"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2019044168",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "1910.30",
+        "1910.22"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2015050186",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "1910.28",
+        "1910.30",
+        "228.6"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2023087143",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "1910.307",
+        "1910.304",
+        "1910.333"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2021076061",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.181",
+        "1910.335",
+        "1910.333",
+        "1910.177"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-20231110461",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "1910.28",
+        "1910.23",
+        "1910.21"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2025077250",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "1910.304",
+        "1910.21"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2018055199",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "1910.179",
+        "228.6"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2024087482",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.30",
+        "1910.29",
+        "228.6"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2021032336",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.333",
+        "1910.307",
+        "1910.28",
+        "1910.335"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2024087635",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.335",
+        "228.6",
+        "1910.29"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2021054004",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.333",
+        "1910.179",
+        "1910.28",
+        "1910.335"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2018055301",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.333",
+        "1910.29",
+        "1910.21"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2016065258",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "228.333",
+        "228.5",
+        "228.19",
+        "1910.333"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2015052568",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.333",
+        "1910.335",
+        "1910.177",
+        "1910.181"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2022097937",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "228.6",
+        "1910.29",
+        "1910.335",
+        "1910.28"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2019099684",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.335",
+        "1910.333",
+        "228.19",
+        "1910.179"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2016065155",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "228.5",
+        "1910.28",
+        "1910.178",
+        "1910.23"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-20171212342",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "1910.178",
+        "228.6",
+        "1910.181"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2025043379",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.178",
+        "1910.28",
+        "1910.177",
+        "228.5"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2016042911",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.24",
+        "1910.23",
+        "1910.29"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2015118320",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.333",
+        "1910.29",
+        "1910.335",
+        "1910.332"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2022010307",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "1910.28",
+        "1910.178",
+        "1910.21"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2017043212",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.24",
+        "1910.307",
+        "1910.29"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2020098988",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.333",
+        "1910.181",
+        "228.107",
+        "1910.335"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2021108602",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "1910.23",
+        "1910.178"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-20171212248",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "1910.23",
+        "1910.21"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2016010291",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.307",
+        "1910.335",
+        "1910.333",
+        "1910.178"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2020054475",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "1910.30",
+        "1910.333",
+        "1910.28"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-20231211331",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.181",
+        "1910.177",
+        "1910.178"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2018066146",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.181",
+        "1910.335",
+        "1910.22",
+        "1910.28"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-20161211980",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.335",
+        "1910.30",
+        "1910.333"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-20191111560",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "1910.178",
+        "228.6"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-20181212934",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.178",
+        "1910.29",
+        "1910.333"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2020032043",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.178",
+        "1910.181",
+        "1910.28",
+        "1910.29"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2020065350",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.178",
+        "1910.29",
+        "1910.28",
+        "1910.181"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-20191212807",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "228.6",
+        "1910.26",
+        "1910.178"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2019055494",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.333",
+        "1910.28",
+        "1910.307",
+        "1910.303"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2025010425",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.178",
+        "1910.26",
+        "1910.179",
+        "1910.28"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2024065594",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "1910.23",
+        "1910.21"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2015089912",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "1910.30",
+        "1910.28",
+        "228.6"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2024053861",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.333",
+        "1910.181",
+        "1910.29",
+        "1910.335"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2019022036",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.335",
+        "1910.333",
+        "1910.178",
+        "1910.28"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2020109749",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "228.331",
+        "1910.30",
+        "228.5"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2019066030",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "228.6",
+        "1910.29",
+        "1910.333"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2019043939",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "1910.30",
+        "1910.333"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2018065777",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.179",
+        "1910.306",
+        "1910.180",
+        "1910.183"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2020021497",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "1910.28",
+        "1910.21",
+        "1910.26"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2019043842",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.333",
+        "1910.332",
+        "1910.307",
+        "1910.28"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2016054074",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.178",
+        "1910.29",
+        "1910.180",
+        "1910.28"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2018077131",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "1910.304",
+        "1910.21"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-20181213270",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.333",
+        "1910.335",
+        "228.331",
+        "1910.184"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2016043357",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "1910.178",
+        "1910.30",
+        "1910.28"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2018065829",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.335",
+        "1910.177",
+        "1910.333",
+        "1910.178"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2016109837",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "228.6",
+        "1910.335"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2017054621",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.181",
+        "1910.333",
+        "1910.178",
+        "1910.305"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2025044015",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.30",
+        "1910.332",
+        "1910.335"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2024065367",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "228.331",
+        "1910.335",
+        "1910.333",
+        "1910.178"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2024032482",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.335",
+        "1910.333",
+        "1910.308",
+        "1910.181"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2024010363",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "1910.21",
+        "1910.332"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2017010022",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "1910.333",
+        "1910.183",
+        "1910.28"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2021032035",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.332",
+        "1910.184",
+        "1910.303",
+        "1910.181"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2015010909",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.181",
+        "1910.22",
+        "1910.28",
+        "1910.26"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2024010132",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "1910.28",
+        "1910.178",
+        "1910.21"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2019055325",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.307",
+        "228.19",
+        "1910.177",
+        "1910.333"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2020010884",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.30",
+        "1910.29",
+        "228.19"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-20171010237",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.333",
+        "1910.335",
+        "228.19",
+        "1910.303"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-20191212765",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.178",
+        "1910.28",
+        "1910.29",
+        "228.6"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2022119607",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "1910.21",
+        "228.331"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-20181212651",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "1910.181",
+        "1910.183",
+        "1910.21"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2015063793",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.177",
+        "1910.24",
+        "228.105",
+        "1910.28"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-20181011035",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "1910.23",
+        "1910.21"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-20241010131",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.181",
+        "1910.177",
+        "1910.333",
+        "1910.28"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2016065643",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "1910.30",
+        "1910.178"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-20221210900",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.25",
+        "1910.179",
+        "1910.21"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2023010415",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.179",
+        "1910.178",
+        "1910.29"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2025021045",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "1910.335",
+        "228.6"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2019065528",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.179",
+        "1910.28",
+        "1910.178",
+        "1910.183"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2016065666",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "1910.28",
+        "1910.333",
+        "1910.27"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2022032251",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.335",
+        "1910.181",
+        "1910.333",
+        "1910.332"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2017098793",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "1910.28",
+        "1910.181",
+        "1910.179"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2018088933",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "1910.28",
+        "1910.333",
+        "1910.181"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2023010636",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.179",
+        "1910.333",
+        "1910.24",
+        "1910.335"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2024065697",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "1910.304",
+        "1910.21"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-20231110684",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "1910.28",
+        "1910.27",
+        "1910.21"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2024032157",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "1910.28",
+        "1910.333",
+        "1910.30"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2024076419",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "1910.335",
+        "1910.28",
+        "1910.333"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2024043658",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.180",
+        "1910.23",
+        "1910.29"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-20171212126",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.181",
+        "1910.30",
+        "1910.333"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2018032365",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.178",
+        "1910.30",
+        "228.6",
+        "1910.29"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2018033029",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "228.6",
+        "1910.333",
+        "1910.29"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2020098689",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.181",
+        "1910.333",
+        "1910.184",
+        "1910.180"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2021032569",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "1910.28",
+        "1910.27",
+        "1910.23"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2015041651",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.333",
+        "1910.181",
+        "1910.179"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2015129461",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.179",
+        "1910.181",
+        "1910.28",
+        "1910.333"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2025055142",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.30",
+        "1910.332",
+        "1910.177",
+        "1910.178"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2023010984",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "1910.30",
+        "228.105"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2019077116",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.335",
+        "1910.28",
+        "1910.333",
+        "1910.307"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2022097816",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "1910.178",
+        "1910.335"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-20171110835",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.335",
+        "1910.333",
+        "1910.28",
+        "1910.23"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2017065983",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.332",
+        "1910.335",
+        "1910.333",
+        "1910.307"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2015074749",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "1910.28",
+        "1910.333",
+        "1910.335"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2015096378",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.335",
+        "228.101",
+        "228.5"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2024109888",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.306",
+        "1910.333",
+        "228.5"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2025087755",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "1910.180",
+        "1910.333"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2016032232",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.307",
+        "1910.334",
+        "1910.333"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-20231211545",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "228.19",
+        "1910.181",
+        "1910.333",
+        "1910.334"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2022075978",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.179",
+        "228.101",
+        "228.5",
+        "1910.180"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2020054784",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.335",
+        "1910.29",
+        "1910.307"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2019021393",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "1910.333",
+        "1910.177",
+        "1910.179"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2017087284",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "1910.21",
+        "1910.23"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2020021871",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.181",
+        "1910.29",
+        "228.19"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-20201211352",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.335",
+        "228.5",
+        "1910.178"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2020098587",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.332",
+        "1910.28",
+        "1910.335",
+        "1910.29"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2019022071",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.179",
+        "1910.178",
+        "1910.180",
+        "1910.181"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-20201211717",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "1910.180",
+        "1910.179",
+        "1910.183"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-20201110556",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.333",
+        "1910.29",
+        "1910.335"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2024098404",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.333",
+        "1910.28",
+        "1910.29",
+        "1910.307"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2017109540",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "1910.28",
+        "1910.30",
+        "228.6"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2021042762",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "1910.304",
+        "228.19"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2016021316",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "228.5",
+        "1910.303",
+        "1910.335"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2020066104",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "1910.333",
+        "1910.180"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2022065055",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "1910.28",
+        "1910.30",
+        "1910.21"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2021098005",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.179",
+        "1910.335",
+        "1910.181",
+        "1910.333"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2022098598",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "1910.333",
+        "1910.335"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2017076789",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.335",
+        "1910.333",
+        "1910.181",
+        "1910.28"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2023032562",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.179",
+        "1910.334",
+        "1910.28",
+        "1910.178"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2022054367",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.178",
+        "1910.29",
+        "1910.28",
+        "1910.21"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-20201111118",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "228.6",
+        "1910.26",
+        "1910.183",
+        "228.5"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2021097600",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.178",
+        "1910.179",
+        "228.5",
+        "1910.334"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2019032629",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.178",
+        "1910.335",
+        "1910.333",
+        "1910.181"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2025032233",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "228.6",
+        "1910.333",
+        "1910.304",
+        "1910.334"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2021075408",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.178",
+        "1910.184",
+        "1910.177",
+        "1910.333"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2017065060",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.333",
+        "1910.335",
+        "1910.178",
+        "1910.28"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2018032271",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.333",
+        "1910.28",
+        "1910.29",
+        "228.6"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2016021821",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "1910.180",
+        "1910.21",
+        "1910.28"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2017010190",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.30",
+        "1910.29",
+        "1910.23"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2022076471",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.178",
+        "1910.29",
+        "1910.177",
+        "1910.181"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2016032603",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.183",
+        "1910.179",
+        "1910.180",
+        "1910.181"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2022032612",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.178",
+        "1910.29",
+        "228.331",
+        "1910.180"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2022021781",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "1910.28",
+        "1910.334",
+        "1910.179"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2025043085",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.333",
+        "1910.180",
+        "1910.23",
+        "1910.178"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2025066058",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "1910.28",
+        "1910.30",
+        "1910.332"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2016065377",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.333",
+        "1910.28",
+        "1910.306",
+        "1910.29"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2023065525",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "1910.21",
+        "1910.179"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2024042963",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.333",
+        "1910.301",
+        "1910.307",
+        "1910.178"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2020109330",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.332",
+        "1910.307",
+        "1910.335",
+        "1910.333"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2019065581",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "1910.30",
+        "1910.333"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-20231211319",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "228.5",
+        "1910.178",
+        "1910.334",
+        "1910.29"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2020109477",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.180",
+        "1910.179",
+        "1910.21"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-20161211826",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.303",
+        "1910.333",
+        "1910.335",
+        "1910.332"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2020065478",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "228.101",
+        "1910.335",
+        "1910.178"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-20221210950",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.30",
+        "1910.335",
+        "1910.21"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2018088380",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "228.331",
+        "1910.30",
+        "1910.307",
+        "228.105"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-20221210858",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "1910.333",
+        "1910.180",
+        "1910.179"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-20200511251",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "1910.333",
+        "1910.23"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2017087661",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.335",
+        "1910.28",
+        "1910.177",
+        "1910.333"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2023098429",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.335",
+        "1910.28",
+        "1910.334",
+        "228.107"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2018054724",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.178",
+        "1910.181",
+        "1910.30"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2018055310",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "1910.178",
+        "1910.177"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2025088348",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "1910.28",
+        "1910.181",
+        "1910.180"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2024010316",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.333",
+        "1910.24",
+        "1910.334",
+        "1910.178"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2015107463",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "1910.178",
+        "1910.301"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2015096605",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.333",
+        "1910.28",
+        "1910.335",
+        "1910.29"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2017098956",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "1910.28",
+        "1910.22",
+        "1910.30"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2025010118",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.335",
+        "228.6",
+        "1910.181",
+        "228.19"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2019033250",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.335",
+        "1910.333",
+        "1910.332",
+        "228.107"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2017076929",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "228.5",
+        "228.413",
+        "1910.27"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2025021424",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.178",
+        "1910.28",
+        "1910.29",
+        "1910.184"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2019088423",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.335",
+        "1910.333",
+        "1910.307",
+        "1910.301"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-20201211630",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.178",
+        "1910.181",
+        "1910.183",
+        "228.101"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2020010419",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "1910.28",
+        "1910.335",
+        "228.6"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2015074310",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.178",
+        "1910.179",
+        "1910.181",
+        "1910.335"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2025109964",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.335",
+        "1910.333",
+        "1910.307",
+        "1910.301"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2017054644",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.333",
+        "1910.29",
+        "228.5"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2020065125",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "1910.28",
+        "1910.335",
+        "1910.21"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2019022056",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "1910.177",
+        "1910.178",
+        "1910.333"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2021032547",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.179",
+        "1910.29",
+        "1910.28",
+        "1910.181"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2016021465",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.179",
+        "1910.183",
+        "1910.334",
+        "1910.307"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2025021144",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.178",
+        "1910.29",
+        "1910.179"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2015074414",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "228.333",
+        "228.5",
+        "228.19",
+        "228.323"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2015042268",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.335",
+        "1910.332",
+        "1910.333",
+        "1910.29"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2022086789",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "1910.30",
+        "1910.21"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2023043850",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "1910.28",
+        "1910.179",
+        "1910.178"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2023087989",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "1910.28",
+        "1910.183",
+        "1910.179"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2023098633",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "1910.28",
+        "1910.30",
+        "1910.333"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2024043500",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.21",
+        "1910.22",
+        "1910.29"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2024087463",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.333",
+        "1910.28",
+        "1910.29",
+        "1910.30"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2022054236",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.335",
+        "1910.29",
+        "1910.30"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2024099088",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "1910.28",
+        "1910.334",
+        "1910.22"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2023010058",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "1910.28",
+        "1910.23",
+        "1910.21"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2017087694",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "1910.333",
+        "1910.28",
+        "228.19"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2017021215",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "228.6",
+        "228.19",
+        "1910.307",
+        "1910.181"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2024054461",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "1910.304",
+        "1910.23"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2019021196",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.30",
+        "1910.184",
+        "1910.307",
+        "1910.335"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-20171110711",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "1910.335",
+        "1910.178"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2019044077",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.181",
+        "1910.28",
+        "1910.178",
+        "1910.305"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2023098210",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "1910.333",
+        "1910.331"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2025098869",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.178",
+        "1910.28",
+        "1910.181",
+        "1910.333"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2021010001",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.30",
+        "228.6",
+        "1910.29"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2019077560",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "1910.28",
+        "1910.178",
+        "1910.26"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2023075961",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.333",
+        "1910.332",
+        "1910.28",
+        "228.405"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-20181010680",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.335",
+        "1910.29",
+        "1910.333"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2017065781",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.178",
+        "228.6",
+        "1910.28",
+        "1910.177"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2019010595",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "1910.23",
+        "1910.21"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2019099567",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "1910.23",
+        "1910.30"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2024099050",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "228.107",
+        "1910.335",
+        "1910.333"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-20181010247",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "228.5",
+        "228.413"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2019022125",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.335",
+        "228.6",
+        "1910.181",
+        "1910.179"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2017077039",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.333",
+        "1910.28",
+        "1910.23",
+        "1910.177"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2016032302",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "1910.178",
+        "228.6"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2019032844",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.178",
+        "228.101",
+        "228.6",
+        "1910.180"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-20181011065",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "1910.303",
+        "1910.332",
+        "1910.335"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2018054444",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.30",
+        "1910.28",
+        "1910.29",
+        "228.6"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2019010631",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.333",
+        "1910.307",
+        "1910.335",
+        "228.5"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2021098456",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "1910.28",
+        "1910.180",
+        "1910.27"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2019044054",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "1910.23",
+        "1910.21"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2024032670",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "1910.28",
+        "1910.183",
+        "1910.179"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2015052714",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "1910.178",
+        "1910.28",
+        "1910.179"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2020043838",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "1910.28",
+        "1910.30",
+        "1910.333"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2018032946",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "1910.23",
+        "1910.21"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2017098743",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "1910.30",
+        "228.19"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2022098023",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.178",
+        "1910.29",
+        "1910.181"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2016032176",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "1910.333",
+        "1910.181",
+        "1910.177"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2019088164",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "1910.28",
+        "1910.21",
+        "1910.30"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2023087794",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "1910.28",
+        "1910.303",
+        "1910.21"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2017109431",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.181",
+        "1910.179",
+        "1910.307",
+        "1910.333"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2021032702",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.30",
+        "228.6",
+        "1910.29"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-20171110887",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.333",
+        "1910.28",
+        "1910.29",
+        "1910.335"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-20251010463",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "1910.30",
+        "1910.21"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2016021055",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.181",
+        "1910.306",
+        "1910.179",
+        "1910.333"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2020010705",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "1910.179",
+        "1910.22"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2022010103",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.30",
+        "1910.305",
+        "228.405"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2017087819",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.178",
+        "1910.30",
+        "228.6"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2022086798",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.184",
+        "1910.333",
+        "1910.28",
+        "228.5"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2016076191",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "1910.304",
+        "1910.307",
+        "1910.28"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-20171110593",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.29",
+        "1910.28",
+        "1910.178",
+        "1910.180"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-20251010236",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.177",
+        "1910.335",
+        "1910.333",
+        "1910.181"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2018032223",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "1910.178",
+        "1910.183"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2019066278",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.335",
+        "1910.29",
+        "228.6",
+        "228.19"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-20201010029",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.28",
+        "1910.29",
+        "1910.21",
+        "1910.23"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2022054190",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.181",
+        "1910.177",
+        "1910.29",
+        "1910.178"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2015020699",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.178",
+        "1910.28",
+        "1910.29",
+        "228.6"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    },
+    {
+      "event_id": "osha-sir-2023109109",
+      "queries": 2,
+      "candidates": 16,
+      "top_sections": [
+        "1910.335",
+        "1910.178",
+        "1910.29",
+        "1910.28"
+      ],
+      "policy_status_after_grounding_gate": "REVIEW"
+    }
+  ],
+  "limitations": [
+    "This benchmark measures ingestion, retrieval coverage, and citation grounding, not legal accuracy.",
+    "OSHA Severe Injury Reports have no authoritative regulation label for each narrative.",
+    "Narratives describe known injuries and may contain post-event outcome information.",
+    "The source contains severe outcomes and cannot measure false alarms on ordinary camera-hours."
+  ]
+}

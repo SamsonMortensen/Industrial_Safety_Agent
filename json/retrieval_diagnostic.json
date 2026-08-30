@@ -2,208 +2,603 @@
   "strategy": "triangulated",
   "rows": [
     {
-      "log_id": "LOG-1006",
-      "type": "electrical",
+      "log_id": "LOG-1000",
+      "type": "approach_distance",
+      "expected_section": "1910.333",
       "expected": "29 CFR 1910.333",
       "rank": 3,
       "matched_section": "1910.333",
       "caught": 1
     },
     {
-      "log_id": "LOG-1011",
-      "type": "fatigue",
-      "expected": "49 CFR 228",
-      "rank": 1,
-      "matched_section": "228.5",
-      "caught": 1
+      "log_id": "LOG-1006",
+      "type": "dockboard",
+      "expected_section": "1910.26",
+      "expected": "29 CFR 1910.26",
+      "rank": 21,
+      "matched_section": "1910.26",
+      "caught": 0
     },
     {
-      "log_id": "LOG-1051",
-      "type": "spill",
+      "log_id": "LOG-1011",
+      "type": "housekeeping",
+      "expected_section": "1910.22",
       "expected": "29 CFR 1910.22",
       "rank": 2,
       "matched_section": "1910.22",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1022",
+      "type": "approach_distance",
+      "expected_section": "1910.333",
+      "expected": "29 CFR 1910.333",
+      "rank": 3,
+      "matched_section": "1910.333",
+      "caught": 0
+    },
+    {
+      "log_id": "LOG-1024",
+      "type": "rim_wheel",
+      "expected_section": "1910.177",
+      "expected": "29 CFR 1910.177",
+      "rank": 5,
+      "matched_section": "1910.177",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1027",
+      "type": "fall_protection",
+      "expected_section": "1910.28",
+      "expected": "29 CFR 1910.28",
+      "rank": 20,
+      "matched_section": "1910.28",
+      "caught": 0
+    },
+    {
+      "log_id": "LOG-1043",
+      "type": "electrical_ppe",
+      "expected_section": "1910.335",
+      "expected": "29 CFR 1910.335",
+      "rank": 7,
+      "matched_section": "1910.335",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1046",
+      "type": "guardrail",
+      "expected_section": "1910.29",
+      "expected": "29 CFR 1910.29",
+      "rank": 33,
+      "matched_section": "1910.29",
+      "caught": 0
+    },
+    {
+      "log_id": "LOG-1051",
+      "type": "stairway",
+      "expected_section": "1910.25",
+      "expected": "29 CFR 1910.25",
+      "rank": 6,
+      "matched_section": "1910.25",
+      "caught": 0
+    },
+    {
+      "log_id": "LOG-1058",
+      "type": "rim_wheel",
+      "expected_section": "1910.177",
+      "expected": "29 CFR 1910.177",
+      "rank": 5,
+      "matched_section": "1910.177",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1071",
+      "type": "sling",
+      "expected_section": "1910.184",
+      "expected": "29 CFR 1910.184",
+      "rank": 11,
+      "matched_section": "1910.184",
       "caught": 1
     },
     {
       "log_id": "LOG-1093",
-      "type": "fatigue",
-      "expected": "49 CFR 228",
-      "rank": 1,
-      "matched_section": "228.5",
+      "type": "dockboard",
+      "expected_section": "1910.26",
+      "expected": "29 CFR 1910.26",
+      "rank": 11,
+      "matched_section": "1910.26",
+      "caught": 0
+    },
+    {
+      "log_id": "LOG-1127",
+      "type": "fall_protection",
+      "expected_section": "1910.28",
+      "expected": "29 CFR 1910.28",
+      "rank": 6,
+      "matched_section": "1910.28",
+      "caught": 0
+    },
+    {
+      "log_id": "LOG-1132",
+      "type": "electrical_ppe",
+      "expected_section": "1910.335",
+      "expected": "29 CFR 1910.335",
+      "rank": 5,
+      "matched_section": "1910.335",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1150",
+      "type": "electrical_ppe",
+      "expected_section": "1910.335",
+      "expected": "29 CFR 1910.335",
+      "rank": 4,
+      "matched_section": "1910.335",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1162",
+      "type": "electrical_ppe",
+      "expected_section": "1910.335",
+      "expected": "29 CFR 1910.335",
+      "rank": 39,
+      "matched_section": "1910.335",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1163",
+      "type": "crane_inspection",
+      "expected_section": "1910.179",
+      "expected": "29 CFR 1910.179",
+      "rank": 4,
+      "matched_section": "1910.179",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1183",
+      "type": "electrical_ppe",
+      "expected_section": "1910.335",
+      "expected": "29 CFR 1910.335",
+      "rank": 18,
+      "matched_section": "1910.335",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1198",
+      "type": "approach_distance",
+      "expected_section": "1910.333",
+      "expected": "29 CFR 1910.333",
+      "rank": 3,
+      "matched_section": "1910.333",
+      "caught": 0
+    },
+    {
+      "log_id": "LOG-1222",
+      "type": "truck_defect",
+      "expected_section": "1910.178",
+      "expected": "29 CFR 1910.178",
+      "rank": 12,
+      "matched_section": "1910.178",
       "caught": 1
     },
     {
       "log_id": "LOG-1224",
-      "type": "electrical",
-      "expected": "29 CFR 1910.333",
-      "rank": 3,
-      "matched_section": "1910.333",
-      "caught": 1
+      "type": "duty_records",
+      "expected_section": "228.11",
+      "expected": "49 CFR 228.11",
+      "rank": 5,
+      "matched_section": "228.11",
+      "caught": 0
     },
     {
       "log_id": "LOG-1228",
-      "type": "electrical",
-      "expected": "29 CFR 1910.333",
-      "rank": 3,
-      "matched_section": "1910.333",
+      "type": "stairway",
+      "expected_section": "1910.25",
+      "expected": "29 CFR 1910.25",
+      "rank": 6,
+      "matched_section": "1910.25",
       "caught": 1
     },
     {
       "log_id": "LOG-1233",
-      "type": "spill",
-      "expected": "29 CFR 1910.22",
-      "rank": 2,
-      "matched_section": "1910.22",
+      "type": "dockboard",
+      "expected_section": "1910.26",
+      "expected": "29 CFR 1910.26",
+      "rank": 5,
+      "matched_section": "1910.26",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1237",
+      "type": "truck_defect",
+      "expected_section": "1910.178",
+      "expected": "29 CFR 1910.178",
+      "rank": 27,
+      "matched_section": "1910.178",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1239",
+      "type": "live_parts",
+      "expected_section": "1910.303",
+      "expected": "29 CFR 1910.303",
+      "rank": 39,
+      "matched_section": "1910.303",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1250",
+      "type": "electrical_ppe",
+      "expected_section": "1910.335",
+      "expected": "29 CFR 1910.335",
+      "rank": 10,
+      "matched_section": "1910.335",
       "caught": 1
     },
     {
       "log_id": "LOG-1258",
-      "type": "spill",
-      "expected": "29 CFR 1910.22",
-      "rank": 2,
-      "matched_section": "1910.22",
+      "type": "duty_records",
+      "expected_section": "228.11",
+      "expected": "49 CFR 228.11",
+      "rank": 8,
+      "matched_section": "228.11",
+      "caught": 0
+    },
+    {
+      "log_id": "LOG-1259",
+      "type": "sling",
+      "expected_section": "1910.184",
+      "expected": "29 CFR 1910.184",
+      "rank": 5,
+      "matched_section": "1910.184",
       "caught": 1
     },
     {
       "log_id": "LOG-1262",
-      "type": "spill",
-      "expected": "29 CFR 1910.22",
-      "rank": 2,
-      "matched_section": "1910.22",
+      "type": "fall_protection",
+      "expected_section": "1910.28",
+      "expected": "29 CFR 1910.28",
+      "rank": 5,
+      "matched_section": "1910.28",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1263",
+      "type": "truck_defect",
+      "expected_section": "1910.178",
+      "expected": "29 CFR 1910.178",
+      "rank": 7,
+      "matched_section": "1910.178",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1276",
+      "type": "live_parts",
+      "expected_section": "1910.303",
+      "expected": "29 CFR 1910.303",
+      "rank": 37,
+      "matched_section": "1910.303",
       "caught": 1
     },
     {
       "log_id": "LOG-1277",
-      "type": "electrical",
-      "expected": "29 CFR 1910.333",
-      "rank": 3,
-      "matched_section": "1910.333",
+      "type": "housekeeping",
+      "expected_section": "1910.22",
+      "expected": "29 CFR 1910.22",
+      "rank": 2,
+      "matched_section": "1910.22",
       "caught": 1
     },
     {
       "log_id": "LOG-1279",
-      "type": "electrical",
-      "expected": "29 CFR 1910.333",
-      "rank": 3,
-      "matched_section": "1910.333",
+      "type": "duty_limit",
+      "expected_section": "21103",
+      "expected": "49 U.S.C. 21103",
+      "rank": 1,
+      "matched_section": "21103",
+      "caught": 0
+    },
+    {
+      "log_id": "LOG-1281",
+      "type": "aisle_obstruction",
+      "expected_section": "1910.176",
+      "expected": "29 CFR 1910.176",
+      "rank": 5,
+      "matched_section": "1910.176",
       "caught": 1
     },
     {
       "log_id": "LOG-1282",
-      "type": "electrical",
-      "expected": "29 CFR 1910.333",
-      "rank": 3,
-      "matched_section": "1910.333",
+      "type": "duty_records",
+      "expected_section": "228.11",
+      "expected": "49 CFR 228.11",
+      "rank": 6,
+      "matched_section": "228.11",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1288",
+      "type": "rim_wheel",
+      "expected_section": "1910.177",
+      "expected": "29 CFR 1910.177",
+      "rank": 5,
+      "matched_section": "1910.177",
       "caught": 1
     },
     {
       "log_id": "LOG-1290",
-      "type": "electrical",
-      "expected": "29 CFR 1910.333",
-      "rank": 3,
-      "matched_section": "1910.333",
+      "type": "fall_protection",
+      "expected_section": "1910.28",
+      "expected": "29 CFR 1910.28",
+      "rank": 5,
+      "matched_section": "1910.28",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1291",
+      "type": "crane_inspection",
+      "expected_section": "1910.179",
+      "expected": "29 CFR 1910.179",
+      "rank": 4,
+      "matched_section": "1910.179",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1293",
+      "type": "electrical_ppe",
+      "expected_section": "1910.335",
+      "expected": "29 CFR 1910.335",
+      "rank": 6,
+      "matched_section": "1910.335",
       "caught": 1
     },
     {
       "log_id": "LOG-1301",
-      "type": "fatigue",
-      "expected": "49 CFR 228",
-      "rank": 1,
-      "matched_section": "228.5",
+      "type": "stairway",
+      "expected_section": "1910.25",
+      "expected": "29 CFR 1910.25",
+      "rank": 10,
+      "matched_section": "1910.25",
+      "caught": 0
+    },
+    {
+      "log_id": "LOG-1306",
+      "type": "live_parts",
+      "expected_section": "1910.303",
+      "expected": "29 CFR 1910.303",
+      "rank": 4,
+      "matched_section": "1910.303",
       "caught": 1
     },
     {
+      "log_id": "LOG-1308",
+      "type": "guardrail",
+      "expected_section": "1910.29",
+      "expected": "29 CFR 1910.29",
+      "rank": 37,
+      "matched_section": "1910.29",
+      "caught": 0
+    },
+    {
       "log_id": "LOG-1314",
-      "type": "electrical",
-      "expected": "29 CFR 1910.333",
-      "rank": 3,
-      "matched_section": "1910.333",
+      "type": "dockboard",
+      "expected_section": "1910.26",
+      "expected": "29 CFR 1910.26",
+      "rank": 5,
+      "matched_section": "1910.26",
       "caught": 1
     },
     {
       "log_id": "LOG-1317",
-      "type": "fatigue",
-      "expected": "49 CFR 228",
-      "rank": 1,
-      "matched_section": "228.5",
+      "type": "dockboard",
+      "expected_section": "1910.26",
+      "expected": "29 CFR 1910.26",
+      "rank": 5,
+      "matched_section": "1910.26",
       "caught": 1
     },
     {
       "log_id": "LOG-1322",
-      "type": "spill",
+      "type": "housekeeping",
+      "expected_section": "1910.22",
       "expected": "29 CFR 1910.22",
       "rank": 2,
       "matched_section": "1910.22",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1323",
+      "type": "live_parts",
+      "expected_section": "1910.303",
+      "expected": "29 CFR 1910.303",
+      "rank": 60,
+      "matched_section": "1910.303",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1338",
+      "type": "rim_wheel",
+      "expected_section": "1910.177",
+      "expected": "29 CFR 1910.177",
+      "rank": 5,
+      "matched_section": "1910.177",
       "caught": 1
     },
     {
       "log_id": "LOG-1342",
-      "type": "electrical",
+      "type": "ladder",
+      "expected_section": "1910.23",
+      "expected": "29 CFR 1910.23",
+      "rank": 6,
+      "matched_section": "1910.23",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1347",
+      "type": "fall_protection",
+      "expected_section": "1910.28",
+      "expected": "29 CFR 1910.28",
+      "rank": 21,
+      "matched_section": "1910.28",
+      "caught": 0
+    },
+    {
+      "log_id": "LOG-1348",
+      "type": "fall_protection",
+      "expected_section": "1910.28",
+      "expected": "29 CFR 1910.28",
+      "rank": 11,
+      "matched_section": "1910.28",
+      "caught": 0
+    },
+    {
+      "log_id": "LOG-1371",
+      "type": "electrical_ppe",
+      "expected_section": "1910.335",
+      "expected": "29 CFR 1910.335",
+      "rank": 6,
+      "matched_section": "1910.335",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1394",
+      "type": "approach_distance",
+      "expected_section": "1910.333",
       "expected": "29 CFR 1910.333",
       "rank": 3,
       "matched_section": "1910.333",
       "caught": 1
     },
     {
-      "log_id": "LOG-1348",
-      "type": "fatigue",
-      "expected": "49 CFR 228",
-      "rank": 1,
-      "matched_section": "228.5",
+      "log_id": "LOG-1398",
+      "type": "fall_protection",
+      "expected_section": "1910.28",
+      "expected": "29 CFR 1910.28",
+      "rank": 5,
+      "matched_section": "1910.28",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1404",
+      "type": "truck_defect",
+      "expected_section": "1910.178",
+      "expected": "29 CFR 1910.178",
+      "rank": 38,
+      "matched_section": "1910.178",
+      "caught": 0
+    },
+    {
+      "log_id": "LOG-1409",
+      "type": "guardrail",
+      "expected_section": "1910.29",
+      "expected": "29 CFR 1910.29",
+      "rank": 3,
+      "matched_section": "1910.29",
+      "caught": 0
+    },
+    {
+      "log_id": "LOG-1418",
+      "type": "aisle_obstruction",
+      "expected_section": "1910.176",
+      "expected": "29 CFR 1910.176",
+      "rank": 6,
+      "matched_section": "1910.176",
       "caught": 1
     },
     {
       "log_id": "LOG-1421",
-      "type": "electrical",
-      "expected": "29 CFR 1910.333",
-      "rank": 3,
-      "matched_section": "1910.333",
-      "caught": 1
+      "type": "duty_records",
+      "expected_section": "228.11",
+      "expected": "49 CFR 228.11",
+      "rank": 6,
+      "matched_section": "228.11",
+      "caught": 0
+    },
+    {
+      "log_id": "LOG-1425",
+      "type": "guardrail",
+      "expected_section": "1910.29",
+      "expected": "29 CFR 1910.29",
+      "rank": 35,
+      "matched_section": "1910.29",
+      "caught": 0
     },
     {
       "log_id": "LOG-1429",
-      "type": "spill",
-      "expected": "29 CFR 1910.22",
-      "rank": 2,
-      "matched_section": "1910.22",
-      "caught": 1
+      "type": "duty_records",
+      "expected_section": "228.11",
+      "expected": "49 CFR 228.11",
+      "rank": 5,
+      "matched_section": "228.11",
+      "caught": 0
     },
     {
       "log_id": "LOG-1434",
-      "type": "fatigue",
-      "expected": "49 CFR 228",
-      "rank": 1,
-      "matched_section": "228.5",
+      "type": "dockboard",
+      "expected_section": "1910.26",
+      "expected": "29 CFR 1910.26",
+      "rank": 5,
+      "matched_section": "1910.26",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1437",
+      "type": "live_parts",
+      "expected_section": "1910.303",
+      "expected": "29 CFR 1910.303",
+      "rank": 39,
+      "matched_section": "1910.303",
       "caught": 1
     },
     {
       "log_id": "LOG-1439",
-      "type": "electrical",
+      "type": "ladder",
+      "expected_section": "1910.23",
+      "expected": "29 CFR 1910.23",
+      "rank": 6,
+      "matched_section": "1910.23",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1442",
+      "type": "duty_limit",
+      "expected_section": "21103",
+      "expected": "49 U.S.C. 21103",
+      "rank": 1,
+      "matched_section": "21103",
+      "caught": 0
+    },
+    {
+      "log_id": "LOG-1443",
+      "type": "approach_distance",
+      "expected_section": "1910.333",
       "expected": "29 CFR 1910.333",
       "rank": 3,
       "matched_section": "1910.333",
       "caught": 1
     },
     {
-      "log_id": "LOG-1442",
-      "type": "spill",
-      "expected": "29 CFR 1910.22",
-      "rank": 2,
-      "matched_section": "1910.22",
+      "log_id": "LOG-1445",
+      "type": "rim_wheel",
+      "expected_section": "1910.177",
+      "expected": "29 CFR 1910.177",
+      "rank": 5,
+      "matched_section": "1910.177",
       "caught": 1
     },
     {
       "log_id": "LOG-1463",
-      "type": "fatigue",
-      "expected": "49 CFR 228",
-      "rank": 1,
-      "matched_section": "228.5",
-      "caught": 1
+      "type": "stairway",
+      "expected_section": "1910.25",
+      "expected": "29 CFR 1910.25",
+      "rank": 90,
+      "matched_section": "1910.25",
+      "caught": 0
     },
     {
       "log_id": "LOG-1472",
-      "type": "spill",
+      "type": "housekeeping",
+      "expected_section": "1910.22",
       "expected": "29 CFR 1910.22",
       "rank": 2,
       "matched_section": "1910.22",
@@ -211,103 +606,305 @@
     },
     {
       "log_id": "LOG-1474",
-      "type": "electrical",
-      "expected": "29 CFR 1910.333",
-      "rank": 3,
-      "matched_section": "1910.333",
-      "caught": 1
+      "type": "duty_limit",
+      "expected_section": "21103",
+      "expected": "49 U.S.C. 21103",
+      "rank": 1,
+      "matched_section": "21103",
+      "caught": 0
     },
     {
       "log_id": "LOG-1485",
-      "type": "spill",
+      "type": "housekeeping",
+      "expected_section": "1910.22",
       "expected": "29 CFR 1910.22",
       "rank": 2,
       "matched_section": "1910.22",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1487",
+      "type": "electrical_ppe",
+      "expected_section": "1910.335",
+      "expected": "29 CFR 1910.335",
+      "rank": 25,
+      "matched_section": "1910.335",
+      "caught": 0
+    },
+    {
+      "log_id": "LOG-1490",
+      "type": "aisle_obstruction",
+      "expected_section": "1910.176",
+      "expected": "29 CFR 1910.176",
+      "rank": 6,
+      "matched_section": "1910.176",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1495",
+      "type": "sling",
+      "expected_section": "1910.184",
+      "expected": "29 CFR 1910.184",
+      "rank": 6,
+      "matched_section": "1910.184",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1496",
+      "type": "truck_defect",
+      "expected_section": "1910.178",
+      "expected": "29 CFR 1910.178",
+      "rank": 10,
+      "matched_section": "1910.178",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1508",
+      "type": "truck_defect",
+      "expected_section": "1910.178",
+      "expected": "29 CFR 1910.178",
+      "rank": 9,
+      "matched_section": "1910.178",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1517",
+      "type": "guardrail",
+      "expected_section": "1910.29",
+      "expected": "29 CFR 1910.29",
+      "rank": 11,
+      "matched_section": "1910.29",
+      "caught": 0
+    },
+    {
+      "log_id": "LOG-1521",
+      "type": "crane_inspection",
+      "expected_section": "1910.179",
+      "expected": "29 CFR 1910.179",
+      "rank": 4,
+      "matched_section": "1910.179",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1534",
+      "type": "truck_defect",
+      "expected_section": "1910.178",
+      "expected": "29 CFR 1910.178",
+      "rank": 27,
+      "matched_section": "1910.178",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1537",
+      "type": "sling",
+      "expected_section": "1910.184",
+      "expected": "29 CFR 1910.184",
+      "rank": 12,
+      "matched_section": "1910.184",
       "caught": 1
     },
     {
       "log_id": "LOG-1540",
-      "type": "fatigue",
-      "expected": "49 CFR 228",
-      "rank": 1,
-      "matched_section": "228.5",
-      "caught": 1
-    },
-    {
-      "log_id": "LOG-1544",
-      "type": "spill",
+      "type": "housekeeping",
+      "expected_section": "1910.22",
       "expected": "29 CFR 1910.22",
       "rank": 2,
       "matched_section": "1910.22",
       "caught": 1
     },
     {
+      "log_id": "LOG-1544",
+      "type": "stairway",
+      "expected_section": "1910.25",
+      "expected": "29 CFR 1910.25",
+      "rank": 17,
+      "matched_section": "1910.25",
+      "caught": 1
+    },
+    {
       "log_id": "LOG-1558",
-      "type": "electrical",
+      "type": "fall_protection",
+      "expected_section": "1910.28",
+      "expected": "29 CFR 1910.28",
+      "rank": 5,
+      "matched_section": "1910.28",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1565",
+      "type": "ladder",
+      "expected_section": "1910.23",
+      "expected": "29 CFR 1910.23",
+      "rank": 22,
+      "matched_section": "1910.23",
+      "caught": 0
+    },
+    {
+      "log_id": "LOG-1575",
+      "type": "live_parts",
+      "expected_section": "1910.303",
+      "expected": "29 CFR 1910.303",
+      "rank": 31,
+      "matched_section": "1910.303",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1588",
+      "type": "duty_limit",
+      "expected_section": "21103",
+      "expected": "49 U.S.C. 21103",
+      "rank": 1,
+      "matched_section": "21103",
+      "caught": 0
+    },
+    {
+      "log_id": "LOG-1589",
+      "type": "live_parts",
+      "expected_section": "1910.303",
+      "expected": "29 CFR 1910.303",
+      "rank": 28,
+      "matched_section": "1910.303",
+      "caught": 0
+    },
+    {
+      "log_id": "LOG-1591",
+      "type": "fall_protection",
+      "expected_section": "1910.28",
+      "expected": "29 CFR 1910.28",
+      "rank": 6,
+      "matched_section": "1910.28",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1594",
+      "type": "crane_inspection",
+      "expected_section": "1910.179",
+      "expected": "29 CFR 1910.179",
+      "rank": 4,
+      "matched_section": "1910.179",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1615",
+      "type": "crane_inspection",
+      "expected_section": "1910.179",
+      "expected": "29 CFR 1910.179",
+      "rank": 4,
+      "matched_section": "1910.179",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1623",
+      "type": "ladder",
+      "expected_section": "1910.23",
+      "expected": "29 CFR 1910.23",
+      "rank": 5,
+      "matched_section": "1910.23",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1670",
+      "type": "duty_limit",
+      "expected_section": "21103",
+      "expected": "49 U.S.C. 21103",
+      "rank": 1,
+      "matched_section": "21103",
+      "caught": 0
+    },
+    {
+      "log_id": "LOG-1674",
+      "type": "guardrail",
+      "expected_section": "1910.29",
+      "expected": "29 CFR 1910.29",
+      "rank": 9,
+      "matched_section": "1910.29",
+      "caught": 0
+    },
+    {
+      "log_id": "LOG-1676",
+      "type": "ladder",
+      "expected_section": "1910.23",
+      "expected": "29 CFR 1910.23",
+      "rank": 4,
+      "matched_section": "1910.23",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1677",
+      "type": "sling",
+      "expected_section": "1910.184",
+      "expected": "29 CFR 1910.184",
+      "rank": 5,
+      "matched_section": "1910.184",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1682",
+      "type": "sling",
+      "expected_section": "1910.184",
+      "expected": "29 CFR 1910.184",
+      "rank": 5,
+      "matched_section": "1910.184",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1688",
+      "type": "guardrail",
+      "expected_section": "1910.29",
+      "expected": "29 CFR 1910.29",
+      "rank": 5,
+      "matched_section": "1910.29",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1690",
+      "type": "dockboard",
+      "expected_section": "1910.26",
+      "expected": "29 CFR 1910.26",
+      "rank": 5,
+      "matched_section": "1910.26",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1692",
+      "type": "ladder",
+      "expected_section": "1910.23",
+      "expected": "29 CFR 1910.23",
+      "rank": 6,
+      "matched_section": "1910.23",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1696",
+      "type": "approach_distance",
+      "expected_section": "1910.333",
       "expected": "29 CFR 1910.333",
       "rank": 3,
       "matched_section": "1910.333",
       "caught": 1
     },
     {
-      "log_id": "LOG-1565",
-      "type": "fatigue",
-      "expected": "49 CFR 228",
-      "rank": 1,
-      "matched_section": "228.5",
-      "caught": 1
-    },
-    {
-      "log_id": "LOG-1588",
-      "type": "fatigue",
-      "expected": "49 CFR 228",
-      "rank": 1,
-      "matched_section": "228.5",
-      "caught": 1
-    },
-    {
-      "log_id": "LOG-1623",
-      "type": "fatigue",
-      "expected": "49 CFR 228",
-      "rank": 1,
-      "matched_section": "228.5",
-      "caught": 1
-    },
-    {
-      "log_id": "LOG-1670",
-      "type": "fatigue",
-      "expected": "49 CFR 228",
-      "rank": 1,
-      "matched_section": "228.5",
-      "caught": 1
-    },
-    {
-      "log_id": "LOG-1676",
-      "type": "fatigue",
-      "expected": "49 CFR 228",
-      "rank": 1,
-      "matched_section": "228.5",
-      "caught": 1
-    },
-    {
-      "log_id": "LOG-1690",
-      "type": "spill",
-      "expected": "29 CFR 1910.22",
-      "rank": 2,
-      "matched_section": "1910.22",
-      "caught": 1
-    },
-    {
-      "log_id": "LOG-1692",
-      "type": "spill",
-      "expected": "29 CFR 1910.22",
-      "rank": 2,
-      "matched_section": "1910.22",
+      "log_id": "LOG-1698",
+      "type": "aisle_obstruction",
+      "expected_section": "1910.176",
+      "expected": "29 CFR 1910.176",
+      "rank": 5,
+      "matched_section": "1910.176",
       "caught": 1
     },
     {
       "log_id": "LOG-1705",
-      "type": "electrical",
+      "type": "stairway",
+      "expected_section": "1910.25",
+      "expected": "29 CFR 1910.25",
+      "rank": 5,
+      "matched_section": "1910.25",
+      "caught": 0
+    },
+    {
+      "log_id": "LOG-1711",
+      "type": "approach_distance",
+      "expected_section": "1910.333",
       "expected": "29 CFR 1910.333",
       "rank": 3,
       "matched_section": "1910.333",
@@ -315,202 +912,421 @@
     },
     {
       "log_id": "LOG-1721",
-      "type": "electrical",
-      "expected": "29 CFR 1910.333",
-      "rank": 3,
-      "matched_section": "1910.333",
-      "caught": 1
+      "type": "duty_limit",
+      "expected_section": "21103",
+      "expected": "49 U.S.C. 21103",
+      "rank": 1,
+      "matched_section": "21103",
+      "caught": 0
     },
     {
       "log_id": "LOG-1724",
-      "type": "fatigue",
-      "expected": "49 CFR 228",
-      "rank": 1,
-      "matched_section": "228.5",
+      "type": "duty_records",
+      "expected_section": "228.11",
+      "expected": "49 CFR 228.11",
+      "rank": 3,
+      "matched_section": "228.11",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1733",
+      "type": "rim_wheel",
+      "expected_section": "1910.177",
+      "expected": "29 CFR 1910.177",
+      "rank": 5,
+      "matched_section": "1910.177",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1750",
+      "type": "rim_wheel",
+      "expected_section": "1910.177",
+      "expected": "29 CFR 1910.177",
+      "rank": 5,
+      "matched_section": "1910.177",
       "caught": 1
     },
     {
       "log_id": "LOG-1754",
-      "type": "electrical",
-      "expected": "29 CFR 1910.333",
-      "rank": 3,
-      "matched_section": "1910.333",
+      "type": "dockboard",
+      "expected_section": "1910.26",
+      "expected": "29 CFR 1910.26",
+      "rank": 5,
+      "matched_section": "1910.26",
       "caught": 1
     },
     {
       "log_id": "LOG-1755",
-      "type": "spill",
-      "expected": "29 CFR 1910.22",
-      "rank": 2,
-      "matched_section": "1910.22",
-      "caught": 1
+      "type": "duty_limit",
+      "expected_section": "21103",
+      "expected": "49 U.S.C. 21103",
+      "rank": 1,
+      "matched_section": "21103",
+      "caught": 0
     },
     {
       "log_id": "LOG-1759",
-      "type": "spill",
-      "expected": "29 CFR 1910.22",
-      "rank": 2,
-      "matched_section": "1910.22",
+      "type": "ladder",
+      "expected_section": "1910.23",
+      "expected": "29 CFR 1910.23",
+      "rank": 5,
+      "matched_section": "1910.23",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1763",
+      "type": "live_parts",
+      "expected_section": "1910.303",
+      "expected": "29 CFR 1910.303",
+      "rank": 38,
+      "matched_section": "1910.303",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1768",
+      "type": "crane_inspection",
+      "expected_section": "1910.179",
+      "expected": "29 CFR 1910.179",
+      "rank": 4,
+      "matched_section": "1910.179",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1777",
+      "type": "crane_inspection",
+      "expected_section": "1910.179",
+      "expected": "29 CFR 1910.179",
+      "rank": 4,
+      "matched_section": "1910.179",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1779",
+      "type": "aisle_obstruction",
+      "expected_section": "1910.176",
+      "expected": "29 CFR 1910.176",
+      "rank": 6,
+      "matched_section": "1910.176",
       "caught": 1
     },
     {
       "log_id": "LOG-1787",
-      "type": "spill",
-      "expected": "29 CFR 1910.22",
-      "rank": 2,
-      "matched_section": "1910.22",
+      "type": "duty_limit",
+      "expected_section": "21103",
+      "expected": "49 U.S.C. 21103",
+      "rank": 1,
+      "matched_section": "21103",
+      "caught": 0
+    },
+    {
+      "log_id": "LOG-1798",
+      "type": "rim_wheel",
+      "expected_section": "1910.177",
+      "expected": "29 CFR 1910.177",
+      "rank": 5,
+      "matched_section": "1910.177",
       "caught": 1
     },
     {
       "log_id": "LOG-1810",
-      "type": "fatigue",
-      "expected": "49 CFR 228",
+      "type": "duty_limit",
+      "expected_section": "21103",
+      "expected": "49 U.S.C. 21103",
       "rank": 1,
-      "matched_section": "228.5",
+      "matched_section": "21103",
       "caught": 1
     },
     {
       "log_id": "LOG-1817",
-      "type": "fatigue",
-      "expected": "49 CFR 228",
-      "rank": 1,
-      "matched_section": "228.5",
-      "caught": 1
+      "type": "duty_records",
+      "expected_section": "228.11",
+      "expected": "49 CFR 228.11",
+      "rank": 5,
+      "matched_section": "228.11",
+      "caught": 0
     },
     {
       "log_id": "LOG-1824",
-      "type": "fatigue",
-      "expected": "49 CFR 228",
-      "rank": 1,
-      "matched_section": "228.5",
-      "caught": 1
+      "type": "duty_records",
+      "expected_section": "228.11",
+      "expected": "49 CFR 228.11",
+      "rank": 5,
+      "matched_section": "228.11",
+      "caught": 0
     },
     {
       "log_id": "LOG-1829",
-      "type": "fatigue",
-      "expected": "49 CFR 228",
-      "rank": 1,
-      "matched_section": "228.5",
+      "type": "housekeeping",
+      "expected_section": "1910.22",
+      "expected": "29 CFR 1910.22",
+      "rank": 2,
+      "matched_section": "1910.22",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1832",
+      "type": "crane_inspection",
+      "expected_section": "1910.179",
+      "expected": "29 CFR 1910.179",
+      "rank": 4,
+      "matched_section": "1910.179",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1850",
+      "type": "aisle_obstruction",
+      "expected_section": "1910.176",
+      "expected": "29 CFR 1910.176",
+      "rank": 6,
+      "matched_section": "1910.176",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1859",
+      "type": "sling",
+      "expected_section": "1910.184",
+      "expected": "29 CFR 1910.184",
+      "rank": 3,
+      "matched_section": "1910.184",
       "caught": 1
     },
     {
       "log_id": "LOG-1863",
-      "type": "spill",
-      "expected": "29 CFR 1910.22",
-      "rank": 2,
-      "matched_section": "1910.22",
-      "caught": 1
+      "type": "duty_records",
+      "expected_section": "228.11",
+      "expected": "49 CFR 228.11",
+      "rank": 5,
+      "matched_section": "228.11",
+      "caught": 0
     },
     {
       "log_id": "LOG-1869",
-      "type": "spill",
+      "type": "stairway",
+      "expected_section": "1910.25",
+      "expected": "29 CFR 1910.25",
+      "rank": 56,
+      "matched_section": "1910.25",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1887",
+      "type": "truck_defect",
+      "expected_section": "1910.178",
+      "expected": "29 CFR 1910.178",
+      "rank": 6,
+      "matched_section": "1910.178",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1889",
+      "type": "guardrail",
+      "expected_section": "1910.29",
+      "expected": "29 CFR 1910.29",
+      "rank": 8,
+      "matched_section": "1910.29",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1892",
+      "type": "aisle_obstruction",
+      "expected_section": "1910.176",
+      "expected": "29 CFR 1910.176",
+      "rank": 3,
+      "matched_section": "1910.176",
+      "caught": 0
+    },
+    {
+      "log_id": "LOG-1894",
+      "type": "housekeeping",
+      "expected_section": "1910.22",
       "expected": "29 CFR 1910.22",
       "rank": 2,
       "matched_section": "1910.22",
       "caught": 1
     },
     {
-      "log_id": "LOG-1894",
-      "type": "fatigue",
-      "expected": "49 CFR 228",
-      "rank": 1,
-      "matched_section": "228.5",
+      "log_id": "LOG-1900",
+      "type": "sling",
+      "expected_section": "1910.184",
+      "expected": "29 CFR 1910.184",
+      "rank": 5,
+      "matched_section": "1910.184",
       "caught": 1
     },
     {
       "log_id": "LOG-1906",
-      "type": "fatigue",
-      "expected": "49 CFR 228",
-      "rank": 1,
-      "matched_section": "228.5",
+      "type": "stairway",
+      "expected_section": "1910.25",
+      "expected": "29 CFR 1910.25",
+      "rank": 16,
+      "matched_section": "1910.25",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1911",
+      "type": "truck_defect",
+      "expected_section": "1910.178",
+      "expected": "29 CFR 1910.178",
+      "rank": 8,
+      "matched_section": "1910.178",
       "caught": 1
     },
     {
       "log_id": "LOG-1915",
-      "type": "spill",
-      "expected": "29 CFR 1910.22",
-      "rank": 2,
-      "matched_section": "1910.22",
+      "type": "dockboard",
+      "expected_section": "1910.26",
+      "expected": "29 CFR 1910.26",
+      "rank": 5,
+      "matched_section": "1910.26",
       "caught": 1
     },
     {
       "log_id": "LOG-1916",
-      "type": "electrical",
-      "expected": "29 CFR 1910.333",
-      "rank": 3,
-      "matched_section": "1910.333",
+      "type": "housekeeping",
+      "expected_section": "1910.22",
+      "expected": "29 CFR 1910.22",
+      "rank": 2,
+      "matched_section": "1910.22",
       "caught": 1
     },
     {
       "log_id": "LOG-1918",
-      "type": "electrical",
+      "type": "ladder",
+      "expected_section": "1910.23",
+      "expected": "29 CFR 1910.23",
+      "rank": 12,
+      "matched_section": "1910.23",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1920",
+      "type": "approach_distance",
+      "expected_section": "1910.333",
       "expected": "29 CFR 1910.333",
       "rank": 3,
       "matched_section": "1910.333",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1926",
+      "type": "aisle_obstruction",
+      "expected_section": "1910.176",
+      "expected": "29 CFR 1910.176",
+      "rank": 5,
+      "matched_section": "1910.176",
+      "caught": 0
+    },
+    {
+      "log_id": "LOG-1937",
+      "type": "rim_wheel",
+      "expected_section": "1910.177",
+      "expected": "29 CFR 1910.177",
+      "rank": 5,
+      "matched_section": "1910.177",
       "caught": 1
     },
     {
       "log_id": "LOG-1953",
-      "type": "spill",
-      "expected": "29 CFR 1910.22",
-      "rank": 2,
-      "matched_section": "1910.22",
+      "type": "ladder",
+      "expected_section": "1910.23",
+      "expected": "29 CFR 1910.23",
+      "rank": 6,
+      "matched_section": "1910.23",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1954",
+      "type": "sling",
+      "expected_section": "1910.184",
+      "expected": "29 CFR 1910.184",
+      "rank": 3,
+      "matched_section": "1910.184",
       "caught": 1
     },
     {
       "log_id": "LOG-1960",
-      "type": "spill",
-      "expected": "29 CFR 1910.22",
-      "rank": 2,
-      "matched_section": "1910.22",
+      "type": "stairway",
+      "expected_section": "1910.25",
+      "expected": "29 CFR 1910.25",
+      "rank": 47,
+      "matched_section": "1910.25",
+      "caught": 0
+    },
+    {
+      "log_id": "LOG-1965",
+      "type": "aisle_obstruction",
+      "expected_section": "1910.176",
+      "expected": "29 CFR 1910.176",
+      "rank": 5,
+      "matched_section": "1910.176",
       "caught": 1
     },
     {
-      "log_id": "LOG-1980",
-      "type": "electrical",
+      "log_id": "LOG-1979",
+      "type": "approach_distance",
+      "expected_section": "1910.333",
       "expected": "29 CFR 1910.333",
       "rank": 3,
       "matched_section": "1910.333",
       "caught": 1
     },
     {
-      "log_id": "LOG-1989",
-      "type": "electrical",
-      "expected": "29 CFR 1910.333",
-      "rank": 3,
-      "matched_section": "1910.333",
+      "log_id": "LOG-1982",
+      "type": "guardrail",
+      "expected_section": "1910.29",
+      "expected": "29 CFR 1910.29",
+      "rank": 5,
+      "matched_section": "1910.29",
+      "caught": 0
+    },
+    {
+      "log_id": "LOG-1988",
+      "type": "live_parts",
+      "expected_section": "1910.303",
+      "expected": "29 CFR 1910.303",
+      "rank": 28,
+      "matched_section": "1910.303",
+      "caught": 1
+    },
+    {
+      "log_id": "LOG-1995",
+      "type": "crane_inspection",
+      "expected_section": "1910.179",
+      "expected": "29 CFR 1910.179",
+      "rank": 4,
+      "matched_section": "1910.179",
       "caught": 1
     }
   ],
   "summary": {
-    "violations": 60,
-    "in_corpus": 60,
+    "violations": 144,
+    "in_corpus": 144,
     "not_in_corpus": 0,
     "recall_at": {
-      "1": 0.3333333333333333,
-      "2": 0.6666666666666666,
-      "4": 1.0,
-      "8": 1.0,
-      "16": 1.0,
-      "32": 1.0,
-      "64": 1.0
+      "1": 0.0625,
+      "2": 0.125,
+      "4": 0.3055555555555556,
+      "8": 0.7361111111111112,
+      "16": 0.8263888888888888,
+      "32": 0.9097222222222222,
+      "64": 0.9930555555555556
     },
     "quadrants": {
-      "caught_retrieved": 60,
-      "caught_not_retrieved": 0,
-      "missed_retrieved": 0,
-      "missed_not_retrieved": 0
+      "caught_retrieved": 32,
+      "caught_not_retrieved": 71,
+      "missed_retrieved": 12,
+      "missed_not_retrieved": 29
     },
-    "median_rank": 2,
-    "worst_rank": 3,
+    "median_rank": 5,
+    "worst_rank": 90,
     "citations": {
-      "caught": 60,
-      "cited_a_real_section": 60,
-      "cited_the_correct_rule": 60,
+      "caught": 103,
+      "cited_a_real_section": 103,
+      "cited_the_correct_rule": 59,
       "detail": [
         {
-          "log_id": "LOG-1006",
-          "type": "electrical",
+          "log_id": "LOG-1000",
+          "type": "approach_distance",
           "expected": "29 CFR 1910.333",
           "cited": "1910.333",
           "exists": true,
@@ -518,311 +1334,551 @@
         },
         {
           "log_id": "LOG-1011",
-          "type": "fatigue",
-          "expected": "49 CFR 228",
-          "cited": "228.405",
-          "exists": true,
-          "correct": true
-        },
-        {
-          "log_id": "LOG-1051",
-          "type": "spill",
+          "type": "housekeeping",
           "expected": "29 CFR 1910.22",
           "cited": "1910.22",
           "exists": true,
           "correct": true
         },
         {
-          "log_id": "LOG-1093",
-          "type": "fatigue",
-          "expected": "49 CFR 228",
-          "cited": "228.405",
+          "log_id": "LOG-1024",
+          "type": "rim_wheel",
+          "expected": "29 CFR 1910.177",
+          "cited": "1910.177",
           "exists": true,
           "correct": true
         },
         {
-          "log_id": "LOG-1224",
-          "type": "electrical",
-          "expected": "29 CFR 1910.333",
+          "log_id": "LOG-1043",
+          "type": "electrical_ppe",
+          "expected": "29 CFR 1910.335",
           "cited": "1910.333",
           "exists": true,
+          "correct": false
+        },
+        {
+          "log_id": "LOG-1058",
+          "type": "rim_wheel",
+          "expected": "29 CFR 1910.177",
+          "cited": "1910.177",
+          "exists": true,
           "correct": true
+        },
+        {
+          "log_id": "LOG-1071",
+          "type": "sling",
+          "expected": "29 CFR 1910.184",
+          "cited": "1910.179",
+          "exists": true,
+          "correct": false
+        },
+        {
+          "log_id": "LOG-1132",
+          "type": "electrical_ppe",
+          "expected": "29 CFR 1910.335",
+          "cited": "1910.333",
+          "exists": true,
+          "correct": false
+        },
+        {
+          "log_id": "LOG-1150",
+          "type": "electrical_ppe",
+          "expected": "29 CFR 1910.335",
+          "cited": "1910.333",
+          "exists": true,
+          "correct": false
+        },
+        {
+          "log_id": "LOG-1162",
+          "type": "electrical_ppe",
+          "expected": "29 CFR 1910.335",
+          "cited": "1910.333",
+          "exists": true,
+          "correct": false
+        },
+        {
+          "log_id": "LOG-1163",
+          "type": "crane_inspection",
+          "expected": "29 CFR 1910.179",
+          "cited": "228.5",
+          "exists": true,
+          "correct": false
+        },
+        {
+          "log_id": "LOG-1183",
+          "type": "electrical_ppe",
+          "expected": "29 CFR 1910.335",
+          "cited": "1910.333",
+          "exists": true,
+          "correct": false
+        },
+        {
+          "log_id": "LOG-1222",
+          "type": "truck_defect",
+          "expected": "29 CFR 1910.178",
+          "cited": "1910.22",
+          "exists": true,
+          "correct": false
         },
         {
           "log_id": "LOG-1228",
-          "type": "electrical",
-          "expected": "29 CFR 1910.333",
-          "cited": "1910.333",
+          "type": "stairway",
+          "expected": "29 CFR 1910.25",
+          "cited": "1910.25",
           "exists": true,
           "correct": true
         },
         {
           "log_id": "LOG-1233",
-          "type": "spill",
-          "expected": "29 CFR 1910.22",
-          "cited": "1910.22",
+          "type": "dockboard",
+          "expected": "29 CFR 1910.26",
+          "cited": "1910.26",
           "exists": true,
           "correct": true
         },
         {
-          "log_id": "LOG-1258",
-          "type": "spill",
-          "expected": "29 CFR 1910.22",
+          "log_id": "LOG-1237",
+          "type": "truck_defect",
+          "expected": "29 CFR 1910.178",
           "cited": "1910.22",
+          "exists": true,
+          "correct": false
+        },
+        {
+          "log_id": "LOG-1239",
+          "type": "live_parts",
+          "expected": "29 CFR 1910.303",
+          "cited": "1910.333",
+          "exists": true,
+          "correct": false
+        },
+        {
+          "log_id": "LOG-1250",
+          "type": "electrical_ppe",
+          "expected": "29 CFR 1910.335",
+          "cited": "1910.333",
+          "exists": true,
+          "correct": false
+        },
+        {
+          "log_id": "LOG-1259",
+          "type": "sling",
+          "expected": "29 CFR 1910.184",
+          "cited": "1910.184",
           "exists": true,
           "correct": true
         },
         {
           "log_id": "LOG-1262",
-          "type": "spill",
+          "type": "fall_protection",
+          "expected": "29 CFR 1910.28",
+          "cited": "1910.28",
+          "exists": true,
+          "correct": true
+        },
+        {
+          "log_id": "LOG-1263",
+          "type": "truck_defect",
+          "expected": "29 CFR 1910.178",
+          "cited": "1910.22",
+          "exists": true,
+          "correct": false
+        },
+        {
+          "log_id": "LOG-1276",
+          "type": "live_parts",
+          "expected": "29 CFR 1910.303",
+          "cited": "1910.333",
+          "exists": true,
+          "correct": false
+        },
+        {
+          "log_id": "LOG-1277",
+          "type": "housekeeping",
           "expected": "29 CFR 1910.22",
           "cited": "1910.22",
           "exists": true,
           "correct": true
         },
         {
-          "log_id": "LOG-1277",
-          "type": "electrical",
-          "expected": "29 CFR 1910.333",
-          "cited": "1910.333",
-          "exists": true,
-          "correct": true
-        },
-        {
-          "log_id": "LOG-1279",
-          "type": "electrical",
-          "expected": "29 CFR 1910.333",
-          "cited": "1910.333",
+          "log_id": "LOG-1281",
+          "type": "aisle_obstruction",
+          "expected": "29 CFR 1910.176",
+          "cited": "1910.176",
           "exists": true,
           "correct": true
         },
         {
           "log_id": "LOG-1282",
-          "type": "electrical",
-          "expected": "29 CFR 1910.333",
+          "type": "duty_records",
+          "expected": "49 CFR 228.11",
           "cited": "1910.333",
+          "exists": true,
+          "correct": false
+        },
+        {
+          "log_id": "LOG-1288",
+          "type": "rim_wheel",
+          "expected": "29 CFR 1910.177",
+          "cited": "1910.177",
           "exists": true,
           "correct": true
         },
         {
           "log_id": "LOG-1290",
-          "type": "electrical",
-          "expected": "29 CFR 1910.333",
-          "cited": "1910.333",
+          "type": "fall_protection",
+          "expected": "29 CFR 1910.28",
+          "cited": "1910.28",
           "exists": true,
           "correct": true
         },
         {
-          "log_id": "LOG-1301",
-          "type": "fatigue",
-          "expected": "49 CFR 228",
-          "cited": "228.405",
+          "log_id": "LOG-1291",
+          "type": "crane_inspection",
+          "expected": "29 CFR 1910.179",
+          "cited": "1910.179",
           "exists": true,
           "correct": true
+        },
+        {
+          "log_id": "LOG-1293",
+          "type": "electrical_ppe",
+          "expected": "29 CFR 1910.335",
+          "cited": "1910.335",
+          "exists": true,
+          "correct": true
+        },
+        {
+          "log_id": "LOG-1306",
+          "type": "live_parts",
+          "expected": "29 CFR 1910.303",
+          "cited": "1910.333",
+          "exists": true,
+          "correct": false
         },
         {
           "log_id": "LOG-1314",
-          "type": "electrical",
-          "expected": "29 CFR 1910.333",
-          "cited": "1910.333",
+          "type": "dockboard",
+          "expected": "29 CFR 1910.26",
+          "cited": "1910.26",
           "exists": true,
           "correct": true
         },
         {
           "log_id": "LOG-1317",
-          "type": "fatigue",
-          "expected": "49 CFR 228",
-          "cited": "228.405",
+          "type": "dockboard",
+          "expected": "29 CFR 1910.26",
+          "cited": "1910.26",
           "exists": true,
           "correct": true
         },
         {
           "log_id": "LOG-1322",
-          "type": "spill",
+          "type": "housekeeping",
           "expected": "29 CFR 1910.22",
           "cited": "1910.22",
+          "exists": true,
+          "correct": true
+        },
+        {
+          "log_id": "LOG-1323",
+          "type": "live_parts",
+          "expected": "29 CFR 1910.303",
+          "cited": "1910.333",
+          "exists": true,
+          "correct": false
+        },
+        {
+          "log_id": "LOG-1338",
+          "type": "rim_wheel",
+          "expected": "29 CFR 1910.177",
+          "cited": "1910.177",
           "exists": true,
           "correct": true
         },
         {
           "log_id": "LOG-1342",
-          "type": "electrical",
+          "type": "ladder",
+          "expected": "29 CFR 1910.23",
+          "cited": "1910.23",
+          "exists": true,
+          "correct": true
+        },
+        {
+          "log_id": "LOG-1371",
+          "type": "electrical_ppe",
+          "expected": "29 CFR 1910.335",
+          "cited": "1910.335",
+          "exists": true,
+          "correct": true
+        },
+        {
+          "log_id": "LOG-1394",
+          "type": "approach_distance",
           "expected": "29 CFR 1910.333",
           "cited": "1910.333",
           "exists": true,
           "correct": true
         },
         {
-          "log_id": "LOG-1348",
-          "type": "fatigue",
-          "expected": "49 CFR 228",
-          "cited": "228.405",
+          "log_id": "LOG-1398",
+          "type": "fall_protection",
+          "expected": "29 CFR 1910.28",
+          "cited": "1910.28",
           "exists": true,
           "correct": true
         },
         {
-          "log_id": "LOG-1421",
-          "type": "electrical",
-          "expected": "29 CFR 1910.333",
-          "cited": "1910.333",
-          "exists": true,
-          "correct": true
-        },
-        {
-          "log_id": "LOG-1429",
-          "type": "spill",
-          "expected": "29 CFR 1910.22",
-          "cited": "1910.22",
+          "log_id": "LOG-1418",
+          "type": "aisle_obstruction",
+          "expected": "29 CFR 1910.176",
+          "cited": "1910.176",
           "exists": true,
           "correct": true
         },
         {
           "log_id": "LOG-1434",
-          "type": "fatigue",
-          "expected": "49 CFR 228",
-          "cited": "228.405",
+          "type": "dockboard",
+          "expected": "29 CFR 1910.26",
+          "cited": "1910.26",
           "exists": true,
           "correct": true
         },
         {
+          "log_id": "LOG-1437",
+          "type": "live_parts",
+          "expected": "29 CFR 1910.303",
+          "cited": "1910.333",
+          "exists": true,
+          "correct": false
+        },
+        {
           "log_id": "LOG-1439",
-          "type": "electrical",
+          "type": "ladder",
+          "expected": "29 CFR 1910.23",
+          "cited": "1910.23",
+          "exists": true,
+          "correct": true
+        },
+        {
+          "log_id": "LOG-1443",
+          "type": "approach_distance",
           "expected": "29 CFR 1910.333",
           "cited": "1910.333",
           "exists": true,
           "correct": true
         },
         {
-          "log_id": "LOG-1442",
-          "type": "spill",
-          "expected": "29 CFR 1910.22",
-          "cited": "1910.22",
-          "exists": true,
-          "correct": true
-        },
-        {
-          "log_id": "LOG-1463",
-          "type": "fatigue",
-          "expected": "49 CFR 228",
-          "cited": "228.405",
+          "log_id": "LOG-1445",
+          "type": "rim_wheel",
+          "expected": "29 CFR 1910.177",
+          "cited": "1910.177",
           "exists": true,
           "correct": true
         },
         {
           "log_id": "LOG-1472",
-          "type": "spill",
+          "type": "housekeeping",
           "expected": "29 CFR 1910.22",
           "cited": "1910.22",
-          "exists": true,
-          "correct": true
-        },
-        {
-          "log_id": "LOG-1474",
-          "type": "electrical",
-          "expected": "29 CFR 1910.333",
-          "cited": "1910.333",
           "exists": true,
           "correct": true
         },
         {
           "log_id": "LOG-1485",
-          "type": "spill",
+          "type": "housekeeping",
           "expected": "29 CFR 1910.22",
           "cited": "1910.22",
           "exists": true,
           "correct": true
         },
         {
+          "log_id": "LOG-1490",
+          "type": "aisle_obstruction",
+          "expected": "29 CFR 1910.176",
+          "cited": "1910.176",
+          "exists": true,
+          "correct": true
+        },
+        {
+          "log_id": "LOG-1495",
+          "type": "sling",
+          "expected": "29 CFR 1910.184",
+          "cited": "1910.184",
+          "exists": true,
+          "correct": true
+        },
+        {
+          "log_id": "LOG-1496",
+          "type": "truck_defect",
+          "expected": "29 CFR 1910.178",
+          "cited": "1910.22",
+          "exists": true,
+          "correct": false
+        },
+        {
+          "log_id": "LOG-1508",
+          "type": "truck_defect",
+          "expected": "29 CFR 1910.178",
+          "cited": "1910.22",
+          "exists": true,
+          "correct": false
+        },
+        {
+          "log_id": "LOG-1521",
+          "type": "crane_inspection",
+          "expected": "29 CFR 1910.179",
+          "cited": "228.5",
+          "exists": true,
+          "correct": false
+        },
+        {
+          "log_id": "LOG-1534",
+          "type": "truck_defect",
+          "expected": "29 CFR 1910.178",
+          "cited": "1910.22",
+          "exists": true,
+          "correct": false
+        },
+        {
+          "log_id": "LOG-1537",
+          "type": "sling",
+          "expected": "29 CFR 1910.184",
+          "cited": "1910.179",
+          "exists": true,
+          "correct": false
+        },
+        {
           "log_id": "LOG-1540",
-          "type": "fatigue",
-          "expected": "49 CFR 228",
-          "cited": "228.405",
+          "type": "housekeeping",
+          "expected": "29 CFR 1910.22",
+          "cited": "1910.22",
           "exists": true,
           "correct": true
         },
         {
           "log_id": "LOG-1544",
-          "type": "spill",
-          "expected": "29 CFR 1910.22",
-          "cited": "1910.22",
+          "type": "stairway",
+          "expected": "29 CFR 1910.25",
+          "cited": "1910.29",
           "exists": true,
-          "correct": true
+          "correct": false
         },
         {
           "log_id": "LOG-1558",
-          "type": "electrical",
-          "expected": "29 CFR 1910.333",
+          "type": "fall_protection",
+          "expected": "29 CFR 1910.28",
+          "cited": "1910.28",
+          "exists": true,
+          "correct": true
+        },
+        {
+          "log_id": "LOG-1575",
+          "type": "live_parts",
+          "expected": "29 CFR 1910.303",
           "cited": "1910.333",
           "exists": true,
-          "correct": true
+          "correct": false
         },
         {
-          "log_id": "LOG-1565",
-          "type": "fatigue",
-          "expected": "49 CFR 228",
-          "cited": "228.405",
+          "log_id": "LOG-1591",
+          "type": "fall_protection",
+          "expected": "29 CFR 1910.28",
+          "cited": "1910.28",
           "exists": true,
           "correct": true
         },
         {
-          "log_id": "LOG-1588",
-          "type": "fatigue",
-          "expected": "49 CFR 228",
-          "cited": "228.405",
+          "log_id": "LOG-1594",
+          "type": "crane_inspection",
+          "expected": "29 CFR 1910.179",
+          "cited": "1910.179",
           "exists": true,
           "correct": true
+        },
+        {
+          "log_id": "LOG-1615",
+          "type": "crane_inspection",
+          "expected": "29 CFR 1910.179",
+          "cited": "228.5",
+          "exists": true,
+          "correct": false
         },
         {
           "log_id": "LOG-1623",
-          "type": "fatigue",
-          "expected": "49 CFR 228",
-          "cited": "228.405",
-          "exists": true,
-          "correct": true
-        },
-        {
-          "log_id": "LOG-1670",
-          "type": "fatigue",
-          "expected": "49 CFR 228",
-          "cited": "228.405",
+          "type": "ladder",
+          "expected": "29 CFR 1910.23",
+          "cited": "1910.23",
           "exists": true,
           "correct": true
         },
         {
           "log_id": "LOG-1676",
-          "type": "fatigue",
-          "expected": "49 CFR 228",
-          "cited": "228.405",
+          "type": "ladder",
+          "expected": "29 CFR 1910.23",
+          "cited": "1910.23",
+          "exists": true,
+          "correct": true
+        },
+        {
+          "log_id": "LOG-1677",
+          "type": "sling",
+          "expected": "29 CFR 1910.184",
+          "cited": "1910.179",
+          "exists": true,
+          "correct": false
+        },
+        {
+          "log_id": "LOG-1682",
+          "type": "sling",
+          "expected": "29 CFR 1910.184",
+          "cited": "1910.179",
+          "exists": true,
+          "correct": false
+        },
+        {
+          "log_id": "LOG-1688",
+          "type": "guardrail",
+          "expected": "29 CFR 1910.29",
+          "cited": "1910.29",
           "exists": true,
           "correct": true
         },
         {
           "log_id": "LOG-1690",
-          "type": "spill",
-          "expected": "29 CFR 1910.22",
-          "cited": "1910.22",
+          "type": "dockboard",
+          "expected": "29 CFR 1910.26",
+          "cited": "1910.26",
           "exists": true,
           "correct": true
         },
         {
           "log_id": "LOG-1692",
-          "type": "spill",
-          "expected": "29 CFR 1910.22",
+          "type": "ladder",
+          "expected": "29 CFR 1910.23",
           "cited": "1910.22",
           "exists": true,
-          "correct": true
+          "correct": false
         },
         {
-          "log_id": "LOG-1705",
-          "type": "electrical",
+          "log_id": "LOG-1696",
+          "type": "approach_distance",
           "expected": "29 CFR 1910.333",
           "cited": "1910.333",
           "exists": true,
           "correct": true
         },
         {
-          "log_id": "LOG-1721",
-          "type": "electrical",
+          "log_id": "LOG-1698",
+          "type": "aisle_obstruction",
+          "expected": "29 CFR 1910.176",
+          "cited": "1910.176",
+          "exists": true,
+          "correct": true
+        },
+        {
+          "log_id": "LOG-1711",
+          "type": "approach_distance",
           "expected": "29 CFR 1910.333",
           "cited": "1910.333",
           "exists": true,
@@ -830,161 +1886,265 @@
         },
         {
           "log_id": "LOG-1724",
-          "type": "fatigue",
-          "expected": "49 CFR 228",
-          "cited": "228.405",
+          "type": "duty_records",
+          "expected": "49 CFR 228.11",
+          "cited": "228.11",
+          "exists": true,
+          "correct": true
+        },
+        {
+          "log_id": "LOG-1733",
+          "type": "rim_wheel",
+          "expected": "29 CFR 1910.177",
+          "cited": "1910.177",
+          "exists": true,
+          "correct": true
+        },
+        {
+          "log_id": "LOG-1750",
+          "type": "rim_wheel",
+          "expected": "29 CFR 1910.177",
+          "cited": "1910.177",
           "exists": true,
           "correct": true
         },
         {
           "log_id": "LOG-1754",
-          "type": "electrical",
-          "expected": "29 CFR 1910.333",
-          "cited": "1910.333",
-          "exists": true,
-          "correct": true
-        },
-        {
-          "log_id": "LOG-1755",
-          "type": "spill",
-          "expected": "29 CFR 1910.22",
-          "cited": "1910.22",
+          "type": "dockboard",
+          "expected": "29 CFR 1910.26",
+          "cited": "1910.26",
           "exists": true,
           "correct": true
         },
         {
           "log_id": "LOG-1759",
-          "type": "spill",
-          "expected": "29 CFR 1910.22",
+          "type": "ladder",
+          "expected": "29 CFR 1910.23",
           "cited": "1910.22",
+          "exists": true,
+          "correct": false
+        },
+        {
+          "log_id": "LOG-1763",
+          "type": "live_parts",
+          "expected": "29 CFR 1910.303",
+          "cited": "1910.333",
+          "exists": true,
+          "correct": false
+        },
+        {
+          "log_id": "LOG-1768",
+          "type": "crane_inspection",
+          "expected": "29 CFR 1910.179",
+          "cited": "228.5",
+          "exists": true,
+          "correct": false
+        },
+        {
+          "log_id": "LOG-1777",
+          "type": "crane_inspection",
+          "expected": "29 CFR 1910.179",
+          "cited": "228.5",
+          "exists": true,
+          "correct": false
+        },
+        {
+          "log_id": "LOG-1779",
+          "type": "aisle_obstruction",
+          "expected": "29 CFR 1910.176",
+          "cited": "1910.176",
           "exists": true,
           "correct": true
         },
         {
-          "log_id": "LOG-1787",
-          "type": "spill",
-          "expected": "29 CFR 1910.22",
-          "cited": "1910.22",
+          "log_id": "LOG-1798",
+          "type": "rim_wheel",
+          "expected": "29 CFR 1910.177",
+          "cited": "1910.177",
           "exists": true,
           "correct": true
         },
         {
           "log_id": "LOG-1810",
-          "type": "fatigue",
-          "expected": "49 CFR 228",
-          "cited": "228.405",
+          "type": "duty_limit",
+          "expected": "49 U.S.C. 21103",
+          "cited": "228.5",
           "exists": true,
-          "correct": true
-        },
-        {
-          "log_id": "LOG-1817",
-          "type": "fatigue",
-          "expected": "49 CFR 228",
-          "cited": "228.405",
-          "exists": true,
-          "correct": true
-        },
-        {
-          "log_id": "LOG-1824",
-          "type": "fatigue",
-          "expected": "49 CFR 228",
-          "cited": "228.405",
-          "exists": true,
-          "correct": true
+          "correct": false
         },
         {
           "log_id": "LOG-1829",
-          "type": "fatigue",
-          "expected": "49 CFR 228",
-          "cited": "228.405",
-          "exists": true,
-          "correct": true
-        },
-        {
-          "log_id": "LOG-1863",
-          "type": "spill",
+          "type": "housekeeping",
           "expected": "29 CFR 1910.22",
           "cited": "1910.22",
           "exists": true,
           "correct": true
+        },
+        {
+          "log_id": "LOG-1832",
+          "type": "crane_inspection",
+          "expected": "29 CFR 1910.179",
+          "cited": "228.5",
+          "exists": true,
+          "correct": false
+        },
+        {
+          "log_id": "LOG-1850",
+          "type": "aisle_obstruction",
+          "expected": "29 CFR 1910.176",
+          "cited": "1910.176",
+          "exists": true,
+          "correct": true
+        },
+        {
+          "log_id": "LOG-1859",
+          "type": "sling",
+          "expected": "29 CFR 1910.184",
+          "cited": "1910.180",
+          "exists": true,
+          "correct": false
         },
         {
           "log_id": "LOG-1869",
-          "type": "spill",
+          "type": "stairway",
+          "expected": "29 CFR 1910.25",
+          "cited": "1910.29",
+          "exists": true,
+          "correct": false
+        },
+        {
+          "log_id": "LOG-1887",
+          "type": "truck_defect",
+          "expected": "29 CFR 1910.178",
+          "cited": "1910.22",
+          "exists": true,
+          "correct": false
+        },
+        {
+          "log_id": "LOG-1889",
+          "type": "guardrail",
+          "expected": "29 CFR 1910.29",
+          "cited": "1910.179",
+          "exists": true,
+          "correct": false
+        },
+        {
+          "log_id": "LOG-1894",
+          "type": "housekeeping",
           "expected": "29 CFR 1910.22",
           "cited": "1910.22",
           "exists": true,
           "correct": true
         },
         {
-          "log_id": "LOG-1894",
-          "type": "fatigue",
-          "expected": "49 CFR 228",
-          "cited": "228.405",
+          "log_id": "LOG-1900",
+          "type": "sling",
+          "expected": "29 CFR 1910.184",
+          "cited": "1910.179",
           "exists": true,
-          "correct": true
+          "correct": false
         },
         {
           "log_id": "LOG-1906",
-          "type": "fatigue",
-          "expected": "49 CFR 228",
-          "cited": "228.405",
+          "type": "stairway",
+          "expected": "29 CFR 1910.25",
+          "cited": "1910.22",
+          "exists": true,
+          "correct": false
+        },
+        {
+          "log_id": "LOG-1911",
+          "type": "truck_defect",
+          "expected": "29 CFR 1910.178",
+          "cited": "1910.178",
           "exists": true,
           "correct": true
         },
         {
           "log_id": "LOG-1915",
-          "type": "spill",
-          "expected": "29 CFR 1910.22",
-          "cited": "1910.22",
+          "type": "dockboard",
+          "expected": "29 CFR 1910.26",
+          "cited": "1910.26",
           "exists": true,
           "correct": true
         },
         {
           "log_id": "LOG-1916",
-          "type": "electrical",
-          "expected": "29 CFR 1910.333",
-          "cited": "1910.333",
+          "type": "housekeeping",
+          "expected": "29 CFR 1910.22",
+          "cited": "1910.22",
           "exists": true,
           "correct": true
         },
         {
           "log_id": "LOG-1918",
-          "type": "electrical",
+          "type": "ladder",
+          "expected": "29 CFR 1910.23",
+          "cited": "1910.22",
+          "exists": true,
+          "correct": false
+        },
+        {
+          "log_id": "LOG-1920",
+          "type": "approach_distance",
           "expected": "29 CFR 1910.333",
           "cited": "1910.333",
+          "exists": true,
+          "correct": true
+        },
+        {
+          "log_id": "LOG-1937",
+          "type": "rim_wheel",
+          "expected": "29 CFR 1910.177",
+          "cited": "1910.177",
           "exists": true,
           "correct": true
         },
         {
           "log_id": "LOG-1953",
-          "type": "spill",
-          "expected": "29 CFR 1910.22",
+          "type": "ladder",
+          "expected": "29 CFR 1910.23",
           "cited": "1910.22",
+          "exists": true,
+          "correct": false
+        },
+        {
+          "log_id": "LOG-1954",
+          "type": "sling",
+          "expected": "29 CFR 1910.184",
+          "cited": "1910.179",
+          "exists": true,
+          "correct": false
+        },
+        {
+          "log_id": "LOG-1965",
+          "type": "aisle_obstruction",
+          "expected": "29 CFR 1910.176",
+          "cited": "1910.176",
           "exists": true,
           "correct": true
         },
         {
-          "log_id": "LOG-1960",
-          "type": "spill",
-          "expected": "29 CFR 1910.22",
-          "cited": "1910.22",
-          "exists": true,
-          "correct": true
-        },
-        {
-          "log_id": "LOG-1980",
-          "type": "electrical",
+          "log_id": "LOG-1979",
+          "type": "approach_distance",
           "expected": "29 CFR 1910.333",
           "cited": "1910.333",
           "exists": true,
           "correct": true
         },
         {
-          "log_id": "LOG-1989",
-          "type": "electrical",
-          "expected": "29 CFR 1910.333",
+          "log_id": "LOG-1988",
+          "type": "live_parts",
+          "expected": "29 CFR 1910.303",
           "cited": "1910.333",
+          "exists": true,
+          "correct": false
+        },
+        {
+          "log_id": "LOG-1995",
+          "type": "crane_inspection",
+          "expected": "29 CFR 1910.179",
+          "cited": "1910.179",
           "exists": true,
           "correct": true
         }

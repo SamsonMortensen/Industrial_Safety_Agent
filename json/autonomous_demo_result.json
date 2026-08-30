@@ -1,0 +1,435 @@
+{
+  "source": "data\\example_camera_observation.json",
+  "reasoner_enabled": false,
+  "results": [
+    {
+      "event_id": "camera-17-20260830-0001",
+      "status": "VIOLATION",
+      "citation": "1910.333",
+      "reason": "Equipment or personnel entered the restricted area around exposed energized parts.",
+      "decision_source": "deterministic_policy",
+      "trigger": {
+        "triggered": true,
+        "score": 0.92,
+        "reasons": [
+          "perception_anomaly",
+          "relationship_risk",
+          "scene_or_state_change"
+        ]
+      },
+      "queries": [
+        "A mobile crane boom moved within four feet of an energized overhead conductor",
+        "crane boom within energized overhead conductor at 4 feet applicable safety requirement",
+        "crane operator mobile crane energized overhead line zone operating boom energized conductor exposed federal safety requirement",
+        "crane operator mobile crane energized overhead line zone operating boom energized conductor exposed estimated distance ft 4.0 applicable limit or minimum requirement",
+        "A mobile crane boom moved within four feet of an energized overhead conductor crane operator mobile crane energized overhead line zone operating boom energized conductor exposed crane boom within energized overhead conductor at 4 feet estimated_distance_ft 4.0 analogous regulated condition"
+      ],
+      "candidates": [
+        {
+          "chunk_index": 76,
+          "citation": "29 CFR 1910.179",
+          "section": "1910.179",
+          "heading": "Overhead and gantry cranes.",
+          "topic": "Materials Handling and Storage",
+          "lexical_score": 21.054457,
+          "semantic_score": 0.769552,
+          "fusion_score": 0.12917929,
+          "matched_queries": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "applicability_score": 0.826135,
+          "applicability_features": {
+            "retrieval": 0.918168,
+            "entity_scope": 0.714286,
+            "event_condition": 0.8,
+            "control_match": 0.0,
+            "measurement_match": 1.0,
+            "query_coverage": 1.0
+          }
+        },
+        {
+          "chunk_index": 113,
+          "citation": "29 CFR 1910.180",
+          "section": "1910.180",
+          "heading": "Crawler locomotive and truck cranes.",
+          "topic": "Materials Handling and Storage",
+          "lexical_score": 18.364254,
+          "semantic_score": 0.750784,
+          "fusion_score": 0.14069243,
+          "matched_queries": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "applicability_score": 0.813714,
+          "applicability_features": {
+            "retrieval": 1.0,
+            "entity_scope": 0.571429,
+            "event_condition": 0.6,
+            "control_match": 0.0,
+            "measurement_match": 1.0,
+            "query_coverage": 1.0
+          }
+        },
+        {
+          "chunk_index": 219,
+          "citation": "29 CFR 1910.306",
+          "section": "1910.306",
+          "heading": "Specific purpose equipment and installations.",
+          "topic": "Electrical",
+          "lexical_score": 22.466543,
+          "semantic_score": 0.73702,
+          "fusion_score": 0.12248435,
+          "matched_queries": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "applicability_score": 0.803392,
+          "applicability_features": {
+            "retrieval": 0.870582,
+            "entity_scope": 0.857143,
+            "event_condition": 0.7,
+            "control_match": 0.0,
+            "measurement_match": 1.0,
+            "query_coverage": 1.0
+          }
+        },
+        {
+          "chunk_index": 262,
+          "citation": "29 CFR 1910.333",
+          "section": "1910.333",
+          "heading": "Selection and use of work practices.",
+          "topic": "Electrical",
+          "lexical_score": 18.165131,
+          "semantic_score": 0.730849,
+          "fusion_score": 0.12257859,
+          "matched_queries": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "applicability_score": 0.721474,
+          "applicability_features": {
+            "retrieval": 0.871252,
+            "entity_scope": 0.428571,
+            "event_condition": 0.6,
+            "control_match": 0.0,
+            "measurement_match": 1.0,
+            "query_coverage": 1.0
+          }
+        },
+        {
+          "chunk_index": 169,
+          "citation": "29 CFR 1910.304",
+          "section": "1910.304",
+          "heading": "Wiring design and protection.",
+          "topic": "Electrical",
+          "lexical_score": 22.240444,
+          "semantic_score": 0.708264,
+          "fusion_score": 0.09255168,
+          "matched_queries": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "applicability_score": 0.586092,
+          "applicability_features": {
+            "retrieval": 0.65783,
+            "entity_scope": 0.428571,
+            "event_condition": 0.5,
+            "control_match": 0.0,
+            "measurement_match": 1.0,
+            "query_coverage": 1.0
+          }
+        },
+        {
+          "chunk_index": 126,
+          "citation": "29 CFR 1910.181",
+          "section": "1910.181",
+          "heading": "Derricks.",
+          "topic": "Materials Handling and Storage",
+          "lexical_score": 12.414503,
+          "semantic_score": 0.707834,
+          "fusion_score": 0.08934156,
+          "matched_queries": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "applicability_score": 0.534114,
+          "applicability_features": {
+            "retrieval": 0.635013,
+            "entity_scope": 0.285714,
+            "event_condition": 0.4,
+            "control_match": 0.0,
+            "measurement_match": 1.0,
+            "query_coverage": 1.0
+          }
+        },
+        {
+          "chunk_index": 283,
+          "citation": "29 CFR 1910.399",
+          "section": "1910.399",
+          "heading": "Definitions applicable to this subpart.",
+          "topic": "Electrical",
+          "lexical_score": 16.056047,
+          "semantic_score": 0.0,
+          "fusion_score": 0.07134504,
+          "matched_queries": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "applicability_score": 0.514048,
+          "applicability_features": {
+            "retrieval": 0.507099,
+            "entity_scope": 0.714286,
+            "event_condition": 0.6,
+            "control_match": 0.0,
+            "measurement_match": 0.0,
+            "query_coverage": 1.0
+          }
+        },
+        {
+          "chunk_index": 10,
+          "citation": "29 CFR 1910.23",
+          "section": "1910.23",
+          "heading": "Ladders.",
+          "topic": "Walking-Working Surfaces",
+          "lexical_score": 14.937191,
+          "semantic_score": 0.0,
+          "fusion_score": 0.07649998,
+          "matched_queries": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "applicability_score": 0.462485,
+          "applicability_features": {
+            "retrieval": 0.543739,
+            "entity_scope": 0.142857,
+            "event_condition": 0.4,
+            "control_match": 0.0,
+            "measurement_match": 1.0,
+            "query_coverage": 1.0
+          }
+        },
+        {
+          "chunk_index": 239,
+          "citation": "29 CFR 1910.308",
+          "section": "1910.308",
+          "heading": "Special systems.",
+          "topic": "Electrical",
+          "lexical_score": 10.899832,
+          "semantic_score": 0.721791,
+          "fusion_score": 0.08539051,
+          "matched_queries": [
+            0,
+            2,
+            3,
+            4
+          ],
+          "applicability_score": 0.446669,
+          "applicability_features": {
+            "retrieval": 0.60693,
+            "entity_scope": 0.285714,
+            "event_condition": 0.3,
+            "control_match": 0.0,
+            "measurement_match": 0.0,
+            "query_coverage": 0.8
+          }
+        },
+        {
+          "chunk_index": 36,
+          "citation": "29 CFR 1910.29",
+          "section": "1910.29",
+          "heading": "Fall protection systems and falling object protection\u2014criteria and practices.",
+          "topic": "Walking-Working Surfaces",
+          "lexical_score": 12.219205,
+          "semantic_score": 0.685741,
+          "fusion_score": 0.06068113,
+          "matched_queries": [
+            0,
+            1,
+            3,
+            4
+          ],
+          "applicability_score": 0.400074,
+          "applicability_features": {
+            "retrieval": 0.431303,
+            "entity_scope": 0.285714,
+            "event_condition": 0.3,
+            "control_match": 0.0,
+            "measurement_match": 1.0,
+            "query_coverage": 0.8
+          }
+        },
+        {
+          "chunk_index": 321,
+          "citation": "49 CFR 228.101",
+          "section": "228.101",
+          "heading": "Distance requirement for employee sleeping quarters; definitions used in this subpart.",
+          "topic": "Hours of Service",
+          "lexical_score": 9.282423,
+          "semantic_score": 0.0,
+          "fusion_score": 0.0514891,
+          "matched_queries": [
+            0,
+            1,
+            2
+          ],
+          "applicability_score": 0.338712,
+          "applicability_features": {
+            "retrieval": 0.365969,
+            "entity_scope": 0.142857,
+            "event_condition": 0.3,
+            "control_match": 0.0,
+            "measurement_match": 1.0,
+            "query_coverage": 0.6
+          }
+        },
+        {
+          "chunk_index": 129,
+          "citation": "29 CFR 1910.183",
+          "section": "1910.183",
+          "heading": "Helicopters.",
+          "topic": "Materials Handling and Storage",
+          "lexical_score": 0.0,
+          "semantic_score": 0.731894,
+          "fusion_score": 0.06618756,
+          "matched_queries": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "applicability_score": 0.3216,
+          "applicability_features": {
+            "retrieval": 0.470442,
+            "entity_scope": 0.285714,
+            "event_condition": 0.0,
+            "control_match": 0.0,
+            "measurement_match": 0.0,
+            "query_coverage": 1.0
+          }
+        },
+        {
+          "chunk_index": 266,
+          "citation": "29 CFR 1910.334",
+          "section": "1910.334",
+          "heading": "Use of equipment.",
+          "topic": "Electrical",
+          "lexical_score": 7.167107,
+          "semantic_score": 0.0,
+          "fusion_score": 0.03503972,
+          "matched_queries": [
+            0,
+            1
+          ],
+          "applicability_score": 0.270407,
+          "applicability_features": {
+            "retrieval": 0.249052,
+            "entity_scope": 0.142857,
+            "event_condition": 0.3,
+            "control_match": 0.0,
+            "measurement_match": 1.0,
+            "query_coverage": 0.4
+          }
+        },
+        {
+          "chunk_index": 327,
+          "citation": "49 CFR 228.105",
+          "section": "228.105",
+          "heading": "Additional requirements; construction within one-third mile (1,760 feet) (536 meters) of certain switching.",
+          "topic": "Hours of Service",
+          "lexical_score": 8.929941,
+          "semantic_score": 0.671218,
+          "fusion_score": 0.03740985,
+          "matched_queries": [
+            1,
+            3
+          ],
+          "applicability_score": 0.258244,
+          "applicability_features": {
+            "retrieval": 0.265898,
+            "entity_scope": 0.0,
+            "event_condition": 0.3,
+            "control_match": 0.0,
+            "measurement_match": 1.0,
+            "query_coverage": 0.4
+          }
+        },
+        {
+          "chunk_index": 270,
+          "citation": "29 CFR 1910.335",
+          "section": "1910.335",
+          "heading": "Safeguards for personnel protection.",
+          "topic": "Electrical",
+          "lexical_score": 10.493362,
+          "semantic_score": 0.703163,
+          "fusion_score": 0.04323409,
+          "matched_queries": [
+            1,
+            2,
+            3
+          ],
+          "applicability_score": 0.238441,
+          "applicability_features": {
+            "retrieval": 0.307295,
+            "entity_scope": 0.142857,
+            "event_condition": 0.2,
+            "control_match": 0.0,
+            "measurement_match": 0.0,
+            "query_coverage": 0.6
+          }
+        },
+        {
+          "chunk_index": 350,
+          "citation": "49 CFR 228.311",
+          "section": "228.311",
+          "heading": "Minimum space requirements, beds, storage, and sanitary facilities.",
+          "topic": "Hours of Service",
+          "lexical_score": 6.604321,
+          "semantic_score": 0.0,
+          "fusion_score": 0.03030303,
+          "matched_queries": [
+            0
+          ],
+          "applicability_score": 0.140462,
+          "applicability_features": {
+            "retrieval": 0.215385,
+            "entity_scope": 0.0,
+            "event_condition": 0.1,
+            "control_match": 0.0,
+            "measurement_match": 0.0,
+            "query_coverage": 0.2
+          }
+        }
+      ],
+      "evidence_refs": [
+        "camera-17://frames/003841-003856"
+      ],
+      "confidence": 1.0
+    }
+  ]
+}

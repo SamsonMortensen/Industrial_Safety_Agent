@@ -215,3 +215,42 @@ env*.json
 
 # Cached embeddings (regenerate with code/audit_agent.py)
 json/reg_embeddings.npz
+
+# Learned state -- must never ship with the repo.
+# A clone has to start naive: shipping a populated memory bank hands the model
+# verdicts for the very rows the benchmark audits (see temporal_eval.py).
+json/learning_memory.json
+json/learning_memory_vecs.npz
+json/learning_state.json
+
+# Raw preference pairs embed the source row, including its ground-truth label.
+json/dpo_pairs_raw.json
+
+# Scratch memory banks written by the A/B improvement harness
+json/temp_empty_mem.json
+json/temp_empty_vecs.npz
+json/exp_mem.json
+json/exp_vecs.npz
+
+# Frozen-slice temporal evaluation scratch state (cold-started every run)
+json/temporal_eval_mem.json
+json/temporal_eval_vecs.npz
+json/temporal_eval_state.json
+
+# Run history is accumulated state, not source. A clone showing prior runs
+# it never performed is misleading.
+json/run_history.json
+
+# Local CUDA training environments, model caches, and generated adapters
+.venv-train/
+hf_cache/
+models/
+training_runs/
+# Downloaded incident and vision data stay local. Commit registries and aggregate reports only.
+data/external/
+data/vision_raw/
+vision_models/
+vision_runs/
+
+# Local release notes kept for private project retrospectives.
+docs/DEVELOPMENT_HISTORY.md

@@ -1,196 +1,266 @@
 # Industrial Safety & Compliance Auditor
 
-A locally hosted LLM audits daily rail-intermodal yard logs against federal OSHA and FRA safety regulations, verifies whether the citations it produces are real federal law, eliminates retrieval blindspots through multi-hazard triangulation, and autonomously learns from past audits across successive shifts.
+A local, retrieval-grounded safety auditor for intermodal yard operations. It evaluates operational observations against federal safety authorities, verifies citations, and sends unsupported or ambiguous cases to review.
 
-## What this does
+The project combines structured safety rules, local language models, authentic incident narratives, deterministic controls, and a camera-neutral observation interface. Operational data and model inference remain local.
 
-When an AI reads a maintenance log and sees something unsafe, getting it to say *"this looks dangerous"* is easy. Getting it to cite the **exact, real federal law** that was broken—without inventing a fake section number—is hard.
+## What it does
 
-In an industrial rail yard, citing a fabricated law is worse than doing nothing: a safety manager cannot issue a stop-work order or cite a contractor based on an invented rule.
+- Evaluates text logs, incident narratives, camera observations, and sensor-derived events.
+- Retrieves relevant OSHA, FRA, and statutory authorities with lexical and semantic search.
+- Separates hazard detection, citation existence, citation grounding, and citation correctness.
+- Applies deterministic controls when the legal scope and measurable facts are explicit.
+- Requires every violation citation to appear in the retrieved candidate set.
+- Returns `REVIEW` when the evidence or governing authority is uncertain.
+- Stores only labeled or reviewer-approved outcomes for controlled future learning.
 
-This project builds an autonomous AI safety auditor that runs 100% locally on your own machine. It reads daily yard logs, independently looks up the actual text of federal law (OSHA Title 29 and FRA Title 49), audits the event, checks every citation it produces against all 16,173 real sections in federal regulations to ensure zero hallucinations, and continuously accumulates case law memory to improve future audits.
+## Current capabilities
 
+The current backend supports:
+
+- walking-working surfaces and housekeeping;
+- materials handling, powered industrial trucks, cranes, dockboards, and slings;
+- electrical work practices and energized-part approach conditions;
+- fall protection, ladders, stairways, and guardrails;
+- freight train-employee duty limits under 49 U.S.C. 21103;
+- selected FRA recordkeeping and passenger-service rules;
+- stateful checks for cumulative duty time and recurring equipment defects;
+- autonomous observation triggers based on change, anomaly, novelty, uncertainty, relationships, and human review flags.
+
+## Measured results
+
+### Full 1,000-event audit
+
+The locked synthetic yard log contains 1,000 events, including 144 violations across 16 hazard families and a matched compliant counterpart for every planted violation.
+
+| Metric | Grounded v1 | Raw v2 | Policy-controlled v2 |
+| --- | ---: | ---: | ---: |
+| True positives | 103 | 82 | 98 |
+| False positives | 4 | 1 | 0 |
+| False negatives | 41 | 62 | 46 |
+| True negatives | 852 | 855 | 856 |
+| Precision | 0.9626 | 0.9880 | **1.0000** |
+| Recall | **0.7153** | 0.5694 | 0.6806 |
+| F1 | **0.8207** | 0.7225 | 0.8099 |
+| Accuracy | **0.9550** | 0.9370 | 0.9540 |
+| Correct citation among true positives | 0.5728 | 0.8171 | **0.8571** |
+| Status and citation jointly correct | 0.9110 | 0.9220 | **0.9400** |
+
+Grounded v1 and v2 are separate model runs. Raw v2 and policy-controlled v2 are two evaluations of the same saved v2 outputs. The policy-controlled result used deterministic scope rules for 90 cases and retained the model result for the remaining 910.
+
+Saved evidence:
+
+- `json/full_audit_results.json`
+- `json/full_audit_policy_controlled.json`
+- `json/audit_results.json`
+
+### Autonomous authority retrieval
+
+This benchmark asks whether the governing authority can be retrieved from observable event fields. Labels are used only after retrieval for scoring.
+
+| Retrieval method | Recall@1 | Recall@4 | Recall@8 | Recall@16 |
+| --- | ---: | ---: | ---: | ---: |
+| Single-event dense query | 0.0625 | 0.3056 | 0.7361 | 0.8264 |
+| Multi-query lexical | 0.1111 | 0.2292 | 0.3889 | 0.4792 |
+| Multi-query hybrid with applicability reranking | **0.1736** | **0.6319** | **0.8681** | **0.9792** |
+
+The hybrid method retrieved the expected authority within the top 16 for 141 of 144 violations. Results and per-hazard ranks are saved in `json/autonomous_retrieval_benchmark.json`.
+
+### Fresh QLoRA result
+
+A 4-bit QLoRA supervised fine-tune of `Qwen/Qwen2.5-3B-Instruct` used 70 synthetic training cases and a text-disjoint 56-case holdout. The trainer did not open the holdout.
+
+| Matched holdout result | Base model | QLoRA adapter |
+| --- | ---: | ---: |
+| Cases | 56 | 56 |
+| Strict verdict accuracy | 0.0000 | **0.8929** |
+| F1 | 0.0000 | **0.8929** |
+| Violation citation correctness | 0.0357 | **0.5714** |
+| Verdict and citation both correct | 0.0000 | **0.7321** |
+| Parsed in the required format | 0 of 56 | **56 of 56** |
+
+The adapter is suitable for controlled narration and structured output experiments. Its citation correctness is not sufficient for autonomous legal decisions. Exact configuration, hashes, and per-case outputs are saved in:
+
+- `json/finetune_training_report.json`
+- `json/finetune_evaluation_results.json`
+- `json/scaled_benchmark_hybrid_results.json`
+
+### Authentic incident-text coverage
+
+The OSHA Severe Injury Report pipeline profiled 105,996 records dated January 1, 2015 through November 30, 2025. Structured employer and location identifiers are removed before local normalization. Free-text narratives remain in ignored local storage and are not committed.
+
+| Authentic OSHA stress test | Result |
+| --- | ---: |
+| Records sampled | 500 |
+| Triggered for investigation | 500 |
+| Non-empty top-16 candidate set | 500 |
+| Distinct top-ranked authorities | 24 |
+| Cases sent to review by the narrow policy | 498 |
+| Policy citations supported by retrieval | 1 of 2 |
+| Unsupported citations allowed | **0** |
+
+Every sampled row is a known reported incident and is intentionally human-flagged. These figures measure ingestion, retrieval coverage, and citation gating. They do not measure pre-incident detection or legal accuracy.
+
+Saved evidence:
+
+- `json/osha_sir_profile.json`
+- `json/authentic_incident_retrieval_hybrid.json`
+- `data/incident_text_datasets.json`
+
+## Safety architecture
+
+```text
+Observation -> Trigger -> Query plan -> Hybrid retrieval -> Applicability check
+            -> Grounded policy or local reasoner -> Decision or REVIEW
 ```
-+----------------------------------------------------------------------------------------------------+
-|                                    DAILY YARD EVENT (LOG-1051)                                     |
-|  Forklift FL-12 | Main Pedestrian Crosswalk | Shift: 8.5 hrs | Incident: Hydraulic Leak            |
-+----------------------------------------------------------------------------------------------------+
-                                                  │
-                         ┌────────────────────────┴────────────────────────┐
-                         ▼                                                 ▼
-             [ FATIGUE CHECK: 49 CFR 228 ]                    [ SURFACE CHECK: 29 CFR 1910.22 ]
-             - Duty hours: 8.5 hrs <= 12.0 hr                 - Walking surface: Crosswalk
-             - Status: Compliant                              - Fluid leak: UNCONTAINED HAZARD
-                         │                                                 │
-                         └────────────────────────┬────────────────────────┘
-                                                  ▼
-                                    [ FINAL AUDIT VERDICT ]
-                     STATUS:   VIOLATION
-                     CITATION: 29 CFR 1910.22 (Walking-Working Surfaces)
-                     REASON:   Hydraulic leak on a pedestrian crosswalk creates an
-                               uncontained slipping hazard under federal housekeeping rules.
-```
 
-## The core question
+1. `code/autonomous_investigator.py` accepts camera-neutral structured observations.
+2. `code/fetch_regulations.py` and `code/build_section_index.py` build the legal corpus and section verifier.
+3. `code/benchmark_autonomous_retrieval.py` evaluates authority retrieval independently from generation.
+4. `code/hybrid_policy.py` handles high-confidence cases with explicit scope and facts.
+5. `code/audit_agent.py` and `code/audit_agent_v2.py` run the grounded model audits.
+6. `code/continuous_learner.py` stores trusted precedents and quarantines unverified outcomes.
+7. `code/stateful_tracker.py` evaluates selected cross-event conditions.
 
-Getting a language model to flag an unsafe-looking yard event is easy. Getting it to name *which rule* was broken, without inventing the section number, is not. For an industrial compliance tool that distinction is the entire product; the citation is what a safety superintendent acts on, and a confident, correctly formatted, non-existent CFR reference is worse than no answer at all.
+## Continuous improvement
 
-So this project measures three things directly:
-1. **Detection performance** against a labelled ground-truth log (Precision, Recall, F1).
-2. **Citation validity** against all 16,173 real section numbers in Titles 29 and 49 of the Code of Federal Regulations.
-3. **Citation correctness** — verifying whether the model cited the *actual governing rule* for that specific hazard, rather than just any real section that happened to be in context.
+Continuous learning is controlled rather than self-modifying:
 
-## Benchmark Results
+- only labeled or reviewer-approved decisions can enter trusted memory;
+- an event cannot retrieve itself or a near-duplicate as a precedent;
+- only earlier events are eligible as precedents;
+- candidate training data remains separate from locked evaluation data;
+- model weights are updated offline and promoted only after evaluation;
+- the running model never trains directly on its own unreviewed predictions.
 
-> **Note on Benchmark Provenance:** These figures were measured against the pre-hardening dataset and answer-key prompt at commit `edfa370`. Re-measurement is pending against the current hardened harness.
+`code/temporal_eval.py` provides a frozen future-slice evaluation for measuring whether learned memory transfers to unseen events.
 
-Evaluated with `qwen3.5:9b` (reasoning) and `mxbai-embed-large` (embeddings) running locally on an isolated inference runtime.
+## Vision integration
 
-| Metric | Triangulated In-Context RAG (v1) | Continuous Learning RAG (v2 Shift Batches) | Flat Top-4 RAG (Legacy Baseline) | Ungrounded Direct Prompting |
-| :--- | :---: | :---: | :---: | :---: |
-| **Operational events ($n$)** | 1,000 | 50 (Batch Iterations) | 50 | 50 |
-| **Violations caught** | 60 of 60 (100%) | 3 of 3 (100%) | 3 of 9 (33%) | 1 of 9 (11%) |
-| **False positives (on noisy telemetry)** | 0 | 0 | 4 | 0 |
-| **Precision** | 1.00 | 1.00 | 0.43 | 1.00 |
-| **Recall** | 1.00 | 1.00 *(Early runs: 0.67)* | 0.33 | 0.11 |
-| **F1 Score** | 1.00 | 1.00 *(Progression: 0.80 → 1.00)* | 0.38 | 0.20 |
-| **Citations naming real CFR section** | 60 of 60 (100%) | 3 of 3 (100%) | 7 of 7 (100%) | 0 of 1 (0% - Hallucinated) |
-| **Citations grounded in retrieved text** | 40 of 60 (67%)* | 3 of 3 (100%) | 7 of 7 (100%) | N/A |
-| **Citation correctness (governing rule)**| 60 of 60 (100%) | 3 of 3 (100%) | 0 of 3 (0%) | 0 of 1 (0%) |
-| **Self-Reflection & Grounding Defense** | None | **Statutory Verifier Active** | None | None |
-| **Episodic Case Law Memory** | None | **Persistent Vector Store** | None | None |
+The backend already accepts structured observations from a future camera or sensor pipeline. The vision layer remains a separate training and validation project.
 
-*\*Note on Grounding Transparency:* In v1, 20 of 20 fatigue violations correctly cited `49 CFR 228.405`, but the section was generated from the model's parametric knowledge rather than retrieved context chunks (`citations_outside_retrieved_set: 20`). This exact discrepancy motivated the v2 `StatutoryGroundedVerifier`, which enforces strict contextual containment and triggers critique-reflection loops when citations lack retrieved grounding.
+- `VISION_TRAINING.md` defines the staged perception plan.
+- `data/vision_datasets.json` records dataset licenses and intended uses.
+- `code/vision_manifest.py` creates group-level train, validation, and test splits.
+- `data/example_camera_observation.json` demonstrates the observation contract.
 
-![Autonomous Compliance Audit Run](audit_demo.png)
+Public dataset labels are treated as observations, not legal conclusions. Camera calibration, tracking, occlusion, privacy controls, local field labels, and external validation remain required before deployment.
 
-## Why the original grounded build failed, and what fixed it
+## Regulatory and benchmark scope
 
-In the first grounded iteration, recall stalled at 0.33 and precision at 0.43. Building `code/retrieval_diagnostic.py` exposed exactly why:
+The retrievable corpus includes selected authorities from:
 
-1. **Citation Validity vs. Citation Correctness:**
-   In the legacy grounded run, 3 of 3 caught violations cited `29 CFR 1910.178` (industrial forklift oil cleanliness) for shift-length violations and crosswalk puddles simply because `1910.178` was the only retrieved rule mentioning "clean" or "fluid". The existence check marked them valid because `1910.178` is a real law, but the citation was substantively wrong.
+- 29 CFR 1910 Subpart D, walking-working surfaces;
+- 29 CFR 1910 Subpart N, materials handling and storage;
+- 29 CFR 1910 Subpart S, electrical safety;
+- 49 CFR 228, railroad hours-of-service recordkeeping and applicable passenger rules;
+- 49 U.S.C. 21103, freight train-employee hours-of-service limits.
 
-2. **Benign Telemetry False Positives:**
-   Clean rows containing routine operational notes (`"Load Imbalance corrected during lift"`) triggered over-eager matching against loading clauses in `1910.178(o)`, creating 4 false alarms on clean shifts.
+The current synthetic benchmark covers 16 hazard families:
 
-### The Fix: Multi-Hazard Triangulation & Autonomous Reasoning
+| Area | Hazard families | Governing sections |
+| --- | --- | --- |
+| Walking-working surfaces | housekeeping, ladders, stairways, dockboards, fall protection, guardrails | 1910.22, .23, .25, .26, .28, .29 |
+| Materials handling | aisle obstruction, rim wheels, lift trucks, cranes, slings | 1910.176, .177, .178, .179, .184 |
+| Electrical | exposed live parts, approach distance, protective equipment | 1910.303, .333, .335 |
+| Hours of service | freight train-employee duty limit, duty records | 49 U.S.C. 21103, 49 CFR 228.11 |
 
-Instead of flattening an operational event into a single search query, the auditor triangulates across four fundamental industrial safety pillars:
-- **Fatigue & Hours of Service:** `49 CFR 228` (12.0-hour statutory duty limits).
-- **Walking-Working Surfaces:** `29 CFR 1910.22` (housekeeping, uncontained fluid leaks on pedestrian paths).
-- **Electrical Clearances:** `29 CFR 1910.333` (minimum approach distances near energized lines).
-- **Mechanical Integrity & Telemetry:** `29 CFR 1910.178` / `1910.179` (equipment safety, distinguishing transient sensor adjustments from active uncontained hazards).
+## Running locally
 
-With multi-hazard triangulation, Retrieval Recall@4 across all hazard types reached **100%**, and Citation Correctness on caught violations jumped from **0% to 100%**.
+### Prerequisites
 
----
-
-## Continuous Learning & The Self-Improving Flywheel (v2)
-
-Static RAG systems are frozen: they audit each shift in isolation, learn nothing from past mistakes, and cannot adapt when novel hazards appear.
-
-This release introduces an **Autonomous Continuous Learning & Self-Reflection Engine** that operates on a hybrid dual-loop architecture:
-
-```
-+----------------------------------------------------------------------------------------------------+
-|                                HYBRID CONTINUOUS LEARNING ARCHITECTURE                             |
-+----------------------------------------------------------------------------------------------------+
-
-   [ FAST INNER LOOP: Real-Time In-Context RAG ]
-   Daily Yard Log ──► Adaptive Triangulation ──► Prompt + Episodic Precedents ──► Local LLM
-                                                                                    │
-                                                                                    ▼
-   Final Grounded Verdict ◄── [Self-Reflection Verifier] ◄── Initial Response & Citations
-             │                              │ (Captures Hallucination/Correction Pairs)
-             ▼                              ▼
-   [(Episodic Memory Bank)]        [(RL / DPO Preference Pairs)]
-             │                              │
-             │                              ▼
-             │               [ SLOW OUTER LOOP: Automated DPO Dataset Pipeline & Recipe ]
-             │               - Chosen: Grounded, verified statutory audit reasoning
-             │               - Rejected: Hallucinated / ungrounded initial critique attempts
-             │                              │
-             │                              ▼
-             └──────────────────────► [ LoRA / DPO Fine-Tuning Recipe ] (code/train_lora_dpo.py)
-```
-
-### 1. Episodic Memory Bank (`code/continuous_learner.py`)
-Maintains a persistent vector memory of audited incidents. On subsequent shifts, incoming events retrieve contrastive few-shot precedents (confirmed violation case law vs. clean baseline counterexamples) to stabilize edge cases without modifying neural network weights.
-
-### 2. Adaptive Regulatory Pillar Discovery (`AdaptivePillarBank`)
-When unindexed telemetry patterns appear in yard logs (e.g. chemical transfer leaks, unplacarded ISO tanks, missing fall arrest guardrails), the system autonomously discovers the emergent risk, queries eCFR, and registers new search pillars (e.g. dynamically registering **Hazmat** under `49 CFR 172` and **Fall Protection** under `29 CFR 1910.28`).
-
-### 3. Real-Time Self-Reflection & Statutory Critique (`code/self_reflection.py`)
-Every citation is verified in real-time against all 16,173 sections in Titles 29 and 49 CFR. If a citation is ungrounded or contradictory, an automated critique loop intercepts the response and forces the LLM to self-correct before finalizing the audit.
-
-### 4. Automated DPO & SFT Dataset Pipeline (`code/dataset_pipeline.py`)
-Self-reflection corrections and contrastive memory episodes are automatically compiled into standard **Direct Preference Optimization (DPO)** pairs (`prompt`, `chosen`, `rejected`) and **Supervised Fine-Tuning (SFT)** instruction sets (`json/dpo_training_dataset.jsonl`), ready for fine-tuning edge models via LoRA with the provided training configuration (`code/train_lora_dpo.py`).
-
----
-
-## How it works
-
-1. `code/fetch_regulations.py` pulls the exact governing safety regulations from the official eCFR versioner API: 29 CFR 1910 (Subparts D, N, S) and 49 CFR 228.
-2. `code/build_section_index.py` indexes all 16,173 real sections across Titles 29 and 49 to catch hallucinations.
-3. `code/generate_yard_log.py` generates a seeded, reproducible ground-truth operational log with 1,000 records and planted violations.
-4. `code/audit_agent.py` & `code/audit_agent_v2.py` execute autonomous triangulated RAG audits asynchronously with local Ollama models and dynamic memory.
-5. `code/continuous_learner.py` & `code/self_reflection.py` manage persistent episodic memory, adaptive hazard discovery, and statutory critique loops.
-6. `code/dataset_pipeline.py` & `code/train_lora_dpo.py` extract DPO/SFT training datasets and provide the LoRA fine-tuning recipe.
-7. `code/learning_dashboard.py` displays live learning progression, pillar growth, and precedent memory consolidation.
-8. `code/stateful_tracker.py` maintains rolling shift memory to catch cumulative fatigue and repeating asset defect patterns across timestamps.
-9. `code/retrieval_diagnostic.py` and `code/retrieval_experiment.py` isolate retrieval recall from model reasoning and measure citation correctness.
-10. `main.ipynb` presents the interactive walkthrough, data pipelines, and benchmark visualizations.
-
-## Running it
+- Python 3.11 or compatible
+- [Ollama](https://ollama.com)
+- `mxbai-embed-large` for embeddings
+- `qwen3.5:9b` for local reasoning
 
 ```bash
 pip install -r requirements.txt
-
-# 1. Fetch regulations & build section index (one-time setup)
-python code/fetch_regulations.py
-python code/build_section_index.py
-python code/generate_yard_log.py --records 1000
-
-# 2. Run the continuous learning compliance audit (v2)
-python code/audit_agent_v2.py --limit 50 --concurrency 4
-
-# 3. View live learning metrics & episodic memory consolidation
-python code/learning_dashboard.py
-
-# 4. Generate DPO / SFT training datasets from audit memory
-python code/dataset_pipeline.py
-
-# 5. Run the multi-stage continuous learning simulation
-python code/run_continuous_learning_simulation.py
-
-# 6. Run legacy diagnostics & shift-level tracking
-python code/retrieval_diagnostic.py
-python code/retrieval_experiment.py
-python code/stateful_tracker.py
-```
-
-### Prerequisites
-Requires [Ollama](https://ollama.com) running locally with:
-```bash
 ollama pull mxbai-embed-large
 ollama pull qwen3.5:9b
 ```
-All embeddings and inferences run entirely on local compute. No yard logs or operational telemetry ever leave the host machine.
 
-## Ground truth dataset
+### Build the corpus and benchmark log
 
-60 planted violations across 1,000 records, balanced across three distinct hazard categories:
-- **Fatigue (49 CFR 228):** Operator shift duration exceeding the 12.0-hour statutory limit.
-- **Spills (29 CFR 1910.22):** Uncontained hydraulic leak on a marked pedestrian walkway/crosswalk.
-- **Electrical Clearances (29 CFR 1910.333):** Equipment proximity warning in an energized high-voltage line zone.
+```bash
+python code/fetch_regulations.py
+python code/build_section_index.py
+python code/generate_yard_log.py --records 1000
+```
 
-`generate_yard_log.py` validates every clean row against hazard patterns to guarantee zero unlabelled collisions.
+### Run retrieval and autonomous observation tests
 
-## Tech stack
-- **Python 3.10+**
-- **Ollama** (`qwen3.5:9b` for reasoning, `mxbai-embed-large` for embeddings)
-- **AsyncIO & AIOHTTP** for concurrent local batch inference
-- **NumPy** for vector similarity & cosine metrics
-- **Hugging Face TRL / Datasets** for DPO preference alignment
-- **Pandas, Matplotlib, Jupyter** for evaluation & reporting
+```bash
+python code/retrieval_diagnostic.py
+python code/benchmark_autonomous_retrieval.py
+python code/run_autonomous_investigation.py data/example_camera_observation.json --sample-rate 0
+```
+
+### Run the audits
+
+```bash
+python code/audit_agent.py --limit 1000
+python code/audit_agent_v2.py --limit 1000 --concurrency 4 --out json/audit_results_v2.json
+python code/apply_policy_controls.py --raw json/audit_results_v2.json --out json/audit_results_v2_controlled.json
+```
+
+### Prepare authentic incident text
+
+```bash
+python code/fetch_osha_incidents.py
+python code/osha_incident_pipeline.py
+python code/benchmark_authentic_incidents.py --sample 500 --dense --out json/authentic_incident_retrieval_hybrid.json
+```
+
+### Validate the repository
+
+```bash
+python -m compileall -q code tests
+python -m unittest discover -s tests -v
+python -m json.tool main.ipynb
+```
+
+### Fine-tuning
+
+Install a CUDA-enabled PyTorch build compatible with the host driver before installing the training dependencies.
+
+```bash
+pip install -r requirements-train.txt
+python code/train_lora_dpo.py --preflight-only
+python code/train_lora_dpo.py
+python code/evaluate_finetuned.py --model Qwen/Qwen2.5-3B-Instruct
+python code/validate_saved_evaluation.py
+```
+
+Generated adapters, raw incident archives, learned memory, and local model caches are excluded from Git.
+
+## Project layout
+
+| Path | Purpose |
+| --- | --- |
+| `code/` | Auditing, retrieval, policy, training, and evaluation code |
+| `data/` | Synthetic benchmarks, observation examples, and dataset registries |
+| `json/` | Legal corpus, saved outputs, and benchmark provenance |
+| `tests/` | Regression, leakage, grounding, artifact, and repository tests |
+| `main.ipynb` | Reproducible analysis of saved results |
+| `VISION_TRAINING.md` | Camera-model data and training plan |
+
+## Limitations
+
+- The yard benchmark is synthetic and does not establish field performance.
+- The authentic OSHA source is post-event, severity-selected, and lacks authoritative regulation labels.
+- A non-empty retrieval set does not prove the top authority is legally correct.
+- Fine-tuning was measured on a small synthetic holdout.
+- The current camera interface is an integration contract, not a trained production vision model.
+- Legal applicability can depend on facts, jurisdiction, exceptions, and definitions not visible in one event record.
+- Continuous learning remains gated and experimental.
+
+This repository is an engineering research system, not legal advice or a replacement for a qualified safety professional.
+
+## Technology
+
+Python, Ollama, Qwen, PyTorch, Transformers, PEFT, bitsandbytes, NumPy, pandas, aiohttp, and local JSON/NumPy indexes.
+
+## License
+
+MIT. See [LICENSE](LICENSE).

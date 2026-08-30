@@ -1,0 +1,1181 @@
+{
+  "provenance": {
+    "generated_at_utc": "2026-08-30T12:58:42.227046+00:00",
+    "benchmark": "scaled_disjoint_scope_aware_v2",
+    "random_seed": 42,
+    "temperature": 0.0,
+    "train_cases": 70,
+    "holdout_cases": 56,
+    "train_fingerprint_sha256": "28a327e8c0aa3e6cc1ea1c30328d0f27b80bf5a64b455e8c8dc3c015b9c10f4d",
+    "holdout_fingerprint_sha256": "229e8a0099e0509eeb26304aaf26de78bf5367fb69334518c956bd3637f24a16",
+    "exact_incident_overlap": 0,
+    "model": {
+      "name": "qwen3.5:9b",
+      "used": false,
+      "note": "The hybrid-only run made no model calls."
+    },
+    "embedding_model": "mxbai-embed-large",
+    "corpus_edition": "2025-01-01",
+    "corpus_chunks": 390,
+    "corpus_sections": 77,
+    "python": "3.14.3",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "training_method": "trusted episodic in-context memory plus scope-aware policy control",
+    "weight_fine_tuning_performed": false,
+    "weight_fine_tuning_note": "The host reported no usable CUDA device. This run evaluates trusted episodic learning and does not claim a LoRA or DPO weight update."
+  },
+  "strategies": {
+    "hybrid": {
+      "metrics": {
+        "n": 56,
+        "n_evaluated": 56,
+        "true_positives": 28,
+        "false_positives": 0,
+        "false_negatives": 0,
+        "true_negatives": 28,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "accuracy": 1.0,
+        "citations_given": 28,
+        "citations_fabricated": 0,
+        "citations_outside_retrieved_set": 0,
+        "citation_validity": 1.0,
+        "unparsed": 0,
+        "citation_correctness": 1.0,
+        "retrieval_recall": 1.0,
+        "review_count": 0,
+        "automation_coverage": 1.0,
+        "critique_corrections": 0,
+        "runtime_seconds": 0.0013,
+        "accuracy_95pct_wilson": [
+          0.9358,
+          1.0
+        ]
+      },
+      "results": [
+        {
+          "status": "VIOLATION",
+          "citation": "1910.22",
+          "reason": "An uncontained contaminant remained on an active employee walking surface.",
+          "rule": "walking_surface_housekeeping",
+          "evidence": [
+            "employee walking surface",
+            "fluid or slip condition"
+          ],
+          "log_id": "HO-0001",
+          "predicted": 1,
+          "actual": 1,
+          "actual_type": "housekeeping",
+          "expected_citation": "1910.22",
+          "retrieved": [
+            "1910.22"
+          ],
+          "citation_exists": true,
+          "citation_was_retrieved": true,
+          "citation_correct": true
+        },
+        {
+          "status": "VIOLATION",
+          "citation": "1910.22",
+          "reason": "An uncontained contaminant remained on an active employee walking surface.",
+          "rule": "walking_surface_housekeeping",
+          "evidence": [
+            "employee walking surface",
+            "fluid or slip condition"
+          ],
+          "log_id": "HO-0002",
+          "predicted": 1,
+          "actual": 1,
+          "actual_type": "housekeeping",
+          "expected_citation": "1910.22",
+          "retrieved": [
+            "1910.22"
+          ],
+          "citation_exists": true,
+          "citation_was_retrieved": true,
+          "citation_correct": true
+        },
+        {
+          "status": "VIOLATION",
+          "citation": "1910.22",
+          "reason": "An uncontained contaminant remained on an active employee walking surface.",
+          "rule": "walking_surface_housekeeping",
+          "evidence": [
+            "employee walking surface",
+            "fluid or slip condition"
+          ],
+          "log_id": "HO-0003",
+          "predicted": 1,
+          "actual": 1,
+          "actual_type": "housekeeping",
+          "expected_citation": "1910.22",
+          "retrieved": [
+            "1910.22"
+          ],
+          "citation_exists": true,
+          "citation_was_retrieved": true,
+          "citation_correct": true
+        },
+        {
+          "status": "VIOLATION",
+          "citation": "1910.22",
+          "reason": "An uncontained contaminant remained on an active employee walking surface.",
+          "rule": "walking_surface_housekeeping",
+          "evidence": [
+            "employee walking surface",
+            "fluid or slip condition"
+          ],
+          "log_id": "HO-0004",
+          "predicted": 1,
+          "actual": 1,
+          "actual_type": "housekeeping",
+          "expected_citation": "1910.22",
+          "retrieved": [
+            "1910.22"
+          ],
+          "citation_exists": true,
+          "citation_was_retrieved": true,
+          "citation_correct": true
+        },
+        {
+          "status": "CLEAR",
+          "citation": null,
+          "reason": "The walking surface was isolated or restored before employee use.",
+          "rule": "walking_surface_housekeeping",
+          "evidence": [
+            "employee walking surface",
+            "fluid or slip condition"
+          ],
+          "log_id": "HO-0005",
+          "predicted": 0,
+          "actual": 0,
+          "actual_type": "none",
+          "expected_citation": "NONE",
+          "retrieved": [],
+          "citation_exists": null,
+          "citation_was_retrieved": null,
+          "citation_correct": true
+        },
+        {
+          "status": "CLEAR",
+          "citation": null,
+          "reason": "The walking surface was isolated or restored before employee use.",
+          "rule": "walking_surface_housekeeping",
+          "evidence": [
+            "employee walking surface",
+            "fluid or slip condition"
+          ],
+          "log_id": "HO-0006",
+          "predicted": 0,
+          "actual": 0,
+          "actual_type": "none",
+          "expected_citation": "NONE",
+          "retrieved": [],
+          "citation_exists": null,
+          "citation_was_retrieved": null,
+          "citation_correct": true
+        },
+        {
+          "status": "CLEAR",
+          "citation": null,
+          "reason": "The walking surface was isolated or restored before employee use.",
+          "rule": "walking_surface_housekeeping",
+          "evidence": [
+            "employee walking surface",
+            "fluid or slip condition"
+          ],
+          "log_id": "HO-0007",
+          "predicted": 0,
+          "actual": 0,
+          "actual_type": "none",
+          "expected_citation": "NONE",
+          "retrieved": [],
+          "citation_exists": null,
+          "citation_was_retrieved": null,
+          "citation_correct": true
+        },
+        {
+          "status": "CLEAR",
+          "citation": null,
+          "reason": "The walking surface was isolated or restored before employee use.",
+          "rule": "walking_surface_housekeeping",
+          "evidence": [
+            "employee walking surface",
+            "fluid or slip condition"
+          ],
+          "log_id": "HO-0008",
+          "predicted": 0,
+          "actual": 0,
+          "actual_type": "none",
+          "expected_citation": "NONE",
+          "retrieved": [],
+          "citation_exists": null,
+          "citation_was_retrieved": null,
+          "citation_correct": true
+        },
+        {
+          "status": "VIOLATION",
+          "citation": "21103",
+          "reason": "A covered train employee remained on duty beyond 12 consecutive hours.",
+          "rule": "train_employee_hours_of_service",
+          "evidence": [
+            "freight or switching train-employee scope",
+            "shift=12.20 hours"
+          ],
+          "log_id": "HO-0009",
+          "predicted": 1,
+          "actual": 1,
+          "actual_type": "fatigue",
+          "expected_citation": "21103",
+          "retrieved": [
+            "21103"
+          ],
+          "citation_exists": true,
+          "citation_was_retrieved": true,
+          "citation_correct": true
+        },
+        {
+          "status": "VIOLATION",
+          "citation": "21103",
+          "reason": "A covered train employee remained on duty beyond 12 consecutive hours.",
+          "rule": "train_employee_hours_of_service",
+          "evidence": [
+            "freight or switching train-employee scope",
+            "shift=12.45 hours"
+          ],
+          "log_id": "HO-0010",
+          "predicted": 1,
+          "actual": 1,
+          "actual_type": "fatigue",
+          "expected_citation": "21103",
+          "retrieved": [
+            "21103"
+          ],
+          "citation_exists": true,
+          "citation_was_retrieved": true,
+          "citation_correct": true
+        },
+        {
+          "status": "VIOLATION",
+          "citation": "21103",
+          "reason": "A covered train employee remained on duty beyond 12 consecutive hours.",
+          "rule": "train_employee_hours_of_service",
+          "evidence": [
+            "freight or switching train-employee scope",
+            "shift=12.70 hours"
+          ],
+          "log_id": "HO-0011",
+          "predicted": 1,
+          "actual": 1,
+          "actual_type": "fatigue",
+          "expected_citation": "21103",
+          "retrieved": [
+            "21103"
+          ],
+          "citation_exists": true,
+          "citation_was_retrieved": true,
+          "citation_correct": true
+        },
+        {
+          "status": "VIOLATION",
+          "citation": "21103",
+          "reason": "A covered train employee remained on duty beyond 12 consecutive hours.",
+          "rule": "train_employee_hours_of_service",
+          "evidence": [
+            "freight or switching train-employee scope",
+            "shift=12.95 hours"
+          ],
+          "log_id": "HO-0012",
+          "predicted": 1,
+          "actual": 1,
+          "actual_type": "fatigue",
+          "expected_citation": "21103",
+          "retrieved": [
+            "21103"
+          ],
+          "citation_exists": true,
+          "citation_was_retrieved": true,
+          "citation_correct": true
+        },
+        {
+          "status": "CLEAR",
+          "citation": null,
+          "reason": "The covered train employee's duty period did not exceed 12 consecutive hours.",
+          "rule": "train_employee_hours_of_service",
+          "evidence": [
+            "freight or switching train-employee scope",
+            "shift=10.50 hours"
+          ],
+          "log_id": "HO-0013",
+          "predicted": 0,
+          "actual": 0,
+          "actual_type": "none",
+          "expected_citation": "NONE",
+          "retrieved": [],
+          "citation_exists": null,
+          "citation_was_retrieved": null,
+          "citation_correct": true
+        },
+        {
+          "status": "CLEAR",
+          "citation": null,
+          "reason": "The covered train employee's duty period did not exceed 12 consecutive hours.",
+          "rule": "train_employee_hours_of_service",
+          "evidence": [
+            "freight or switching train-employee scope",
+            "shift=10.80 hours"
+          ],
+          "log_id": "HO-0014",
+          "predicted": 0,
+          "actual": 0,
+          "actual_type": "none",
+          "expected_citation": "NONE",
+          "retrieved": [],
+          "citation_exists": null,
+          "citation_was_retrieved": null,
+          "citation_correct": true
+        },
+        {
+          "status": "CLEAR",
+          "citation": null,
+          "reason": "The covered train employee's duty period did not exceed 12 consecutive hours.",
+          "rule": "train_employee_hours_of_service",
+          "evidence": [
+            "freight or switching train-employee scope",
+            "shift=11.10 hours"
+          ],
+          "log_id": "HO-0015",
+          "predicted": 0,
+          "actual": 0,
+          "actual_type": "none",
+          "expected_citation": "NONE",
+          "retrieved": [],
+          "citation_exists": null,
+          "citation_was_retrieved": null,
+          "citation_correct": true
+        },
+        {
+          "status": "CLEAR",
+          "citation": null,
+          "reason": "The covered train employee's duty period did not exceed 12 consecutive hours.",
+          "rule": "train_employee_hours_of_service",
+          "evidence": [
+            "freight or switching train-employee scope",
+            "shift=11.40 hours"
+          ],
+          "log_id": "HO-0016",
+          "predicted": 0,
+          "actual": 0,
+          "actual_type": "none",
+          "expected_citation": "NONE",
+          "retrieved": [],
+          "citation_exists": null,
+          "citation_was_retrieved": null,
+          "citation_correct": true
+        },
+        {
+          "status": "VIOLATION",
+          "citation": "1910.333",
+          "reason": "Equipment or personnel entered the restricted area around exposed energized parts.",
+          "rule": "electrical_work_practices",
+          "evidence": [
+            "energized electrical context",
+            "restricted approach"
+          ],
+          "log_id": "HO-0017",
+          "predicted": 1,
+          "actual": 1,
+          "actual_type": "electrical_clearance",
+          "expected_citation": "1910.333",
+          "retrieved": [
+            "1910.333"
+          ],
+          "citation_exists": true,
+          "citation_was_retrieved": true,
+          "citation_correct": true
+        },
+        {
+          "status": "VIOLATION",
+          "citation": "1910.333",
+          "reason": "Equipment or personnel entered the restricted area around exposed energized parts.",
+          "rule": "electrical_work_practices",
+          "evidence": [
+            "energized electrical context",
+            "restricted approach"
+          ],
+          "log_id": "HO-0018",
+          "predicted": 1,
+          "actual": 1,
+          "actual_type": "electrical_clearance",
+          "expected_citation": "1910.333",
+          "retrieved": [
+            "1910.333"
+          ],
+          "citation_exists": true,
+          "citation_was_retrieved": true,
+          "citation_correct": true
+        },
+        {
+          "status": "VIOLATION",
+          "citation": "1910.333",
+          "reason": "Equipment or personnel entered the restricted area around exposed energized parts.",
+          "rule": "electrical_work_practices",
+          "evidence": [
+            "energized electrical context",
+            "restricted approach"
+          ],
+          "log_id": "HO-0019",
+          "predicted": 1,
+          "actual": 1,
+          "actual_type": "electrical_clearance",
+          "expected_citation": "1910.333",
+          "retrieved": [
+            "1910.333"
+          ],
+          "citation_exists": true,
+          "citation_was_retrieved": true,
+          "citation_correct": true
+        },
+        {
+          "status": "VIOLATION",
+          "citation": "1910.333",
+          "reason": "Equipment or personnel entered the restricted area around exposed energized parts.",
+          "rule": "electrical_work_practices",
+          "evidence": [
+            "energized electrical context",
+            "restricted approach"
+          ],
+          "log_id": "HO-0020",
+          "predicted": 1,
+          "actual": 1,
+          "actual_type": "electrical_clearance",
+          "expected_citation": "1910.333",
+          "retrieved": [
+            "1910.333"
+          ],
+          "citation_exists": true,
+          "citation_was_retrieved": true,
+          "citation_correct": true
+        },
+        {
+          "status": "CLEAR",
+          "citation": null,
+          "reason": "The event states that energy isolation or an engineered approach control was maintained.",
+          "rule": "electrical_work_practices",
+          "evidence": [
+            "energized electrical context",
+            "control maintained"
+          ],
+          "log_id": "HO-0021",
+          "predicted": 0,
+          "actual": 0,
+          "actual_type": "none",
+          "expected_citation": "NONE",
+          "retrieved": [],
+          "citation_exists": null,
+          "citation_was_retrieved": null,
+          "citation_correct": true
+        },
+        {
+          "status": "CLEAR",
+          "citation": null,
+          "reason": "The event states that energy isolation or an engineered approach control was maintained.",
+          "rule": "electrical_work_practices",
+          "evidence": [
+            "energized electrical context",
+            "control maintained"
+          ],
+          "log_id": "HO-0022",
+          "predicted": 0,
+          "actual": 0,
+          "actual_type": "none",
+          "expected_citation": "NONE",
+          "retrieved": [],
+          "citation_exists": null,
+          "citation_was_retrieved": null,
+          "citation_correct": true
+        },
+        {
+          "status": "CLEAR",
+          "citation": null,
+          "reason": "The event states that energy isolation or an engineered approach control was maintained.",
+          "rule": "electrical_work_practices",
+          "evidence": [
+            "energized electrical context",
+            "control maintained"
+          ],
+          "log_id": "HO-0023",
+          "predicted": 0,
+          "actual": 0,
+          "actual_type": "none",
+          "expected_citation": "NONE",
+          "retrieved": [],
+          "citation_exists": null,
+          "citation_was_retrieved": null,
+          "citation_correct": true
+        },
+        {
+          "status": "CLEAR",
+          "citation": null,
+          "reason": "The event states that energy isolation or an engineered approach control was maintained.",
+          "rule": "electrical_work_practices",
+          "evidence": [
+            "energized electrical context",
+            "control maintained"
+          ],
+          "log_id": "HO-0024",
+          "predicted": 0,
+          "actual": 0,
+          "actual_type": "none",
+          "expected_citation": "NONE",
+          "retrieved": [],
+          "citation_exists": null,
+          "citation_was_retrieved": null,
+          "citation_correct": true
+        },
+        {
+          "status": "VIOLATION",
+          "citation": "1910.184",
+          "reason": "Damaged or unidentified sling components remained in lifting service.",
+          "rule": "slings",
+          "evidence": [
+            "lifting sling or rigging",
+            "damage while in service"
+          ],
+          "log_id": "HO-0025",
+          "predicted": 1,
+          "actual": 1,
+          "actual_type": "defective_sling",
+          "expected_citation": "1910.184",
+          "retrieved": [
+            "1910.184"
+          ],
+          "citation_exists": true,
+          "citation_was_retrieved": true,
+          "citation_correct": true
+        },
+        {
+          "status": "VIOLATION",
+          "citation": "1910.184",
+          "reason": "Damaged or unidentified sling components remained in lifting service.",
+          "rule": "slings",
+          "evidence": [
+            "lifting sling or rigging",
+            "damage while in service"
+          ],
+          "log_id": "HO-0026",
+          "predicted": 1,
+          "actual": 1,
+          "actual_type": "defective_sling",
+          "expected_citation": "1910.184",
+          "retrieved": [
+            "1910.184"
+          ],
+          "citation_exists": true,
+          "citation_was_retrieved": true,
+          "citation_correct": true
+        },
+        {
+          "status": "VIOLATION",
+          "citation": "1910.184",
+          "reason": "Damaged or unidentified sling components remained in lifting service.",
+          "rule": "slings",
+          "evidence": [
+            "lifting sling or rigging",
+            "damage while in service"
+          ],
+          "log_id": "HO-0027",
+          "predicted": 1,
+          "actual": 1,
+          "actual_type": "defective_sling",
+          "expected_citation": "1910.184",
+          "retrieved": [
+            "1910.184"
+          ],
+          "citation_exists": true,
+          "citation_was_retrieved": true,
+          "citation_correct": true
+        },
+        {
+          "status": "VIOLATION",
+          "citation": "1910.184",
+          "reason": "Damaged or unidentified sling components remained in lifting service.",
+          "rule": "slings",
+          "evidence": [
+            "lifting sling or rigging",
+            "damage while in service"
+          ],
+          "log_id": "HO-0028",
+          "predicted": 1,
+          "actual": 1,
+          "actual_type": "defective_sling",
+          "expected_citation": "1910.184",
+          "retrieved": [
+            "1910.184"
+          ],
+          "citation_exists": true,
+          "citation_was_retrieved": true,
+          "citation_correct": true
+        },
+        {
+          "status": "CLEAR",
+          "citation": null,
+          "reason": "The sling was verified serviceable or removed before use.",
+          "rule": "slings",
+          "evidence": [
+            "lifting sling or rigging",
+            "serviceable control"
+          ],
+          "log_id": "HO-0029",
+          "predicted": 0,
+          "actual": 0,
+          "actual_type": "none",
+          "expected_citation": "NONE",
+          "retrieved": [],
+          "citation_exists": null,
+          "citation_was_retrieved": null,
+          "citation_correct": true
+        },
+        {
+          "status": "CLEAR",
+          "citation": null,
+          "reason": "The sling was verified serviceable or removed before use.",
+          "rule": "slings",
+          "evidence": [
+            "lifting sling or rigging",
+            "serviceable control"
+          ],
+          "log_id": "HO-0030",
+          "predicted": 0,
+          "actual": 0,
+          "actual_type": "none",
+          "expected_citation": "NONE",
+          "retrieved": [],
+          "citation_exists": null,
+          "citation_was_retrieved": null,
+          "citation_correct": true
+        },
+        {
+          "status": "CLEAR",
+          "citation": null,
+          "reason": "The sling was verified serviceable or removed before use.",
+          "rule": "slings",
+          "evidence": [
+            "lifting sling or rigging",
+            "serviceable control"
+          ],
+          "log_id": "HO-0031",
+          "predicted": 0,
+          "actual": 0,
+          "actual_type": "none",
+          "expected_citation": "NONE",
+          "retrieved": [],
+          "citation_exists": null,
+          "citation_was_retrieved": null,
+          "citation_correct": true
+        },
+        {
+          "status": "CLEAR",
+          "citation": null,
+          "reason": "The sling was verified serviceable or removed before use.",
+          "rule": "slings",
+          "evidence": [
+            "lifting sling or rigging",
+            "serviceable control"
+          ],
+          "log_id": "HO-0032",
+          "predicted": 0,
+          "actual": 0,
+          "actual_type": "none",
+          "expected_citation": "NONE",
+          "retrieved": [],
+          "citation_exists": null,
+          "citation_was_retrieved": null,
+          "citation_correct": true
+        },
+        {
+          "status": "VIOLATION",
+          "citation": "1910.176",
+          "reason": "Stored material obstructed a permanent aisle or passageway.",
+          "rule": "materials_handling_aisles",
+          "evidence": [
+            "materials storage",
+            "obstructed passage"
+          ],
+          "log_id": "HO-0033",
+          "predicted": 1,
+          "actual": 1,
+          "actual_type": "aisle_clearance",
+          "expected_citation": "1910.176",
+          "retrieved": [
+            "1910.176"
+          ],
+          "citation_exists": true,
+          "citation_was_retrieved": true,
+          "citation_correct": true
+        },
+        {
+          "status": "VIOLATION",
+          "citation": "1910.176",
+          "reason": "Stored material obstructed a permanent aisle or passageway.",
+          "rule": "materials_handling_aisles",
+          "evidence": [
+            "materials storage",
+            "obstructed passage"
+          ],
+          "log_id": "HO-0034",
+          "predicted": 1,
+          "actual": 1,
+          "actual_type": "aisle_clearance",
+          "expected_citation": "1910.176",
+          "retrieved": [
+            "1910.176"
+          ],
+          "citation_exists": true,
+          "citation_was_retrieved": true,
+          "citation_correct": true
+        },
+        {
+          "status": "VIOLATION",
+          "citation": "1910.176",
+          "reason": "Stored material obstructed a permanent aisle or passageway.",
+          "rule": "materials_handling_aisles",
+          "evidence": [
+            "materials storage",
+            "obstructed passage"
+          ],
+          "log_id": "HO-0035",
+          "predicted": 1,
+          "actual": 1,
+          "actual_type": "aisle_clearance",
+          "expected_citation": "1910.176",
+          "retrieved": [
+            "1910.176"
+          ],
+          "citation_exists": true,
+          "citation_was_retrieved": true,
+          "citation_correct": true
+        },
+        {
+          "status": "VIOLATION",
+          "citation": "1910.176",
+          "reason": "Stored material obstructed a permanent aisle or passageway.",
+          "rule": "materials_handling_aisles",
+          "evidence": [
+            "materials storage",
+            "obstructed passage"
+          ],
+          "log_id": "HO-0036",
+          "predicted": 1,
+          "actual": 1,
+          "actual_type": "aisle_clearance",
+          "expected_citation": "1910.176",
+          "retrieved": [
+            "1910.176"
+          ],
+          "citation_exists": true,
+          "citation_was_retrieved": true,
+          "citation_correct": true
+        },
+        {
+          "status": "CLEAR",
+          "citation": null,
+          "reason": "Stored material remained within its boundary and preserved aisle clearance.",
+          "rule": "materials_handling_aisles",
+          "evidence": [
+            "materials storage",
+            "clear aisle"
+          ],
+          "log_id": "HO-0037",
+          "predicted": 0,
+          "actual": 0,
+          "actual_type": "none",
+          "expected_citation": "NONE",
+          "retrieved": [],
+          "citation_exists": null,
+          "citation_was_retrieved": null,
+          "citation_correct": true
+        },
+        {
+          "status": "CLEAR",
+          "citation": null,
+          "reason": "Stored material remained within its boundary and preserved aisle clearance.",
+          "rule": "materials_handling_aisles",
+          "evidence": [
+            "materials storage",
+            "clear aisle"
+          ],
+          "log_id": "HO-0038",
+          "predicted": 0,
+          "actual": 0,
+          "actual_type": "none",
+          "expected_citation": "NONE",
+          "retrieved": [],
+          "citation_exists": null,
+          "citation_was_retrieved": null,
+          "citation_correct": true
+        },
+        {
+          "status": "CLEAR",
+          "citation": null,
+          "reason": "Stored material remained within its boundary and preserved aisle clearance.",
+          "rule": "materials_handling_aisles",
+          "evidence": [
+            "materials storage",
+            "clear aisle"
+          ],
+          "log_id": "HO-0039",
+          "predicted": 0,
+          "actual": 0,
+          "actual_type": "none",
+          "expected_citation": "NONE",
+          "retrieved": [],
+          "citation_exists": null,
+          "citation_was_retrieved": null,
+          "citation_correct": true
+        },
+        {
+          "status": "CLEAR",
+          "citation": null,
+          "reason": "Stored material remained within its boundary and preserved aisle clearance.",
+          "rule": "materials_handling_aisles",
+          "evidence": [
+            "materials storage",
+            "clear aisle"
+          ],
+          "log_id": "HO-0040",
+          "predicted": 0,
+          "actual": 0,
+          "actual_type": "none",
+          "expected_citation": "NONE",
+          "retrieved": [],
+          "citation_exists": null,
+          "citation_was_retrieved": null,
+          "citation_correct": true
+        },
+        {
+          "status": "VIOLATION",
+          "citation": "1910.26",
+          "reason": "A portable dockboard was used without adequate securing against displacement.",
+          "rule": "dockboards",
+          "evidence": [
+            "dockboard transfer",
+            "movement or missing securing"
+          ],
+          "log_id": "HO-0041",
+          "predicted": 1,
+          "actual": 1,
+          "actual_type": "dockboard",
+          "expected_citation": "1910.26",
+          "retrieved": [
+            "1910.26"
+          ],
+          "citation_exists": true,
+          "citation_was_retrieved": true,
+          "citation_correct": true
+        },
+        {
+          "status": "VIOLATION",
+          "citation": "1910.26",
+          "reason": "A portable dockboard was used without adequate securing against displacement.",
+          "rule": "dockboards",
+          "evidence": [
+            "dockboard transfer",
+            "movement or missing securing"
+          ],
+          "log_id": "HO-0042",
+          "predicted": 1,
+          "actual": 1,
+          "actual_type": "dockboard",
+          "expected_citation": "1910.26",
+          "retrieved": [
+            "1910.26"
+          ],
+          "citation_exists": true,
+          "citation_was_retrieved": true,
+          "citation_correct": true
+        },
+        {
+          "status": "VIOLATION",
+          "citation": "1910.26",
+          "reason": "A portable dockboard was used without adequate securing against displacement.",
+          "rule": "dockboards",
+          "evidence": [
+            "dockboard transfer",
+            "movement or missing securing"
+          ],
+          "log_id": "HO-0043",
+          "predicted": 1,
+          "actual": 1,
+          "actual_type": "dockboard",
+          "expected_citation": "1910.26",
+          "retrieved": [
+            "1910.26"
+          ],
+          "citation_exists": true,
+          "citation_was_retrieved": true,
+          "citation_correct": true
+        },
+        {
+          "status": "VIOLATION",
+          "citation": "1910.26",
+          "reason": "A portable dockboard was used without adequate securing against displacement.",
+          "rule": "dockboards",
+          "evidence": [
+            "dockboard transfer",
+            "movement or missing securing"
+          ],
+          "log_id": "HO-0044",
+          "predicted": 1,
+          "actual": 1,
+          "actual_type": "dockboard",
+          "expected_citation": "1910.26",
+          "retrieved": [
+            "1910.26"
+          ],
+          "citation_exists": true,
+          "citation_was_retrieved": true,
+          "citation_correct": true
+        },
+        {
+          "status": "CLEAR",
+          "citation": null,
+          "reason": "The dockboard was secured and its capacity or bearing was verified.",
+          "rule": "dockboards",
+          "evidence": [
+            "dockboard transfer",
+            "secured control"
+          ],
+          "log_id": "HO-0045",
+          "predicted": 0,
+          "actual": 0,
+          "actual_type": "none",
+          "expected_citation": "NONE",
+          "retrieved": [],
+          "citation_exists": null,
+          "citation_was_retrieved": null,
+          "citation_correct": true
+        },
+        {
+          "status": "CLEAR",
+          "citation": null,
+          "reason": "The dockboard was secured and its capacity or bearing was verified.",
+          "rule": "dockboards",
+          "evidence": [
+            "dockboard transfer",
+            "secured control"
+          ],
+          "log_id": "HO-0046",
+          "predicted": 0,
+          "actual": 0,
+          "actual_type": "none",
+          "expected_citation": "NONE",
+          "retrieved": [],
+          "citation_exists": null,
+          "citation_was_retrieved": null,
+          "citation_correct": true
+        },
+        {
+          "status": "CLEAR",
+          "citation": null,
+          "reason": "The dockboard was secured and its capacity or bearing was verified.",
+          "rule": "dockboards",
+          "evidence": [
+            "dockboard transfer",
+            "secured control"
+          ],
+          "log_id": "HO-0047",
+          "predicted": 0,
+          "actual": 0,
+          "actual_type": "none",
+          "expected_citation": "NONE",
+          "retrieved": [],
+          "citation_exists": null,
+          "citation_was_retrieved": null,
+          "citation_correct": true
+        },
+        {
+          "status": "CLEAR",
+          "citation": null,
+          "reason": "The dockboard was secured and its capacity or bearing was verified.",
+          "rule": "dockboards",
+          "evidence": [
+            "dockboard transfer",
+            "secured control"
+          ],
+          "log_id": "HO-0048",
+          "predicted": 0,
+          "actual": 0,
+          "actual_type": "none",
+          "expected_citation": "NONE",
+          "retrieved": [],
+          "citation_exists": null,
+          "citation_was_retrieved": null,
+          "citation_correct": true
+        },
+        {
+          "status": "VIOLATION",
+          "citation": "1910.28",
+          "reason": "Work occurred at an elevated unprotected edge without a fall-protection system.",
+          "rule": "fall_protection",
+          "evidence": [
+            "elevated exposure",
+            "missing fall control"
+          ],
+          "log_id": "HO-0049",
+          "predicted": 1,
+          "actual": 1,
+          "actual_type": "fall_protection",
+          "expected_citation": "1910.28",
+          "retrieved": [
+            "1910.28"
+          ],
+          "citation_exists": true,
+          "citation_was_retrieved": true,
+          "citation_correct": true
+        },
+        {
+          "status": "VIOLATION",
+          "citation": "1910.28",
+          "reason": "Work occurred at an elevated unprotected edge without a fall-protection system.",
+          "rule": "fall_protection",
+          "evidence": [
+            "elevated exposure",
+            "missing fall control"
+          ],
+          "log_id": "HO-0050",
+          "predicted": 1,
+          "actual": 1,
+          "actual_type": "fall_protection",
+          "expected_citation": "1910.28",
+          "retrieved": [
+            "1910.28"
+          ],
+          "citation_exists": true,
+          "citation_was_retrieved": true,
+          "citation_correct": true
+        },
+        {
+          "status": "VIOLATION",
+          "citation": "1910.28",
+          "reason": "Work occurred at an elevated unprotected edge without a fall-protection system.",
+          "rule": "fall_protection",
+          "evidence": [
+            "elevated exposure",
+            "missing fall control"
+          ],
+          "log_id": "HO-0051",
+          "predicted": 1,
+          "actual": 1,
+          "actual_type": "fall_protection",
+          "expected_citation": "1910.28",
+          "retrieved": [
+            "1910.28"
+          ],
+          "citation_exists": true,
+          "citation_was_retrieved": true,
+          "citation_correct": true
+        },
+        {
+          "status": "VIOLATION",
+          "citation": "1910.28",
+          "reason": "Work occurred at an elevated unprotected edge without a fall-protection system.",
+          "rule": "fall_protection",
+          "evidence": [
+            "elevated exposure",
+            "missing fall control"
+          ],
+          "log_id": "HO-0052",
+          "predicted": 1,
+          "actual": 1,
+          "actual_type": "fall_protection",
+          "expected_citation": "1910.28",
+          "retrieved": [
+            "1910.28"
+          ],
+          "citation_exists": true,
+          "citation_was_retrieved": true,
+          "citation_correct": true
+        },
+        {
+          "status": "CLEAR",
+          "citation": null,
+          "reason": "A guardrail, restraint, or fall-arrest system controlled the elevated exposure.",
+          "rule": "fall_protection",
+          "evidence": [
+            "elevated exposure",
+            "fall control"
+          ],
+          "log_id": "HO-0053",
+          "predicted": 0,
+          "actual": 0,
+          "actual_type": "none",
+          "expected_citation": "NONE",
+          "retrieved": [],
+          "citation_exists": null,
+          "citation_was_retrieved": null,
+          "citation_correct": true
+        },
+        {
+          "status": "CLEAR",
+          "citation": null,
+          "reason": "A guardrail, restraint, or fall-arrest system controlled the elevated exposure.",
+          "rule": "fall_protection",
+          "evidence": [
+            "elevated exposure",
+            "fall control"
+          ],
+          "log_id": "HO-0054",
+          "predicted": 0,
+          "actual": 0,
+          "actual_type": "none",
+          "expected_citation": "NONE",
+          "retrieved": [],
+          "citation_exists": null,
+          "citation_was_retrieved": null,
+          "citation_correct": true
+        },
+        {
+          "status": "CLEAR",
+          "citation": null,
+          "reason": "A guardrail, restraint, or fall-arrest system controlled the elevated exposure.",
+          "rule": "fall_protection",
+          "evidence": [
+            "elevated exposure",
+            "fall control"
+          ],
+          "log_id": "HO-0055",
+          "predicted": 0,
+          "actual": 0,
+          "actual_type": "none",
+          "expected_citation": "NONE",
+          "retrieved": [],
+          "citation_exists": null,
+          "citation_was_retrieved": null,
+          "citation_correct": true
+        },
+        {
+          "status": "CLEAR",
+          "citation": null,
+          "reason": "A guardrail, restraint, or fall-arrest system controlled the elevated exposure.",
+          "rule": "fall_protection",
+          "evidence": [
+            "elevated exposure",
+            "fall control"
+          ],
+          "log_id": "HO-0056",
+          "predicted": 0,
+          "actual": 0,
+          "actual_type": "none",
+          "expected_citation": "NONE",
+          "retrieved": [],
+          "citation_exists": null,
+          "citation_was_retrieved": null,
+          "citation_correct": true
+        }
+      ]
+    }
+  },
+  "comparisons": {}
+}

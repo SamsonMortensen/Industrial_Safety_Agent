@@ -21,6 +21,7 @@ faith.
 
 Source: eCFR versioner API, https://www.ecfr.gov/developers/documentation/api/v1
 """
+
 import json
 import re
 import sys
@@ -36,21 +37,46 @@ EDITION = "2025-01-01"
 OUT = Path(__file__).resolve().parent.parent / "json" / "regulations.json"
 
 SOURCES = [
-    {"title": "29", "part": "1910", "subpart": "D", "subtitle": "B", "chapter": "XVII",
-     "topic": "Walking-Working Surfaces"},
-    {"title": "29", "part": "1910", "subpart": "N", "subtitle": "B", "chapter": "XVII",
-     "topic": "Materials Handling and Storage"},
-    {"title": "29", "part": "1910", "subpart": "S", "subtitle": "B", "chapter": "XVII",
-     "topic": "Electrical"},
-    {"title": "49", "part": "228", "subtitle": "B", "chapter": "II",
-     "topic": "Hours of Service"},
+    {
+        "title": "29",
+        "part": "1910",
+        "subpart": "D",
+        "subtitle": "B",
+        "chapter": "XVII",
+        "topic": "Walking-Working Surfaces",
+    },
+    {
+        "title": "29",
+        "part": "1910",
+        "subpart": "N",
+        "subtitle": "B",
+        "chapter": "XVII",
+        "topic": "Materials Handling and Storage",
+    },
+    {
+        "title": "29",
+        "part": "1910",
+        "subpart": "S",
+        "subtitle": "B",
+        "chapter": "XVII",
+        "topic": "Electrical",
+    },
+    {
+        "title": "49",
+        "part": "228",
+        "subtitle": "B",
+        "chapter": "II",
+        "topic": "Hours of Service",
+    },
 ]
 
 MAX_CHARS = 1800
 
 
 def fetch(src):
-    params = {k: v for k, v in src.items() if k in ("subtitle", "chapter", "part", "subpart")}
+    params = {
+        k: v for k, v in src.items() if k in ("subtitle", "chapter", "part", "subpart")
+    }
     url = API.format(edition=EDITION, title=src["title"])
     r = requests.get(url, params=params, timeout=180)
     r.raise_for_status()
@@ -98,17 +124,19 @@ def parse(xml, src):
 
         citation = f"{src['title']} CFR {section}"
         for part_text in split(body):
-            chunks.append({
-                "citation": citation,
-                "section": section,
-                "heading": heading,
-                "title": src["title"],
-                "part": src["part"],
-                "subpart": src.get("subpart"),
-                "topic": src["topic"],
-                "text": part_text,
-                "char_len": len(part_text),
-            })
+            chunks.append(
+                {
+                    "citation": citation,
+                    "section": section,
+                    "heading": heading,
+                    "title": src["title"],
+                    "part": src["part"],
+                    "subpart": src.get("subpart"),
+                    "topic": src["topic"],
+                    "text": part_text,
+                    "char_len": len(part_text),
+                }
+            )
     return chunks
 
 
@@ -117,7 +145,8 @@ def main():
     all_chunks = []
     for src in SOURCES:
         label = f"{src['title']} CFR {src['part']}" + (
-            f" Subpart {src['subpart']}" if src.get("subpart") else "")
+            f" Subpart {src['subpart']}" if src.get("subpart") else ""
+        )
         print(f"Fetching {label} ({src['topic']})...", flush=True)
         chunks = parse(fetch(src), src)
         sections = sorted({c["section"] for c in chunks})
@@ -140,8 +169,10 @@ def main():
     OUT.write_text(json.dumps(doc, indent=1), encoding="utf-8")
 
     size = OUT.stat().st_size / 1000
-    print(f"\nWrote {OUT.name}: {len(all_chunks)} chunks, "
-          f"{len(doc['sections'])} sections, {size:.0f} KB")
+    print(
+        f"\nWrote {OUT.name}: {len(all_chunks)} chunks, "
+        f"{len(doc['sections'])} sections, {size:.0f} KB"
+    )
     return 0
 
 

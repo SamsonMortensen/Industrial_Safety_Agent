@@ -1,0 +1,7 @@
+# Install a CUDA-enabled PyTorch wheel separately for the host driver.
+transformers==5.5.0
+peft==0.19.1
+accelerate==1.13.0
+bitsandbytes==0.49.2
+huggingface-hub>=0.34
+safetensors>=0.5

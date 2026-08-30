@@ -1,6 +1,5 @@
 requests
 numpy
 pandas
-matplotlib
 notebook
 aiohttp

@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "reviewed_on": "2026-08-30",
+  "purpose": "Track candidate perception datasets without treating their labels as legal conclusions.",
+  "datasets": [
+    {
+      "id": "onal_dandil_safe_unsafe_video",
+      "name": "Video Dataset for Safe and Unsafe Behaviours",
+      "modality": "video",
+      "tasks": ["temporal_action_classification", "safe_unsafe_classification"],
+      "scale": {
+        "clips": 691,
+        "classes": 8,
+        "resolution": "1920x1080",
+        "fps": 24
+      },
+      "labels": [
+        "safe_walkway",
+        "walkway_violation",
+        "authorized_intervention",
+        "unauthorized_intervention",
+        "closed_panel_cover",
+        "open_panel_cover",
+        "safe_forklift_carrying",
+        "forklift_overload"
+      ],
+      "official_url": "https://data.mendeley.com/datasets/xjmtb22pff/1",
+      "paper_url": "https://doi.org/10.1016/j.dib.2024.110517",
+      "license": "CC BY 4.0",
+      "license_status": "cleared_for_commercial_prototyping",
+      "recommended_use": "Primary temporal behavior bootstrap and external evaluation.",
+      "caveats": [
+        "Only two cameras at one factory are represented.",
+        "Split by camera and contiguous time period, never by adjacent frames.",
+        "Dataset behavior labels are observations, not findings under a regulation."
+      ]
+    },
+    {
+      "id": "sh17_ppe",
+      "name": "SH17 Human Safety and PPE Detection",
+      "modality": "image",
+      "tasks": ["object_detection", "ppe_detection"],
+      "scale": {
+        "images": 8099,
+        "instances": 75994,
+        "classes": 17
+      },
+      "labels": [
+        "person",
+        "head",
+        "face",
+        "glasses",
+        "face_mask_medical",
+        "face_guard",
+        "ear",
+        "earmuffs",
+        "hands",
+        "gloves",
+        "foot",
+        "shoes",
+        "safety_vest",
+        "tools",
+        "helmet",
+        "medical_suit",
+        "safety_suit"
+      ],
+      "official_url": "https://github.com/ahmadmughees/SH17dataset",
+      "paper_url": "https://doi.org/10.1016/j.jnlssr.2024.09.002",
+      "license": "CC BY-NC-SA 4.0",
+      "license_status": "research_only",
+      "recommended_use": "Research-only PPE detector bootstrap and cross-domain evaluation.",
+      "caveats": [
+        "The noncommercial license blocks use in a commercial product without separate permission.",
+        "Most source images are web-sourced rather than fixed-camera industrial video.",
+        "PPE presence alone does not prove whether a task requires that PPE."
+      ]
+    },
+    {
+      "id": "isafetybench",
+      "name": "iSafetyBench",
+      "modality": "video",
+      "tasks": ["open_vocabulary_action_recognition", "multi_label_video_evaluation"],
+      "scale": {
+        "clips": 1100,
+        "routine_actions": 98,
+        "hazard_actions": 67
+      },
+      "labels": ["routine_actions", "hazardous_actions", "single_label_mcq", "multi_label_mcq"],
+      "official_url": "https://huggingface.co/datasets/raiyaanabdullah/isafety-bench",
+      "paper_url": "https://openaccess.thecvf.com/content/ICCV2025W/VISION%2725/html/Abdullah_iSafetyBench_A_video-language_benchmark_for_safety_in_industrial_environment_ICCVW_2025_paper.html",
+      "license": "CC BY-NC-SA 4.0",
+      "license_status": "research_only",
+      "recommended_use": "Holdout benchmark for broad hazardous action recognition, not the first training set.",
+      "caveats": [
+        "The noncommercial license blocks product use without separate permission.",
+        "Clips were curated from public online video, so source rights and domain shift need review.",
+        "Keep this set external to training if it is used to claim generalization."
+      ]
+    },
+    {
+      "id": "shwd_helmet",
+      "name": "Safety Helmet Wearing Dataset",
+      "modality": "image",
+      "tasks": ["object_detection", "helmet_detection"],
+      "scale": {
+        "images": 7581,
+        "helmet_instances": 9044,
+        "head_instances": 111514,
+        "classes": 2
+      },
+      "labels": ["hat", "person_without_hat"],
+      "official_url": "https://github.com/njvisionpower/Safety-Helmet-Wearing-Dataset",
+      "paper_url": null,
+      "license": "MIT repository license",
+      "license_status": "rights_review_required",
+      "recommended_use": "Optional helmet baseline after source-image rights are reviewed.",
+      "caveats": [
+        "The repository carries an MIT license, but images were aggregated from search engines and SCUT-HEAD.",
+        "Do not assume the software license resolves every source-image right.",
+        "The two labels are too narrow for general unsafe-condition recognition."
+      ]
+    },
+    {
+      "id": "construction_action_recognition",
+      "name": "Construction Action Recognition Dataset",
+      "modality": "video",
+      "tasks": ["construction_action_recognition", "unsafe_action_recognition"],
+      "scale": {
+        "clips": null,
+        "classes": null
+      },
+      "labels": ["construction_actions", "unsafe_construction_actions"],
+      "official_url": "https://github.com/S1mpleyang/ConstructionActionRecognition",
+      "paper_url": "https://doi.org/10.1016/j.autcon.2022.104703",
+      "license": "Dataset license not stated clearly",
+      "license_status": "rights_review_required",
+      "recommended_use": "Candidate construction-domain evaluation after access and license review.",
+      "caveats": [
+        "Dataset access is hosted through Baidu Netdisk.",
+        "The code license does not establish the dataset license.",
+        "Do not download or train until the dataset terms are confirmed."
+      ]
+    }
+  ]
+}
