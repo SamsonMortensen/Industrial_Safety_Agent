@@ -6,11 +6,12 @@ and formats them for training with Hugging Face TRL, Unsloth, and PyTorch.
 """
 
 import argparse
-import csv
 import json
 import random
 from pathlib import Path
-from typing import Any, Dict, List, Tuple
+from typing import Any, Dict, List
+
+from learning_policy import episode_is_trusted
 
 ROOT = Path(__file__).resolve().parent.parent
 JSON_DIR = ROOT / "json"
@@ -37,13 +38,17 @@ class ComplianceDatasetPipeline:
     def _load(self):
         if MEMORY_FILE.exists():
             try:
-                self.memory_records = json.loads(MEMORY_FILE.read_text(encoding="utf-8"))
+                self.memory_records = json.loads(
+                    MEMORY_FILE.read_text(encoding="utf-8")
+                )
             except Exception as e:
                 print(f"[DatasetPipeline] Warning loading memory: {e}")
 
         if CRITIQUE_PAIRS_FILE.exists():
             try:
-                self.critique_pairs = json.loads(CRITIQUE_PAIRS_FILE.read_text(encoding="utf-8"))
+                self.critique_pairs = json.loads(
+                    CRITIQUE_PAIRS_FILE.read_text(encoding="utf-8")
+                )
             except Exception as e:
                 print(f"[DatasetPipeline] Warning loading critique pairs: {e}")
 
@@ -57,7 +62,7 @@ class ComplianceDatasetPipeline:
         """Constructs Supervised Fine-Tuning (SFT) instruction dataset."""
         sft_records = []
         for ep in self.memory_records:
-            if not ep.get("is_grounded", True) or ep.get("feedback_type") == "pitfall":
+            if not episode_is_trusted(ep):
                 continue
 
             row = ep.get("row", {})
@@ -74,13 +79,15 @@ class ComplianceDatasetPipeline:
                 f"REASON: {ep.get('reason')}"
             )
 
-            sft_records.append({
-                "instruction": "You are a federal safety and compliance auditor for a rail-served intermodal yard. Audit this yard event against federal OSHA (Title 29) and FRA (Title 49) regulations. Cite exact section numbers if a violation exists, or NONE if compliant.",
-                "input": input_text,
-                "output": output_text,
-                "log_id": ep.get("log_id"),
-                "category": ep.get("verdict"),
-            })
+            sft_records.append(
+                {
+                    "instruction": "You are a federal safety and compliance auditor for a rail-served intermodal yard. Audit this yard event against federal OSHA (Title 29) and FRA (Title 49) regulations. Cite exact section numbers if a violation exists, or NONE if compliant.",
+                    "input": input_text,
+                    "output": output_text,
+                    "log_id": ep.get("log_id"),
+                    "category": ep.get("verdict"),
+                }
+            )
         return sft_records
 
     def build_dpo_dataset(self) -> List[Dict[str, Any]]:
@@ -89,17 +96,23 @@ class ComplianceDatasetPipeline:
 
         # 1. High-value empirical self-reflection critique pairs
         for pair in self.critique_pairs:
-            dpo_records.append({
-                "log_id": pair.get("log_id"),
-                "source": "self_reflection_critique",
-                "prompt": pair.get("prompt"),
-                "chosen": pair.get("chosen"),
-                "rejected": pair.get("rejected"),
-                "critique_reason": pair.get("critique_issues", []),
-            })
+            if pair.get("verification_source") not in {"ground_truth", "human_review"}:
+                continue
+            dpo_records.append(
+                {
+                    "log_id": pair.get("log_id"),
+                    "source": "self_reflection_critique",
+                    "prompt": pair.get("prompt"),
+                    "chosen": pair.get("chosen"),
+                    "rejected": pair.get("rejected"),
+                    "critique_reason": pair.get("critique_issues", []),
+                }
+            )
 
         # 2. Synthetic hard-negative & anti-hallucination contrastive pairs from memory
         for ep in self.memory_records:
+            if not episode_is_trusted(ep):
+                continue
             row = ep.get("row", {})
             verdict = ep.get("verdict")
             citation = ep.get("citation") or "NONE"
@@ -125,25 +138,27 @@ class ComplianceDatasetPipeline:
             if verdict == "CLEAR":
                 # Rejected attempt: Over-eager false alarm citing non-applicable rule
                 rejected_text = (
-                    f"STATUS: VIOLATION\n"
-                    f"CITATION: 1910.178\n"
-                    f"REASON: Unnecessary citation issued on normal operational telemetry."
+                    "STATUS: VIOLATION\n"
+                    "CITATION: 1910.178\n"
+                    "REASON: Unnecessary citation issued on normal operational telemetry."
                 )
             else:
                 # Rejected attempt: Hallucinating a non-existent or ungrounded general rule
                 rejected_text = (
-                    f"STATUS: VIOLATION\n"
-                    f"CITATION: 1910.999\n"
-                    f"REASON: General safety violation citing ungrounded regulation."
+                    "STATUS: VIOLATION\n"
+                    "CITATION: 1910.999\n"
+                    "REASON: General safety violation citing ungrounded regulation."
                 )
 
-            dpo_records.append({
-                "log_id": log_id,
-                "source": "contrastive_memory_synthesis",
-                "prompt": prompt_text,
-                "chosen": chosen_text,
-                "rejected": rejected_text,
-            })
+            dpo_records.append(
+                {
+                    "log_id": log_id,
+                    "source": "contrastive_memory_synthesis",
+                    "prompt": prompt_text,
+                    "chosen": chosen_text,
+                    "rejected": rejected_text,
+                }
+            )
 
         return dpo_records
 
@@ -156,6 +171,24 @@ class ComplianceDatasetPipeline:
         random.seed(42)
         random.shuffle(sft_data)
         random.shuffle(dpo_data)
+
+        # Refuse to clobber existing datasets with an empty result.
+        # These files are derived from episodic memory, which a fresh clone does
+        # not have. Without this guard, following the documented pipeline step on
+        # a clean checkout silently truncates the shipped datasets to zero rows.
+        if not sft_data and not dpo_data:
+            existing = [
+                f for f in (OUT_SFT, OUT_DPO) if f.exists() and f.stat().st_size > 0
+            ]
+            if existing:
+                print("  Episodic memory is empty, so there is nothing to export.")
+                print("  Leaving the existing datasets untouched:")
+                for f in existing:
+                    print(
+                        f"    {f.relative_to(ROOT)} ({sum(1 for _ in f.open(encoding='utf-8'))} rows)"
+                    )
+                print("  Run an audit first to build memory, then re-run this step.")
+                return None
 
         # Write SFT JSONL
         OUT_SFT.parent.mkdir(parents=True, exist_ok=True)
@@ -172,9 +205,15 @@ class ComplianceDatasetPipeline:
         metrics = {
             "total_sft_examples": len(sft_data),
             "total_dpo_pairs": len(dpo_data),
-            "critique_derived_pairs": sum(1 for p in dpo_data if p.get("source") == "self_reflection_critique"),
-            "contrastive_pairs": sum(1 for p in dpo_data if p.get("source") == "contrastive_memory_synthesis"),
-            "violations_count": sum(1 for s in sft_data if "VIOLATION" in s.get("output", "")),
+            "critique_derived_pairs": sum(
+                1 for p in dpo_data if p.get("source") == "self_reflection_critique"
+            ),
+            "contrastive_pairs": sum(
+                1 for p in dpo_data if p.get("source") == "contrastive_memory_synthesis"
+            ),
+            "violations_count": sum(
+                1 for s in sft_data if "VIOLATION" in s.get("output", "")
+            ),
             "clears_count": sum(1 for s in sft_data if "CLEAR" in s.get("output", "")),
             "dpo_file_path": "json/dpo_training_dataset.jsonl",
             "sft_file_path": "json/sft_training_dataset.jsonl",
@@ -184,22 +223,35 @@ class ComplianceDatasetPipeline:
 
 
 def main():
-    ap = argparse.ArgumentParser(description="Continuous Training Dataset Generator (DPO / SFT).")
-    ap.add_argument("--export", action="store_true", default=True, help="Generate and export training datasets")
-    ap.add_argument("--report", action="store_true", default=True, help="Print summary report")
+    ap = argparse.ArgumentParser(
+        description="Continuous Training Dataset Generator (DPO / SFT)."
+    )
+    ap.add_argument(
+        "--export",
+        action="store_true",
+        default=True,
+        help="Generate and export training datasets",
+    )
+    ap.add_argument(
+        "--report", action="store_true", default=True, help="Print summary report"
+    )
     args = ap.parse_args()
 
     pipeline = ComplianceDatasetPipeline()
     metrics = pipeline.export()
 
+    if metrics is None:
+        # export() declined to overwrite existing datasets with an empty result.
+        return 0
+
     if args.report:
         print("\n" + "=" * 80)
         print("          AUTOMATED CONTINUOUS TRAINING DATASET PIPELINE")
         print("=" * 80)
-        print(f"\n[Generated Datasets for Model Alignment & Fine-Tuning]:")
+        print("\n[Generated Datasets for Model Alignment & Fine-Tuning]:")
         print(f"  - DPO Preference Pairs File : {metrics['dpo_file_path']}")
         print(f"  - SFT Instruction File      : {metrics['sft_file_path']}")
-        print(f"\n[Dataset Composition & Statistics]:")
+        print("\n[Dataset Composition & Statistics]:")
         print(f"  - Total DPO Preference Pairs: {metrics['total_dpo_pairs']}")
         print(f"    * Live Critique Corrections: {metrics['critique_derived_pairs']}")
         print(f"    * Contrastive Precedents   : {metrics['contrastive_pairs']}")

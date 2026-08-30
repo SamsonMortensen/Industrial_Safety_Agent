@@ -7,8 +7,6 @@ across successive runs.
 
 import asyncio
 import csv
-import json
-import os
 import sys
 import time
 from pathlib import Path
@@ -17,10 +15,10 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from audit_agent_v2 import (
+    LOG,
+    compute_metrics,
     load_corpus_index,
     run_continuous_audit,
-    compute_metrics,
-    LOG,
 )
 from continuous_learner import (
     AdaptivePillarBank,
@@ -88,7 +86,7 @@ def create_synthetic_novel_batch() -> list:
             "Reported_Incident": "Routine Tire Pressure Warning adjustment",
             "Is_Violation": "0",
             "Violation_Type": "none",
-        }
+        },
     ]
 
 
@@ -131,7 +129,9 @@ async def run_simulation():
     m1.update(extra1)
     m1["seconds"] = round(time.time() - t0, 1)
     tracker.record_run(m1)
-    print(f"Stage 1 Completed in {m1['seconds']}s. F1: {m1['f1']} | Memory Size: {len(memory_bank.episodes)} precedents stored.")
+    print(
+        f"Stage 1 Completed in {m1['seconds']}s. F1: {m1['f1']} | Memory Size: {len(memory_bank.episodes)} precedents stored."
+    )
 
     # =========================================================================
     # STAGE 2: Novel Pattern Injection & Pillar Discovery (Run 2)
@@ -157,7 +157,9 @@ async def run_simulation():
     m2.update(extra2)
     m2["seconds"] = round(time.time() - t0, 1)
     tracker.record_run(m2)
-    print(f"Stage 2 Completed in {m2['seconds']}s. F1: {m2['f1']} | Active Pillars: {len(pillar_bank.pillars)}.")
+    print(
+        f"Stage 2 Completed in {m2['seconds']}s. F1: {m2['f1']} | Active Pillars: {len(pillar_bank.pillars)}."
+    )
     print(f"Newly Registered Pillars: {list(pillar_bank.pillars.keys())}")
 
     # =========================================================================
@@ -165,7 +167,9 @@ async def run_simulation():
     # =========================================================================
     print("\n" + "=" * 80)
     print(">>> STAGE 3: CONSOLIDATED MEMORY & ADAPTIVE PRECEDENTS RUN (Run 3)")
-    print("    Auditing 50 mixed records utilizing accumulated precedents & expanded pillars.")
+    print(
+        "    Auditing 50 mixed records utilizing accumulated precedents & expanded pillars."
+    )
     print("=" * 80)
     stage3_rows = base_rows[30:80]
     t0 = time.time()
@@ -184,7 +188,9 @@ async def run_simulation():
     m3.update(extra3)
     m3["seconds"] = round(time.time() - t0, 1)
     tracker.record_run(m3)
-    print(f"Stage 3 Completed in {m3['seconds']}s. F1: {m3['f1']} | Total Memory: {len(memory_bank.episodes)}.")
+    print(
+        f"Stage 3 Completed in {m3['seconds']}s. F1: {m3['f1']} | Total Memory: {len(memory_bank.episodes)}."
+    )
 
     # Show final dashboard
     show_dashboard()

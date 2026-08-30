@@ -23,7 +23,9 @@ def show_dashboard():
     if STATE_FILE.exists():
         state = json.loads(STATE_FILE.read_text(encoding="utf-8"))
         pillars = state.get("pillars", {})
-        print(f"\n[Active Triangulation Pillars] ({len(pillars)} registered dimensions):")
+        print(
+            f"\n[Active Triangulation Pillars] ({len(pillars)} registered dimensions):"
+        )
         for p, query in pillars.items():
             print(f"  - {p:18}: {query[:65]}...")
     else:
@@ -34,7 +36,7 @@ def show_dashboard():
         memory = json.loads(MEMORY_FILE.read_text(encoding="utf-8"))
         grounded_count = sum(1 for m in memory if m.get("is_grounded", True))
         pitfall_count = sum(1 for m in memory if m.get("feedback_type") == "pitfall")
-        print(f"\n[Episodic Memory Bank]:")
+        print("\n[Episodic Memory Bank]:")
         print(f"  Total Indexed Cases    : {len(memory)}")
         print(f"  Verified Precedents    : {grounded_count}")
         print(f"  Pitfall Anti-Patterns  : {pitfall_count}")
@@ -45,7 +47,9 @@ def show_dashboard():
     if RUN_HISTORY.exists():
         history = json.loads(RUN_HISTORY.read_text(encoding="utf-8"))
         print(f"\n[Execution & Learning History] ({len(history)} runs recorded):")
-        print(f"{'Run ID':<10} {'Timestamp':<20} {'Events':<8} {'F1':<8} {'Precision':<10} {'Recall':<8} {'Validity':<10} {'Mem Size':<10}")
+        print(
+            f"{'Run ID':<10} {'Timestamp':<20} {'Events':<8} {'F1':<8} {'Precision':<10} {'Recall':<8} {'Validity':<10} {'Mem Size':<10}"
+        )
         print("-" * 88)
         for r in history:
             print(

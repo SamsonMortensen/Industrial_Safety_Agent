@@ -11,9 +11,9 @@ the eCFR structure endpoint, and groundedness is tracked as a separate question.
 
     python code/build_section_index.py
 """
+
 import json
 import sys
-
 from pathlib import Path
 
 import requests
@@ -26,7 +26,8 @@ TITLES = ["29", "49"]
 def sections_in(title):
     r = requests.get(
         f"https://www.ecfr.gov/api/versioner/v1/structure/{EDITION}/title-{title}.json",
-        timeout=300)
+        timeout=300,
+    )
     r.raise_for_status()
 
     found = set()
@@ -53,15 +54,23 @@ def main():
         everything |= found
         print(f"  {len(found):,} sections")
 
-    OUT.write_text(json.dumps({
-        "edition": EDITION,
-        "source": "eCFR structure API",
-        "titles": TITLES,
-        "total_sections": len(everything),
-        "by_title": index,
-    }, indent=1), encoding="utf-8")
-    print(f"\nWrote {OUT.name}: {len(everything):,} real section numbers "
-          f"({OUT.stat().st_size/1000:.0f} KB)")
+    OUT.write_text(
+        json.dumps(
+            {
+                "edition": EDITION,
+                "source": "eCFR structure API",
+                "titles": TITLES,
+                "total_sections": len(everything),
+                "by_title": index,
+            },
+            indent=1,
+        ),
+        encoding="utf-8",
+    )
+    print(
+        f"\nWrote {OUT.name}: {len(everything):,} real section numbers "
+        f"({OUT.stat().st_size / 1000:.0f} KB)"
+    )
     return 0
 
 

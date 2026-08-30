@@ -12,6 +12,7 @@ The strategies under test are defined in `audit_agent`:
 
     python code/retrieval_experiment.py
 """
+
 import argparse
 import csv
 import json
@@ -23,10 +24,16 @@ import numpy as np
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from audit_agent import (
-    EMBED_MODEL, LOG, REGS, build_query, embed, get_pillar_vectors,
-    load_index, retrieve_triangulated
+    EMBED_MODEL,
+    LOG,
+    REGS,
+    STATUTES,
+    build_query,
+    embed,
+    get_pillar_vectors,
+    retrieve_triangulated,
 )
-from retrieval_diagnostic import EXPECTED_SECTION, section_of
+from retrieval_diagnostic import expected_section, section_of
 
 DEFAULT_KS = (1, 2, 4, 8, 16, 32)
 DEFAULT_STRATEGIES = ("raw", "expanded", "triangulated")
@@ -39,9 +46,14 @@ def load_violations():
 
 def corpus_vectors(model):
     corpus = json.loads(REGS.read_text(encoding="utf-8"))
-    chunks = corpus["chunks"]
+    chunks = list(corpus["chunks"])
+    if STATUTES.exists():
+        chunks.extend(
+            json.loads(STATUTES.read_text(encoding="utf-8")).get("chunks", [])
+        )
     cache = REGS.parent / (
-        "reg_embeddings.npz" if model == EMBED_MODEL
+        "reg_embeddings.npz"
+        if model == EMBED_MODEL
         else f"reg_embeddings_{model.replace(':', '_').replace('/', '_')}.npz"
     )
 
@@ -51,17 +63,22 @@ def corpus_vectors(model):
             return chunks, cached["vectors"]
 
     print(f"  embedding {len(chunks)} chunks with {model} (one time, cached)...")
-    vectors = embed([f"{c['citation']} {c['heading']}. {c['text']}" for c in chunks],
-                    model=model)
+    vectors = embed(
+        [f"{c['citation']} {c['heading']}. {c['text']}" for c in chunks], model=model
+    )
     np.savez_compressed(cache, vectors=vectors)
     return chunks, vectors
 
 
 def ranks_for(strategy, model, chunks, vectors, violations):
-    pillar_vecs = get_pillar_vectors(model=model) if strategy == "triangulated" else None
+    pillar_vecs = (
+        get_pillar_vectors(model=model) if strategy == "triangulated" else None
+    )
     out = []
     for row in violations:
-        _, matches = EXPECTED_SECTION[row["Violation_Type"]]
+        _, matches = expected_section(row)
+        if matches is None:
+            continue
         if strategy == "triangulated":
             hits = retrieve_triangulated(row, chunks, vectors, pillar_vecs)
             rank = None
@@ -78,14 +95,18 @@ def ranks_for(strategy, model, chunks, vectors, violations):
                 if matches(section_of(chunks[idx])):
                     rank = pos
                     break
-        out.append({"log_id": row["Log_ID"], "type": row["Violation_Type"], "rank": rank})
+        out.append(
+            {"log_id": row["Log_ID"], "type": row["Violation_Type"], "rank": rank}
+        )
     return out
 
 
 def recall_at(rows, ks):
     total = len(rows)
-    return {k: sum(1 for r in rows if r["rank"] is not None and r["rank"] <= k) / total
-            for k in ks}
+    return {
+        k: sum(1 for r in rows if r["rank"] is not None and r["rank"] <= k) / total
+        for k in ks
+    }
 
 
 def run(strategies, models, ks):
@@ -98,11 +119,14 @@ def run(strategies, models, ks):
             results[(model, strategy)] = {
                 "rows": rows,
                 "recall_at": recall_at(rows, ks),
-                "median_rank": sorted(r["rank"] for r in rows if r["rank"])[len(rows) // 2],
+                "median_rank": sorted(r["rank"] for r in rows if r["rank"])[
+                    len(rows) // 2
+                ],
                 "by_type": {
-                    kind: sorted(r["rank"] for r in rows
-                                 if r["type"] == kind and r["rank"])
-                    for kind in EXPECTED_SECTION
+                    kind: sorted(
+                        r["rank"] for r in rows if r["type"] == kind and r["rank"]
+                    )
+                    for kind in sorted({r["type"] for r in rows})
                 },
             }
     return results
@@ -112,7 +136,8 @@ def render(results, strategies, models, ks):
     lines = []
     lines.append("")
     lines.append("  Does changing the query fix retrieval?")
-    lines.append("  measured on retrieval recall across 9 planted violations")
+    n_viol = next((len(e["rows"]) for e in results.values() if "rows" in e), 0)
+    lines.append(f"  measured on retrieval recall across {n_viol} planted violations")
     lines.append("  " + "=" * 74)
 
     for model in models:
@@ -142,9 +167,15 @@ def render(results, strategies, models, ks):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Compare query strategies on retrieval recall.")
-    parser.add_argument("--strategies", nargs="+", default=list(DEFAULT_STRATEGIES),
-                        choices=["raw", "expanded", "triangulated"])
+    parser = argparse.ArgumentParser(
+        description="Compare query strategies on retrieval recall."
+    )
+    parser.add_argument(
+        "--strategies",
+        nargs="+",
+        default=list(DEFAULT_STRATEGIES),
+        choices=["raw", "expanded", "triangulated"],
+    )
     parser.add_argument("--models", nargs="+", default=[EMBED_MODEL])
     parser.add_argument("--k", type=int, nargs="+", default=list(DEFAULT_KS))
     parser.add_argument("--out", default="json/retrieval_experiment.json")
@@ -152,10 +183,16 @@ def main():
 
     ks = tuple(sorted(set(args.k)))
     results = run(args.strategies, args.models, ks)
-    print(render(results, args.strategies, args.models, ks))
 
+    # Persist before rendering. The sweep costs an embedding pass over every
+    # violation for every strategy; a formatting bug in the display should not
+    # be able to discard it.
     payload = {
-        "config": {"strategies": args.strategies, "models": args.models, "ks": list(ks)},
+        "config": {
+            "strategies": args.strategies,
+            "models": args.models,
+            "ks": list(ks),
+        },
         "results": [
             {"model": model, "strategy": strategy, **entry}
             for (model, strategy), entry in results.items()

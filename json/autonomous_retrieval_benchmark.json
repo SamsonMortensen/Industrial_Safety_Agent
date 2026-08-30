@@ -1,0 +1,4132 @@
+{
+  "provenance": {
+    "generated_utc": "2026-08-30T18:08:48.335359+00:00",
+    "dataset": "daily_yard_log.csv",
+    "dataset_sha256": "a01f4e6b6b9d2faf7783fd0ee9a3876d073c275a3ef09387a979fd901a274301",
+    "corpus_sha256": "9e5cb3604c56b7be704f8d8a8b97b407cec20a43c4532c8c38a314b34d94b79f",
+    "statutes_sha256": "cba756e84b9ba6c5d52d55765a23de7851129d8c9602edae2987eb1172ceed8b",
+    "retrieval": "BM25 + dense reciprocal-rank fusion",
+    "labels_used_to_form_queries": false,
+    "top_k": 16
+  },
+  "fused": {
+    "cases": 144,
+    "recall_at_1": 0.4028,
+    "recall_at_4": 0.7986,
+    "recall_at_8": 0.9861,
+    "recall_at_16": 1.0,
+    "median_rank": 2.0,
+    "worst_rank": 16,
+    "not_retrieved": 0
+  },
+  "applicability_reranked": {
+    "cases": 144,
+    "recall_at_1": 0.3125,
+    "recall_at_4": 0.7708,
+    "recall_at_8": 0.9236,
+    "recall_at_16": 1.0,
+    "median_rank": 3.0,
+    "worst_rank": 16,
+    "not_retrieved": 0
+  },
+  "per_hazard": {
+    "aisle_obstruction": {
+      "fused": {
+        "cases": 9,
+        "recall_at_1": 0.6667,
+        "recall_at_4": 1.0,
+        "recall_at_8": 1.0,
+        "recall_at_16": 1.0,
+        "median_rank": 1,
+        "worst_rank": 2,
+        "not_retrieved": 0
+      },
+      "applicability_reranked": {
+        "cases": 9,
+        "recall_at_1": 0.2222,
+        "recall_at_4": 1.0,
+        "recall_at_8": 1.0,
+        "recall_at_16": 1.0,
+        "median_rank": 2,
+        "worst_rank": 3,
+        "not_retrieved": 0
+      }
+    },
+    "approach_distance": {
+      "fused": {
+        "cases": 9,
+        "recall_at_1": 0.4444,
+        "recall_at_4": 1.0,
+        "recall_at_8": 1.0,
+        "recall_at_16": 1.0,
+        "median_rank": 2,
+        "worst_rank": 3,
+        "not_retrieved": 0
+      },
+      "applicability_reranked": {
+        "cases": 9,
+        "recall_at_1": 0.3333,
+        "recall_at_4": 1.0,
+        "recall_at_8": 1.0,
+        "recall_at_16": 1.0,
+        "median_rank": 2,
+        "worst_rank": 3,
+        "not_retrieved": 0
+      }
+    },
+    "crane_inspection": {
+      "fused": {
+        "cases": 9,
+        "recall_at_1": 1.0,
+        "recall_at_4": 1.0,
+        "recall_at_8": 1.0,
+        "recall_at_16": 1.0,
+        "median_rank": 1,
+        "worst_rank": 1,
+        "not_retrieved": 0
+      },
+      "applicability_reranked": {
+        "cases": 9,
+        "recall_at_1": 1.0,
+        "recall_at_4": 1.0,
+        "recall_at_8": 1.0,
+        "recall_at_16": 1.0,
+        "median_rank": 1,
+        "worst_rank": 1,
+        "not_retrieved": 0
+      }
+    },
+    "dockboard": {
+      "fused": {
+        "cases": 9,
+        "recall_at_1": 0.4444,
+        "recall_at_4": 1.0,
+        "recall_at_8": 1.0,
+        "recall_at_16": 1.0,
+        "median_rank": 2,
+        "worst_rank": 4,
+        "not_retrieved": 0
+      },
+      "applicability_reranked": {
+        "cases": 9,
+        "recall_at_1": 0.2222,
+        "recall_at_4": 1.0,
+        "recall_at_8": 1.0,
+        "recall_at_16": 1.0,
+        "median_rank": 3,
+        "worst_rank": 4,
+        "not_retrieved": 0
+      }
+    },
+    "duty_limit": {
+      "fused": {
+        "cases": 9,
+        "recall_at_1": 0.0,
+        "recall_at_4": 0.0,
+        "recall_at_8": 0.7778,
+        "recall_at_16": 1.0,
+        "median_rank": 8,
+        "worst_rank": 16,
+        "not_retrieved": 0
+      },
+      "applicability_reranked": {
+        "cases": 9,
+        "recall_at_1": 0.0,
+        "recall_at_4": 0.0,
+        "recall_at_8": 0.2222,
+        "recall_at_16": 1.0,
+        "median_rank": 9,
+        "worst_rank": 16,
+        "not_retrieved": 0
+      }
+    },
+    "duty_records": {
+      "fused": {
+        "cases": 9,
+        "recall_at_1": 0.5556,
+        "recall_at_4": 1.0,
+        "recall_at_8": 1.0,
+        "recall_at_16": 1.0,
+        "median_rank": 1,
+        "worst_rank": 3,
+        "not_retrieved": 0
+      },
+      "applicability_reranked": {
+        "cases": 9,
+        "recall_at_1": 0.4444,
+        "recall_at_4": 0.8889,
+        "recall_at_8": 1.0,
+        "recall_at_16": 1.0,
+        "median_rank": 2,
+        "worst_rank": 5,
+        "not_retrieved": 0
+      }
+    },
+    "electrical_ppe": {
+      "fused": {
+        "cases": 9,
+        "recall_at_1": 0.3333,
+        "recall_at_4": 1.0,
+        "recall_at_8": 1.0,
+        "recall_at_16": 1.0,
+        "median_rank": 2,
+        "worst_rank": 3,
+        "not_retrieved": 0
+      },
+      "applicability_reranked": {
+        "cases": 9,
+        "recall_at_1": 0.1111,
+        "recall_at_4": 1.0,
+        "recall_at_8": 1.0,
+        "recall_at_16": 1.0,
+        "median_rank": 3,
+        "worst_rank": 3,
+        "not_retrieved": 0
+      }
+    },
+    "fall_protection": {
+      "fused": {
+        "cases": 9,
+        "recall_at_1": 0.4444,
+        "recall_at_4": 1.0,
+        "recall_at_8": 1.0,
+        "recall_at_16": 1.0,
+        "median_rank": 2,
+        "worst_rank": 3,
+        "not_retrieved": 0
+      },
+      "applicability_reranked": {
+        "cases": 9,
+        "recall_at_1": 0.1111,
+        "recall_at_4": 1.0,
+        "recall_at_8": 1.0,
+        "recall_at_16": 1.0,
+        "median_rank": 3,
+        "worst_rank": 4,
+        "not_retrieved": 0
+      }
+    },
+    "guardrail": {
+      "fused": {
+        "cases": 9,
+        "recall_at_1": 0.0,
+        "recall_at_4": 0.3333,
+        "recall_at_8": 1.0,
+        "recall_at_16": 1.0,
+        "median_rank": 5,
+        "worst_rank": 6,
+        "not_retrieved": 0
+      },
+      "applicability_reranked": {
+        "cases": 9,
+        "recall_at_1": 0.0,
+        "recall_at_4": 0.3333,
+        "recall_at_8": 1.0,
+        "recall_at_16": 1.0,
+        "median_rank": 5,
+        "worst_rank": 6,
+        "not_retrieved": 0
+      }
+    },
+    "housekeeping": {
+      "fused": {
+        "cases": 9,
+        "recall_at_1": 0.0,
+        "recall_at_4": 0.3333,
+        "recall_at_8": 1.0,
+        "recall_at_16": 1.0,
+        "median_rank": 5,
+        "worst_rank": 8,
+        "not_retrieved": 0
+      },
+      "applicability_reranked": {
+        "cases": 9,
+        "recall_at_1": 0.0,
+        "recall_at_4": 0.0,
+        "recall_at_8": 0.5556,
+        "recall_at_16": 1.0,
+        "median_rank": 7,
+        "worst_rank": 12,
+        "not_retrieved": 0
+      }
+    },
+    "ladder": {
+      "fused": {
+        "cases": 9,
+        "recall_at_1": 0.5556,
+        "recall_at_4": 1.0,
+        "recall_at_8": 1.0,
+        "recall_at_16": 1.0,
+        "median_rank": 1,
+        "worst_rank": 2,
+        "not_retrieved": 0
+      },
+      "applicability_reranked": {
+        "cases": 9,
+        "recall_at_1": 0.4444,
+        "recall_at_4": 1.0,
+        "recall_at_8": 1.0,
+        "recall_at_16": 1.0,
+        "median_rank": 2,
+        "worst_rank": 3,
+        "not_retrieved": 0
+      }
+    },
+    "live_parts": {
+      "fused": {
+        "cases": 9,
+        "recall_at_1": 0.0,
+        "recall_at_4": 0.6667,
+        "recall_at_8": 1.0,
+        "recall_at_16": 1.0,
+        "median_rank": 3,
+        "worst_rank": 5,
+        "not_retrieved": 0
+      },
+      "applicability_reranked": {
+        "cases": 9,
+        "recall_at_1": 0.2222,
+        "recall_at_4": 0.6667,
+        "recall_at_8": 1.0,
+        "recall_at_16": 1.0,
+        "median_rank": 3,
+        "worst_rank": 6,
+        "not_retrieved": 0
+      }
+    },
+    "rim_wheel": {
+      "fused": {
+        "cases": 9,
+        "recall_at_1": 0.7778,
+        "recall_at_4": 1.0,
+        "recall_at_8": 1.0,
+        "recall_at_16": 1.0,
+        "median_rank": 1,
+        "worst_rank": 2,
+        "not_retrieved": 0
+      },
+      "applicability_reranked": {
+        "cases": 9,
+        "recall_at_1": 0.6667,
+        "recall_at_4": 1.0,
+        "recall_at_8": 1.0,
+        "recall_at_16": 1.0,
+        "median_rank": 1,
+        "worst_rank": 2,
+        "not_retrieved": 0
+      }
+    },
+    "sling": {
+      "fused": {
+        "cases": 9,
+        "recall_at_1": 0.5556,
+        "recall_at_4": 0.7778,
+        "recall_at_8": 1.0,
+        "recall_at_16": 1.0,
+        "median_rank": 1,
+        "worst_rank": 5,
+        "not_retrieved": 0
+      },
+      "applicability_reranked": {
+        "cases": 9,
+        "recall_at_1": 0.5556,
+        "recall_at_4": 0.7778,
+        "recall_at_8": 1.0,
+        "recall_at_16": 1.0,
+        "median_rank": 1,
+        "worst_rank": 5,
+        "not_retrieved": 0
+      }
+    },
+    "stairway": {
+      "fused": {
+        "cases": 9,
+        "recall_at_1": 0.2222,
+        "recall_at_4": 0.6667,
+        "recall_at_8": 1.0,
+        "recall_at_16": 1.0,
+        "median_rank": 3,
+        "worst_rank": 6,
+        "not_retrieved": 0
+      },
+      "applicability_reranked": {
+        "cases": 9,
+        "recall_at_1": 0.2222,
+        "recall_at_4": 0.6667,
+        "recall_at_8": 1.0,
+        "recall_at_16": 1.0,
+        "median_rank": 4,
+        "worst_rank": 7,
+        "not_retrieved": 0
+      }
+    },
+    "truck_defect": {
+      "fused": {
+        "cases": 9,
+        "recall_at_1": 0.4444,
+        "recall_at_4": 1.0,
+        "recall_at_8": 1.0,
+        "recall_at_16": 1.0,
+        "median_rank": 2,
+        "worst_rank": 4,
+        "not_retrieved": 0
+      },
+      "applicability_reranked": {
+        "cases": 9,
+        "recall_at_1": 0.4444,
+        "recall_at_4": 1.0,
+        "recall_at_8": 1.0,
+        "recall_at_16": 1.0,
+        "median_rank": 2,
+        "worst_rank": 4,
+        "not_retrieved": 0
+      }
+    }
+  },
+  "records": [
+    {
+      "log_id": "LOG-1000",
+      "hazard": "approach_distance",
+      "expected_section": "1910.333",
+      "queries": [
+        "Spreader boom worked within four feet of the energised catenary",
+        "Gantry Crane reported Spreader boom worked within four feet of the energised catenary applicable safety requirement",
+        "Gantry Crane High-Voltage Line B federal safety requirement",
+        "Gantry Crane High-Voltage Line B operator shift hours 10.7 applicable limit or minimum requirement",
+        "Gantry Crane High-Voltage Line B payload weight lbs 12125 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 3,
+      "reranked_rank": 3,
+      "top_fused": [
+        "1910.180",
+        "1910.179",
+        "1910.333",
+        "1910.181"
+      ],
+      "top_reranked": [
+        "1910.180",
+        "1910.179",
+        "1910.333",
+        "1910.306"
+      ]
+    },
+    {
+      "log_id": "LOG-1006",
+      "hazard": "dockboard",
+      "expected_section": "1910.26",
+      "queries": [
+        "Portable dockboard shifted under the forklift with no securing device fitted",
+        "Gantry Crane reported Portable dockboard shifted under the forklift with no securing device fitted applicable safety requirement",
+        "Gantry Crane Bay 2 federal safety requirement",
+        "Gantry Crane Bay 2 operator shift hours 8.8 applicable limit or minimum requirement",
+        "Gantry Crane Bay 2 payload weight lbs 42182 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 4,
+      "reranked_rank": 4,
+      "top_fused": [
+        "1910.180",
+        "1910.179",
+        "1910.181",
+        "1910.26"
+      ],
+      "top_reranked": [
+        "1910.180",
+        "1910.179",
+        "1910.181",
+        "1910.26"
+      ]
+    },
+    {
+      "log_id": "LOG-1011",
+      "hazard": "housekeeping",
+      "expected_section": "1910.22",
+      "queries": [
+        "Hydraulic fluid pooled across the marked walking route and left unattended",
+        "Terminal Tractor reported Hydraulic fluid pooled across the marked walking route and left unattended applicable safety requirement",
+        "Terminal Tractor Main Pedestrian Crosswalk federal safety requirement",
+        "Terminal Tractor Main Pedestrian Crosswalk operator shift hours 9.9 applicable limit or minimum requirement",
+        "Terminal Tractor Main Pedestrian Crosswalk payload weight lbs 38549 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 4,
+      "reranked_rank": 7,
+      "top_fused": [
+        "1910.178",
+        "1910.179",
+        "1910.176",
+        "1910.22"
+      ],
+      "top_reranked": [
+        "1910.178",
+        "1910.179",
+        "228.405",
+        "1910.176"
+      ]
+    },
+    {
+      "log_id": "LOG-1022",
+      "hazard": "approach_distance",
+      "expected_section": "1910.333",
+      "queries": [
+        "Mast raised inside the approach boundary of a live overhead line",
+        "Gantry Crane reported Mast raised inside the approach boundary of a live overhead line applicable safety requirement",
+        "Gantry Crane Rail Siding 3 federal safety requirement",
+        "Gantry Crane Rail Siding 3 operator shift hours 7.1 applicable limit or minimum requirement",
+        "Gantry Crane Rail Siding 3 payload weight lbs 15358 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 3,
+      "reranked_rank": 3,
+      "top_fused": [
+        "1910.179",
+        "1910.180",
+        "1910.333",
+        "1910.181"
+      ],
+      "top_reranked": [
+        "1910.179",
+        "1910.180",
+        "1910.333",
+        "1910.399"
+      ]
+    },
+    {
+      "log_id": "LOG-1024",
+      "hazard": "rim_wheel",
+      "expected_section": "1910.177",
+      "queries": [
+        "Multi-piece rim assembly inflated outside any restraining device",
+        "Forklift reported Multi-piece rim assembly inflated outside any restraining device applicable safety requirement",
+        "Forklift Wheel Shop federal safety requirement",
+        "Forklift Wheel Shop operator shift hours 6.7 applicable limit or minimum requirement",
+        "Forklift Wheel Shop payload weight lbs 24046 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 1,
+      "reranked_rank": 1,
+      "top_fused": [
+        "1910.177",
+        "1910.180",
+        "1910.178",
+        "1910.181"
+      ],
+      "top_reranked": [
+        "1910.177",
+        "1910.180",
+        "1910.178",
+        "1910.179"
+      ]
+    },
+    {
+      "log_id": "LOG-1027",
+      "hazard": "fall_protection",
+      "expected_section": "1910.28",
+      "queries": [
+        "Worker on the container roof at eight feet with no fall protection rigged",
+        "Gantry Crane reported Worker on the container roof at eight feet with no fall protection rigged applicable safety requirement",
+        "Gantry Crane Intermodal Ramp federal safety requirement",
+        "Gantry Crane Intermodal Ramp operator shift hours 6.4 applicable limit or minimum requirement",
+        "Gantry Crane Intermodal Ramp payload weight lbs 16647 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 2,
+      "reranked_rank": 3,
+      "top_fused": [
+        "1910.179",
+        "1910.28",
+        "1910.29",
+        "1910.180"
+      ],
+      "top_reranked": [
+        "1910.179",
+        "1910.21",
+        "1910.28",
+        "1910.29"
+      ]
+    },
+    {
+      "log_id": "LOG-1043",
+      "hazard": "electrical_ppe",
+      "expected_section": "1910.335",
+      "queries": [
+        "Work performed on an energised circuit without insulating gloves issued",
+        "Gantry Crane reported Work performed on an energised circuit without insulating gloves issued applicable safety requirement",
+        "Gantry Crane High-Voltage Line B federal safety requirement",
+        "Gantry Crane High-Voltage Line B operator shift hours 11.2 applicable limit or minimum requirement",
+        "Gantry Crane High-Voltage Line B payload weight lbs 37825 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 3,
+      "reranked_rank": 3,
+      "top_fused": [
+        "1910.333",
+        "1910.179",
+        "1910.335",
+        "1910.183"
+      ],
+      "top_reranked": [
+        "1910.333",
+        "1910.179",
+        "1910.335",
+        "1910.183"
+      ]
+    },
+    {
+      "log_id": "LOG-1046",
+      "hazard": "guardrail",
+      "expected_section": "1910.29",
+      "queries": [
+        "Elevated platform rail installed well below the required height",
+        "Gantry Crane reported Elevated platform rail installed well below the required height applicable safety requirement",
+        "Gantry Crane High-Voltage Line B federal safety requirement",
+        "Gantry Crane High-Voltage Line B operator shift hours 11.1 applicable limit or minimum requirement",
+        "Gantry Crane High-Voltage Line B payload weight lbs 32127 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 2,
+      "reranked_rank": 5,
+      "top_fused": [
+        "1910.179",
+        "1910.29",
+        "1910.333",
+        "1910.23"
+      ],
+      "top_reranked": [
+        "1910.179",
+        "1910.21",
+        "1910.180",
+        "1910.333"
+      ]
+    },
+    {
+      "log_id": "LOG-1051",
+      "hazard": "stairway",
+      "expected_section": "1910.25",
+      "queries": [
+        "Open-sided stairway to the ramp office missing its handrail",
+        "Terminal Tractor reported Open-sided stairway to the ramp office missing its handrail applicable safety requirement",
+        "Terminal Tractor Loading Dock 2 federal safety requirement",
+        "Terminal Tractor Loading Dock 2 operator shift hours 9.4 applicable limit or minimum requirement",
+        "Terminal Tractor Loading Dock 2 payload weight lbs 52299 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 3,
+      "reranked_rank": 5,
+      "top_fused": [
+        "1910.306",
+        "1910.21",
+        "1910.25",
+        "1910.28"
+      ],
+      "top_reranked": [
+        "1910.21",
+        "1910.306",
+        "1910.28",
+        "1910.178"
+      ]
+    },
+    {
+      "log_id": "LOG-1058",
+      "hazard": "rim_wheel",
+      "expected_section": "1910.177",
+      "queries": [
+        "Rim wheel serviced without deflating and without a restraining cage",
+        "Gantry Crane reported Rim wheel serviced without deflating and without a restraining cage applicable safety requirement",
+        "Gantry Crane Wheel Shop federal safety requirement",
+        "Gantry Crane Wheel Shop operator shift hours 11.7 applicable limit or minimum requirement",
+        "Gantry Crane Wheel Shop payload weight lbs 11985 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 1,
+      "reranked_rank": 2,
+      "top_fused": [
+        "1910.177",
+        "1910.180",
+        "1910.179",
+        "1910.178"
+      ],
+      "top_reranked": [
+        "1910.180",
+        "1910.177",
+        "1910.179",
+        "1910.178"
+      ]
+    },
+    {
+      "log_id": "LOG-1071",
+      "hazard": "sling",
+      "expected_section": "1910.184",
+      "queries": [
+        "Wire rope sling with twelve broken wires in one lay kept in the active lift",
+        "Terminal Tractor reported Wire rope sling with twelve broken wires in one lay kept in the active lift applicable safety requirement",
+        "Terminal Tractor Bay 4 federal safety requirement",
+        "Terminal Tractor Bay 4 operator shift hours 9.6 applicable limit or minimum requirement",
+        "Terminal Tractor Bay 4 payload weight lbs 20658 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 1,
+      "reranked_rank": 1,
+      "top_fused": [
+        "1910.184",
+        "1910.183",
+        "1910.180",
+        "1910.179"
+      ],
+      "top_reranked": [
+        "1910.184",
+        "1910.180",
+        "1910.179",
+        "228.19"
+      ]
+    },
+    {
+      "log_id": "LOG-1093",
+      "hazard": "dockboard",
+      "expected_section": "1910.26",
+      "queries": [
+        "Portable dockboard shifted under the forklift with no securing device fitted",
+        "Gantry Crane reported Portable dockboard shifted under the forklift with no securing device fitted applicable safety requirement",
+        "Gantry Crane Loading Dock 2 federal safety requirement",
+        "Gantry Crane Loading Dock 2 operator shift hours 6.4 applicable limit or minimum requirement",
+        "Gantry Crane Loading Dock 2 payload weight lbs 21526 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 3,
+      "reranked_rank": 4,
+      "top_fused": [
+        "1910.180",
+        "1910.179",
+        "1910.26",
+        "1910.28"
+      ],
+      "top_reranked": [
+        "1910.180",
+        "1910.179",
+        "1910.21",
+        "1910.26"
+      ]
+    },
+    {
+      "log_id": "LOG-1127",
+      "hazard": "fall_protection",
+      "expected_section": "1910.28",
+      "queries": [
+        "Employee working the open edge of the stack with no arrest system attached",
+        "Yard Hostler reported Employee working the open edge of the stack with no arrest system attached applicable safety requirement",
+        "Yard Hostler Container Stack Row C federal safety requirement",
+        "Yard Hostler Container Stack Row C operator shift hours 7.8 applicable limit or minimum requirement",
+        "Yard Hostler Container Stack Row C payload weight lbs 10211 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 1,
+      "reranked_rank": 1,
+      "top_fused": [
+        "1910.28",
+        "1910.21",
+        "1910.179",
+        "1910.29"
+      ],
+      "top_reranked": [
+        "1910.28",
+        "1910.21",
+        "1910.29",
+        "1910.179"
+      ]
+    },
+    {
+      "log_id": "LOG-1132",
+      "hazard": "electrical_ppe",
+      "expected_section": "1910.335",
+      "queries": [
+        "Employee worked exposed live parts with no protective equipment in use",
+        "Terminal Tractor reported Employee worked exposed live parts with no protective equipment in use applicable safety requirement",
+        "Terminal Tractor High-Voltage Line B federal safety requirement",
+        "Terminal Tractor High-Voltage Line B operator shift hours 9.1 applicable limit or minimum requirement",
+        "Terminal Tractor High-Voltage Line B payload weight lbs 16570 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 3,
+      "reranked_rank": 3,
+      "top_fused": [
+        "1910.333",
+        "1910.303",
+        "1910.335",
+        "1910.308"
+      ],
+      "top_reranked": [
+        "1910.333",
+        "1910.303",
+        "1910.335",
+        "1910.304"
+      ]
+    },
+    {
+      "log_id": "LOG-1150",
+      "hazard": "electrical_ppe",
+      "expected_section": "1910.335",
+      "queries": [
+        "Employee worked exposed live parts with no protective equipment in use",
+        "Forklift reported Employee worked exposed live parts with no protective equipment in use applicable safety requirement",
+        "Forklift High-Voltage Line B federal safety requirement",
+        "Forklift High-Voltage Line B operator shift hours 10.0 applicable limit or minimum requirement",
+        "Forklift High-Voltage Line B payload weight lbs 46163 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 1,
+      "reranked_rank": 2,
+      "top_fused": [
+        "1910.335",
+        "1910.303",
+        "1910.333",
+        "1910.179"
+      ],
+      "top_reranked": [
+        "1910.333",
+        "1910.335",
+        "1910.303",
+        "1910.179"
+      ]
+    },
+    {
+      "log_id": "LOG-1162",
+      "hazard": "electrical_ppe",
+      "expected_section": "1910.335",
+      "queries": [
+        "Employee worked exposed live parts with no protective equipment in use",
+        "Gantry Crane reported Employee worked exposed live parts with no protective equipment in use applicable safety requirement",
+        "Gantry Crane Wheel Shop federal safety requirement",
+        "Gantry Crane Wheel Shop operator shift hours 8.3 applicable limit or minimum requirement",
+        "Gantry Crane Wheel Shop payload weight lbs 49572 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 3,
+      "reranked_rank": 3,
+      "top_fused": [
+        "1910.179",
+        "1910.333",
+        "1910.335",
+        "1910.303"
+      ],
+      "top_reranked": [
+        "1910.179",
+        "1910.333",
+        "1910.335",
+        "1910.180"
+      ]
+    },
+    {
+      "log_id": "LOG-1163",
+      "hazard": "crane_inspection",
+      "expected_section": "1910.179",
+      "queries": [
+        "Gantry hoist operated with the periodic inspection more than a year overdue",
+        "Terminal Tractor reported Gantry hoist operated with the periodic inspection more than a year overdue applicable safety requirement",
+        "Terminal Tractor Bay 1 federal safety requirement",
+        "Terminal Tractor Bay 1 operator shift hours 10.5 applicable limit or minimum requirement",
+        "Terminal Tractor Bay 1 payload weight lbs 23406 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 1,
+      "reranked_rank": 1,
+      "top_fused": [
+        "1910.179",
+        "1910.180",
+        "1910.181",
+        "1910.183"
+      ],
+      "top_reranked": [
+        "1910.179",
+        "1910.180",
+        "1910.181",
+        "1910.178"
+      ]
+    },
+    {
+      "log_id": "LOG-1183",
+      "hazard": "electrical_ppe",
+      "expected_section": "1910.335",
+      "queries": [
+        "Work performed on an energised circuit without insulating gloves issued",
+        "Terminal Tractor reported Work performed on an energised circuit without insulating gloves issued applicable safety requirement",
+        "Terminal Tractor Maintenance Track federal safety requirement",
+        "Terminal Tractor Maintenance Track operator shift hours 9.4 applicable limit or minimum requirement",
+        "Terminal Tractor Maintenance Track payload weight lbs 32556 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 1,
+      "reranked_rank": 1,
+      "top_fused": [
+        "1910.335",
+        "1910.333",
+        "1910.334",
+        "1910.178"
+      ],
+      "top_reranked": [
+        "1910.335",
+        "1910.333",
+        "228.5",
+        "1910.178"
+      ]
+    },
+    {
+      "log_id": "LOG-1198",
+      "hazard": "approach_distance",
+      "expected_section": "1910.333",
+      "queries": [
+        "Mast raised inside the approach boundary of a live overhead line",
+        "Gantry Crane reported Mast raised inside the approach boundary of a live overhead line applicable safety requirement",
+        "Gantry Crane Intermodal Ramp federal safety requirement",
+        "Gantry Crane Intermodal Ramp operator shift hours 10.2 applicable limit or minimum requirement",
+        "Gantry Crane Intermodal Ramp payload weight lbs 15908 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 2,
+      "reranked_rank": 3,
+      "top_fused": [
+        "1910.179",
+        "1910.333",
+        "1910.180",
+        "1910.181"
+      ],
+      "top_reranked": [
+        "1910.179",
+        "1910.180",
+        "1910.333",
+        "1910.306"
+      ]
+    },
+    {
+      "log_id": "LOG-1222",
+      "hazard": "truck_defect",
+      "expected_section": "1910.178",
+      "queries": [
+        "Lift truck kept in service after the mast chain was found slack and frayed",
+        "Container Handler reported Lift truck kept in service after the mast chain was found slack and frayed applicable safety requirement",
+        "Container Handler Bay 1 federal safety requirement",
+        "Container Handler Bay 1 operator shift hours 6.0 applicable limit or minimum requirement",
+        "Container Handler Bay 1 payload weight lbs 53895 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 1,
+      "reranked_rank": 1,
+      "top_fused": [
+        "1910.178",
+        "1910.183",
+        "1910.179",
+        "1910.180"
+      ],
+      "top_reranked": [
+        "1910.178",
+        "1910.183",
+        "1910.181",
+        "1910.179"
+      ]
+    },
+    {
+      "log_id": "LOG-1224",
+      "hazard": "duty_records",
+      "expected_section": "228.11",
+      "queries": [
+        "No hours-of-duty entry filed for the completed assignment",
+        "Reach Stacker reported No hours-of-duty entry filed for the completed assignment applicable safety requirement",
+        "Reach Stacker Loading Dock 2 federal safety requirement",
+        "Reach Stacker Loading Dock 2 operator shift hours 9.6 applicable limit or minimum requirement",
+        "Reach Stacker Loading Dock 2 payload weight lbs 36368 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 1,
+      "reranked_rank": 2,
+      "top_fused": [
+        "228.11",
+        "228.19",
+        "228.5",
+        "1910.28"
+      ],
+      "top_reranked": [
+        "228.19",
+        "228.11",
+        "1910.28",
+        "228.5"
+      ]
+    },
+    {
+      "log_id": "LOG-1228",
+      "hazard": "stairway",
+      "expected_section": "1910.25",
+      "queries": [
+        "Open-sided stairway to the ramp office missing its handrail",
+        "Container Handler reported Open-sided stairway to the ramp office missing its handrail applicable safety requirement",
+        "Container Handler Bay 4 federal safety requirement",
+        "Container Handler Bay 4 operator shift hours 11.4 applicable limit or minimum requirement",
+        "Container Handler Bay 4 payload weight lbs 59382 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 3,
+      "reranked_rank": 2,
+      "top_fused": [
+        "1910.306",
+        "1910.21",
+        "1910.25",
+        "1910.28"
+      ],
+      "top_reranked": [
+        "1910.21",
+        "1910.25",
+        "1910.306",
+        "1910.29"
+      ]
+    },
+    {
+      "log_id": "LOG-1233",
+      "hazard": "dockboard",
+      "expected_section": "1910.26",
+      "queries": [
+        "Dockboard placed without anchors and moved during transit into the boxcar",
+        "Yard Hostler reported Dockboard placed without anchors and moved during transit into the boxcar applicable safety requirement",
+        "Yard Hostler Loading Dock 2 federal safety requirement",
+        "Yard Hostler Loading Dock 2 operator shift hours 7.3 applicable limit or minimum requirement",
+        "Yard Hostler Loading Dock 2 payload weight lbs 17002 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 2,
+      "reranked_rank": 4,
+      "top_fused": [
+        "1910.178",
+        "1910.26",
+        "1910.180",
+        "1910.28"
+      ],
+      "top_reranked": [
+        "1910.178",
+        "1910.180",
+        "228.5",
+        "1910.26"
+      ]
+    },
+    {
+      "log_id": "LOG-1237",
+      "hazard": "truck_defect",
+      "expected_section": "1910.178",
+      "queries": [
+        "Lift truck kept in service after the mast chain was found slack and frayed",
+        "Yard Hostler reported Lift truck kept in service after the mast chain was found slack and frayed applicable safety requirement",
+        "Yard Hostler Bay 4 federal safety requirement",
+        "Yard Hostler Bay 4 operator shift hours 11.5 applicable limit or minimum requirement",
+        "Yard Hostler Bay 4 payload weight lbs 23555 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 4,
+      "reranked_rank": 3,
+      "top_fused": [
+        "1910.181",
+        "1910.180",
+        "1910.179",
+        "1910.178"
+      ],
+      "top_reranked": [
+        "1910.181",
+        "1910.180",
+        "1910.178",
+        "1910.179"
+      ]
+    },
+    {
+      "log_id": "LOG-1239",
+      "hazard": "live_parts",
+      "expected_section": "1910.303",
+      "queries": [
+        "Panel left open with energised parts exposed to the walkway",
+        "Gantry Crane reported Panel left open with energised parts exposed to the walkway applicable safety requirement",
+        "Gantry Crane Maintenance Track federal safety requirement",
+        "Gantry Crane Maintenance Track operator shift hours 11.8 applicable limit or minimum requirement",
+        "Gantry Crane Maintenance Track payload weight lbs 42797 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 5,
+      "reranked_rank": 6,
+      "top_fused": [
+        "1910.179",
+        "1910.180",
+        "1910.306",
+        "1910.335"
+      ],
+      "top_reranked": [
+        "1910.179",
+        "1910.180",
+        "1910.306",
+        "1910.335"
+      ]
+    },
+    {
+      "log_id": "LOG-1250",
+      "hazard": "electrical_ppe",
+      "expected_section": "1910.335",
+      "queries": [
+        "Work performed on an energised circuit without insulating gloves issued",
+        "Yard Hostler reported Work performed on an energised circuit without insulating gloves issued applicable safety requirement",
+        "Yard Hostler Wheel Shop federal safety requirement",
+        "Yard Hostler Wheel Shop operator shift hours 11.6 applicable limit or minimum requirement",
+        "Yard Hostler Wheel Shop payload weight lbs 18177 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 1,
+      "reranked_rank": 2,
+      "top_fused": [
+        "1910.335",
+        "1910.333",
+        "1910.331",
+        "1910.177"
+      ],
+      "top_reranked": [
+        "1910.333",
+        "1910.335",
+        "1910.331",
+        "228.11"
+      ]
+    },
+    {
+      "log_id": "LOG-1258",
+      "hazard": "duty_records",
+      "expected_section": "228.11",
+      "queries": [
+        "No hours-of-duty entry filed for the completed assignment",
+        "Terminal Tractor reported No hours-of-duty entry filed for the completed assignment applicable safety requirement",
+        "Terminal Tractor Rail Siding 3 federal safety requirement",
+        "Terminal Tractor Rail Siding 3 operator shift hours 6.9 applicable limit or minimum requirement",
+        "Terminal Tractor Rail Siding 3 payload weight lbs 13770 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 3,
+      "reranked_rank": 4,
+      "top_fused": [
+        "228.405",
+        "228.19",
+        "228.11",
+        "228.7"
+      ],
+      "top_reranked": [
+        "228.19",
+        "228.405",
+        "228.5",
+        "228.11"
+      ]
+    },
+    {
+      "log_id": "LOG-1259",
+      "hazard": "sling",
+      "expected_section": "1910.184",
+      "queries": [
+        "Sling used with a crushed eye fitting and no legible capacity tag",
+        "Forklift reported Sling used with a crushed eye fitting and no legible capacity tag applicable safety requirement",
+        "Forklift Bay 2 federal safety requirement",
+        "Forklift Bay 2 operator shift hours 6.0 applicable limit or minimum requirement",
+        "Forklift Bay 2 payload weight lbs 19457 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 1,
+      "reranked_rank": 1,
+      "top_fused": [
+        "1910.184",
+        "1910.183",
+        "1910.180",
+        "1910.179"
+      ],
+      "top_reranked": [
+        "1910.184",
+        "1910.183",
+        "1910.179",
+        "1910.180"
+      ]
+    },
+    {
+      "log_id": "LOG-1262",
+      "hazard": "fall_protection",
+      "expected_section": "1910.28",
+      "queries": [
+        "Employee working the open edge of the stack with no arrest system attached",
+        "Reach Stacker reported Employee working the open edge of the stack with no arrest system attached applicable safety requirement",
+        "Reach Stacker Bay 4 federal safety requirement",
+        "Reach Stacker Bay 4 operator shift hours 6.1 applicable limit or minimum requirement",
+        "Reach Stacker Bay 4 payload weight lbs 56606 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 1,
+      "reranked_rank": 2,
+      "top_fused": [
+        "1910.28",
+        "1910.29",
+        "1910.21",
+        "1910.179"
+      ],
+      "top_reranked": [
+        "1910.21",
+        "1910.28",
+        "1910.29",
+        "1910.179"
+      ]
+    },
+    {
+      "log_id": "LOG-1263",
+      "hazard": "truck_defect",
+      "expected_section": "1910.178",
+      "queries": [
+        "Lift truck kept in service after the mast chain was found slack and frayed",
+        "Reach Stacker reported Lift truck kept in service after the mast chain was found slack and frayed applicable safety requirement",
+        "Reach Stacker Intermodal Ramp federal safety requirement",
+        "Reach Stacker Intermodal Ramp operator shift hours 7.1 applicable limit or minimum requirement",
+        "Reach Stacker Intermodal Ramp payload weight lbs 19678 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 1,
+      "reranked_rank": 2,
+      "top_fused": [
+        "1910.178",
+        "1910.180",
+        "1910.183",
+        "1910.181"
+      ],
+      "top_reranked": [
+        "1910.180",
+        "1910.178",
+        "1910.181",
+        "1910.183"
+      ]
+    },
+    {
+      "log_id": "LOG-1276",
+      "hazard": "live_parts",
+      "expected_section": "1910.303",
+      "queries": [
+        "Junction box cover missing and live conductors reachable from the aisle",
+        "Container Handler reported Junction box cover missing and live conductors reachable from the aisle applicable safety requirement",
+        "Container Handler Maintenance Track federal safety requirement",
+        "Container Handler Maintenance Track operator shift hours 9.9 applicable limit or minimum requirement",
+        "Container Handler Maintenance Track payload weight lbs 16023 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 2,
+      "reranked_rank": 1,
+      "top_fused": [
+        "1910.305",
+        "1910.303",
+        "1910.306",
+        "1910.304"
+      ],
+      "top_reranked": [
+        "1910.303",
+        "1910.305",
+        "1910.306",
+        "1910.179"
+      ]
+    },
+    {
+      "log_id": "LOG-1277",
+      "hazard": "housekeeping",
+      "expected_section": "1910.22",
+      "queries": [
+        "Standing oily runoff spread over the pedestrian route with no containment",
+        "Container Handler reported Standing oily runoff spread over the pedestrian route with no containment applicable safety requirement",
+        "Container Handler Main Pedestrian Crosswalk federal safety requirement",
+        "Container Handler Main Pedestrian Crosswalk operator shift hours 6.7 applicable limit or minimum requirement",
+        "Container Handler Main Pedestrian Crosswalk payload weight lbs 41789 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 4,
+      "reranked_rank": 6,
+      "top_fused": [
+        "1910.178",
+        "1910.179",
+        "1910.304",
+        "1910.22"
+      ],
+      "top_reranked": [
+        "1910.178",
+        "1910.304",
+        "1910.179",
+        "1910.399"
+      ]
+    },
+    {
+      "log_id": "LOG-1279",
+      "hazard": "duty_limit",
+      "expected_section": "21103",
+      "queries": [
+        "Train employee remained on duty to complete consist tie-down",
+        "Yard Hostler reported Train employee remained on duty to complete consist tie-down applicable safety requirement",
+        "Yard Hostler Maintenance Track federal safety requirement",
+        "Yard Hostler Maintenance Track operator shift hours 14.1 applicable limit or minimum requirement",
+        "Yard Hostler Maintenance Track payload weight lbs 49267 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 6,
+      "reranked_rank": 8,
+      "top_fused": [
+        "228.5",
+        "228.203",
+        "228.7",
+        "228.11"
+      ],
+      "top_reranked": [
+        "228.5",
+        "228.203",
+        "228.11",
+        "228.7"
+      ]
+    },
+    {
+      "log_id": "LOG-1281",
+      "hazard": "aisle_obstruction",
+      "expected_section": "1910.176",
+      "queries": [
+        "Palletised freight left obstructing the designated traffic aisle",
+        "Container Handler reported Palletised freight left obstructing the designated traffic aisle applicable safety requirement",
+        "Container Handler Container Stack Row C federal safety requirement",
+        "Container Handler Container Stack Row C operator shift hours 8.4 applicable limit or minimum requirement",
+        "Container Handler Container Stack Row C payload weight lbs 64139 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 1,
+      "reranked_rank": 2,
+      "top_fused": [
+        "1910.176",
+        "1910.178",
+        "1910.179",
+        "1910.180"
+      ],
+      "top_reranked": [
+        "1910.178",
+        "1910.176",
+        "228.405",
+        "1910.179"
+      ]
+    },
+    {
+      "log_id": "LOG-1282",
+      "hazard": "duty_records",
+      "expected_section": "228.11",
+      "queries": [
+        "Duty record for the tour left unsigned and incomplete",
+        "Gantry Crane reported Duty record for the tour left unsigned and incomplete applicable safety requirement",
+        "Gantry Crane Maintenance Track federal safety requirement",
+        "Gantry Crane Maintenance Track operator shift hours 9.2 applicable limit or minimum requirement",
+        "Gantry Crane Maintenance Track payload weight lbs 38319 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 2,
+      "reranked_rank": 5,
+      "top_fused": [
+        "1910.179",
+        "228.11",
+        "228.5",
+        "1910.180"
+      ],
+      "top_reranked": [
+        "1910.179",
+        "228.5",
+        "1910.180",
+        "228.203"
+      ]
+    },
+    {
+      "log_id": "LOG-1288",
+      "hazard": "rim_wheel",
+      "expected_section": "1910.177",
+      "queries": [
+        "Multi-piece rim assembly inflated outside any restraining device",
+        "Forklift reported Multi-piece rim assembly inflated outside any restraining device applicable safety requirement",
+        "Forklift Wheel Shop federal safety requirement",
+        "Forklift Wheel Shop operator shift hours 6.6 applicable limit or minimum requirement",
+        "Forklift Wheel Shop payload weight lbs 34495 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 1,
+      "reranked_rank": 1,
+      "top_fused": [
+        "1910.177",
+        "1910.180",
+        "1910.178",
+        "1910.181"
+      ],
+      "top_reranked": [
+        "1910.177",
+        "1910.180",
+        "1910.178",
+        "1910.179"
+      ]
+    },
+    {
+      "log_id": "LOG-1290",
+      "hazard": "fall_protection",
+      "expected_section": "1910.28",
+      "queries": [
+        "Worker on the container roof at eight feet with no fall protection rigged",
+        "Container Handler reported Worker on the container roof at eight feet with no fall protection rigged applicable safety requirement",
+        "Container Handler Bay 4 federal safety requirement",
+        "Container Handler Bay 4 operator shift hours 6.7 applicable limit or minimum requirement",
+        "Container Handler Bay 4 payload weight lbs 55884 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 1,
+      "reranked_rank": 3,
+      "top_fused": [
+        "1910.28",
+        "1910.183",
+        "1910.29",
+        "1910.179"
+      ],
+      "top_reranked": [
+        "1910.29",
+        "1910.183",
+        "1910.28",
+        "1910.21"
+      ]
+    },
+    {
+      "log_id": "LOG-1291",
+      "hazard": "crane_inspection",
+      "expected_section": "1910.179",
+      "queries": [
+        "Overhead crane run with the upper limit switch known inoperative",
+        "Container Handler reported Overhead crane run with the upper limit switch known inoperative applicable safety requirement",
+        "Container Handler Intermodal Ramp federal safety requirement",
+        "Container Handler Intermodal Ramp operator shift hours 9.1 applicable limit or minimum requirement",
+        "Container Handler Intermodal Ramp payload weight lbs 59908 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 1,
+      "reranked_rank": 1,
+      "top_fused": [
+        "1910.179",
+        "1910.180",
+        "1910.306",
+        "1910.183"
+      ],
+      "top_reranked": [
+        "1910.179",
+        "1910.306",
+        "1910.180",
+        "1910.183"
+      ]
+    },
+    {
+      "log_id": "LOG-1293",
+      "hazard": "electrical_ppe",
+      "expected_section": "1910.335",
+      "queries": [
+        "Work performed on an energised circuit without insulating gloves issued",
+        "Yard Hostler reported Work performed on an energised circuit without insulating gloves issued applicable safety requirement",
+        "Yard Hostler High-Voltage Line B federal safety requirement",
+        "Yard Hostler High-Voltage Line B operator shift hours 9.6 applicable limit or minimum requirement",
+        "Yard Hostler High-Voltage Line B payload weight lbs 61530 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 2,
+      "reranked_rank": 3,
+      "top_fused": [
+        "1910.333",
+        "1910.335",
+        "1910.303",
+        "1910.331"
+      ],
+      "top_reranked": [
+        "1910.333",
+        "1910.303",
+        "1910.335",
+        "1910.304"
+      ]
+    },
+    {
+      "log_id": "LOG-1301",
+      "hazard": "stairway",
+      "expected_section": "1910.25",
+      "queries": [
+        "Stair run to the dispatch office in use with the handrail detached",
+        "Reach Stacker reported Stair run to the dispatch office in use with the handrail detached applicable safety requirement",
+        "Reach Stacker Container Stack Row C federal safety requirement",
+        "Reach Stacker Container Stack Row C operator shift hours 9.1 applicable limit or minimum requirement",
+        "Reach Stacker Container Stack Row C payload weight lbs 63843 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 1,
+      "reranked_rank": 1,
+      "top_fused": [
+        "1910.25",
+        "1910.21",
+        "1910.28",
+        "1910.23"
+      ],
+      "top_reranked": [
+        "1910.25",
+        "1910.21",
+        "1910.179",
+        "1910.23"
+      ]
+    },
+    {
+      "log_id": "LOG-1306",
+      "hazard": "live_parts",
+      "expected_section": "1910.303",
+      "queries": [
+        "Panel left open with energised parts exposed to the walkway",
+        "Reach Stacker reported Panel left open with energised parts exposed to the walkway applicable safety requirement",
+        "Reach Stacker Maintenance Track federal safety requirement",
+        "Reach Stacker Maintenance Track operator shift hours 10.9 applicable limit or minimum requirement",
+        "Reach Stacker Maintenance Track payload weight lbs 51503 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 3,
+      "reranked_rank": 2,
+      "top_fused": [
+        "1910.306",
+        "1910.179",
+        "1910.303",
+        "1910.335"
+      ],
+      "top_reranked": [
+        "1910.179",
+        "1910.303",
+        "1910.306",
+        "1910.335"
+      ]
+    },
+    {
+      "log_id": "LOG-1308",
+      "hazard": "guardrail",
+      "expected_section": "1910.29",
+      "queries": [
+        "Elevated platform rail installed well below the required height",
+        "Gantry Crane reported Elevated platform rail installed well below the required height applicable safety requirement",
+        "Gantry Crane Loading Dock 2 federal safety requirement",
+        "Gantry Crane Loading Dock 2 operator shift hours 6.3 applicable limit or minimum requirement",
+        "Gantry Crane Loading Dock 2 payload weight lbs 50975 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 5,
+      "reranked_rank": 5,
+      "top_fused": [
+        "1910.179",
+        "1910.28",
+        "1910.21",
+        "1910.180"
+      ],
+      "top_reranked": [
+        "1910.179",
+        "1910.21",
+        "1910.28",
+        "1910.180"
+      ]
+    },
+    {
+      "log_id": "LOG-1314",
+      "hazard": "dockboard",
+      "expected_section": "1910.26",
+      "queries": [
+        "Portable dockboard shifted under the forklift with no securing device fitted",
+        "Container Handler reported Portable dockboard shifted under the forklift with no securing device fitted applicable safety requirement",
+        "Container Handler Loading Dock 2 federal safety requirement",
+        "Container Handler Loading Dock 2 operator shift hours 11.3 applicable limit or minimum requirement",
+        "Container Handler Loading Dock 2 payload weight lbs 19792 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 1,
+      "reranked_rank": 2,
+      "top_fused": [
+        "1910.26",
+        "1910.21",
+        "1910.181",
+        "1910.180"
+      ],
+      "top_reranked": [
+        "1910.21",
+        "1910.26",
+        "1910.183",
+        "1910.28"
+      ]
+    },
+    {
+      "log_id": "LOG-1317",
+      "hazard": "dockboard",
+      "expected_section": "1910.26",
+      "queries": [
+        "Portable dockboard shifted under the forklift with no securing device fitted",
+        "Yard Hostler reported Portable dockboard shifted under the forklift with no securing device fitted applicable safety requirement",
+        "Yard Hostler Intermodal Ramp federal safety requirement",
+        "Yard Hostler Intermodal Ramp operator shift hours 6.3 applicable limit or minimum requirement",
+        "Yard Hostler Intermodal Ramp payload weight lbs 37442 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 1,
+      "reranked_rank": 1,
+      "top_fused": [
+        "1910.26",
+        "1910.180",
+        "1910.21",
+        "1910.179"
+      ],
+      "top_reranked": [
+        "1910.26",
+        "1910.21",
+        "228.5",
+        "1910.180"
+      ]
+    },
+    {
+      "log_id": "LOG-1322",
+      "hazard": "housekeeping",
+      "expected_section": "1910.22",
+      "queries": [
+        "Standing oily runoff spread over the pedestrian route with no containment",
+        "Forklift reported Standing oily runoff spread over the pedestrian route with no containment applicable safety requirement",
+        "Forklift Main Pedestrian Crosswalk federal safety requirement",
+        "Forklift Main Pedestrian Crosswalk operator shift hours 11.9 applicable limit or minimum requirement",
+        "Forklift Main Pedestrian Crosswalk payload weight lbs 18105 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 6,
+      "reranked_rank": 6,
+      "top_fused": [
+        "1910.178",
+        "1910.333",
+        "1910.304",
+        "1910.179"
+      ],
+      "top_reranked": [
+        "1910.178",
+        "1910.304",
+        "1910.333",
+        "1910.179"
+      ]
+    },
+    {
+      "log_id": "LOG-1323",
+      "hazard": "live_parts",
+      "expected_section": "1910.303",
+      "queries": [
+        "Junction box cover missing and live conductors reachable from the aisle",
+        "Gantry Crane reported Junction box cover missing and live conductors reachable from the aisle applicable safety requirement",
+        "Gantry Crane Maintenance Track federal safety requirement",
+        "Gantry Crane Maintenance Track operator shift hours 6.2 applicable limit or minimum requirement",
+        "Gantry Crane Maintenance Track payload weight lbs 40532 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 5,
+      "reranked_rank": 5,
+      "top_fused": [
+        "1910.179",
+        "1910.305",
+        "1910.180",
+        "1910.306"
+      ],
+      "top_reranked": [
+        "1910.179",
+        "1910.180",
+        "1910.305",
+        "1910.306"
+      ]
+    },
+    {
+      "log_id": "LOG-1338",
+      "hazard": "rim_wheel",
+      "expected_section": "1910.177",
+      "queries": [
+        "Multi-piece rim assembly inflated outside any restraining device",
+        "Container Handler reported Multi-piece rim assembly inflated outside any restraining device applicable safety requirement",
+        "Container Handler Maintenance Track federal safety requirement",
+        "Container Handler Maintenance Track operator shift hours 6.9 applicable limit or minimum requirement",
+        "Container Handler Maintenance Track payload weight lbs 41974 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 1,
+      "reranked_rank": 1,
+      "top_fused": [
+        "1910.177",
+        "1910.181",
+        "1910.180",
+        "1910.179"
+      ],
+      "top_reranked": [
+        "1910.177",
+        "1910.180",
+        "1910.181",
+        "1910.184"
+      ]
+    },
+    {
+      "log_id": "LOG-1342",
+      "hazard": "ladder",
+      "expected_section": "1910.23",
+      "queries": [
+        "Portable ladder with a cracked side rail used to reach the container roof",
+        "Forklift reported Portable ladder with a cracked side rail used to reach the container roof applicable safety requirement",
+        "Forklift Bay 1 federal safety requirement",
+        "Forklift Bay 1 operator shift hours 6.6 applicable limit or minimum requirement",
+        "Forklift Bay 1 payload weight lbs 34487 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 2,
+      "reranked_rank": 1,
+      "top_fused": [
+        "1910.179",
+        "1910.23",
+        "1910.21",
+        "1910.29"
+      ],
+      "top_reranked": [
+        "1910.23",
+        "1910.179",
+        "1910.21",
+        "1910.180"
+      ]
+    },
+    {
+      "log_id": "LOG-1347",
+      "hazard": "fall_protection",
+      "expected_section": "1910.28",
+      "queries": [
+        "Worker on the container roof at eight feet with no fall protection rigged",
+        "Gantry Crane reported Worker on the container roof at eight feet with no fall protection rigged applicable safety requirement",
+        "Gantry Crane Intermodal Ramp federal safety requirement",
+        "Gantry Crane Intermodal Ramp operator shift hours 6.1 applicable limit or minimum requirement",
+        "Gantry Crane Intermodal Ramp payload weight lbs 13966 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 2,
+      "reranked_rank": 3,
+      "top_fused": [
+        "1910.179",
+        "1910.28",
+        "1910.180",
+        "1910.29"
+      ],
+      "top_reranked": [
+        "1910.179",
+        "1910.21",
+        "1910.28",
+        "1910.29"
+      ]
+    },
+    {
+      "log_id": "LOG-1348",
+      "hazard": "fall_protection",
+      "expected_section": "1910.28",
+      "queries": [
+        "Employee working the open edge of the stack with no arrest system attached",
+        "Gantry Crane reported Employee working the open edge of the stack with no arrest system attached applicable safety requirement",
+        "Gantry Crane Container Stack Row C federal safety requirement",
+        "Gantry Crane Container Stack Row C operator shift hours 9.1 applicable limit or minimum requirement",
+        "Gantry Crane Container Stack Row C payload weight lbs 46966 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 2,
+      "reranked_rank": 3,
+      "top_fused": [
+        "1910.179",
+        "1910.28",
+        "1910.21",
+        "1910.183"
+      ],
+      "top_reranked": [
+        "1910.179",
+        "1910.21",
+        "1910.28",
+        "1910.180"
+      ]
+    },
+    {
+      "log_id": "LOG-1371",
+      "hazard": "electrical_ppe",
+      "expected_section": "1910.335",
+      "queries": [
+        "Work performed on an energised circuit without insulating gloves issued",
+        "Container Handler reported Work performed on an energised circuit without insulating gloves issued applicable safety requirement",
+        "Container Handler High-Voltage Line B federal safety requirement",
+        "Container Handler High-Voltage Line B operator shift hours 6.5 applicable limit or minimum requirement",
+        "Container Handler High-Voltage Line B payload weight lbs 25240 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 2,
+      "reranked_rank": 3,
+      "top_fused": [
+        "1910.333",
+        "1910.335",
+        "1910.303",
+        "1910.183"
+      ],
+      "top_reranked": [
+        "1910.333",
+        "1910.303",
+        "1910.335",
+        "1910.183"
+      ]
+    },
+    {
+      "log_id": "LOG-1394",
+      "hazard": "approach_distance",
+      "expected_section": "1910.333",
+      "queries": [
+        "Mast raised inside the approach boundary of a live overhead line",
+        "Forklift reported Mast raised inside the approach boundary of a live overhead line applicable safety requirement",
+        "Forklift Intermodal Ramp federal safety requirement",
+        "Forklift Intermodal Ramp operator shift hours 7.8 applicable limit or minimum requirement",
+        "Forklift Intermodal Ramp payload weight lbs 24377 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 1,
+      "reranked_rank": 1,
+      "top_fused": [
+        "1910.333",
+        "1910.179",
+        "1910.181",
+        "1910.178"
+      ],
+      "top_reranked": [
+        "1910.333",
+        "1910.179",
+        "1910.181",
+        "1910.178"
+      ]
+    },
+    {
+      "log_id": "LOG-1398",
+      "hazard": "fall_protection",
+      "expected_section": "1910.28",
+      "queries": [
+        "Worker on the container roof at eight feet with no fall protection rigged",
+        "Container Handler reported Worker on the container roof at eight feet with no fall protection rigged applicable safety requirement",
+        "Container Handler Intermodal Ramp federal safety requirement",
+        "Container Handler Intermodal Ramp operator shift hours 9.3 applicable limit or minimum requirement",
+        "Container Handler Intermodal Ramp payload weight lbs 58688 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 3,
+      "reranked_rank": 4,
+      "top_fused": [
+        "1910.21",
+        "1910.183",
+        "1910.28",
+        "1910.29"
+      ],
+      "top_reranked": [
+        "1910.21",
+        "1910.183",
+        "1910.29",
+        "1910.28"
+      ]
+    },
+    {
+      "log_id": "LOG-1404",
+      "hazard": "truck_defect",
+      "expected_section": "1910.178",
+      "queries": [
+        "Truck with failed service brake returned to yard duty without repair",
+        "Gantry Crane reported Truck with failed service brake returned to yard duty without repair applicable safety requirement",
+        "Gantry Crane Bay 1 federal safety requirement",
+        "Gantry Crane Bay 1 operator shift hours 10.6 applicable limit or minimum requirement",
+        "Gantry Crane Bay 1 payload weight lbs 44384 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 3,
+      "reranked_rank": 3,
+      "top_fused": [
+        "1910.179",
+        "1910.180",
+        "1910.178",
+        "228.11"
+      ],
+      "top_reranked": [
+        "1910.179",
+        "1910.180",
+        "1910.178",
+        "228.19"
+      ]
+    },
+    {
+      "log_id": "LOG-1409",
+      "hazard": "guardrail",
+      "expected_section": "1910.29",
+      "queries": [
+        "Elevated platform rail installed well below the required height",
+        "Reach Stacker reported Elevated platform rail installed well below the required height applicable safety requirement",
+        "Reach Stacker Intermodal Ramp federal safety requirement",
+        "Reach Stacker Intermodal Ramp operator shift hours 9.3 applicable limit or minimum requirement",
+        "Reach Stacker Intermodal Ramp payload weight lbs 19166 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 5,
+      "reranked_rank": 5,
+      "top_fused": [
+        "1910.25",
+        "1910.21",
+        "1910.179",
+        "1910.23"
+      ],
+      "top_reranked": [
+        "1910.21",
+        "1910.179",
+        "1910.25",
+        "1910.23"
+      ]
+    },
+    {
+      "log_id": "LOG-1418",
+      "hazard": "aisle_obstruction",
+      "expected_section": "1910.176",
+      "queries": [
+        "Palletised freight left obstructing the designated traffic aisle",
+        "Container Handler reported Palletised freight left obstructing the designated traffic aisle applicable safety requirement",
+        "Container Handler Bay 2 federal safety requirement",
+        "Container Handler Bay 2 operator shift hours 8.8 applicable limit or minimum requirement",
+        "Container Handler Bay 2 payload weight lbs 34380 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 2,
+      "reranked_rank": 3,
+      "top_fused": [
+        "1910.178",
+        "1910.176",
+        "1910.179",
+        "228.405"
+      ],
+      "top_reranked": [
+        "1910.178",
+        "228.405",
+        "1910.176",
+        "1910.179"
+      ]
+    },
+    {
+      "log_id": "LOG-1421",
+      "hazard": "duty_records",
+      "expected_section": "228.11",
+      "queries": [
+        "Duty record for the tour left unsigned and incomplete",
+        "Terminal Tractor reported Duty record for the tour left unsigned and incomplete applicable safety requirement",
+        "Terminal Tractor Main Pedestrian Crosswalk federal safety requirement",
+        "Terminal Tractor Main Pedestrian Crosswalk operator shift hours 11.8 applicable limit or minimum requirement",
+        "Terminal Tractor Main Pedestrian Crosswalk payload weight lbs 10270 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 3,
+      "reranked_rank": 3,
+      "top_fused": [
+        "228.19",
+        "228.405",
+        "228.11",
+        "228.5"
+      ],
+      "top_reranked": [
+        "228.19",
+        "228.405",
+        "228.11",
+        "228.5"
+      ]
+    },
+    {
+      "log_id": "LOG-1425",
+      "hazard": "guardrail",
+      "expected_section": "1910.29",
+      "queries": [
+        "Elevated platform rail installed well below the required height",
+        "Gantry Crane reported Elevated platform rail installed well below the required height applicable safety requirement",
+        "Gantry Crane Loading Dock 2 federal safety requirement",
+        "Gantry Crane Loading Dock 2 operator shift hours 10.5 applicable limit or minimum requirement",
+        "Gantry Crane Loading Dock 2 payload weight lbs 45736 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 6,
+      "reranked_rank": 6,
+      "top_fused": [
+        "1910.179",
+        "1910.28",
+        "1910.21",
+        "1910.180"
+      ],
+      "top_reranked": [
+        "1910.179",
+        "1910.21",
+        "1910.28",
+        "1910.180"
+      ]
+    },
+    {
+      "log_id": "LOG-1429",
+      "hazard": "duty_records",
+      "expected_section": "228.11",
+      "queries": [
+        "Duty record for the tour left unsigned and incomplete",
+        "Container Handler reported Duty record for the tour left unsigned and incomplete applicable safety requirement",
+        "Container Handler Wheel Shop federal safety requirement",
+        "Container Handler Wheel Shop operator shift hours 8.7 applicable limit or minimum requirement",
+        "Container Handler Wheel Shop payload weight lbs 47009 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 1,
+      "reranked_rank": 1,
+      "top_fused": [
+        "228.11",
+        "228.203",
+        "228.19",
+        "228.5"
+      ],
+      "top_reranked": [
+        "228.11",
+        "228.19",
+        "228.203",
+        "228.5"
+      ]
+    },
+    {
+      "log_id": "LOG-1434",
+      "hazard": "dockboard",
+      "expected_section": "1910.26",
+      "queries": [
+        "Portable dockboard shifted under the forklift with no securing device fitted",
+        "Yard Hostler reported Portable dockboard shifted under the forklift with no securing device fitted applicable safety requirement",
+        "Yard Hostler Intermodal Ramp federal safety requirement",
+        "Yard Hostler Intermodal Ramp operator shift hours 11.2 applicable limit or minimum requirement",
+        "Yard Hostler Intermodal Ramp payload weight lbs 51757 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 1,
+      "reranked_rank": 1,
+      "top_fused": [
+        "1910.26",
+        "1910.180",
+        "1910.21",
+        "1910.179"
+      ],
+      "top_reranked": [
+        "1910.26",
+        "1910.21",
+        "228.5",
+        "1910.180"
+      ]
+    },
+    {
+      "log_id": "LOG-1437",
+      "hazard": "live_parts",
+      "expected_section": "1910.303",
+      "queries": [
+        "Panel left open with energised parts exposed to the walkway",
+        "Gantry Crane reported Panel left open with energised parts exposed to the walkway applicable safety requirement",
+        "Gantry Crane Maintenance Track federal safety requirement",
+        "Gantry Crane Maintenance Track operator shift hours 6.4 applicable limit or minimum requirement",
+        "Gantry Crane Maintenance Track payload weight lbs 25634 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 5,
+      "reranked_rank": 4,
+      "top_fused": [
+        "1910.179",
+        "1910.180",
+        "1910.306",
+        "1910.335"
+      ],
+      "top_reranked": [
+        "1910.179",
+        "1910.180",
+        "1910.306",
+        "1910.303"
+      ]
+    },
+    {
+      "log_id": "LOG-1439",
+      "hazard": "ladder",
+      "expected_section": "1910.23",
+      "queries": [
+        "Portable ladder with a cracked side rail used to reach the container roof",
+        "Forklift reported Portable ladder with a cracked side rail used to reach the container roof applicable safety requirement",
+        "Forklift Maintenance Track federal safety requirement",
+        "Forklift Maintenance Track operator shift hours 6.4 applicable limit or minimum requirement",
+        "Forklift Maintenance Track payload weight lbs 38435 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 1,
+      "reranked_rank": 3,
+      "top_fused": [
+        "1910.23",
+        "1910.21",
+        "1910.180",
+        "1910.29"
+      ],
+      "top_reranked": [
+        "1910.180",
+        "1910.21",
+        "1910.23",
+        "1910.181"
+      ]
+    },
+    {
+      "log_id": "LOG-1442",
+      "hazard": "duty_limit",
+      "expected_section": "21103",
+      "queries": [
+        "Covered switch employee continued yard moves past scheduled relief",
+        "Yard Hostler reported Covered switch employee continued yard moves past scheduled relief applicable safety requirement",
+        "Yard Hostler Bay 2 federal safety requirement",
+        "Yard Hostler Bay 2 operator shift hours 14.2 applicable limit or minimum requirement",
+        "Yard Hostler Bay 2 payload weight lbs 61891 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 16,
+      "reranked_rank": 16,
+      "top_fused": [
+        "228.11",
+        "228.5",
+        "1910.179",
+        "228.7"
+      ],
+      "top_reranked": [
+        "228.11",
+        "228.5",
+        "228.203",
+        "228.7"
+      ]
+    },
+    {
+      "log_id": "LOG-1443",
+      "hazard": "approach_distance",
+      "expected_section": "1910.333",
+      "queries": [
+        "Mast raised inside the approach boundary of a live overhead line",
+        "Gantry Crane reported Mast raised inside the approach boundary of a live overhead line applicable safety requirement",
+        "Gantry Crane High-Voltage Line B federal safety requirement",
+        "Gantry Crane High-Voltage Line B operator shift hours 6.0 applicable limit or minimum requirement",
+        "Gantry Crane High-Voltage Line B payload weight lbs 39111 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 2,
+      "reranked_rank": 2,
+      "top_fused": [
+        "1910.179",
+        "1910.333",
+        "1910.306",
+        "1910.180"
+      ],
+      "top_reranked": [
+        "1910.179",
+        "1910.333",
+        "1910.306",
+        "1910.180"
+      ]
+    },
+    {
+      "log_id": "LOG-1445",
+      "hazard": "rim_wheel",
+      "expected_section": "1910.177",
+      "queries": [
+        "Rim wheel serviced without deflating and without a restraining cage",
+        "Gantry Crane reported Rim wheel serviced without deflating and without a restraining cage applicable safety requirement",
+        "Gantry Crane Wheel Shop federal safety requirement",
+        "Gantry Crane Wheel Shop operator shift hours 7.4 applicable limit or minimum requirement",
+        "Gantry Crane Wheel Shop payload weight lbs 25283 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 1,
+      "reranked_rank": 2,
+      "top_fused": [
+        "1910.177",
+        "1910.180",
+        "1910.179",
+        "1910.178"
+      ],
+      "top_reranked": [
+        "1910.180",
+        "1910.177",
+        "1910.179",
+        "1910.178"
+      ]
+    },
+    {
+      "log_id": "LOG-1463",
+      "hazard": "stairway",
+      "expected_section": "1910.25",
+      "queries": [
+        "Stair run to the dispatch office in use with the handrail detached",
+        "Gantry Crane reported Stair run to the dispatch office in use with the handrail detached applicable safety requirement",
+        "Gantry Crane High-Voltage Line B federal safety requirement",
+        "Gantry Crane High-Voltage Line B operator shift hours 10.8 applicable limit or minimum requirement",
+        "Gantry Crane High-Voltage Line B payload weight lbs 43172 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 6,
+      "reranked_rank": 7,
+      "top_fused": [
+        "1910.179",
+        "1910.29",
+        "1910.21",
+        "1910.180"
+      ],
+      "top_reranked": [
+        "1910.179",
+        "1910.21",
+        "1910.180",
+        "1910.29"
+      ]
+    },
+    {
+      "log_id": "LOG-1472",
+      "hazard": "housekeeping",
+      "expected_section": "1910.22",
+      "queries": [
+        "Hydraulic fluid pooled across the marked walking route and left unattended",
+        "Forklift reported Hydraulic fluid pooled across the marked walking route and left unattended applicable safety requirement",
+        "Forklift Intermodal Ramp federal safety requirement",
+        "Forklift Intermodal Ramp operator shift hours 7.4 applicable limit or minimum requirement",
+        "Forklift Intermodal Ramp payload weight lbs 53445 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 5,
+      "reranked_rank": 5,
+      "top_fused": [
+        "1910.178",
+        "1910.176",
+        "1910.179",
+        "1910.180"
+      ],
+      "top_reranked": [
+        "1910.178",
+        "1910.176",
+        "1910.179",
+        "1910.180"
+      ]
+    },
+    {
+      "log_id": "LOG-1474",
+      "hazard": "duty_limit",
+      "expected_section": "21103",
+      "queries": [
+        "Train employee remained on duty to complete consist tie-down",
+        "Yard Hostler reported Train employee remained on duty to complete consist tie-down applicable safety requirement",
+        "Yard Hostler Loading Dock 2 federal safety requirement",
+        "Yard Hostler Loading Dock 2 operator shift hours 13.0 applicable limit or minimum requirement",
+        "Yard Hostler Loading Dock 2 payload weight lbs 13260 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 5,
+      "reranked_rank": 9,
+      "top_fused": [
+        "228.7",
+        "228.203",
+        "228.11",
+        "228.5"
+      ],
+      "top_reranked": [
+        "228.203",
+        "228.11",
+        "228.7",
+        "228.5"
+      ]
+    },
+    {
+      "log_id": "LOG-1485",
+      "hazard": "housekeeping",
+      "expected_section": "1910.22",
+      "queries": [
+        "Spilled coolant left across the marked pedestrian path",
+        "Terminal Tractor reported Spilled coolant left across the marked pedestrian path applicable safety requirement",
+        "Terminal Tractor Main Pedestrian Crosswalk federal safety requirement",
+        "Terminal Tractor Main Pedestrian Crosswalk operator shift hours 6.9 applicable limit or minimum requirement",
+        "Terminal Tractor Main Pedestrian Crosswalk payload weight lbs 59491 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 7,
+      "reranked_rank": 10,
+      "top_fused": [
+        "1910.178",
+        "1910.176",
+        "1910.304",
+        "228.405"
+      ],
+      "top_reranked": [
+        "1910.178",
+        "1910.304",
+        "228.405",
+        "1910.176"
+      ]
+    },
+    {
+      "log_id": "LOG-1487",
+      "hazard": "electrical_ppe",
+      "expected_section": "1910.335",
+      "queries": [
+        "Work performed on an energised circuit without insulating gloves issued",
+        "Terminal Tractor reported Work performed on an energised circuit without insulating gloves issued applicable safety requirement",
+        "Terminal Tractor Wheel Shop federal safety requirement",
+        "Terminal Tractor Wheel Shop operator shift hours 11.3 applicable limit or minimum requirement",
+        "Terminal Tractor Wheel Shop payload weight lbs 55146 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 2,
+      "reranked_rank": 3,
+      "top_fused": [
+        "1910.333",
+        "1910.335",
+        "1910.178",
+        "1910.334"
+      ],
+      "top_reranked": [
+        "1910.333",
+        "1910.178",
+        "1910.335",
+        "1910.334"
+      ]
+    },
+    {
+      "log_id": "LOG-1490",
+      "hazard": "aisle_obstruction",
+      "expected_section": "1910.176",
+      "queries": [
+        "Cargo stacked with a three-foot overhang blocking the marked aisle",
+        "Reach Stacker reported Cargo stacked with a three-foot overhang blocking the marked aisle applicable safety requirement",
+        "Reach Stacker Loading Dock 2 federal safety requirement",
+        "Reach Stacker Loading Dock 2 operator shift hours 10.6 applicable limit or minimum requirement",
+        "Reach Stacker Loading Dock 2 payload weight lbs 25551 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 1,
+      "reranked_rank": 2,
+      "top_fused": [
+        "1910.176",
+        "1910.183",
+        "1910.179",
+        "1910.28"
+      ],
+      "top_reranked": [
+        "1910.183",
+        "1910.176",
+        "1910.28",
+        "1910.178"
+      ]
+    },
+    {
+      "log_id": "LOG-1495",
+      "hazard": "sling",
+      "expected_section": "1910.184",
+      "queries": [
+        "Sling used with a crushed eye fitting and no legible capacity tag",
+        "Yard Hostler reported Sling used with a crushed eye fitting and no legible capacity tag applicable safety requirement",
+        "Yard Hostler Rail Siding 3 federal safety requirement",
+        "Yard Hostler Rail Siding 3 operator shift hours 6.1 applicable limit or minimum requirement",
+        "Yard Hostler Rail Siding 3 payload weight lbs 43177 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 2,
+      "reranked_rank": 2,
+      "top_fused": [
+        "1910.179",
+        "1910.184",
+        "1910.183",
+        "228.203"
+      ],
+      "top_reranked": [
+        "1910.179",
+        "1910.184",
+        "228.203",
+        "1910.183"
+      ]
+    },
+    {
+      "log_id": "LOG-1496",
+      "hazard": "truck_defect",
+      "expected_section": "1910.178",
+      "queries": [
+        "Lift truck kept in service after the mast chain was found slack and frayed",
+        "Container Handler reported Lift truck kept in service after the mast chain was found slack and frayed applicable safety requirement",
+        "Container Handler Intermodal Ramp federal safety requirement",
+        "Container Handler Intermodal Ramp operator shift hours 7.3 applicable limit or minimum requirement",
+        "Container Handler Intermodal Ramp payload weight lbs 58588 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 1,
+      "reranked_rank": 1,
+      "top_fused": [
+        "1910.178",
+        "1910.180",
+        "1910.183",
+        "1910.179"
+      ],
+      "top_reranked": [
+        "1910.178",
+        "1910.183",
+        "1910.180",
+        "1910.181"
+      ]
+    },
+    {
+      "log_id": "LOG-1508",
+      "hazard": "truck_defect",
+      "expected_section": "1910.178",
+      "queries": [
+        "Lift truck kept in service after the mast chain was found slack and frayed",
+        "Forklift reported Lift truck kept in service after the mast chain was found slack and frayed applicable safety requirement",
+        "Forklift High-Voltage Line B federal safety requirement",
+        "Forklift High-Voltage Line B operator shift hours 10.0 applicable limit or minimum requirement",
+        "Forklift High-Voltage Line B payload weight lbs 47778 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 2,
+      "reranked_rank": 2,
+      "top_fused": [
+        "1910.333",
+        "1910.178",
+        "1910.183",
+        "1910.181"
+      ],
+      "top_reranked": [
+        "1910.333",
+        "1910.178",
+        "1910.180",
+        "1910.181"
+      ]
+    },
+    {
+      "log_id": "LOG-1517",
+      "hazard": "guardrail",
+      "expected_section": "1910.29",
+      "queries": [
+        "Elevated platform rail installed well below the required height",
+        "Container Handler reported Elevated platform rail installed well below the required height applicable safety requirement",
+        "Container Handler Bay 1 federal safety requirement",
+        "Container Handler Bay 1 operator shift hours 10.6 applicable limit or minimum requirement",
+        "Container Handler Bay 1 payload weight lbs 12501 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 5,
+      "reranked_rank": 4,
+      "top_fused": [
+        "1910.179",
+        "1910.25",
+        "1910.23",
+        "1910.304"
+      ],
+      "top_reranked": [
+        "1910.179",
+        "1910.25",
+        "1910.23",
+        "1910.29"
+      ]
+    },
+    {
+      "log_id": "LOG-1521",
+      "hazard": "crane_inspection",
+      "expected_section": "1910.179",
+      "queries": [
+        "Gantry hoist operated with the periodic inspection more than a year overdue",
+        "Forklift reported Gantry hoist operated with the periodic inspection more than a year overdue applicable safety requirement",
+        "Forklift Intermodal Ramp federal safety requirement",
+        "Forklift Intermodal Ramp operator shift hours 11.4 applicable limit or minimum requirement",
+        "Forklift Intermodal Ramp payload weight lbs 48089 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 1,
+      "reranked_rank": 1,
+      "top_fused": [
+        "1910.179",
+        "1910.180",
+        "1910.181",
+        "1910.184"
+      ],
+      "top_reranked": [
+        "1910.179",
+        "1910.180",
+        "1910.181",
+        "1910.184"
+      ]
+    },
+    {
+      "log_id": "LOG-1534",
+      "hazard": "truck_defect",
+      "expected_section": "1910.178",
+      "queries": [
+        "Truck with failed service brake returned to yard duty without repair",
+        "Gantry Crane reported Truck with failed service brake returned to yard duty without repair applicable safety requirement",
+        "Gantry Crane Wheel Shop federal safety requirement",
+        "Gantry Crane Wheel Shop operator shift hours 7.7 applicable limit or minimum requirement",
+        "Gantry Crane Wheel Shop payload weight lbs 53792 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 4,
+      "reranked_rank": 4,
+      "top_fused": [
+        "1910.179",
+        "1910.180",
+        "1910.177",
+        "1910.178"
+      ],
+      "top_reranked": [
+        "1910.180",
+        "1910.179",
+        "1910.177",
+        "1910.178"
+      ]
+    },
+    {
+      "log_id": "LOG-1537",
+      "hazard": "sling",
+      "expected_section": "1910.184",
+      "queries": [
+        "Wire rope sling with twelve broken wires in one lay kept in the active lift",
+        "Reach Stacker reported Wire rope sling with twelve broken wires in one lay kept in the active lift applicable safety requirement",
+        "Reach Stacker Maintenance Track federal safety requirement",
+        "Reach Stacker Maintenance Track operator shift hours 9.2 applicable limit or minimum requirement",
+        "Reach Stacker Maintenance Track payload weight lbs 30346 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 3,
+      "reranked_rank": 2,
+      "top_fused": [
+        "1910.183",
+        "1910.180",
+        "1910.184",
+        "1910.179"
+      ],
+      "top_reranked": [
+        "1910.180",
+        "1910.184",
+        "1910.183",
+        "1910.181"
+      ]
+    },
+    {
+      "log_id": "LOG-1540",
+      "hazard": "housekeeping",
+      "expected_section": "1910.22",
+      "queries": [
+        "Hydraulic fluid pooled across the marked walking route and left unattended",
+        "Terminal Tractor reported Hydraulic fluid pooled across the marked walking route and left unattended applicable safety requirement",
+        "Terminal Tractor Intermodal Ramp federal safety requirement",
+        "Terminal Tractor Intermodal Ramp operator shift hours 10.8 applicable limit or minimum requirement",
+        "Terminal Tractor Intermodal Ramp payload weight lbs 35547 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 8,
+      "reranked_rank": 12,
+      "top_fused": [
+        "1910.178",
+        "1910.176",
+        "228.405",
+        "1910.180"
+      ],
+      "top_reranked": [
+        "1910.178",
+        "1910.176",
+        "228.405",
+        "228.7"
+      ]
+    },
+    {
+      "log_id": "LOG-1544",
+      "hazard": "stairway",
+      "expected_section": "1910.25",
+      "queries": [
+        "Stair run to the dispatch office in use with the handrail detached",
+        "Terminal Tractor reported Stair run to the dispatch office in use with the handrail detached applicable safety requirement",
+        "Terminal Tractor Main Pedestrian Crosswalk federal safety requirement",
+        "Terminal Tractor Main Pedestrian Crosswalk operator shift hours 8.9 applicable limit or minimum requirement",
+        "Terminal Tractor Main Pedestrian Crosswalk payload weight lbs 25501 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 1,
+      "reranked_rank": 1,
+      "top_fused": [
+        "1910.25",
+        "1910.29",
+        "1910.179",
+        "1910.28"
+      ],
+      "top_reranked": [
+        "1910.25",
+        "1910.29",
+        "228.19",
+        "1910.28"
+      ]
+    },
+    {
+      "log_id": "LOG-1558",
+      "hazard": "fall_protection",
+      "expected_section": "1910.28",
+      "queries": [
+        "Employee working the open edge of the stack with no arrest system attached",
+        "Reach Stacker reported Employee working the open edge of the stack with no arrest system attached applicable safety requirement",
+        "Reach Stacker Bay 4 federal safety requirement",
+        "Reach Stacker Bay 4 operator shift hours 10.8 applicable limit or minimum requirement",
+        "Reach Stacker Bay 4 payload weight lbs 43307 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 1,
+      "reranked_rank": 3,
+      "top_fused": [
+        "1910.28",
+        "1910.29",
+        "1910.21",
+        "1910.179"
+      ],
+      "top_reranked": [
+        "1910.21",
+        "1910.29",
+        "1910.28",
+        "1910.179"
+      ]
+    },
+    {
+      "log_id": "LOG-1565",
+      "hazard": "ladder",
+      "expected_section": "1910.23",
+      "queries": [
+        "Fixed ladder to the ramp platform in use with two rungs missing",
+        "Yard Hostler reported Fixed ladder to the ramp platform in use with two rungs missing applicable safety requirement",
+        "Yard Hostler Maintenance Track federal safety requirement",
+        "Yard Hostler Maintenance Track operator shift hours 6.6 applicable limit or minimum requirement",
+        "Yard Hostler Maintenance Track payload weight lbs 28167 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 1,
+      "reranked_rank": 2,
+      "top_fused": [
+        "1910.23",
+        "1910.21",
+        "1910.28",
+        "228.203"
+      ],
+      "top_reranked": [
+        "1910.21",
+        "1910.23",
+        "228.203",
+        "1910.28"
+      ]
+    },
+    {
+      "log_id": "LOG-1575",
+      "hazard": "live_parts",
+      "expected_section": "1910.303",
+      "queries": [
+        "Panel left open with energised parts exposed to the walkway",
+        "Gantry Crane reported Panel left open with energised parts exposed to the walkway applicable safety requirement",
+        "Gantry Crane High-Voltage Line B federal safety requirement",
+        "Gantry Crane High-Voltage Line B operator shift hours 11.6 applicable limit or minimum requirement",
+        "Gantry Crane High-Voltage Line B payload weight lbs 31888 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 2,
+      "reranked_rank": 3,
+      "top_fused": [
+        "1910.179",
+        "1910.303",
+        "1910.333",
+        "1910.306"
+      ],
+      "top_reranked": [
+        "1910.179",
+        "1910.306",
+        "1910.303",
+        "1910.333"
+      ]
+    },
+    {
+      "log_id": "LOG-1588",
+      "hazard": "duty_limit",
+      "expected_section": "21103",
+      "queries": [
+        "Freight train employee remained in covered service through relief delay",
+        "Yard Hostler reported Freight train employee remained in covered service through relief delay applicable safety requirement",
+        "Yard Hostler Bay 4 federal safety requirement",
+        "Yard Hostler Bay 4 operator shift hours 12.5 applicable limit or minimum requirement",
+        "Yard Hostler Bay 4 payload weight lbs 53568 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 8,
+      "reranked_rank": 9,
+      "top_fused": [
+        "228.5",
+        "228.7",
+        "228.11",
+        "228.403"
+      ],
+      "top_reranked": [
+        "228.5",
+        "228.11",
+        "228.7",
+        "228.203"
+      ]
+    },
+    {
+      "log_id": "LOG-1589",
+      "hazard": "live_parts",
+      "expected_section": "1910.303",
+      "queries": [
+        "Junction box cover missing and live conductors reachable from the aisle",
+        "Gantry Crane reported Junction box cover missing and live conductors reachable from the aisle applicable safety requirement",
+        "Gantry Crane High-Voltage Line B federal safety requirement",
+        "Gantry Crane High-Voltage Line B operator shift hours 9.5 applicable limit or minimum requirement",
+        "Gantry Crane High-Voltage Line B payload weight lbs 63840 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 3,
+      "reranked_rank": 3,
+      "top_fused": [
+        "1910.179",
+        "1910.305",
+        "1910.303",
+        "1910.306"
+      ],
+      "top_reranked": [
+        "1910.179",
+        "1910.305",
+        "1910.303",
+        "1910.306"
+      ]
+    },
+    {
+      "log_id": "LOG-1591",
+      "hazard": "fall_protection",
+      "expected_section": "1910.28",
+      "queries": [
+        "Worker on the container roof at eight feet with no fall protection rigged",
+        "Yard Hostler reported Worker on the container roof at eight feet with no fall protection rigged applicable safety requirement",
+        "Yard Hostler Container Stack Row C federal safety requirement",
+        "Yard Hostler Container Stack Row C operator shift hours 10.5 applicable limit or minimum requirement",
+        "Yard Hostler Container Stack Row C payload weight lbs 14067 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 2,
+      "reranked_rank": 2,
+      "top_fused": [
+        "1910.29",
+        "1910.28",
+        "1910.183",
+        "1910.21"
+      ],
+      "top_reranked": [
+        "1910.29",
+        "1910.28",
+        "1910.183",
+        "1910.21"
+      ]
+    },
+    {
+      "log_id": "LOG-1594",
+      "hazard": "crane_inspection",
+      "expected_section": "1910.179",
+      "queries": [
+        "Gantry hoist operated with the periodic inspection more than a year overdue",
+        "Terminal Tractor reported Gantry hoist operated with the periodic inspection more than a year overdue applicable safety requirement",
+        "Terminal Tractor Intermodal Ramp federal safety requirement",
+        "Terminal Tractor Intermodal Ramp operator shift hours 10.1 applicable limit or minimum requirement",
+        "Terminal Tractor Intermodal Ramp payload weight lbs 18043 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 1,
+      "reranked_rank": 1,
+      "top_fused": [
+        "1910.179",
+        "1910.180",
+        "1910.181",
+        "1910.178"
+      ],
+      "top_reranked": [
+        "1910.179",
+        "1910.180",
+        "1910.181",
+        "1910.178"
+      ]
+    },
+    {
+      "log_id": "LOG-1615",
+      "hazard": "crane_inspection",
+      "expected_section": "1910.179",
+      "queries": [
+        "Gantry hoist operated with the periodic inspection more than a year overdue",
+        "Gantry Crane reported Gantry hoist operated with the periodic inspection more than a year overdue applicable safety requirement",
+        "Gantry Crane Bay 1 federal safety requirement",
+        "Gantry Crane Bay 1 operator shift hours 6.3 applicable limit or minimum requirement",
+        "Gantry Crane Bay 1 payload weight lbs 54197 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 1,
+      "reranked_rank": 1,
+      "top_fused": [
+        "1910.179",
+        "1910.180",
+        "1910.181",
+        "1910.183"
+      ],
+      "top_reranked": [
+        "1910.179",
+        "1910.180",
+        "1910.181",
+        "1910.306"
+      ]
+    },
+    {
+      "log_id": "LOG-1623",
+      "hazard": "ladder",
+      "expected_section": "1910.23",
+      "queries": [
+        "Portable ladder with a cracked side rail used to reach the container roof",
+        "Reach Stacker reported Portable ladder with a cracked side rail used to reach the container roof applicable safety requirement",
+        "Reach Stacker Loading Dock 2 federal safety requirement",
+        "Reach Stacker Loading Dock 2 operator shift hours 6.4 applicable limit or minimum requirement",
+        "Reach Stacker Loading Dock 2 payload weight lbs 28352 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 2,
+      "reranked_rank": 2,
+      "top_fused": [
+        "1910.21",
+        "1910.23",
+        "1910.179",
+        "1910.28"
+      ],
+      "top_reranked": [
+        "1910.21",
+        "1910.23",
+        "1910.179",
+        "1910.28"
+      ]
+    },
+    {
+      "log_id": "LOG-1670",
+      "hazard": "duty_limit",
+      "expected_section": "21103",
+      "queries": [
+        "Covered switch employee continued yard moves past scheduled relief",
+        "Yard Hostler reported Covered switch employee continued yard moves past scheduled relief applicable safety requirement",
+        "Yard Hostler Maintenance Track federal safety requirement",
+        "Yard Hostler Maintenance Track operator shift hours 14.7 applicable limit or minimum requirement",
+        "Yard Hostler Maintenance Track payload weight lbs 26319 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 15,
+      "reranked_rank": 16,
+      "top_fused": [
+        "228.11",
+        "228.5",
+        "228.405",
+        "1910.179"
+      ],
+      "top_reranked": [
+        "228.5",
+        "228.11",
+        "228.203",
+        "228.405"
+      ]
+    },
+    {
+      "log_id": "LOG-1674",
+      "hazard": "guardrail",
+      "expected_section": "1910.29",
+      "queries": [
+        "Platform guardrail measured at twenty-eight inches above the walking level",
+        "Gantry Crane reported Platform guardrail measured at twenty-eight inches above the walking level applicable safety requirement",
+        "Gantry Crane Loading Dock 2 federal safety requirement",
+        "Gantry Crane Loading Dock 2 operator shift hours 7.2 applicable limit or minimum requirement",
+        "Gantry Crane Loading Dock 2 payload weight lbs 15825 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 5,
+      "reranked_rank": 5,
+      "top_fused": [
+        "1910.179",
+        "1910.28",
+        "1910.25",
+        "1910.21"
+      ],
+      "top_reranked": [
+        "1910.179",
+        "1910.28",
+        "1910.21",
+        "1910.25"
+      ]
+    },
+    {
+      "log_id": "LOG-1676",
+      "hazard": "ladder",
+      "expected_section": "1910.23",
+      "queries": [
+        "Fixed ladder to the ramp platform in use with two rungs missing",
+        "Yard Hostler reported Fixed ladder to the ramp platform in use with two rungs missing applicable safety requirement",
+        "Yard Hostler Rail Siding 3 federal safety requirement",
+        "Yard Hostler Rail Siding 3 operator shift hours 7.6 applicable limit or minimum requirement",
+        "Yard Hostler Rail Siding 3 payload weight lbs 37004 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 1,
+      "reranked_rank": 1,
+      "top_fused": [
+        "1910.23",
+        "1910.29",
+        "1910.21",
+        "1910.179"
+      ],
+      "top_reranked": [
+        "1910.23",
+        "1910.29",
+        "1910.179",
+        "1910.21"
+      ]
+    },
+    {
+      "log_id": "LOG-1677",
+      "hazard": "sling",
+      "expected_section": "1910.184",
+      "queries": [
+        "Sling used with a crushed eye fitting and no legible capacity tag",
+        "Container Handler reported Sling used with a crushed eye fitting and no legible capacity tag applicable safety requirement",
+        "Container Handler Main Pedestrian Crosswalk federal safety requirement",
+        "Container Handler Main Pedestrian Crosswalk operator shift hours 10.5 applicable limit or minimum requirement",
+        "Container Handler Main Pedestrian Crosswalk payload weight lbs 21825 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 1,
+      "reranked_rank": 1,
+      "top_fused": [
+        "1910.184",
+        "1910.183",
+        "1910.179",
+        "228.331"
+      ],
+      "top_reranked": [
+        "1910.184",
+        "1910.183",
+        "228.331",
+        "1910.179"
+      ]
+    },
+    {
+      "log_id": "LOG-1682",
+      "hazard": "sling",
+      "expected_section": "1910.184",
+      "queries": [
+        "Sling used with a crushed eye fitting and no legible capacity tag",
+        "Forklift reported Sling used with a crushed eye fitting and no legible capacity tag applicable safety requirement",
+        "Forklift Bay 2 federal safety requirement",
+        "Forklift Bay 2 operator shift hours 9.0 applicable limit or minimum requirement",
+        "Forklift Bay 2 payload weight lbs 27084 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 1,
+      "reranked_rank": 1,
+      "top_fused": [
+        "1910.184",
+        "1910.183",
+        "1910.180",
+        "1910.179"
+      ],
+      "top_reranked": [
+        "1910.184",
+        "1910.183",
+        "1910.180",
+        "1910.179"
+      ]
+    },
+    {
+      "log_id": "LOG-1688",
+      "hazard": "guardrail",
+      "expected_section": "1910.29",
+      "queries": [
+        "Elevated platform rail installed well below the required height",
+        "Reach Stacker reported Elevated platform rail installed well below the required height applicable safety requirement",
+        "Reach Stacker Main Pedestrian Crosswalk federal safety requirement",
+        "Reach Stacker Main Pedestrian Crosswalk operator shift hours 9.7 applicable limit or minimum requirement",
+        "Reach Stacker Main Pedestrian Crosswalk payload weight lbs 36312 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 2,
+      "reranked_rank": 2,
+      "top_fused": [
+        "1910.179",
+        "1910.29",
+        "1910.25",
+        "1910.23"
+      ],
+      "top_reranked": [
+        "1910.179",
+        "1910.29",
+        "1910.25",
+        "1910.21"
+      ]
+    },
+    {
+      "log_id": "LOG-1690",
+      "hazard": "dockboard",
+      "expected_section": "1910.26",
+      "queries": [
+        "Dockboard placed without anchors and moved during transit into the boxcar",
+        "Reach Stacker reported Dockboard placed without anchors and moved during transit into the boxcar applicable safety requirement",
+        "Reach Stacker Bay 2 federal safety requirement",
+        "Reach Stacker Bay 2 operator shift hours 6.3 applicable limit or minimum requirement",
+        "Reach Stacker Bay 2 payload weight lbs 12294 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 1,
+      "reranked_rank": 2,
+      "top_fused": [
+        "1910.26",
+        "1910.180",
+        "1910.178",
+        "1910.179"
+      ],
+      "top_reranked": [
+        "1910.180",
+        "1910.26",
+        "1910.178",
+        "1910.21"
+      ]
+    },
+    {
+      "log_id": "LOG-1692",
+      "hazard": "ladder",
+      "expected_section": "1910.23",
+      "queries": [
+        "Fixed ladder to the ramp platform in use with two rungs missing",
+        "Container Handler reported Fixed ladder to the ramp platform in use with two rungs missing applicable safety requirement",
+        "Container Handler Intermodal Ramp federal safety requirement",
+        "Container Handler Intermodal Ramp operator shift hours 9.3 applicable limit or minimum requirement",
+        "Container Handler Intermodal Ramp payload weight lbs 47383 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 2,
+      "reranked_rank": 2,
+      "top_fused": [
+        "1910.21",
+        "1910.23",
+        "1910.179",
+        "1910.28"
+      ],
+      "top_reranked": [
+        "1910.21",
+        "1910.23",
+        "1910.28",
+        "1910.179"
+      ]
+    },
+    {
+      "log_id": "LOG-1696",
+      "hazard": "approach_distance",
+      "expected_section": "1910.333",
+      "queries": [
+        "Mast raised inside the approach boundary of a live overhead line",
+        "Forklift reported Mast raised inside the approach boundary of a live overhead line applicable safety requirement",
+        "Forklift Rail Siding 3 federal safety requirement",
+        "Forklift Rail Siding 3 operator shift hours 6.8 applicable limit or minimum requirement",
+        "Forklift Rail Siding 3 payload weight lbs 19609 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 1,
+      "reranked_rank": 2,
+      "top_fused": [
+        "1910.333",
+        "1910.179",
+        "1910.181",
+        "1910.178"
+      ],
+      "top_reranked": [
+        "1910.179",
+        "1910.333",
+        "1910.181",
+        "1910.178"
+      ]
+    },
+    {
+      "log_id": "LOG-1698",
+      "hazard": "aisle_obstruction",
+      "expected_section": "1910.176",
+      "queries": [
+        "Palletised freight left obstructing the designated traffic aisle",
+        "Container Handler reported Palletised freight left obstructing the designated traffic aisle applicable safety requirement",
+        "Container Handler Bay 1 federal safety requirement",
+        "Container Handler Bay 1 operator shift hours 11.2 applicable limit or minimum requirement",
+        "Container Handler Bay 1 payload weight lbs 55502 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 2,
+      "reranked_rank": 3,
+      "top_fused": [
+        "1910.178",
+        "1910.176",
+        "1910.179",
+        "228.405"
+      ],
+      "top_reranked": [
+        "1910.178",
+        "228.405",
+        "1910.176",
+        "1910.179"
+      ]
+    },
+    {
+      "log_id": "LOG-1705",
+      "hazard": "stairway",
+      "expected_section": "1910.25",
+      "queries": [
+        "Open-sided stairway to the ramp office missing its handrail",
+        "Reach Stacker reported Open-sided stairway to the ramp office missing its handrail applicable safety requirement",
+        "Reach Stacker Container Stack Row C federal safety requirement",
+        "Reach Stacker Container Stack Row C operator shift hours 10.7 applicable limit or minimum requirement",
+        "Reach Stacker Container Stack Row C payload weight lbs 12335 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 2,
+      "reranked_rank": 3,
+      "top_fused": [
+        "1910.306",
+        "1910.25",
+        "1910.21",
+        "1910.23"
+      ],
+      "top_reranked": [
+        "1910.21",
+        "1910.306",
+        "1910.25",
+        "1910.23"
+      ]
+    },
+    {
+      "log_id": "LOG-1711",
+      "hazard": "approach_distance",
+      "expected_section": "1910.333",
+      "queries": [
+        "Mast raised inside the approach boundary of a live overhead line",
+        "Reach Stacker reported Mast raised inside the approach boundary of a live overhead line applicable safety requirement",
+        "Reach Stacker Rail Siding 3 federal safety requirement",
+        "Reach Stacker Rail Siding 3 operator shift hours 7.7 applicable limit or minimum requirement",
+        "Reach Stacker Rail Siding 3 payload weight lbs 13520 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 1,
+      "reranked_rank": 1,
+      "top_fused": [
+        "1910.333",
+        "1910.303",
+        "1910.179",
+        "1910.181"
+      ],
+      "top_reranked": [
+        "1910.333",
+        "1910.303",
+        "1910.179",
+        "1910.181"
+      ]
+    },
+    {
+      "log_id": "LOG-1721",
+      "hazard": "duty_limit",
+      "expected_section": "21103",
+      "queries": [
+        "Freight train employee remained in covered service through relief delay",
+        "Yard Hostler reported Freight train employee remained in covered service through relief delay applicable safety requirement",
+        "Yard Hostler Maintenance Track federal safety requirement",
+        "Yard Hostler Maintenance Track operator shift hours 14.2 applicable limit or minimum requirement",
+        "Yard Hostler Maintenance Track payload weight lbs 32728 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 8,
+      "reranked_rank": 12,
+      "top_fused": [
+        "228.5",
+        "228.405",
+        "228.7",
+        "228.11"
+      ],
+      "top_reranked": [
+        "228.5",
+        "228.11",
+        "228.405",
+        "228.7"
+      ]
+    },
+    {
+      "log_id": "LOG-1724",
+      "hazard": "duty_records",
+      "expected_section": "228.11",
+      "queries": [
+        "No hours-of-duty entry filed for the completed assignment",
+        "Reach Stacker reported No hours-of-duty entry filed for the completed assignment applicable safety requirement",
+        "Reach Stacker Maintenance Track federal safety requirement",
+        "Reach Stacker Maintenance Track operator shift hours 10.5 applicable limit or minimum requirement",
+        "Reach Stacker Maintenance Track payload weight lbs 36578 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 2,
+      "reranked_rank": 3,
+      "top_fused": [
+        "228.405",
+        "228.11",
+        "228.5",
+        "228.19"
+      ],
+      "top_reranked": [
+        "228.5",
+        "228.405",
+        "228.11",
+        "228.19"
+      ]
+    },
+    {
+      "log_id": "LOG-1733",
+      "hazard": "rim_wheel",
+      "expected_section": "1910.177",
+      "queries": [
+        "Multi-piece rim assembly inflated outside any restraining device",
+        "Yard Hostler reported Multi-piece rim assembly inflated outside any restraining device applicable safety requirement",
+        "Yard Hostler Maintenance Track federal safety requirement",
+        "Yard Hostler Maintenance Track operator shift hours 10.1 applicable limit or minimum requirement",
+        "Yard Hostler Maintenance Track payload weight lbs 56524 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 1,
+      "reranked_rank": 1,
+      "top_fused": [
+        "1910.177",
+        "228.203",
+        "1910.180",
+        "1910.181"
+      ],
+      "top_reranked": [
+        "1910.177",
+        "228.5",
+        "1910.180",
+        "228.203"
+      ]
+    },
+    {
+      "log_id": "LOG-1750",
+      "hazard": "rim_wheel",
+      "expected_section": "1910.177",
+      "queries": [
+        "Rim wheel serviced without deflating and without a restraining cage",
+        "Reach Stacker reported Rim wheel serviced without deflating and without a restraining cage applicable safety requirement",
+        "Reach Stacker Maintenance Track federal safety requirement",
+        "Reach Stacker Maintenance Track operator shift hours 10.7 applicable limit or minimum requirement",
+        "Reach Stacker Maintenance Track payload weight lbs 45013 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 2,
+      "reranked_rank": 2,
+      "top_fused": [
+        "1910.180",
+        "1910.177",
+        "1910.179",
+        "1910.28"
+      ],
+      "top_reranked": [
+        "1910.180",
+        "1910.177",
+        "1910.181",
+        "1910.21"
+      ]
+    },
+    {
+      "log_id": "LOG-1754",
+      "hazard": "dockboard",
+      "expected_section": "1910.26",
+      "queries": [
+        "Dockboard placed without anchors and moved during transit into the boxcar",
+        "Container Handler reported Dockboard placed without anchors and moved during transit into the boxcar applicable safety requirement",
+        "Container Handler Loading Dock 2 federal safety requirement",
+        "Container Handler Loading Dock 2 operator shift hours 7.5 applicable limit or minimum requirement",
+        "Container Handler Loading Dock 2 payload weight lbs 19840 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 2,
+      "reranked_rank": 3,
+      "top_fused": [
+        "1910.178",
+        "1910.26",
+        "1910.180",
+        "1910.28"
+      ],
+      "top_reranked": [
+        "1910.178",
+        "1910.180",
+        "1910.26",
+        "1910.21"
+      ]
+    },
+    {
+      "log_id": "LOG-1755",
+      "hazard": "duty_limit",
+      "expected_section": "21103",
+      "queries": [
+        "Freight train employee remained in covered service through relief delay",
+        "Yard Hostler reported Freight train employee remained in covered service through relief delay applicable safety requirement",
+        "Yard Hostler Container Stack Row C federal safety requirement",
+        "Yard Hostler Container Stack Row C operator shift hours 12.7 applicable limit or minimum requirement",
+        "Yard Hostler Container Stack Row C payload weight lbs 24303 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 8,
+      "reranked_rank": 9,
+      "top_fused": [
+        "228.7",
+        "228.5",
+        "228.11",
+        "228.203"
+      ],
+      "top_reranked": [
+        "228.5",
+        "228.11",
+        "228.7",
+        "228.203"
+      ]
+    },
+    {
+      "log_id": "LOG-1759",
+      "hazard": "ladder",
+      "expected_section": "1910.23",
+      "queries": [
+        "Portable ladder with a cracked side rail used to reach the container roof",
+        "Container Handler reported Portable ladder with a cracked side rail used to reach the container roof applicable safety requirement",
+        "Container Handler Bay 2 federal safety requirement",
+        "Container Handler Bay 2 operator shift hours 11.8 applicable limit or minimum requirement",
+        "Container Handler Bay 2 payload weight lbs 48557 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 2,
+      "reranked_rank": 3,
+      "top_fused": [
+        "1910.179",
+        "1910.23",
+        "1910.21",
+        "1910.29"
+      ],
+      "top_reranked": [
+        "1910.179",
+        "1910.21",
+        "1910.23",
+        "1910.29"
+      ]
+    },
+    {
+      "log_id": "LOG-1763",
+      "hazard": "live_parts",
+      "expected_section": "1910.303",
+      "queries": [
+        "Junction box cover missing and live conductors reachable from the aisle",
+        "Gantry Crane reported Junction box cover missing and live conductors reachable from the aisle applicable safety requirement",
+        "Gantry Crane Wheel Shop federal safety requirement",
+        "Gantry Crane Wheel Shop operator shift hours 7.3 applicable limit or minimum requirement",
+        "Gantry Crane Wheel Shop payload weight lbs 26675 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 3,
+      "reranked_rank": 5,
+      "top_fused": [
+        "1910.179",
+        "1910.305",
+        "1910.303",
+        "1910.180"
+      ],
+      "top_reranked": [
+        "1910.179",
+        "1910.180",
+        "1910.305",
+        "1910.306"
+      ]
+    },
+    {
+      "log_id": "LOG-1768",
+      "hazard": "crane_inspection",
+      "expected_section": "1910.179",
+      "queries": [
+        "Gantry hoist operated with the periodic inspection more than a year overdue",
+        "Terminal Tractor reported Gantry hoist operated with the periodic inspection more than a year overdue applicable safety requirement",
+        "Terminal Tractor Intermodal Ramp federal safety requirement",
+        "Terminal Tractor Intermodal Ramp operator shift hours 9.4 applicable limit or minimum requirement",
+        "Terminal Tractor Intermodal Ramp payload weight lbs 57552 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 1,
+      "reranked_rank": 1,
+      "top_fused": [
+        "1910.179",
+        "1910.180",
+        "1910.181",
+        "1910.178"
+      ],
+      "top_reranked": [
+        "1910.179",
+        "1910.180",
+        "1910.181",
+        "1910.178"
+      ]
+    },
+    {
+      "log_id": "LOG-1777",
+      "hazard": "crane_inspection",
+      "expected_section": "1910.179",
+      "queries": [
+        "Overhead crane run with the upper limit switch known inoperative",
+        "Container Handler reported Overhead crane run with the upper limit switch known inoperative applicable safety requirement",
+        "Container Handler Bay 1 federal safety requirement",
+        "Container Handler Bay 1 operator shift hours 10.3 applicable limit or minimum requirement",
+        "Container Handler Bay 1 payload weight lbs 34029 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 1,
+      "reranked_rank": 1,
+      "top_fused": [
+        "1910.179",
+        "1910.306",
+        "1910.180",
+        "1910.183"
+      ],
+      "top_reranked": [
+        "1910.179",
+        "1910.306",
+        "1910.180",
+        "1910.183"
+      ]
+    },
+    {
+      "log_id": "LOG-1779",
+      "hazard": "aisle_obstruction",
+      "expected_section": "1910.176",
+      "queries": [
+        "Cargo stacked with a three-foot overhang blocking the marked aisle",
+        "Forklift reported Cargo stacked with a three-foot overhang blocking the marked aisle applicable safety requirement",
+        "Forklift Container Stack Row C federal safety requirement",
+        "Forklift Container Stack Row C operator shift hours 8.7 applicable limit or minimum requirement",
+        "Forklift Container Stack Row C payload weight lbs 42353 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 1,
+      "reranked_rank": 1,
+      "top_fused": [
+        "1910.176",
+        "1910.183",
+        "1910.179",
+        "1910.178"
+      ],
+      "top_reranked": [
+        "1910.176",
+        "1910.183",
+        "1910.178",
+        "1910.179"
+      ]
+    },
+    {
+      "log_id": "LOG-1787",
+      "hazard": "duty_limit",
+      "expected_section": "21103",
+      "queries": [
+        "Freight train employee remained in covered service through relief delay",
+        "Yard Hostler reported Freight train employee remained in covered service through relief delay applicable safety requirement",
+        "Yard Hostler Loading Dock 2 federal safety requirement",
+        "Yard Hostler Loading Dock 2 operator shift hours 14.3 applicable limit or minimum requirement",
+        "Yard Hostler Loading Dock 2 payload weight lbs 16583 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 8,
+      "reranked_rank": 11,
+      "top_fused": [
+        "228.7",
+        "228.5",
+        "228.11",
+        "228.405"
+      ],
+      "top_reranked": [
+        "228.5",
+        "228.11",
+        "228.7",
+        "228.203"
+      ]
+    },
+    {
+      "log_id": "LOG-1798",
+      "hazard": "rim_wheel",
+      "expected_section": "1910.177",
+      "queries": [
+        "Multi-piece rim assembly inflated outside any restraining device",
+        "Yard Hostler reported Multi-piece rim assembly inflated outside any restraining device applicable safety requirement",
+        "Yard Hostler Wheel Shop federal safety requirement",
+        "Yard Hostler Wheel Shop operator shift hours 10.5 applicable limit or minimum requirement",
+        "Yard Hostler Wheel Shop payload weight lbs 50985 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 1,
+      "reranked_rank": 1,
+      "top_fused": [
+        "1910.177",
+        "1910.180",
+        "1910.28",
+        "1910.303"
+      ],
+      "top_reranked": [
+        "1910.177",
+        "1910.180",
+        "228.5",
+        "228.7"
+      ]
+    },
+    {
+      "log_id": "LOG-1810",
+      "hazard": "duty_limit",
+      "expected_section": "21103",
+      "queries": [
+        "Train employee remained on duty to complete consist tie-down",
+        "Yard Hostler reported Train employee remained on duty to complete consist tie-down applicable safety requirement",
+        "Yard Hostler Wheel Shop federal safety requirement",
+        "Yard Hostler Wheel Shop operator shift hours 13.5 applicable limit or minimum requirement",
+        "Yard Hostler Wheel Shop payload weight lbs 13835 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 5,
+      "reranked_rank": 6,
+      "top_fused": [
+        "228.7",
+        "228.203",
+        "228.11",
+        "228.5"
+      ],
+      "top_reranked": [
+        "228.203",
+        "228.11",
+        "228.5",
+        "228.7"
+      ]
+    },
+    {
+      "log_id": "LOG-1817",
+      "hazard": "duty_records",
+      "expected_section": "228.11",
+      "queries": [
+        "Duty record for the tour left unsigned and incomplete",
+        "Container Handler reported Duty record for the tour left unsigned and incomplete applicable safety requirement",
+        "Container Handler Intermodal Ramp federal safety requirement",
+        "Container Handler Intermodal Ramp operator shift hours 6.7 applicable limit or minimum requirement",
+        "Container Handler Intermodal Ramp payload weight lbs 61336 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 1,
+      "reranked_rank": 1,
+      "top_fused": [
+        "228.11",
+        "228.203",
+        "228.19",
+        "228.5"
+      ],
+      "top_reranked": [
+        "228.11",
+        "228.19",
+        "228.203",
+        "228.5"
+      ]
+    },
+    {
+      "log_id": "LOG-1824",
+      "hazard": "duty_records",
+      "expected_section": "228.11",
+      "queries": [
+        "Duty record for the tour left unsigned and incomplete",
+        "Yard Hostler reported Duty record for the tour left unsigned and incomplete applicable safety requirement",
+        "Yard Hostler Wheel Shop federal safety requirement",
+        "Yard Hostler Wheel Shop operator shift hours 9.7 applicable limit or minimum requirement",
+        "Yard Hostler Wheel Shop payload weight lbs 35289 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 1,
+      "reranked_rank": 1,
+      "top_fused": [
+        "228.11",
+        "228.203",
+        "228.5",
+        "228.19"
+      ],
+      "top_reranked": [
+        "228.11",
+        "228.203",
+        "228.5",
+        "228.19"
+      ]
+    },
+    {
+      "log_id": "LOG-1829",
+      "hazard": "housekeeping",
+      "expected_section": "1910.22",
+      "queries": [
+        "Standing oily runoff spread over the pedestrian route with no containment",
+        "Gantry Crane reported Standing oily runoff spread over the pedestrian route with no containment applicable safety requirement",
+        "Gantry Crane Intermodal Ramp federal safety requirement",
+        "Gantry Crane Intermodal Ramp operator shift hours 6.8 applicable limit or minimum requirement",
+        "Gantry Crane Intermodal Ramp payload weight lbs 47259 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 5,
+      "reranked_rank": 9,
+      "top_fused": [
+        "1910.179",
+        "1910.180",
+        "1910.333",
+        "1910.305"
+      ],
+      "top_reranked": [
+        "1910.179",
+        "1910.180",
+        "1910.333",
+        "1910.305"
+      ]
+    },
+    {
+      "log_id": "LOG-1832",
+      "hazard": "crane_inspection",
+      "expected_section": "1910.179",
+      "queries": [
+        "Overhead crane run with the upper limit switch known inoperative",
+        "Yard Hostler reported Overhead crane run with the upper limit switch known inoperative applicable safety requirement",
+        "Yard Hostler Intermodal Ramp federal safety requirement",
+        "Yard Hostler Intermodal Ramp operator shift hours 8.1 applicable limit or minimum requirement",
+        "Yard Hostler Intermodal Ramp payload weight lbs 24162 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 1,
+      "reranked_rank": 1,
+      "top_fused": [
+        "1910.179",
+        "1910.306",
+        "1910.180",
+        "228.203"
+      ],
+      "top_reranked": [
+        "1910.179",
+        "1910.306",
+        "1910.180",
+        "228.11"
+      ]
+    },
+    {
+      "log_id": "LOG-1850",
+      "hazard": "aisle_obstruction",
+      "expected_section": "1910.176",
+      "queries": [
+        "Cargo stacked with a three-foot overhang blocking the marked aisle",
+        "Forklift reported Cargo stacked with a three-foot overhang blocking the marked aisle applicable safety requirement",
+        "Forklift Bay 1 federal safety requirement",
+        "Forklift Bay 1 operator shift hours 9.9 applicable limit or minimum requirement",
+        "Forklift Bay 1 payload weight lbs 58332 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 1,
+      "reranked_rank": 3,
+      "top_fused": [
+        "1910.176",
+        "1910.183",
+        "1910.179",
+        "1910.178"
+      ],
+      "top_reranked": [
+        "1910.183",
+        "1910.179",
+        "1910.176",
+        "1910.178"
+      ]
+    },
+    {
+      "log_id": "LOG-1859",
+      "hazard": "sling",
+      "expected_section": "1910.184",
+      "queries": [
+        "Wire rope sling with twelve broken wires in one lay kept in the active lift",
+        "Container Handler reported Wire rope sling with twelve broken wires in one lay kept in the active lift applicable safety requirement",
+        "Container Handler High-Voltage Line B federal safety requirement",
+        "Container Handler High-Voltage Line B operator shift hours 10.3 applicable limit or minimum requirement",
+        "Container Handler High-Voltage Line B payload weight lbs 58971 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 5,
+      "reranked_rank": 5,
+      "top_fused": [
+        "1910.183",
+        "1910.333",
+        "1910.179",
+        "1910.180"
+      ],
+      "top_reranked": [
+        "1910.333",
+        "1910.183",
+        "1910.180",
+        "1910.179"
+      ]
+    },
+    {
+      "log_id": "LOG-1863",
+      "hazard": "duty_records",
+      "expected_section": "228.11",
+      "queries": [
+        "Duty record for the tour left unsigned and incomplete",
+        "Yard Hostler reported Duty record for the tour left unsigned and incomplete applicable safety requirement",
+        "Yard Hostler Wheel Shop federal safety requirement",
+        "Yard Hostler Wheel Shop operator shift hours 11.1 applicable limit or minimum requirement",
+        "Yard Hostler Wheel Shop payload weight lbs 48843 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 1,
+      "reranked_rank": 1,
+      "top_fused": [
+        "228.11",
+        "228.203",
+        "228.5",
+        "228.19"
+      ],
+      "top_reranked": [
+        "228.11",
+        "228.203",
+        "228.5",
+        "228.19"
+      ]
+    },
+    {
+      "log_id": "LOG-1869",
+      "hazard": "stairway",
+      "expected_section": "1910.25",
+      "queries": [
+        "Stair run to the dispatch office in use with the handrail detached",
+        "Gantry Crane reported Stair run to the dispatch office in use with the handrail detached applicable safety requirement",
+        "Gantry Crane Bay 4 federal safety requirement",
+        "Gantry Crane Bay 4 operator shift hours 10.1 applicable limit or minimum requirement",
+        "Gantry Crane Bay 4 payload weight lbs 10198 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 5,
+      "reranked_rank": 6,
+      "top_fused": [
+        "1910.179",
+        "1910.29",
+        "1910.21",
+        "1910.28"
+      ],
+      "top_reranked": [
+        "1910.179",
+        "1910.29",
+        "1910.21",
+        "1910.180"
+      ]
+    },
+    {
+      "log_id": "LOG-1887",
+      "hazard": "truck_defect",
+      "expected_section": "1910.178",
+      "queries": [
+        "Truck with failed service brake returned to yard duty without repair",
+        "Container Handler reported Truck with failed service brake returned to yard duty without repair applicable safety requirement",
+        "Container Handler Wheel Shop federal safety requirement",
+        "Container Handler Wheel Shop operator shift hours 10.1 applicable limit or minimum requirement",
+        "Container Handler Wheel Shop payload weight lbs 24768 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 2,
+      "reranked_rank": 1,
+      "top_fused": [
+        "1910.177",
+        "1910.178",
+        "1910.180",
+        "1910.28"
+      ],
+      "top_reranked": [
+        "1910.178",
+        "1910.177",
+        "1910.180",
+        "228.5"
+      ]
+    },
+    {
+      "log_id": "LOG-1889",
+      "hazard": "guardrail",
+      "expected_section": "1910.29",
+      "queries": [
+        "Platform guardrail measured at twenty-eight inches above the walking level",
+        "Gantry Crane reported Platform guardrail measured at twenty-eight inches above the walking level applicable safety requirement",
+        "Gantry Crane Container Stack Row C federal safety requirement",
+        "Gantry Crane Container Stack Row C operator shift hours 11.5 applicable limit or minimum requirement",
+        "Gantry Crane Container Stack Row C payload weight lbs 37811 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 5,
+      "reranked_rank": 5,
+      "top_fused": [
+        "1910.179",
+        "1910.25",
+        "1910.28",
+        "1910.21"
+      ],
+      "top_reranked": [
+        "1910.179",
+        "1910.25",
+        "1910.21",
+        "1910.28"
+      ]
+    },
+    {
+      "log_id": "LOG-1892",
+      "hazard": "aisle_obstruction",
+      "expected_section": "1910.176",
+      "queries": [
+        "Palletised freight left obstructing the designated traffic aisle",
+        "Forklift reported Palletised freight left obstructing the designated traffic aisle applicable safety requirement",
+        "Forklift Bay 2 federal safety requirement",
+        "Forklift Bay 2 operator shift hours 6.1 applicable limit or minimum requirement",
+        "Forklift Bay 2 payload weight lbs 34389 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 2,
+      "reranked_rank": 3,
+      "top_fused": [
+        "1910.178",
+        "1910.176",
+        "1910.179",
+        "1910.180"
+      ],
+      "top_reranked": [
+        "1910.178",
+        "1910.179",
+        "1910.176",
+        "228.405"
+      ]
+    },
+    {
+      "log_id": "LOG-1894",
+      "hazard": "housekeeping",
+      "expected_section": "1910.22",
+      "queries": [
+        "Hydraulic fluid pooled across the marked walking route and left unattended",
+        "Gantry Crane reported Hydraulic fluid pooled across the marked walking route and left unattended applicable safety requirement",
+        "Gantry Crane Main Pedestrian Crosswalk federal safety requirement",
+        "Gantry Crane Main Pedestrian Crosswalk operator shift hours 11.6 applicable limit or minimum requirement",
+        "Gantry Crane Main Pedestrian Crosswalk payload weight lbs 17206 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 4,
+      "reranked_rank": 7,
+      "top_fused": [
+        "1910.179",
+        "1910.180",
+        "1910.29",
+        "1910.22"
+      ],
+      "top_reranked": [
+        "1910.179",
+        "1910.180",
+        "1910.306",
+        "1910.29"
+      ]
+    },
+    {
+      "log_id": "LOG-1900",
+      "hazard": "sling",
+      "expected_section": "1910.184",
+      "queries": [
+        "Sling used with a crushed eye fitting and no legible capacity tag",
+        "Yard Hostler reported Sling used with a crushed eye fitting and no legible capacity tag applicable safety requirement",
+        "Yard Hostler Main Pedestrian Crosswalk federal safety requirement",
+        "Yard Hostler Main Pedestrian Crosswalk operator shift hours 6.0 applicable limit or minimum requirement",
+        "Yard Hostler Main Pedestrian Crosswalk payload weight lbs 29088 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 1,
+      "reranked_rank": 1,
+      "top_fused": [
+        "1910.184",
+        "1910.179",
+        "1910.183",
+        "1910.333"
+      ],
+      "top_reranked": [
+        "1910.184",
+        "1910.179",
+        "1910.183",
+        "1910.304"
+      ]
+    },
+    {
+      "log_id": "LOG-1906",
+      "hazard": "stairway",
+      "expected_section": "1910.25",
+      "queries": [
+        "Open-sided stairway to the ramp office missing its handrail",
+        "Yard Hostler reported Open-sided stairway to the ramp office missing its handrail applicable safety requirement",
+        "Yard Hostler Bay 2 federal safety requirement",
+        "Yard Hostler Bay 2 operator shift hours 7.1 applicable limit or minimum requirement",
+        "Yard Hostler Bay 2 payload weight lbs 30044 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 5,
+      "reranked_rank": 4,
+      "top_fused": [
+        "1910.306",
+        "1910.29",
+        "1910.21",
+        "1910.179"
+      ],
+      "top_reranked": [
+        "1910.306",
+        "1910.29",
+        "1910.21",
+        "1910.25"
+      ]
+    },
+    {
+      "log_id": "LOG-1911",
+      "hazard": "truck_defect",
+      "expected_section": "1910.178",
+      "queries": [
+        "Lift truck kept in service after the mast chain was found slack and frayed",
+        "Container Handler reported Lift truck kept in service after the mast chain was found slack and frayed applicable safety requirement",
+        "Container Handler Intermodal Ramp federal safety requirement",
+        "Container Handler Intermodal Ramp operator shift hours 8.8 applicable limit or minimum requirement",
+        "Container Handler Intermodal Ramp payload weight lbs 60546 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 1,
+      "reranked_rank": 1,
+      "top_fused": [
+        "1910.178",
+        "1910.183",
+        "1910.180",
+        "1910.179"
+      ],
+      "top_reranked": [
+        "1910.178",
+        "1910.180",
+        "1910.183",
+        "1910.181"
+      ]
+    },
+    {
+      "log_id": "LOG-1915",
+      "hazard": "dockboard",
+      "expected_section": "1910.26",
+      "queries": [
+        "Dockboard placed without anchors and moved during transit into the boxcar",
+        "Forklift reported Dockboard placed without anchors and moved during transit into the boxcar applicable safety requirement",
+        "Forklift Bay 2 federal safety requirement",
+        "Forklift Bay 2 operator shift hours 7.5 applicable limit or minimum requirement",
+        "Forklift Bay 2 payload weight lbs 35355 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 3,
+      "reranked_rank": 3,
+      "top_fused": [
+        "1910.178",
+        "1910.180",
+        "1910.26",
+        "1910.179"
+      ],
+      "top_reranked": [
+        "1910.178",
+        "1910.180",
+        "1910.26",
+        "1910.179"
+      ]
+    },
+    {
+      "log_id": "LOG-1916",
+      "hazard": "housekeeping",
+      "expected_section": "1910.22",
+      "queries": [
+        "Hydraulic fluid pooled across the marked walking route and left unattended",
+        "Reach Stacker reported Hydraulic fluid pooled across the marked walking route and left unattended applicable safety requirement",
+        "Reach Stacker Loading Dock 2 federal safety requirement",
+        "Reach Stacker Loading Dock 2 operator shift hours 7.1 applicable limit or minimum requirement",
+        "Reach Stacker Loading Dock 2 payload weight lbs 21502 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 7,
+      "reranked_rank": 12,
+      "top_fused": [
+        "1910.178",
+        "1910.176",
+        "1910.179",
+        "1910.180"
+      ],
+      "top_reranked": [
+        "1910.178",
+        "1910.179",
+        "1910.21",
+        "1910.176"
+      ]
+    },
+    {
+      "log_id": "LOG-1918",
+      "hazard": "ladder",
+      "expected_section": "1910.23",
+      "queries": [
+        "Portable ladder with a cracked side rail used to reach the container roof",
+        "Terminal Tractor reported Portable ladder with a cracked side rail used to reach the container roof applicable safety requirement",
+        "Terminal Tractor Bay 2 federal safety requirement",
+        "Terminal Tractor Bay 2 operator shift hours 9.6 applicable limit or minimum requirement",
+        "Terminal Tractor Bay 2 payload weight lbs 29666 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 1,
+      "reranked_rank": 1,
+      "top_fused": [
+        "1910.23",
+        "1910.179",
+        "1910.21",
+        "1910.183"
+      ],
+      "top_reranked": [
+        "1910.23",
+        "1910.179",
+        "1910.21",
+        "1910.29"
+      ]
+    },
+    {
+      "log_id": "LOG-1920",
+      "hazard": "approach_distance",
+      "expected_section": "1910.333",
+      "queries": [
+        "Mast raised inside the approach boundary of a live overhead line",
+        "Forklift reported Mast raised inside the approach boundary of a live overhead line applicable safety requirement",
+        "Forklift High-Voltage Line B federal safety requirement",
+        "Forklift High-Voltage Line B operator shift hours 6.1 applicable limit or minimum requirement",
+        "Forklift High-Voltage Line B payload weight lbs 36092 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 1,
+      "reranked_rank": 1,
+      "top_fused": [
+        "1910.333",
+        "1910.179",
+        "1910.304",
+        "1910.303"
+      ],
+      "top_reranked": [
+        "1910.333",
+        "1910.179",
+        "1910.304",
+        "1910.303"
+      ]
+    },
+    {
+      "log_id": "LOG-1926",
+      "hazard": "aisle_obstruction",
+      "expected_section": "1910.176",
+      "queries": [
+        "Cargo stacked with a three-foot overhang blocking the marked aisle",
+        "Container Handler reported Cargo stacked with a three-foot overhang blocking the marked aisle applicable safety requirement",
+        "Container Handler Bay 2 federal safety requirement",
+        "Container Handler Bay 2 operator shift hours 11.1 applicable limit or minimum requirement",
+        "Container Handler Bay 2 payload weight lbs 42276 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 1,
+      "reranked_rank": 1,
+      "top_fused": [
+        "1910.176",
+        "1910.179",
+        "1910.183",
+        "1910.178"
+      ],
+      "top_reranked": [
+        "1910.176",
+        "1910.183",
+        "1910.179",
+        "1910.178"
+      ]
+    },
+    {
+      "log_id": "LOG-1937",
+      "hazard": "rim_wheel",
+      "expected_section": "1910.177",
+      "queries": [
+        "Rim wheel serviced without deflating and without a restraining cage",
+        "Container Handler reported Rim wheel serviced without deflating and without a restraining cage applicable safety requirement",
+        "Container Handler Maintenance Track federal safety requirement",
+        "Container Handler Maintenance Track operator shift hours 9.2 applicable limit or minimum requirement",
+        "Container Handler Maintenance Track payload weight lbs 13404 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 2,
+      "reranked_rank": 1,
+      "top_fused": [
+        "1910.180",
+        "1910.177",
+        "1910.181",
+        "1910.179"
+      ],
+      "top_reranked": [
+        "1910.177",
+        "1910.180",
+        "1910.181",
+        "1910.179"
+      ]
+    },
+    {
+      "log_id": "LOG-1953",
+      "hazard": "ladder",
+      "expected_section": "1910.23",
+      "queries": [
+        "Portable ladder with a cracked side rail used to reach the container roof",
+        "Forklift reported Portable ladder with a cracked side rail used to reach the container roof applicable safety requirement",
+        "Forklift Bay 2 federal safety requirement",
+        "Forklift Bay 2 operator shift hours 11.3 applicable limit or minimum requirement",
+        "Forklift Bay 2 payload weight lbs 49860 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 1,
+      "reranked_rank": 1,
+      "top_fused": [
+        "1910.23",
+        "1910.179",
+        "1910.21",
+        "1910.29"
+      ],
+      "top_reranked": [
+        "1910.23",
+        "1910.179",
+        "1910.21",
+        "1910.29"
+      ]
+    },
+    {
+      "log_id": "LOG-1954",
+      "hazard": "sling",
+      "expected_section": "1910.184",
+      "queries": [
+        "Wire rope sling with twelve broken wires in one lay kept in the active lift",
+        "Container Handler reported Wire rope sling with twelve broken wires in one lay kept in the active lift applicable safety requirement",
+        "Container Handler High-Voltage Line B federal safety requirement",
+        "Container Handler High-Voltage Line B operator shift hours 6.8 applicable limit or minimum requirement",
+        "Container Handler High-Voltage Line B payload weight lbs 57654 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 5,
+      "reranked_rank": 5,
+      "top_fused": [
+        "1910.183",
+        "1910.333",
+        "1910.179",
+        "1910.180"
+      ],
+      "top_reranked": [
+        "1910.183",
+        "1910.333",
+        "1910.180",
+        "1910.179"
+      ]
+    },
+    {
+      "log_id": "LOG-1960",
+      "hazard": "stairway",
+      "expected_section": "1910.25",
+      "queries": [
+        "Stair run to the dispatch office in use with the handrail detached",
+        "Terminal Tractor reported Stair run to the dispatch office in use with the handrail detached applicable safety requirement",
+        "Terminal Tractor Bay 2 federal safety requirement",
+        "Terminal Tractor Bay 2 operator shift hours 8.9 applicable limit or minimum requirement",
+        "Terminal Tractor Bay 2 payload weight lbs 21733 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 2,
+      "reranked_rank": 4,
+      "top_fused": [
+        "1910.179",
+        "1910.25",
+        "1910.29",
+        "228.19"
+      ],
+      "top_reranked": [
+        "228.19",
+        "1910.29",
+        "1910.178",
+        "1910.25"
+      ]
+    },
+    {
+      "log_id": "LOG-1965",
+      "hazard": "aisle_obstruction",
+      "expected_section": "1910.176",
+      "queries": [
+        "Palletised freight left obstructing the designated traffic aisle",
+        "Container Handler reported Palletised freight left obstructing the designated traffic aisle applicable safety requirement",
+        "Container Handler Container Stack Row C federal safety requirement",
+        "Container Handler Container Stack Row C operator shift hours 10.5 applicable limit or minimum requirement",
+        "Container Handler Container Stack Row C payload weight lbs 22574 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 1,
+      "reranked_rank": 2,
+      "top_fused": [
+        "1910.176",
+        "1910.178",
+        "1910.179",
+        "1910.180"
+      ],
+      "top_reranked": [
+        "1910.178",
+        "1910.176",
+        "228.405",
+        "1910.179"
+      ]
+    },
+    {
+      "log_id": "LOG-1979",
+      "hazard": "approach_distance",
+      "expected_section": "1910.333",
+      "queries": [
+        "Spreader boom worked within four feet of the energised catenary",
+        "Reach Stacker reported Spreader boom worked within four feet of the energised catenary applicable safety requirement",
+        "Reach Stacker High-Voltage Line B federal safety requirement",
+        "Reach Stacker High-Voltage Line B operator shift hours 6.1 applicable limit or minimum requirement",
+        "Reach Stacker High-Voltage Line B payload weight lbs 58966 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 2,
+      "reranked_rank": 2,
+      "top_fused": [
+        "1910.180",
+        "1910.333",
+        "1910.304",
+        "1910.181"
+      ],
+      "top_reranked": [
+        "1910.180",
+        "1910.333",
+        "1910.181",
+        "1910.304"
+      ]
+    },
+    {
+      "log_id": "LOG-1982",
+      "hazard": "guardrail",
+      "expected_section": "1910.29",
+      "queries": [
+        "Platform guardrail measured at twenty-eight inches above the walking level",
+        "Container Handler reported Platform guardrail measured at twenty-eight inches above the walking level applicable safety requirement",
+        "Container Handler Bay 1 federal safety requirement",
+        "Container Handler Bay 1 operator shift hours 10.6 applicable limit or minimum requirement",
+        "Container Handler Bay 1 payload weight lbs 41490 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 4,
+      "reranked_rank": 3,
+      "top_fused": [
+        "1910.25",
+        "1910.179",
+        "1910.28",
+        "1910.29"
+      ],
+      "top_reranked": [
+        "1910.25",
+        "1910.28",
+        "1910.29",
+        "1910.23"
+      ]
+    },
+    {
+      "log_id": "LOG-1988",
+      "hazard": "live_parts",
+      "expected_section": "1910.303",
+      "queries": [
+        "Junction box cover missing and live conductors reachable from the aisle",
+        "Container Handler reported Junction box cover missing and live conductors reachable from the aisle applicable safety requirement",
+        "Container Handler Maintenance Track federal safety requirement",
+        "Container Handler Maintenance Track operator shift hours 10.4 applicable limit or minimum requirement",
+        "Container Handler Maintenance Track payload weight lbs 57621 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 2,
+      "reranked_rank": 1,
+      "top_fused": [
+        "1910.305",
+        "1910.303",
+        "1910.306",
+        "1910.304"
+      ],
+      "top_reranked": [
+        "1910.303",
+        "1910.305",
+        "1910.306",
+        "1910.179"
+      ]
+    },
+    {
+      "log_id": "LOG-1995",
+      "hazard": "crane_inspection",
+      "expected_section": "1910.179",
+      "queries": [
+        "Overhead crane run with the upper limit switch known inoperative",
+        "Yard Hostler reported Overhead crane run with the upper limit switch known inoperative applicable safety requirement",
+        "Yard Hostler Bay 4 federal safety requirement",
+        "Yard Hostler Bay 4 operator shift hours 6.7 applicable limit or minimum requirement",
+        "Yard Hostler Bay 4 payload weight lbs 51332 applicable limit or minimum requirement"
+      ],
+      "fused_rank": 1,
+      "reranked_rank": 1,
+      "top_fused": [
+        "1910.179",
+        "1910.306",
+        "1910.180",
+        "228.203"
+      ],
+      "top_reranked": [
+        "1910.179",
+        "1910.306",
+        "228.203",
+        "1910.180"
+      ]
+    }
+  ]
+}

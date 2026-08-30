@@ -1,0 +1,32 @@
+{
+  "event_id": "camera-17-20260830-0001",
+  "timestamp": "2026-08-30T10:00:00-07:00",
+  "source_id": "camera-17",
+  "summary": "A mobile crane boom moved within four feet of an energized overhead conductor",
+  "actors": ["crane operator"],
+  "equipment": ["mobile crane"],
+  "location": "energized overhead line zone",
+  "actions": ["operating boom"],
+  "conditions": ["energized conductor exposed"],
+  "controls": [],
+  "measurements": {
+    "estimated_distance_ft": 4.0
+  },
+  "relations": [
+    {
+      "subject": "crane boom",
+      "predicate": "within",
+      "object": "energized overhead conductor",
+      "value": 4.0,
+      "unit": "feet",
+      "confidence": 0.94,
+      "risk_score": 0.92
+    }
+  ],
+  "perception_confidence": 0.94,
+  "anomaly_score": 0.81,
+  "novelty_score": 0.12,
+  "changed": true,
+  "human_flag": false,
+  "evidence_refs": ["camera-17://frames/003841-003856"]
+}

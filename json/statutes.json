@@ -1,0 +1,21 @@
+{
+  "generated": "2026-08-30",
+  "source": "Office of the Law Revision Counsel, United States Code",
+  "source_url": "https://uscode.house.gov/view.xhtml?req=(title:49%20section:21103%20edition:prelim)",
+  "edition_note": "Text reported in effect on August 20, 2026 when retrieved on August 30, 2026.",
+  "sections": ["21103"],
+  "chunks": [
+    {
+      "citation": "49 U.S.C. 21103",
+      "section": "21103",
+      "heading": "Limitations on duty hours of train employees",
+      "title": "49",
+      "part": null,
+      "subpart": null,
+      "topic": "Hours of Service",
+      "text": "Except as provided in subsection (d), a railroad carrier and its officers and agents may not require or allow a train employee to remain or go on duty for a period in excess of 12 consecutive hours, or to remain or go on duty unless that employee has had at least 10 consecutive hours off duty during the prior 24 hours.",
+      "char_len": 324,
+      "authority_type": "United States Code"
+    }
+  ]
+}
