@@ -1,0 +1,59 @@
+[
+  {
+    "event_id": "showcase-crane",
+    "source_id": "synthetic-camera-observation",
+    "summary": "A mobile crane boom moved within four feet of an energized overhead conductor",
+    "equipment": ["mobile crane"],
+    "location": "energized overhead line zone",
+    "measurements": {"estimated_distance_ft": 4.0},
+    "relations": [{"subject": "crane boom", "predicate": "within", "object": "energized overhead conductor", "value": 4.0, "unit": "feet", "confidence": 0.94, "risk_score": 0.92}],
+    "perception_confidence": 0.94,
+    "anomaly_score": 0.81,
+    "changed": true
+  },
+  {
+    "event_id": "showcase-contained-spill",
+    "source_id": "synthetic-incident-note",
+    "summary": "A leak was contained in a drip pan before reaching the walkway",
+    "equipment": ["Forklift"],
+    "location": "Marked Pedestrian Walkway",
+    "changed": true
+  },
+  {
+    "event_id": "showcase-damaged-sling",
+    "source_id": "synthetic-incident-note",
+    "summary": "A wire-rope sling with broken outer wires remained in an active lift",
+    "equipment": ["Gantry Crane"],
+    "location": "Lift Pad",
+    "human_flag": true
+  },
+  {
+    "event_id": "showcase-uncertain-condition",
+    "source_id": "synthetic-camera-observation",
+    "summary": "A worker is beside a newly opened equipment cabinet. The image does not show whether the equipment is energized or isolated.",
+    "equipment": ["equipment cabinet"],
+    "location": "Maintenance Area",
+    "perception_confidence": 0.6,
+    "novelty_score": 0.9,
+    "changed": true
+  },
+  {
+    "event_id": "showcase-scope-question",
+    "source_id": "synthetic-incident-note",
+    "summary": "No incident reported",
+    "equipment": ["Forklift"],
+    "location": "Operations Yard",
+    "measurements": {"operator_shift_hours": 13.0},
+    "human_flag": true
+  },
+  {
+    "event_id": "showcase-quiet-scene",
+    "source_id": "synthetic-camera-observation",
+    "summary": "An unchanged loading area with no reported exception",
+    "equipment": ["parked forklift"],
+    "location": "Loading Area",
+    "perception_confidence": 1.0,
+    "changed": false,
+    "human_flag": false
+  }
+]

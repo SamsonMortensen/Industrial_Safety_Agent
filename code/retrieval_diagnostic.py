@@ -329,6 +329,7 @@ def main():
     print(render(rows, summary, ks, strategy=args.strategy))
 
     out = Path(__file__).resolve().parent.parent / args.out
+    out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(
         json.dumps(
             {"strategy": args.strategy, "rows": rows, "summary": summary}, indent=2

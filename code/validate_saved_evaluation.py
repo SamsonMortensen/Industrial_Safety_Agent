@@ -1,14 +1,13 @@
 """Recompute a saved matched evaluation without loading either language model."""
 
 import argparse
+import copy
 import json
 import sys
-from datetime import datetime, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_REPORT = ROOT / "json" / "finetune_evaluation_results.json"
-DEFAULT_ADAPTER = ROOT / "models" / "compliance-auditor-qwen25-3b-lora"
 DEFAULT_HOLDOUT = ROOT / "data" / "scaled_benchmark_holdout.csv"
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -56,35 +55,34 @@ def main() -> int:
         description="Validate saved fine-tuning outputs and metrics."
     )
     parser.add_argument("--report", type=Path, default=DEFAULT_REPORT)
-    parser.add_argument("--adapter", type=Path, default=DEFAULT_ADAPTER)
+    parser.add_argument("--adapter", type=Path, help="Also verify a locally available adapter configuration; weights are not included in the repository")
     parser.add_argument("--holdout", type=Path, default=DEFAULT_HOLDOUT)
     args = parser.parse_args()
 
     report = json.loads(args.report.read_text(encoding="utf-8"))
+    original = copy.deepcopy(report)
     for strategy in ("base", "qlora_sft"):
         recompute_strategy(report["strategies"][strategy])
+        if report["strategies"][strategy]["metrics"] != original["strategies"][strategy]["metrics"]:
+            raise ValueError(f"Saved {strategy} metrics do not match the per-case outputs.")
 
-    expected_adapter_hash = file_sha256(args.adapter / "adapter_config.json")
     expected_holdout_hash = file_sha256(args.holdout)
-    if report["provenance"].get("adapter_config_sha256") != expected_adapter_hash:
-        raise ValueError("The saved report does not match this adapter configuration.")
+    if args.adapter is not None:
+        expected_adapter_hash = file_sha256(args.adapter / "adapter_config.json")
+        if report["provenance"].get("adapter_config_sha256") != expected_adapter_hash:
+            raise ValueError("The saved report does not match this adapter configuration.")
     if report["provenance"].get("holdout_sha256") != expected_holdout_hash:
         raise ValueError("The saved report does not match this holdout file.")
 
-    report["provenance"].update(
-        {
-            "model": "Qwen/Qwen2.5-3B-Instruct",
-            "adapter": "models/compliance-auditor-qwen25-3b-lora",
-            "holdout": "data/scaled_benchmark_holdout.csv",
-            "metrics_recomputed_at_utc": datetime.now(timezone.utc).isoformat(),
-            "metrics_recomputed_from_saved_outputs": True,
-        }
-    )
     report["comparison"] = exact_mcnemar(
         report["strategies"]["base"]["results"],
         report["strategies"]["qlora_sft"]["results"],
     )
-    args.report.write_text(json.dumps(report, indent=2), encoding="utf-8")
+    if report["comparison"] != original["comparison"]:
+        raise ValueError("Saved paired comparison does not match the per-case outputs.")
+    print("Saved metrics and holdout hash verified; no files changed.")
+    if args.adapter is None:
+        print("Adapter configuration not checked; supply --adapter to verify it. Model weights are not verified by this command.")
 
     for strategy in ("base", "qlora_sft"):
         metrics = report["strategies"][strategy]["metrics"]

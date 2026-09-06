@@ -1,5 +1,4 @@
-requests
-numpy
+-r requirements-showcase.txt
 pandas
 notebook
 aiohttp

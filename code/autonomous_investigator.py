@@ -33,6 +33,7 @@ from typing import (
 
 import numpy as np
 import requests
+from ollama_config import ollama_base_url
 
 TOKEN_RE = re.compile(r"[a-z0-9]+(?:\.[a-z0-9]+)?")
 NUMBER_RE = re.compile(r"\b\d+(?:\.\d+)?\b")
@@ -198,7 +199,7 @@ class Observation:
         """Map camera-neutral evidence into the existing deterministic policy."""
 
         shift = self.measurements.get(
-            "operator_shift_hours", self.measurements.get("shift_hours", 0.0)
+            "operator_shift_hours", self.measurements.get("shift_hours")
         )
         incident_parts = [
             self.summary,
@@ -680,7 +681,7 @@ class OllamaGroundedReasoner:
         num_ctx: int = 8192,
     ):
         self.model = model
-        self.host = host.rstrip("/")
+        self.host = ollama_base_url(host)
         self.timeout = timeout
         self.num_ctx = num_ctx
 
@@ -819,8 +820,11 @@ class AutonomousInvestigator:
 
         decision: Optional[GroundedDecision] = None
         policy_rejection_reason: Optional[str] = None
+        policy_review_reason: Optional[str] = None
         if self.policy_fn is not None:
             policy = self.policy_fn(observation.to_legacy_row())
+            if getattr(policy, "status", "REVIEW") == "REVIEW":
+                policy_review_reason = getattr(policy, "reason", None)
             if getattr(policy, "status", "REVIEW") != "REVIEW":
                 candidate_sections = {candidate.section for candidate in candidates}
                 citation_is_grounded = (
@@ -846,6 +850,7 @@ class AutonomousInvestigator:
                 "REVIEW",
                 None,
                 policy_rejection_reason
+                or policy_review_reason
                 or "The observation triggered investigation, but no authoritative decision provider resolved it.",
                 "review_gate",
             )

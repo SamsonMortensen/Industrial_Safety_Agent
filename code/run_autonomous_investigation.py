@@ -27,7 +27,9 @@ from continuous_learner import embed_texts
 from hybrid_policy import evaluate_event
 
 
-def load_corpus() -> tuple[List[Dict[str, Any]], np.ndarray]:
+def load_corpus(
+    *, lexical_only: bool = False,
+) -> tuple[List[Dict[str, Any]], np.ndarray | None]:
     regulations = json.loads(
         (JSON_DIR / "regulations.json").read_text(encoding="utf-8")
     )
@@ -37,6 +39,9 @@ def load_corpus() -> tuple[List[Dict[str, Any]], np.ndarray]:
         chunks.extend(
             json.loads(statutes_path.read_text(encoding="utf-8")).get("chunks", [])
         )
+
+    if lexical_only:
+        return chunks, None
 
     cache_path = JSON_DIR / "reg_embeddings.npz"
     vectors = None
@@ -79,10 +84,16 @@ def main() -> None:
     parser.add_argument("--model", default="qwen3.5:9b")
     parser.add_argument("--sample-rate", type=float, default=0.02)
     parser.add_argument("--candidate-limit", type=int, default=16)
+    parser.add_argument(
+        "--lexical-only", action="store_true",
+        help="Use lexical retrieval without embedding requests; --reasoner still needs Ollama.",
+    )
     args = parser.parse_args()
 
-    chunks, vectors = load_corpus()
-    retriever = HybridRetriever(chunks, vectors, embedder=embed_texts)
+    chunks, vectors = load_corpus(lexical_only=args.lexical_only)
+    retriever = HybridRetriever(
+        chunks, vectors, embedder=None if args.lexical_only else embed_texts
+    )
     reasoner = None
     if args.reasoner:
         reasoner = OllamaGroundedReasoner(
@@ -101,6 +112,7 @@ def main() -> None:
     report = {
         "source": str(args.observation.resolve()),
         "reasoner_enabled": args.reasoner,
+        "retrieval_mode": "lexical" if args.lexical_only else "hybrid",
         "results": [
             investigator.investigate(observation).to_dict()
             for observation in load_observations(args.observation.resolve())

@@ -93,11 +93,17 @@ def build_sft_records(train_file: Path = DEFAULT_TRAIN) -> List[Dict[str, Any]]:
 
 
 def cuda_preflight(min_free_gib: float) -> Dict[str, Any]:
-    import torch
+    try:
+        import torch
+    except ImportError as error:
+        raise RuntimeError(
+            f"PyTorch is not installed in {sys.executable}. Follow the README Fine-tuning setup to create a training environment and install a CUDA-enabled PyTorch build."
+        ) from error
 
     if not torch.cuda.is_available():
         raise RuntimeError(
-            "CUDA is unavailable. Use the repository's CUDA training environment."
+            f"CUDA is unavailable in {sys.executable} (PyTorch {torch.__version__}). "
+            "Use the CUDA-enabled training environment described in README Fine-tuning. Installing the CUDA Toolkit alone does not replace a CPU-only PyTorch build."
         )
     free_bytes, total_bytes = torch.cuda.mem_get_info()
     free_gib = free_bytes / 2**30
@@ -107,6 +113,7 @@ def cuda_preflight(min_free_gib: float) -> Dict[str, Any]:
             f"At least {min_free_gib:.2f} GiB is required; stop competing GPU workloads."
         )
     return {
+        "python_executable": sys.executable,
         "torch": torch.__version__,
         "torch_cuda": torch.version.cuda,
         "device": torch.cuda.get_device_name(0),
@@ -342,8 +349,11 @@ def main() -> int:
     args = parser.parse_args()
     args.gradient_checkpointing = not args.no_gradient_checkpointing
 
-    hardware = cuda_preflight(args.min_free_gib)
-    records = build_sft_records(args.train_file)
+    try:
+        hardware = cuda_preflight(args.min_free_gib)
+        records = build_sft_records(args.train_file)
+    except (RuntimeError, FileNotFoundError) as error:
+        parser.exit(2, f"Preflight failed: {error}\n")
     print(json.dumps({"hardware": hardware, "train_examples": len(records)}, indent=2))
     if args.preflight_only:
         return 0

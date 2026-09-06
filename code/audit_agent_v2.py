@@ -21,6 +21,7 @@ from typing import Any, Dict, List, Set, Tuple
 
 import aiohttp
 import numpy as np
+from ollama_config import ollama_base_url
 
 ROOT = Path(__file__).resolve().parent.parent
 JSON_DIR = ROOT / "json"
@@ -31,7 +32,7 @@ LOG = ROOT / "daily_yard_log.csv"
 RESULTS = JSON_DIR / "audit_results.json"
 VALID_SECTIONS = JSON_DIR / "valid_sections.json"
 
-OLLAMA = os.getenv("OLLAMA_HOST", "http://localhost:11434")
+OLLAMA = ollama_base_url()
 
 # Allow slower CPU hosts to override the inference timeout.
 REQUEST_TIMEOUT = int(os.getenv("AUDIT_TIMEOUT", "900"))
