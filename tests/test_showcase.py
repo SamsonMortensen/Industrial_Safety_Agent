@@ -144,7 +144,8 @@ class ShowcaseTests(unittest.TestCase):
             showcase, "ROOT", Path(directory)
         ):
             target = Path(directory) / "benchmark_runs/showcase/run.json"
-            self.assertEqual(showcase.export_path(target), target)
+            # Windows may spell temporary paths with an 8.3 directory alias.
+            self.assertEqual(showcase.export_path(target), target.resolve())
             target.parent.mkdir(parents=True)
             target.write_text("original", encoding="utf-8")
             with self.assertRaises(ValueError):
