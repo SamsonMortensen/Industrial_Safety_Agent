@@ -243,12 +243,16 @@ json/run_history.json
 
 # Local CUDA training environments, model caches, and generated adapters
 .venv-train/
+.venv-vision/
 hf_cache/
 models/
 training_runs/
+benchmark_runs/
 # Downloaded incident and vision data stay local. Commit registries and aggregate reports only.
 data/external/
 data/vision_raw/
+data/vision_private/
+vision_manifests/
 vision_models/
 vision_runs/
 

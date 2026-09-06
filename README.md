@@ -4,6 +4,53 @@ A local, retrieval-grounded safety auditor for intermodal yard operations. It ev
 
 The project combines structured safety rules, local language models, authentic incident narratives, deterministic controls, and a camera-neutral observation interface. Operational data and model inference remain local.
 
+## Try it on your own computer
+
+I want people to be able to see what this does without setting up a training machine. The walkthrough runs the actual backend with a smaller workload. It does not replay canned decisions.
+
+It works through six different observations, shows what triggered each investigation, builds the queries, retrieves authorities, and returns a decision or sends the case to review. It also checks the citation guard, demonstrates the learning approval rules, and runs a 16-case retrieval benchmark across 16 hazard families.
+
+You need Git and Python 3.11 or newer. No GPU, Ollama server, model download, or account is needed for the default run. From PowerShell:
+
+```powershell
+git clone https://github.com/SamsonMortensen/Industrial_Safety_Agent.git
+cd Industrial_Safety_Agent
+python -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r requirements-showcase.txt
+.\.venv\Scripts\python.exe code/showcase.py
+```
+
+Already cloned? Start from the repository directory and skip the first two commands. On Linux/macOS, use `python3 -m venv .venv` and `.venv/bin/python` for the remaining commands.
+
+The default run uses CPU-based lexical retrieval and the existing applicability and policy checks. Live results are labeled separately from the saved full-audit, hybrid-retrieval, incident-coverage, and QLoRA results. Those larger runs are not repeated by the walkthrough. The camera examples are structured observations, not live image recognition.
+
+Try your own incident or keep the session open:
+
+```powershell
+.\.venv\Scripts\python.exe code/showcase.py --text "A wire-rope sling with broken outer wires remained in an active lift"
+.\.venv\Scripts\python.exe code/showcase.py --interactive
+```
+
+For structured input, detailed evidence, or a larger sample:
+
+```powershell
+.\.venv\Scripts\python.exe code/showcase.py --input data/example_camera_observation.json --json
+.\.venv\Scripts\python.exe code/showcase.py --benchmark-cases 64
+.\.venv\Scripts\python.exe code/showcase.py --out benchmark_runs/showcase/my_first_run.json
+```
+
+The tour handles up to six observations and 64 benchmark cases per run. Use `--benchmark-cases 0` to skip the benchmark. It does not write learning memory, train models, or run anything in the background. Saving a report is optional; exports stay under the ignored showcase directory and cannot overwrite an existing file. The interactive prompt is always offline and ends with `quit`.
+
+If Ollama and a local model are already installed, you can allow one model request for a case the policy cannot resolve:
+
+```powershell
+.\.venv\Scripts\python.exe code/showcase.py --reasoner --model qwen3.5:9b --timeout 30
+```
+
+That request uses lexical retrieval, the existing citation guard, a limited context, and a 220-token generation limit. It does not build dense embeddings or download a model. The timeout is a network read timeout, not a guarantee of total runtime. A missing or unavailable model leaves the case in review. Smaller installed models can be selected with `--model`, but their output quality is not established by the saved QLoRA results.
+
+This is a research system. A retrieved citation is not proof of a violation, and a clear result applies only to the condition checked. The full training and evaluation tools are still available below.
+
 ## What it does
 
 - Evaluates text logs, incident narratives, camera observations, and sensor-derived events.
@@ -60,11 +107,10 @@ This benchmark asks whether the governing authority can be retrieved from observ
 
 | Retrieval method | Recall@1 | Recall@4 | Recall@8 | Recall@16 |
 | --- | ---: | ---: | ---: | ---: |
-| Single-event dense query | 0.0625 | 0.3056 | 0.7361 | 0.8264 |
-| Multi-query lexical | 0.1111 | 0.2292 | 0.3889 | 0.4792 |
-| Multi-query hybrid with applicability reranking | **0.1736** | **0.6319** | **0.8681** | **0.9792** |
+| Multi-query hybrid fusion | **0.4028** | **0.7986** | **0.9861** | **1.0000** |
+| Hybrid with applicability reranking | 0.3125 | 0.7708 | 0.9236 | **1.0000** |
 
-The hybrid method retrieved the expected authority within the top 16 for 141 of 144 violations. Results and per-hazard ranks are saved in `json/autonomous_retrieval_benchmark.json`.
+Both methods retrieved the expected authority within the top 16 for all 144 violations in the saved run. Raw fusion ranked the expected authority earlier more often. These figures are computed from the per-case ranks in `json/autonomous_retrieval_benchmark.json`; they are not a field-performance claim.
 
 ### Fresh QLoRA result
 
@@ -139,7 +185,6 @@ Continuous learning is controlled rather than self-modifying:
 
 The backend already accepts structured observations from a future camera or sensor pipeline. The vision layer remains a separate training and validation project.
 
-- `VISION_TRAINING.md` defines the staged perception plan.
 - `data/vision_datasets.json` records dataset licenses and intended uses.
 - `code/vision_manifest.py` creates group-level train, validation, and test splits.
 - `data/example_camera_observation.json` demonstrates the observation contract.
@@ -167,69 +212,121 @@ The current synthetic benchmark covers 16 hazard families:
 
 ## Running locally
 
+The walkthrough above needs only `requirements-showcase.txt`. The instructions below install the broader analysis and validation environment. Model training is optional and has separate requirements.
+
 ### Prerequisites
 
-- Python 3.11 or compatible
-- [Ollama](https://ollama.com)
-- `mxbai-embed-large` for embeddings
-- `qwen3.5:9b` for local reasoning
+- Git and Python 3.11 or compatible
+- [Ollama](https://ollama.com) for live embedding and language-model runs; not required for saved-result validation or lexical-only examples
 
-```bash
-pip install -r requirements.txt
-ollama pull mxbai-embed-large
-ollama pull qwen3.5:9b
+Commands below use Windows PowerShell from the repository root. The explicit Python paths avoid environment-activation and interpreter mismatches. On Linux/macOS, use `.venv/bin/python` instead of `.\.venv\Scripts\python.exe`.
+
+```powershell
+git clone https://github.com/SamsonMortensen/Industrial_Safety_Agent.git
+cd Industrial_Safety_Agent
+python -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+.\.venv\Scripts\python.exe -m pip check
+.\.venv\Scripts\python.exe code/check_setup.py
 ```
 
-### Build the corpus and benchmark log
-
-```bash
-python code/fetch_regulations.py
-python code/build_section_index.py
-python code/generate_yard_log.py --records 1000
-```
-
-### Run retrieval and autonomous observation tests
-
-```bash
-python code/retrieval_diagnostic.py
-python code/benchmark_autonomous_retrieval.py
-python code/run_autonomous_investigation.py data/example_camera_observation.json --sample-rate 0
-```
-
-### Run the audits
-
-```bash
-python code/audit_agent.py --limit 1000
-python code/audit_agent_v2.py --limit 1000 --concurrency 4 --out json/audit_results_v2.json
-python code/apply_policy_controls.py --raw json/audit_results_v2.json --out json/audit_results_v2_controlled.json
-```
-
-### Prepare authentic incident text
-
-```bash
-python code/fetch_osha_incidents.py
-python code/osha_incident_pipeline.py
-python code/benchmark_authentic_incidents.py --sample 500 --dense --out json/authentic_incident_retrieval_hybrid.json
-```
+If the repository is already cloned, start from its directory and skip the first two commands. Virtual environments and trained adapters are not included in a clone.
 
 ### Validate the repository
 
-```bash
-python -m compileall -q code tests
-python -m unittest discover -s tests -v
-python -m json.tool main.ipynb
+Start here. These checks use the included reference files, require no GPU or model downloads, and do not rerun the 500-case benchmark. The JSON command checks notebook syntax and prints its contents; it does not execute the notebook.
+
+```powershell
+.\.venv\Scripts\python.exe -m compileall -q code tests
+.\.venv\Scripts\python.exe -m unittest discover -s tests -v
+.\.venv\Scripts\python.exe -m json.tool main.ipynb
+.\.venv\Scripts\python.exe code/validate_saved_evaluation.py
+```
+
+Expected: tests finish with `OK`, and saved-evaluation validation confirms matching metrics and the holdout hash. That validator does not verify model weights. Open `main.ipynb` from the repository root to explore the saved results.
+
+### Try an offline observation
+
+```powershell
+.\.venv\Scripts\python.exe code/run_autonomous_investigation.py data/example_camera_observation.json --sample-rate 0 --lexical-only
+.\.venv\Scripts\python.exe code/benchmark_autonomous_retrieval.py --lexical-only --out benchmark_runs/autonomous_lexical.json
+```
+
+The observation command prints a structured decision with retrieved candidates. Lexical-only results are a smoke test, not a reproduction of the published hybrid scores. New example outputs go under ignored `benchmark_runs/`; rerunning a named output replaces that local result.
+
+### Enable local models
+
+Start the Ollama desktop app, or run `ollama serve` in another terminal if no server is already running. Then install the models once:
+
+```powershell
+ollama pull mxbai-embed-large
+ollama pull qwen3.5:9b
+.\.venv\Scripts\python.exe code/check_setup.py --ollama --embed
+```
+
+`OLLAMA_HOST` defaults to `http://localhost:11434`; an address such as `127.0.0.1:11434` is also accepted. `ollama ps` shows CPU/GPU placement while a model is loaded. Ollama execution and PyTorch CUDA are separate configurations.
+
+### Run hybrid retrieval and small model audits
+
+These commands make live model requests. The first dense run builds corpus embeddings and can take substantially longer than the offline checks. Start audits at one event and concurrency one; increase `--limit` to 50 or 1000 after checking runtime and memory.
+
+```powershell
+.\.venv\Scripts\python.exe code/run_autonomous_investigation.py data/example_camera_observation.json --sample-rate 0 --out benchmark_runs/observation_hybrid.json
+.\.venv\Scripts\python.exe code/retrieval_diagnostic.py --out benchmark_runs/retrieval_diagnostic.json
+.\.venv\Scripts\python.exe code/benchmark_autonomous_retrieval.py --out benchmark_runs/autonomous_hybrid.json
+.\.venv\Scripts\python.exe code/audit_agent.py --limit 1 --concurrency 1 --out benchmark_runs/audit_v1.json
+.\.venv\Scripts\python.exe code/audit_agent_v2.py --limit 1 --concurrency 1 --out benchmark_runs/audit_v2.json
+.\.venv\Scripts\python.exe code/apply_policy_controls.py --raw benchmark_runs/audit_v2.json --out benchmark_runs/audit_v2_controlled.json
+```
+
+The observation example uses policy decisions unless `--reasoner` is added. The v2 auditor also writes ignored local learning memory and run history. Small runs check the execution path; they do not establish model quality or reproduce the full-audit results.
+
+### Prepare authentic incident text
+
+```powershell
+.\.venv\Scripts\python.exe code/fetch_osha_incidents.py
+.\.venv\Scripts\python.exe code/osha_incident_pipeline.py --profile benchmark_runs/osha_sir_profile.json
+.\.venv\Scripts\python.exe code/benchmark_authentic_incidents.py --sample 50
+```
+
+If OSHA refuses the automated download with HTTP 403, download the matching archive from the [OSHA Severe Injury Reports page](https://www.osha.gov/severe-injury-reports), save it in `data/external/osha_sir/`, and rerun the fetch command without `--force`. For a different release, supply its official `--url` to the fetch command and the extracted CSV through the pipeline's `--input` option. Do not describe a different release as the published reference dataset.
+
+Add `--dense` to test hybrid retrieval once Ollama is ready; use `--sample 500` for a larger run. Dense runs also embed the regulation corpus, so reducing the sample does not remove that startup cost. Each authentic-incident benchmark saves a timestamped result under `benchmark_runs/authentic_incidents/` and refuses to overwrite published reference results.
+
+### Rebuild source fixtures (optional)
+
+The corpus, section index, and benchmark log are already included. Run these only in a separate experimental checkout: they replace those files, and changed corpus content requires rebuilding the embedding cache before further dense runs. The eCFR edition is pinned to January 1, 2025, not the current law.
+
+```powershell
+.\.venv\Scripts\python.exe code/fetch_regulations.py
+.\.venv\Scripts\python.exe code/build_section_index.py
+.\.venv\Scripts\python.exe code/generate_yard_log.py --records 1000
 ```
 
 ### Fine-tuning
 
-Install a CUDA-enabled PyTorch build compatible with the host driver before installing the training dependencies.
+Fine-tuning is optional, GPU-intensive, and separate from repository validation. The historical `train_lora_dpo.py` filename currently runs QLoRA supervised fine-tuning, not DPO reinforcement learning.
 
-```bash
-pip install -r requirements-train.txt
-python code/train_lora_dpo.py --preflight-only
-python code/train_lora_dpo.py
-python code/evaluate_finetuned.py --model Qwen/Qwen2.5-3B-Instruct
-python code/validate_saved_evaluation.py
+Create a separate environment, then install a CUDA-enabled PyTorch build compatible with your Python, NVIDIA GPU, and driver using the [official PyTorch installation selector](https://pytorch.org/get-started/locally/). Run its installation command with `.\.venv-train\Scripts\python.exe -m pip` instead of bare `pip`. Installing the CUDA Toolkit alone does not enable CUDA in a CPU-only PyTorch build.
+
+```powershell
+python -m venv .venv-train
+```
+
+After installing CUDA-enabled PyTorch in that environment:
+
+```powershell
+.\.venv-train\Scripts\python.exe -m pip install -r requirements.txt -r requirements-train.txt
+.\.venv-train\Scripts\python.exe -m pip check
+.\.venv-train\Scripts\python.exe code/train_lora_dpo.py --preflight-only
+```
+
+The preflight must report a CUDA device and sufficient free GPU memory before starting training. It does not train or prove that a complete training run will succeed. Use a new output directory for each experiment to preserve existing adapters.
+
+```powershell
+.\.venv-train\Scripts\python.exe code/train_lora_dpo.py --output-dir training_runs/qlora_trial_01
+.\.venv-train\Scripts\python.exe code/evaluate_finetuned.py --model Qwen/Qwen2.5-3B-Instruct --adapter training_runs/qlora_trial_01 --out benchmark_runs/finetune_trial_01.json
+.\.venv-train\Scripts\python.exe code/validate_saved_evaluation.py --report benchmark_runs/finetune_trial_01.json --adapter training_runs/qlora_trial_01
 ```
 
 Generated adapters, raw incident archives, learned memory, and local model caches are excluded from Git.
@@ -243,7 +340,6 @@ Generated adapters, raw incident archives, learned memory, and local model cache
 | `json/` | Legal corpus, saved outputs, and benchmark provenance |
 | `tests/` | Regression, leakage, grounding, artifact, and repository tests |
 | `main.ipynb` | Reproducible analysis of saved results |
-| `VISION_TRAINING.md` | Camera-model data and training plan |
 
 ## Limitations
 

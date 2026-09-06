@@ -53,6 +53,13 @@ def main() -> None:
     if args.force or not archive_path.exists():
         temporary = archive_path.with_suffix(archive_path.suffix + ".partial")
         with requests.get(args.url, stream=True, timeout=120) as response:
+            if response.status_code == 403:
+                parser.exit(
+                    2,
+                    "OSHA refused the automated download (HTTP 403). Download the archive manually from https://www.osha.gov/severe-injury-reports, "
+                    f"save the matching archive as {archive_path}, and rerun without --force. "
+                    "If using a different release, supply its official --url and pass the extracted CSV to osha_incident_pipeline.py --input.\n",
+                )
             response.raise_for_status()
             with temporary.open("wb") as handle:
                 for chunk in response.iter_content(chunk_size=1024 * 1024):

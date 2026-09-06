@@ -1,0 +1,5 @@
+# Preserve the bytes used by benchmark and holdout fingerprints on Windows.
+*.csv text eol=lf
+# The saved fine-tuning reports fingerprinted these two files with CRLF.
+data/scaled_benchmark_holdout.csv text eol=crlf
+data/scaled_benchmark_train.csv text eol=crlf

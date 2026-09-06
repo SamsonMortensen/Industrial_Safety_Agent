@@ -7,6 +7,7 @@ and dynamic hazard pillar discovery that evolves with every audit execution.
 import json
 import os
 import re
+import sys
 import time
 from datetime import datetime
 from pathlib import Path
@@ -15,6 +16,7 @@ from typing import Any, Dict, List, Optional, Tuple
 import numpy as np
 import requests
 from learning_policy import assess_for_learning, episode_is_trusted
+from ollama_config import ollama_base_url
 
 ROOT = Path(__file__).resolve().parent.parent
 JSON_DIR = ROOT / "json"
@@ -24,7 +26,7 @@ STATE_FILE = JSON_DIR / "learning_state.json"
 RUN_HISTORY_FILE = JSON_DIR / "run_history.json"
 REGS_FILE = JSON_DIR / "regulations.json"
 
-OLLAMA = os.getenv("OLLAMA_HOST", "http://localhost:11434")
+OLLAMA = ollama_base_url()
 EMBED_MODEL = "mxbai-embed-large"
 CHAT_MODEL = "qwen3.5:9b"
 ECFR_EDITION = "2025-01-01"
@@ -98,6 +100,7 @@ def embed_texts(
     """Compute normalized vector embeddings via Ollama."""
     if not texts:
         return np.empty((0, 1024), dtype=np.float32)
+    print(f"Embedding {len(texts)} texts with {model}...", file=sys.stderr, flush=True)
     out = []
     for i in range(0, len(texts), batch):
         batch_texts = texts[i : i + batch]
@@ -108,6 +111,11 @@ def embed_texts(
         )
         r.raise_for_status()
         out.extend(r.json()["embeddings"])
+        print(
+            f"  embedded {min(i + batch, len(texts))}/{len(texts)}",
+            file=sys.stderr,
+            flush=True,
+        )
     v = np.array(out, dtype=np.float32)
     norms = np.linalg.norm(v, axis=1, keepdims=True)
     norms[norms == 0] = 1.0

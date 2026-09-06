@@ -1,0 +1,46 @@
+name: Validate repository
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: windows-latest
+            python: '3.14'
+          - os: ubuntu-latest
+            python: '3.11'
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Install only the showcase dependencies
+        run: python -m pip install -r requirements-showcase.txt
+      - name: Run the visitor walkthrough without a model
+        run: python -B code/showcase.py
+      - name: Check showcase safety and output contracts
+        run: python -B -m unittest discover -s tests -p test_showcase.py -v
+      - name: Install the full analysis dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Check dependencies
+        run: python -m pip check
+      - name: Compile the code
+        run: python -m compileall -q code tests
+      - name: Run public regression tests
+        run: python -m unittest discover -s tests -v
+      - name: Verify saved evaluation without model weights
+        run: python code/validate_saved_evaluation.py
+      - name: Check notebook JSON
+        run: python -c "import json; json.load(open('main.ipynb', encoding='utf-8'))"

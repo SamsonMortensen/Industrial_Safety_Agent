@@ -36,7 +36,38 @@ from osha_incident_pipeline import sha256
 DEFAULT_INPUT = (
     ROOT / "data" / "external" / "osha_sir" / "normalized_observations.jsonl"
 )
-DEFAULT_OUTPUT = JSON_DIR / "authentic_incident_retrieval.json"
+RUN_DIR = ROOT / "benchmark_runs" / "authentic_incidents"
+REFERENCE_OUTPUTS = {
+    (JSON_DIR / name).resolve()
+    for name in (
+        "authentic_incident_retrieval.json",
+        "authentic_incident_retrieval_hybrid.json",
+    )
+}
+
+
+def output_path(requested: Path | None, sample: int, dense: bool) -> Path:
+    """Keep new runs separate from the published benchmark references."""
+    if sample < 1:
+        raise ValueError("--sample must be positive")
+    stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S_%fZ")
+    mode = "hybrid" if dense else "lexical"
+    path = (requested or RUN_DIR / f"{stamp}_{mode}_{sample}.json").resolve()
+    if path in REFERENCE_OUTPUTS:
+        raise ValueError(
+            "This output is a published reference used by validation. "
+            "Omit --out to save a separate run in benchmark_runs/authentic_incidents."
+        )
+    if path.exists():
+        raise FileExistsError(f"Refusing to overwrite an existing result: {path}")
+    return path
+
+
+def save_report(path: Path, report: dict[str, Any]) -> None:
+    rendered = json.dumps(report, indent=2) + "\n"
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("x", encoding="utf-8") as handle:
+        handle.write(rendered)
 
 
 def load_chunks() -> list[dict[str, Any]]:
@@ -68,12 +99,22 @@ def stable_sample(
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--input", type=Path, default=DEFAULT_INPUT)
-    parser.add_argument("--out", type=Path, default=DEFAULT_OUTPUT)
+    parser.add_argument(
+        "--out", type=Path,
+        help="New result path; defaults to a timestamped file in benchmark_runs/authentic_incidents",
+    )
     parser.add_argument("--sample", type=int, default=500)
     parser.add_argument("--seed", type=int, default=29)
     parser.add_argument("--top-k", type=int, default=16)
     parser.add_argument("--dense", action="store_true")
     args = parser.parse_args()
+    try:
+        args.out = output_path(args.out, args.sample, args.dense)
+    except (ValueError, FileExistsError) as error:
+        parser.error(str(error))
+    if args.top_k < 1:
+        parser.error("--top-k must be positive")
+    print(f"Saving this run to: {args.out}", flush=True)
 
     source_path = args.input.resolve()
     with source_path.open("r", encoding="utf-8") as handle:
@@ -205,11 +246,11 @@ def main() -> None:
             "The source contains severe outcomes and cannot measure false alarms on ordinary camera-hours.",
         ],
     }
-    args.out.parent.mkdir(parents=True, exist_ok=True)
-    args.out.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
+    save_report(args.out, report)
     print(
         json.dumps(
             {
+                "output_path": str(args.out),
                 "coverage": report["coverage"],
                 "grounding_gate": report["grounding_gate"],
             },

@@ -8,6 +8,7 @@ it is not allowed to change their status or citation.
 """
 
 from dataclasses import asdict, dataclass
+import math
 from typing import Any, Dict, List, Optional
 
 
@@ -49,10 +50,23 @@ def evaluate_event(row: Dict[str, Any]) -> PolicyDecision:
 
     text = _combined_text(row)
     incident = str(row.get("Reported_Incident", "")).lower()
+    if _contains(incident, (
+        "does not show", "doesn't show", "cannot determine", "cannot confirm",
+        "can't determine", "can't confirm", "unknown", "uncertain", "unclear",
+        "not known", "not confirmed", "not verified", "unverified",
+        "whether", "might be", "may be", "suspected",
+    )):
+        return PolicyDecision(
+            "REVIEW", None,
+            "The observation explicitly leaves a relevant fact uncertain; confirm it before assigning a citation.",
+            "uncertain_evidence", [],
+        )
     try:
-        shift_hours = float(row.get("Operator_Shift_Hours", 0.0))
+        shift_hours = float(row.get("Operator_Shift_Hours"))
+        if not math.isfinite(shift_hours) or shift_hours < 0:
+            shift_hours = None
     except (TypeError, ValueError):
-        shift_hours = 0.0
+        shift_hours = None
 
     candidates: List[PolicyDecision] = []
 
@@ -60,6 +74,11 @@ def evaluate_event(row: Dict[str, Any]) -> PolicyDecision:
         text, ("commuter", "intercity", "passenger train")
     ) and _contains(text, ("train employee", "covered service", "passenger train"))
     if passenger_scope:
+        if shift_hours is None:
+            return PolicyDecision(
+                "REVIEW", None, "A valid duty duration is needed for the covered employee.",
+                "missing_duty_duration", [],
+            )
         if shift_hours > 12.0:
             candidates.append(
                 _decision(
@@ -106,6 +125,11 @@ def evaluate_event(row: Dict[str, Any]) -> PolicyDecision:
         )
     )
     if train_employee_scope:
+        if shift_hours is None:
+            return PolicyDecision(
+                "REVIEW", None, "A valid duty duration is needed for the covered employee.",
+                "missing_duty_duration", [],
+            )
         if shift_hours > 12.0:
             candidates.append(
                 _decision(

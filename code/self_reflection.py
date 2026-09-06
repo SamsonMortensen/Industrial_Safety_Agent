@@ -12,13 +12,14 @@ from pathlib import Path
 from typing import Any, Dict, List, Tuple
 
 import aiohttp
+from ollama_config import ollama_base_url
 
 ROOT = Path(__file__).resolve().parent.parent
 JSON_DIR = ROOT / "json"
 VALID_SECTIONS_FILE = JSON_DIR / "valid_sections.json"
 STATUTES_FILE = JSON_DIR / "statutes.json"
 
-OLLAMA = os.getenv("OLLAMA_HOST", "http://localhost:11434")
+OLLAMA = ollama_base_url()
 CHAT_MODEL = "qwen3.5:9b"
 
 # Ollama otherwise allocates the model's full context window (262144 for

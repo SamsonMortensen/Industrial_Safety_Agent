@@ -45,6 +45,7 @@ from pathlib import Path
 import aiohttp
 import numpy as np
 import requests
+from ollama_config import ollama_base_url
 
 ROOT = Path(__file__).resolve().parent.parent
 REGS = ROOT / "json" / "regulations.json"
@@ -54,7 +55,7 @@ LOG = ROOT / "daily_yard_log.csv"
 RESULTS = ROOT / "json" / "audit_results.json"
 VALID_SECTIONS = ROOT / "json" / "valid_sections.json"
 
-OLLAMA = "http://localhost:11434"
+OLLAMA = ollama_base_url()
 
 # Allow slower CPU hosts to override the inference timeout.
 REQUEST_TIMEOUT = int(os.getenv("AUDIT_TIMEOUT", "900"))
@@ -619,6 +620,7 @@ def main():
             RESULTS if grounded else RESULTS.with_name("audit_results_ungrounded.json")
         )
     )
+    out_path.parent.mkdir(parents=True, exist_ok=True)
     out_path.write_text(
         json.dumps({"metrics": metrics, "results": results}, indent=2), encoding="utf-8"
     )
