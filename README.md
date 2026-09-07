@@ -4,7 +4,64 @@ A local, retrieval-grounded safety auditor for intermodal yard operations. It ev
 
 The project combines structured safety rules, local language models, authentic incident narratives, deterministic controls, and a camera-neutral observation interface. Operational data and model inference remain local.
 
-## Try it on your own computer
+## Start with the notebook
+
+I want someone new to this project to be able to open it, try an incident, and see why it returned that result. [main.ipynb](main.ipynb) walks through the actual backend, with explanations beside the code. The deeper scripts are still available below.
+
+The default notebook runs on the CPU. It does not need a GPU, Ollama, a camera, a model download, or an account. It does not train or change learning memory. You need internet access for the initial repository and package downloads. After setup, the walkthrough runs locally without model requests.
+
+### 1. Check Git and Python
+
+Install [Git](https://git-scm.com/downloads) and [Python](https://www.python.org/downloads/) if needed, then open a new PowerShell window. Run:
+
+```powershell
+git --version
+python --version
+```
+
+Both commands should print a version. Use Python 3.11 or newer; automated checks cover Python 3.11 on Linux and 3.14 on Windows. If Windows does not recognize `python`, try `py --version`. If that works, use `py` for the environment-creation command below. Otherwise, finish installing Python and reopen PowerShell before continuing.
+
+### 2. Install and open the notebook
+
+Choose a folder where you keep projects. Run these commands one line at a time in PowerShell, not inside a notebook cell. Stop if a command reports an error. The first two commands create and enter the repository folder.
+
+```powershell
+git clone https://github.com/SamsonMortensen/Industrial_Safety_Agent.git
+cd Industrial_Safety_Agent
+python -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+.\.venv\Scripts\python.exe -m pip check
+.\.venv\Scripts\python.exe -m ipykernel install --sys-prefix --name industrial-safety --display-name "Industrial Safety (.venv)"
+.\.venv\Scripts\python.exe -m notebook main.ipynb --ip=127.0.0.1
+```
+
+Already have an unchanged public clone? Open PowerShell in that repository directory and skip the clone and `cd` commands. If the folder contains additional development files, use a separate fresh clone to reproduce the public walkthrough. Creating `.venv` does not remove or separate those files.
+
+The package installation may take a few minutes. `Requirement already satisfied` is normal. `pip check` should report `No broken requirements found`. The kernel command connects this notebook to the same Python environment that received the packages; no environment activation is needed.
+
+On Linux/macOS, create the environment with `python3 -m venv .venv`, then replace `.\.venv\Scripts\python.exe` with `.venv/bin/python` in the remaining commands.
+
+### 3. Run the cells and try an incident
+
+The notebook opens in your browser, served by your own computer. If it does not open automatically, use the local URL printed in the terminal. Keep that terminal open while working, and do not share its access token.
+
+Select the **Industrial Safety (.venv)** kernel. Click the first code cell and press **Shift+Enter**, then continue down the notebook. **Run > Run All Cells** also works. The first cell should print `Setup ready`; later cells show example decisions, retrieved text, an editable incident, a small live benchmark, and clearly labeled earlier results. An asterisk beside a cell means it is running.
+
+You do not need to run every script in this README to try the project. The notebook is the beginner path. Optional local models and training are separate workflows under [Advanced scripts and validation](#advanced-scripts-and-validation).
+
+Jupyter can save your edits and outputs in the notebook. Avoid personal information, and clear your incident text and outputs before sharing a copy. To finish, shut down the kernel, then press **Ctrl+C** in the server terminal and confirm if asked.
+
+### If something stops
+
+- **`git` or `python` is not recognized:** finish installing it, reopen PowerShell, and repeat the version checks.
+- **The destination folder already exists:** enter the existing public clone, or choose a different parent folder for a fresh clone. Do not delete your development folder.
+- **`requirements.txt` or `main.ipynb` is not found:** check that the terminal is in the repository folder.
+- **A notebook reports a missing module:** install `requirements.txt` with the exact project Python command above, repeat the kernel registration, and restart the notebook with **Industrial Safety (.venv)** selected. Bare `pip` may install into a different environment.
+- **Local tests ask for `torch` or `streamlit`:** the published notebook and public tests do not require them. Check whether the folder also contains private vision code, and use a fresh public clone for this walkthrough.
+- **A cell refers to a name that is not defined:** restart the kernel and run the cells from the top.
+- **You only installed `requirements-showcase.txt`:** that installs the CLI-only dependencies. Install `requirements.txt` before opening the notebook or running the full public validation checks.
+
+## Prefer the terminal?
 
 I want people to be able to see what this does without setting up a training machine. The walkthrough runs the actual backend with a smaller workload. It does not replay canned decisions.
 
@@ -39,7 +96,7 @@ For structured input, detailed evidence, or a larger sample:
 .\.venv\Scripts\python.exe code/showcase.py --out benchmark_runs/showcase/my_first_run.json
 ```
 
-The tour handles up to six observations and 64 benchmark cases per run. Use `--benchmark-cases 0` to skip the benchmark. It does not write learning memory, train models, or run anything in the background. Saving a report is optional; exports stay under the ignored showcase directory and cannot overwrite an existing file. The interactive prompt is always offline and ends with `quit`.
+The tour handles up to six observations and 64 benchmark cases per run. Use `--benchmark-cases 0` to skip the benchmark. It does not write learning memory, train models, or run anything in the background. Saving a report is optional; exports stay under the ignored showcase directory and cannot overwrite an existing file. To save another run, choose a new filename such as `my_second_run.json`. The interactive prompt is always offline and ends with `quit`.
 
 If Ollama and a local model are already installed, you can allow one model request for a case the policy cannot resolve:
 
@@ -210,9 +267,9 @@ The current synthetic benchmark covers 16 hazard families:
 | Electrical | exposed live parts, approach distance, protective equipment | 1910.303, .333, .335 |
 | Hours of service | freight train-employee duty limit, duty records | 49 U.S.C. 21103, 49 CFR 228.11 |
 
-## Running locally
+## Advanced scripts and validation
 
-The walkthrough above needs only `requirements-showcase.txt`. The instructions below install the broader analysis and validation environment. Model training is optional and has separate requirements.
+The notebook setup already installs `requirements.txt`, which also covers the public analysis and validation commands below. The CLI-only walkthrough needs only `requirements-showcase.txt`. Model training is optional and has separate requirements; the notebook does not start it.
 
 ### Prerequisites
 
@@ -234,16 +291,16 @@ If the repository is already cloned, start from its directory and skip the first
 
 ### Validate the repository
 
-Start here. These checks use the included reference files, require no GPU or model downloads, and do not rerun the 500-case benchmark. The JSON command checks notebook syntax and prints its contents; it does not execute the notebook.
+Run these after installing `requirements.txt` with the project Python. These checks use the included reference files, require no GPU or model downloads, and do not rerun the 500-case benchmark. Notebook validation runs every code cell in a fresh kernel using the same Python interpreter. It blocks outbound socket and HTTP requests in the walkthrough and does not save the executed notebook.
 
 ```powershell
 .\.venv\Scripts\python.exe -m compileall -q code tests
 .\.venv\Scripts\python.exe -m unittest discover -s tests -v
-.\.venv\Scripts\python.exe -m json.tool main.ipynb
+.\.venv\Scripts\python.exe code/validate_notebook.py
 .\.venv\Scripts\python.exe code/validate_saved_evaluation.py
 ```
 
-Expected: tests finish with `OK`, and saved-evaluation validation confirms matching metrics and the holdout hash. That validator does not verify model weights. Open `main.ipynb` from the repository root to explore the saved results.
+Expected: tests finish with `OK`, notebook validation confirms that all code cells ran, and saved-evaluation validation confirms matching metrics and the holdout hash. The saved-evaluation validator does not verify model weights. These are public-repository checks, not validation of additional private development files.
 
 ### Try an offline observation
 
@@ -283,9 +340,23 @@ The observation example uses policy decisions unless `--reasoner` is added. The 
 
 ### Prepare authentic incident text
 
+This is optional and requires a separate external download. The raw CSV and normalized incident file are not included in a clone. The beginner notebook reads the saved coverage report and does not need either file.
+
+First download and extract the source:
+
 ```powershell
 .\.venv\Scripts\python.exe code/fetch_osha_incidents.py
+```
+
+Do not continue until extraction succeeds and `data/external/osha_sir/January2015toNovember2025.csv` exists. If the download fails, use the manual-download instructions below. Then normalize the CSV:
+
+```powershell
 .\.venv\Scripts\python.exe code/osha_incident_pipeline.py --profile benchmark_runs/osha_sir_profile.json
+```
+
+After that command succeeds, `data/external/osha_sir/normalized_observations.jsonl` is available for the benchmark:
+
+```powershell
 .\.venv\Scripts\python.exe code/benchmark_authentic_incidents.py --sample 50
 ```
 

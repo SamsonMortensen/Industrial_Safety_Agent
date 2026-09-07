@@ -64,6 +64,39 @@ class BenchmarkOutputTests(unittest.TestCase):
             with self.subTest(sample=sample), self.assertRaises(ValueError):
                 benchmark.output_path(None, sample, False)
 
+    def test_missing_or_empty_input_stops_before_embedding_or_output(self):
+        with tempfile.TemporaryDirectory() as directory:
+            source = Path(directory) / "observations.jsonl"
+            target = Path(directory) / "reports" / "run.json"
+            for empty in (False, True):
+                if empty:
+                    source.write_text("", encoding="utf-8")
+                argv = [
+                    "benchmark",
+                    "--input",
+                    str(source),
+                    "--out",
+                    str(target),
+                    "--dense",
+                ]
+                with patch.object(sys, "argv", argv), patch.object(
+                    benchmark, "embed_texts"
+                ) as embedder, contextlib.redirect_stderr(
+                    io.StringIO()
+                ) as error, contextlib.redirect_stdout(
+                    io.StringIO()
+                ) as output:
+                    with self.assertRaises(SystemExit) as raised:
+                        benchmark.main()
+                    self.assertEqual(raised.exception.code, 2)
+                    self.assertIn(
+                        "empty" if empty else "osha_incident_pipeline.py",
+                        error.getvalue(),
+                    )
+                    self.assertNotIn("Saving this run", output.getvalue())
+                    embedder.assert_not_called()
+                    self.assertFalse(target.parent.exists())
+
 
 if __name__ == "__main__":
     unittest.main()

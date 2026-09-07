@@ -1,4 +1,7 @@
 -r requirements-showcase.txt
 pandas
 notebook
+ipykernel
+nbclient
+nbformat
 aiohttp

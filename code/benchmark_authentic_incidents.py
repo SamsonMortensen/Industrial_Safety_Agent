@@ -100,7 +100,8 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--input", type=Path, default=DEFAULT_INPUT)
     parser.add_argument(
-        "--out", type=Path,
+        "--out",
+        type=Path,
         help="New result path; defaults to a timestamped file in benchmark_runs/authentic_incidents",
     )
     parser.add_argument("--sample", type=int, default=500)
@@ -114,9 +115,15 @@ def main() -> None:
         parser.error(str(error))
     if args.top_k < 1:
         parser.error("--top-k must be positive")
-    print(f"Saving this run to: {args.out}", flush=True)
-
     source_path = args.input.resolve()
+    if not source_path.is_file():
+        parser.error(
+            f"Normalized incident file not found: {source_path}. "
+            "Download and extract the source with code/fetch_osha_incidents.py, "
+            "then run code/osha_incident_pipeline.py before this benchmark. "
+            "If you chose a different normalized output, pass it with --input. "
+            "The beginner notebook does not need this optional dataset."
+        )
     with source_path.open("r", encoding="utf-8") as handle:
         observations = [
             Observation.from_mapping(json.loads(line))
@@ -124,6 +131,11 @@ def main() -> None:
             if line.strip()
         ]
     observations = stable_sample(observations, args.sample, args.seed)
+    if not observations:
+        parser.error(
+            "The normalized incident file is empty. Run the incident pipeline on a non-empty source CSV first."
+        )
+    print(f"Saving this run to: {args.out}", flush=True)
 
     chunks = load_chunks()
     corpus_vectors = None
@@ -201,9 +213,9 @@ def main() -> None:
             "sample_method": "lowest SHA-256(seed:event_id)",
             "sample_seed": args.seed,
             "requested_sample": args.sample,
-            "retrieval": "BM25 + dense reciprocal-rank fusion"
-            if args.dense
-            else "lexical BM25",
+            "retrieval": (
+                "BM25 + dense reciprocal-rank fusion" if args.dense else "lexical BM25"
+            ),
             "top_k": args.top_k,
             "oiics_codes_used_to_form_queries": False,
             "outcome_columns_used_to_form_queries": False,
@@ -212,15 +224,15 @@ def main() -> None:
         "coverage": {
             "cases": total,
             "triggered": trigger_counts["triggered"],
-            "trigger_rate": round(trigger_counts["triggered"] / total, 4)
-            if total
-            else 0.0,
+            "trigger_rate": (
+                round(trigger_counts["triggered"] / total, 4) if total else 0.0
+            ),
             "nonempty_retrieval": sum(count > 0 for count in candidate_counts),
-            "nonempty_retrieval_rate": round(
-                sum(count > 0 for count in candidate_counts) / total, 4
-            )
-            if total
-            else 0.0,
+            "nonempty_retrieval_rate": (
+                round(sum(count > 0 for count in candidate_counts) / total, 4)
+                if total
+                else 0.0
+            ),
             "median_queries": median(query_counts) if query_counts else None,
             "median_candidates": median(candidate_counts) if candidate_counts else None,
             "unique_top_authorities": len(top_authorities),
@@ -229,9 +241,11 @@ def main() -> None:
             "policy_status_counts": dict(sorted(decision_counts.items())),
             "cited_policy_decisions": cited_decisions,
             "citations_present_in_retrieved_candidates": grounded_citations,
-            "citation_grounding_rate": round(grounded_citations / cited_decisions, 4)
-            if cited_decisions
-            else None,
+            "citation_grounding_rate": (
+                round(grounded_citations / cited_decisions, 4)
+                if cited_decisions
+                else None
+            ),
             "unsupported_citations_allowed": 0,
         },
         "top_retrieved_authorities": [
