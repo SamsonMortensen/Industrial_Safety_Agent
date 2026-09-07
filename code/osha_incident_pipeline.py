@@ -226,6 +226,14 @@ def main() -> None:
     args = parser.parse_args()
 
     source_path = args.input.resolve()
+    if not source_path.is_file():
+        parser.error(
+            f"OSHA source CSV not found: {source_path}. "
+            "Run code/fetch_osha_incidents.py first and confirm that extraction succeeds. "
+            "For a different release, pass its extracted CSV with --input. "
+            "This optional dataset is not included in a GitHub clone; "
+            "the beginner notebook does not need it."
+        )
     rows = list(read_rows(source_path))
     if args.limit > 0:
         rows = rows[: args.limit]

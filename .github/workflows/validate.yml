@@ -42,5 +42,5 @@ jobs:
         run: python -m unittest discover -s tests -v
       - name: Verify saved evaluation without model weights
         run: python code/validate_saved_evaluation.py
-      - name: Check notebook JSON
-        run: python -c "import json; json.load(open('main.ipynb', encoding='utf-8'))"
+      - name: Execute the beginner notebook without model requests
+        run: python code/validate_notebook.py

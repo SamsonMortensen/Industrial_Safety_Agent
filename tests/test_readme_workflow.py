@@ -16,12 +16,34 @@ sys.path.insert(0, str(ROOT / "code"))
 import check_setup
 import continuous_learner
 import fetch_osha_incidents
+import osha_incident_pipeline
 import run_autonomous_investigation
 import validate_saved_evaluation
 from ollama_config import ollama_base_url
 
 
 class ReadmeWorkflowTests(unittest.TestCase):
+    def test_missing_source_csv_explains_download_without_writing_outputs(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            argv = [
+                "pipeline",
+                "--input",
+                str(root / "missing.csv"),
+                "--out",
+                str(root / "new/observations.jsonl"),
+                "--profile",
+                str(root / "new/profile.json"),
+            ]
+            with patch.object(sys, "argv", argv), contextlib.redirect_stderr(
+                io.StringIO()
+            ) as error:
+                with self.assertRaises(SystemExit) as raised:
+                    osha_incident_pipeline.main()
+            self.assertEqual(raised.exception.code, 2)
+            self.assertIn("fetch_osha_incidents.py", error.getvalue())
+            self.assertFalse((root / "new").exists())
+
     def test_embedding_progress_does_not_pollute_json_stdout(self):
         response = MagicMock()
         response.json.return_value = {"embeddings": [[3.0, 4.0]]}
