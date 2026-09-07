@@ -1,5 +1,5 @@
 {
-  "source": "data\\example_camera_observation.json",
+  "source": "data/example_camera_observation.json",
   "reasoner_enabled": false,
   "results": [
     {
