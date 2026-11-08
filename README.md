@@ -16,6 +16,8 @@ Run `python code/public_results.py --check` to verify the report without downloa
 
 **Latest retrieval development result:** incident-focused queries recovered eight of the nine walkthrough misses: **55/64 → 63/64** expected authorities within the top 16. A frozen comparison on the other 80 public cases improved **71/80 → 77/80**. The [before-and-after report](docs/RETRIEVAL_IMPROVEMENT.md) includes readable charts, every original miss, remaining failures, four first-rank regressions, and reproduction commands. These are known synthetic development cases; independent evaluation remains separate.
 
+**Source-group allocation:** the [split-balance report](docs/GROUP_SPLIT_IMPROVEMENT.md) shows a 70/15/15 synthetic example improving from **132/84/84 to 210/45/45 rows**, with whole source groups preserved. It also reports all 100 exploratory cases, including eight where the allocation score worsened. These are data-allocation checks, not model-performance results.
+
 ## Start with the notebook
 
 I want someone new to this project to be able to open it, try an incident, and see why it returned that result. [main.ipynb](main.ipynb) walks through the actual backend, with explanations beside the code. The deeper scripts are still available below.
