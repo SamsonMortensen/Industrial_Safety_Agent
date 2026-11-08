@@ -326,27 +326,30 @@ class QueryPlanner:
             key=lambda item: (item.risk_score or 0.0, item.confidence),
             reverse=True,
         ):
-            queries.append(relation.sentence() + " applicable safety requirement")
+            queries.append(relation.sentence())
 
         entities = " ".join(
             [*observation.actors, *observation.equipment, observation.location]
         ).strip()
-        event_state = " ".join([*observation.actions, *observation.conditions]).strip()
+        # Context must stay attached to the incident. Background-only queries
+        # can otherwise outvote its evidence during multi-query rank fusion.
+        # Added legal boilerplate is not an observed fact and can attract
+        # unrelated sections in lexical retrieval.
+        event_state = " ".join(
+            [observation.summary, *observation.actions, *observation.conditions]
+        ).strip()
         if entities or event_state:
-            queries.append(f"{entities} {event_state} federal safety requirement")
+            queries.append(f"{entities} {event_state}")
         if observation.controls:
             queries.append(
-                f"{entities} {' '.join(observation.controls)} required protective control"
+                f"{entities} {event_state} {' '.join(observation.controls)}"
             )
         for name, value in observation.measurements.items():
             queries.append(
-                f"{entities} {event_state} {name.replace('_', ' ')} {value} "
-                "applicable limit or minimum requirement"
+                f"{entities} {event_state} {name.replace('_', ' ')} {value}"
             )
         if observation.novelty_score > 0:
-            queries.append(
-                f"{observation.evidence_text()} analogous regulated condition"
-            )
+            queries.append(observation.evidence_text())
         return self._deduplicate(queries)[: self.max_queries]
 
 
