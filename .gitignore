@@ -258,3 +258,38 @@ vision_runs/
 
 # Local release notes kept for private project retrospectives.
 docs/DEVELOPMENT_HISTORY.md
+
+# Credentials, private review material, and local backups are never publication inputs.
+.env.*
+!.env.example
+.streamlit/secrets.toml
+**/credentials.json
+**/credentials.yaml
+**/credentials.yml
+**/secrets.json
+**/secrets.yaml
+**/secrets.yml
+**/secrets.toml
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa
+id_ed25519
+.aws/
+.ssh/
+.azure/
+.config/gcloud/
+*label_reviews*.jsonl
+*label_validation*.json
+*review_receipt*.json
+*review_approval*.json
+*review_store*.json
+*review_store*.jsonl
+independent_evaluation/
+calibration_reserve/
+private/
+backups/
+*.bundle
+*.patch
+*.zip

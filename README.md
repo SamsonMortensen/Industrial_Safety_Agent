@@ -20,6 +20,8 @@ Run `python code/public_results.py --check` to verify the report without downloa
 
 ## Start with the notebook
 
+Before publishing changes or reports, follow the [publication privacy checks](docs/PUBLICATION_PRIVACY.md). They help keep credentials, private reviews, personal paths, and saved notebook outputs out of shared files. Independent evaluation and model promotion keep their own approval gates.
+
 I want someone new to this project to be able to open it, try an incident, and see why it returned that result. [main.ipynb](main.ipynb) walks through the actual backend, with explanations beside the code. The deeper scripts are still available below.
 
 The default notebook runs on the CPU. It does not need a GPU, Ollama, a camera, a model download, or an account. It does not train or change learning memory. You need internet access for the initial repository and package downloads. After setup, the walkthrough runs locally without model requests.
