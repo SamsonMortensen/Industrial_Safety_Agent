@@ -1,0 +1,1910 @@
+{
+  "schema": "matched_retrieval_development_comparison_v1",
+  "independent_evaluation_used": false,
+  "calibration_reserve_used": false,
+  "model_promoted": false,
+  "metrics": {
+    "primary64": {
+      "before": {
+        "cases": 64,
+        "hits_at_1": 11,
+        "recall_at_1": 0.171875,
+        "hits_at_4": 32,
+        "recall_at_4": 0.5,
+        "hits_at_8": 47,
+        "recall_at_8": 0.734375,
+        "hits_at_16": 55,
+        "recall_at_16": 0.859375,
+        "mean_reciprocal_rank_at_16": 0.353962227009102
+      },
+      "after": {
+        "cases": 64,
+        "hits_at_1": 20,
+        "recall_at_1": 0.3125,
+        "hits_at_4": 41,
+        "recall_at_4": 0.640625,
+        "hits_at_8": 54,
+        "recall_at_8": 0.84375,
+        "hits_at_16": 63,
+        "recall_at_16": 0.984375,
+        "mean_reciprocal_rank_at_16": 0.4886275183150183
+      },
+      "paired_cutoffs": {
+        "1": {
+          "gained": 9,
+          "lost": 0
+        },
+        "4": {
+          "gained": 9,
+          "lost": 0
+        },
+        "8": {
+          "gained": 7,
+          "lost": 0
+        },
+        "16": {
+          "gained": 8,
+          "lost": 0
+        }
+      }
+    },
+    "additional80": {
+      "before": {
+        "cases": 80,
+        "hits_at_1": 17,
+        "recall_at_1": 0.2125,
+        "hits_at_4": 46,
+        "recall_at_4": 0.575,
+        "hits_at_8": 58,
+        "recall_at_8": 0.725,
+        "hits_at_16": 71,
+        "recall_at_16": 0.8875,
+        "mean_reciprocal_rank_at_16": 0.4013386613386613
+      },
+      "after": {
+        "cases": 80,
+        "hits_at_1": 27,
+        "recall_at_1": 0.3375,
+        "hits_at_4": 60,
+        "recall_at_4": 0.75,
+        "hits_at_8": 68,
+        "recall_at_8": 0.85,
+        "hits_at_16": 77,
+        "recall_at_16": 0.9625,
+        "mean_reciprocal_rank_at_16": 0.5208400106837606
+      },
+      "paired_cutoffs": {
+        "1": {
+          "gained": 14,
+          "lost": 4
+        },
+        "4": {
+          "gained": 14,
+          "lost": 0
+        },
+        "8": {
+          "gained": 10,
+          "lost": 0
+        },
+        "16": {
+          "gained": 6,
+          "lost": 0
+        }
+      }
+    },
+    "all144": {
+      "before": {
+        "cases": 144,
+        "hits_at_1": 28,
+        "recall_at_1": 0.19444444444444445,
+        "hits_at_4": 78,
+        "recall_at_4": 0.5416666666666666,
+        "hits_at_8": 105,
+        "recall_at_8": 0.7291666666666666,
+        "hits_at_16": 126,
+        "recall_at_16": 0.875,
+        "mean_reciprocal_rank_at_16": 0.38028246830330165
+      },
+      "after": {
+        "cases": 144,
+        "hits_at_1": 47,
+        "recall_at_1": 0.3263888888888889,
+        "hits_at_4": 101,
+        "recall_at_4": 0.7013888888888888,
+        "hits_at_8": 122,
+        "recall_at_8": 0.8472222222222222,
+        "hits_at_16": 140,
+        "recall_at_16": 0.9722222222222222,
+        "mean_reciprocal_rank_at_16": 0.506523347408764
+      },
+      "paired_cutoffs": {
+        "1": {
+          "gained": 23,
+          "lost": 4
+        },
+        "4": {
+          "gained": 23,
+          "lost": 0
+        },
+        "8": {
+          "gained": 17,
+          "lost": 0
+        },
+        "16": {
+          "gained": 14,
+          "lost": 0
+        }
+      }
+    }
+  },
+  "original_misses": [
+    {
+      "event_id": "LOG-1011",
+      "cohort": "primary64",
+      "incident": "Hydraulic fluid pooled across the marked walking route and left unattended",
+      "hazard": "housekeeping",
+      "expected_section": "1910.22",
+      "before_rank": null,
+      "after_rank": 14,
+      "top16_change": "recovered"
+    },
+    {
+      "event_id": "LOG-1277",
+      "cohort": "primary64",
+      "incident": "Standing oily runoff spread over the pedestrian route with no containment",
+      "hazard": "housekeeping",
+      "expected_section": "1910.22",
+      "before_rank": null,
+      "after_rank": 16,
+      "top16_change": "recovered"
+    },
+    {
+      "event_id": "LOG-1281",
+      "cohort": "primary64",
+      "incident": "Palletised freight left obstructing the designated traffic aisle",
+      "hazard": "aisle_obstruction",
+      "expected_section": "1910.176",
+      "before_rank": null,
+      "after_rank": 10,
+      "top16_change": "recovered"
+    },
+    {
+      "event_id": "LOG-1322",
+      "cohort": "primary64",
+      "incident": "Standing oily runoff spread over the pedestrian route with no containment",
+      "hazard": "housekeeping",
+      "expected_section": "1910.22",
+      "before_rank": null,
+      "after_rank": 16,
+      "top16_change": "recovered"
+    },
+    {
+      "event_id": "LOG-1418",
+      "cohort": "primary64",
+      "incident": "Palletised freight left obstructing the designated traffic aisle",
+      "hazard": "aisle_obstruction",
+      "expected_section": "1910.176",
+      "before_rank": null,
+      "after_rank": 16,
+      "top16_change": "recovered"
+    },
+    {
+      "event_id": "LOG-1442",
+      "cohort": "primary64",
+      "incident": "Covered switch employee continued yard moves past scheduled relief",
+      "hazard": "duty_limit",
+      "expected_section": "21103",
+      "before_rank": null,
+      "after_rank": null,
+      "top16_change": "still_missing"
+    },
+    {
+      "event_id": "LOG-1472",
+      "cohort": "primary64",
+      "incident": "Hydraulic fluid pooled across the marked walking route and left unattended",
+      "hazard": "housekeeping",
+      "expected_section": "1910.22",
+      "before_rank": null,
+      "after_rank": 13,
+      "top16_change": "recovered"
+    },
+    {
+      "event_id": "LOG-1588",
+      "cohort": "primary64",
+      "incident": "Freight train employee remained in covered service through relief delay",
+      "hazard": "duty_limit",
+      "expected_section": "21103",
+      "before_rank": null,
+      "after_rank": 14,
+      "top16_change": "recovered"
+    },
+    {
+      "event_id": "LOG-1698",
+      "cohort": "primary64",
+      "incident": "Palletised freight left obstructing the designated traffic aisle",
+      "hazard": "aisle_obstruction",
+      "expected_section": "1910.176",
+      "before_rank": null,
+      "after_rank": 16,
+      "top16_change": "recovered"
+    }
+  ],
+  "remaining_misses": [
+    {
+      "event_id": "LOG-1442",
+      "cohort": "primary64",
+      "incident": "Covered switch employee continued yard moves past scheduled relief",
+      "hazard": "duty_limit",
+      "expected_section": "21103",
+      "before_rank": null,
+      "after_rank": null,
+      "top16_change": "still_missing"
+    },
+    {
+      "event_id": "LOG-1485",
+      "cohort": "additional80",
+      "incident": "Spilled coolant left across the marked pedestrian path",
+      "hazard": "housekeeping",
+      "expected_section": "1910.22",
+      "before_rank": null,
+      "after_rank": null,
+      "top16_change": "still_missing"
+    },
+    {
+      "event_id": "LOG-1670",
+      "cohort": "additional80",
+      "incident": "Covered switch employee continued yard moves past scheduled relief",
+      "hazard": "duty_limit",
+      "expected_section": "21103",
+      "before_rank": null,
+      "after_rank": null,
+      "top16_change": "still_missing"
+    },
+    {
+      "event_id": "LOG-1829",
+      "cohort": "additional80",
+      "incident": "Standing oily runoff spread over the pedestrian route with no containment",
+      "hazard": "housekeeping",
+      "expected_section": "1910.22",
+      "before_rank": null,
+      "after_rank": null,
+      "top16_change": "still_missing"
+    }
+  ],
+  "rank_regressions": [
+    {
+      "event_id": "LOG-1000",
+      "cohort": "primary64",
+      "incident": "Spreader boom worked within four feet of the energised catenary",
+      "hazard": "approach_distance",
+      "expected_section": "1910.333",
+      "before_rank": 5,
+      "after_rank": 8,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1132",
+      "cohort": "primary64",
+      "incident": "Employee worked exposed live parts with no protective equipment in use",
+      "hazard": "electrical_ppe",
+      "expected_section": "1910.335",
+      "before_rank": 2,
+      "after_rank": 3,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1150",
+      "cohort": "primary64",
+      "incident": "Employee worked exposed live parts with no protective equipment in use",
+      "hazard": "electrical_ppe",
+      "expected_section": "1910.335",
+      "before_rank": 2,
+      "after_rank": 3,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1183",
+      "cohort": "additional80",
+      "incident": "Work performed on an energised circuit without insulating gloves issued",
+      "hazard": "electrical_ppe",
+      "expected_section": "1910.335",
+      "before_rank": 2,
+      "after_rank": 3,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1224",
+      "cohort": "primary64",
+      "incident": "No hours-of-duty entry filed for the completed assignment",
+      "hazard": "duty_records",
+      "expected_section": "228.11",
+      "before_rank": 2,
+      "after_rank": 3,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1258",
+      "cohort": "primary64",
+      "incident": "No hours-of-duty entry filed for the completed assignment",
+      "hazard": "duty_records",
+      "expected_section": "228.11",
+      "before_rank": 3,
+      "after_rank": 4,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1293",
+      "cohort": "additional80",
+      "incident": "Work performed on an energised circuit without insulating gloves issued",
+      "hazard": "electrical_ppe",
+      "expected_section": "1910.335",
+      "before_rank": 2,
+      "after_rank": 4,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1306",
+      "cohort": "primary64",
+      "incident": "Panel left open with energised parts exposed to the walkway",
+      "hazard": "live_parts",
+      "expected_section": "1910.303",
+      "before_rank": 2,
+      "after_rank": 3,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1575",
+      "cohort": "additional80",
+      "incident": "Panel left open with energised parts exposed to the walkway",
+      "hazard": "live_parts",
+      "expected_section": "1910.303",
+      "before_rank": 3,
+      "after_rank": 4,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1677",
+      "cohort": "additional80",
+      "incident": "Sling used with a crushed eye fitting and no legible capacity tag",
+      "hazard": "sling",
+      "expected_section": "1910.184",
+      "before_rank": 1,
+      "after_rank": 2,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1824",
+      "cohort": "additional80",
+      "incident": "Duty record for the tour left unsigned and incomplete",
+      "hazard": "duty_records",
+      "expected_section": "228.11",
+      "before_rank": 1,
+      "after_rank": 2,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1918",
+      "cohort": "additional80",
+      "incident": "Portable ladder with a cracked side rail used to reach the container roof",
+      "hazard": "ladder",
+      "expected_section": "1910.23",
+      "before_rank": 1,
+      "after_rank": 2,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1953",
+      "cohort": "additional80",
+      "incident": "Portable ladder with a cracked side rail used to reach the container roof",
+      "hazard": "ladder",
+      "expected_section": "1910.23",
+      "before_rank": 1,
+      "after_rank": 2,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1979",
+      "cohort": "additional80",
+      "incident": "Spreader boom worked within four feet of the energised catenary",
+      "hazard": "approach_distance",
+      "expected_section": "1910.333",
+      "before_rank": 2,
+      "after_rank": 4,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1982",
+      "cohort": "additional80",
+      "incident": "Platform guardrail measured at twenty-eight inches above the walking level",
+      "hazard": "guardrail",
+      "expected_section": "1910.29",
+      "before_rank": 2,
+      "after_rank": 3,
+      "top16_change": "retained"
+    }
+  ],
+  "top1_losses": [
+    {
+      "event_id": "LOG-1677",
+      "cohort": "additional80",
+      "incident": "Sling used with a crushed eye fitting and no legible capacity tag",
+      "hazard": "sling",
+      "expected_section": "1910.184",
+      "before_rank": 1,
+      "after_rank": 2,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1824",
+      "cohort": "additional80",
+      "incident": "Duty record for the tour left unsigned and incomplete",
+      "hazard": "duty_records",
+      "expected_section": "228.11",
+      "before_rank": 1,
+      "after_rank": 2,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1918",
+      "cohort": "additional80",
+      "incident": "Portable ladder with a cracked side rail used to reach the container roof",
+      "hazard": "ladder",
+      "expected_section": "1910.23",
+      "before_rank": 1,
+      "after_rank": 2,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1953",
+      "cohort": "additional80",
+      "incident": "Portable ladder with a cracked side rail used to reach the container roof",
+      "hazard": "ladder",
+      "expected_section": "1910.23",
+      "before_rank": 1,
+      "after_rank": 2,
+      "top16_change": "retained"
+    }
+  ],
+  "cases": [
+    {
+      "event_id": "LOG-1000",
+      "cohort": "primary64",
+      "incident": "Spreader boom worked within four feet of the energised catenary",
+      "hazard": "approach_distance",
+      "expected_section": "1910.333",
+      "before_rank": 5,
+      "after_rank": 8,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1006",
+      "cohort": "primary64",
+      "incident": "Portable dockboard shifted under the forklift with no securing device fitted",
+      "hazard": "dockboard",
+      "expected_section": "1910.26",
+      "before_rank": 5,
+      "after_rank": 2,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1011",
+      "cohort": "primary64",
+      "incident": "Hydraulic fluid pooled across the marked walking route and left unattended",
+      "hazard": "housekeeping",
+      "expected_section": "1910.22",
+      "before_rank": null,
+      "after_rank": 14,
+      "top16_change": "recovered"
+    },
+    {
+      "event_id": "LOG-1022",
+      "cohort": "primary64",
+      "incident": "Mast raised inside the approach boundary of a live overhead line",
+      "hazard": "approach_distance",
+      "expected_section": "1910.333",
+      "before_rank": 6,
+      "after_rank": 5,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1024",
+      "cohort": "primary64",
+      "incident": "Multi-piece rim assembly inflated outside any restraining device",
+      "hazard": "rim_wheel",
+      "expected_section": "1910.177",
+      "before_rank": 1,
+      "after_rank": 1,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1027",
+      "cohort": "primary64",
+      "incident": "Worker on the container roof at eight feet with no fall protection rigged",
+      "hazard": "fall_protection",
+      "expected_section": "1910.28",
+      "before_rank": 3,
+      "after_rank": 1,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1043",
+      "cohort": "primary64",
+      "incident": "Work performed on an energised circuit without insulating gloves issued",
+      "hazard": "electrical_ppe",
+      "expected_section": "1910.335",
+      "before_rank": 5,
+      "after_rank": 4,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1046",
+      "cohort": "primary64",
+      "incident": "Elevated platform rail installed well below the required height",
+      "hazard": "guardrail",
+      "expected_section": "1910.29",
+      "before_rank": 6,
+      "after_rank": 5,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1051",
+      "cohort": "primary64",
+      "incident": "Open-sided stairway to the ramp office missing its handrail",
+      "hazard": "stairway",
+      "expected_section": "1910.25",
+      "before_rank": 12,
+      "after_rank": 8,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1058",
+      "cohort": "primary64",
+      "incident": "Rim wheel serviced without deflating and without a restraining cage",
+      "hazard": "rim_wheel",
+      "expected_section": "1910.177",
+      "before_rank": 3,
+      "after_rank": 2,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1071",
+      "cohort": "primary64",
+      "incident": "Wire rope sling with twelve broken wires in one lay kept in the active lift",
+      "hazard": "sling",
+      "expected_section": "1910.184",
+      "before_rank": 1,
+      "after_rank": 1,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1093",
+      "cohort": "primary64",
+      "incident": "Portable dockboard shifted under the forklift with no securing device fitted",
+      "hazard": "dockboard",
+      "expected_section": "1910.26",
+      "before_rank": 8,
+      "after_rank": 3,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1127",
+      "cohort": "primary64",
+      "incident": "Employee working the open edge of the stack with no arrest system attached",
+      "hazard": "fall_protection",
+      "expected_section": "1910.28",
+      "before_rank": 2,
+      "after_rank": 1,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1132",
+      "cohort": "primary64",
+      "incident": "Employee worked exposed live parts with no protective equipment in use",
+      "hazard": "electrical_ppe",
+      "expected_section": "1910.335",
+      "before_rank": 2,
+      "after_rank": 3,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1150",
+      "cohort": "primary64",
+      "incident": "Employee worked exposed live parts with no protective equipment in use",
+      "hazard": "electrical_ppe",
+      "expected_section": "1910.335",
+      "before_rank": 2,
+      "after_rank": 3,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1162",
+      "cohort": "primary64",
+      "incident": "Employee worked exposed live parts with no protective equipment in use",
+      "hazard": "electrical_ppe",
+      "expected_section": "1910.335",
+      "before_rank": 4,
+      "after_rank": 3,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1163",
+      "cohort": "primary64",
+      "incident": "Gantry hoist operated with the periodic inspection more than a year overdue",
+      "hazard": "crane_inspection",
+      "expected_section": "1910.179",
+      "before_rank": 1,
+      "after_rank": 1,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1183",
+      "cohort": "additional80",
+      "incident": "Work performed on an energised circuit without insulating gloves issued",
+      "hazard": "electrical_ppe",
+      "expected_section": "1910.335",
+      "before_rank": 2,
+      "after_rank": 3,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1198",
+      "cohort": "primary64",
+      "incident": "Mast raised inside the approach boundary of a live overhead line",
+      "hazard": "approach_distance",
+      "expected_section": "1910.333",
+      "before_rank": 6,
+      "after_rank": 5,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1222",
+      "cohort": "primary64",
+      "incident": "Lift truck kept in service after the mast chain was found slack and frayed",
+      "hazard": "truck_defect",
+      "expected_section": "1910.178",
+      "before_rank": 2,
+      "after_rank": 1,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1224",
+      "cohort": "primary64",
+      "incident": "No hours-of-duty entry filed for the completed assignment",
+      "hazard": "duty_records",
+      "expected_section": "228.11",
+      "before_rank": 2,
+      "after_rank": 3,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1228",
+      "cohort": "primary64",
+      "incident": "Open-sided stairway to the ramp office missing its handrail",
+      "hazard": "stairway",
+      "expected_section": "1910.25",
+      "before_rank": 13,
+      "after_rank": 8,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1233",
+      "cohort": "primary64",
+      "incident": "Dockboard placed without anchors and moved during transit into the boxcar",
+      "hazard": "dockboard",
+      "expected_section": "1910.26",
+      "before_rank": 14,
+      "after_rank": 3,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1237",
+      "cohort": "primary64",
+      "incident": "Lift truck kept in service after the mast chain was found slack and frayed",
+      "hazard": "truck_defect",
+      "expected_section": "1910.178",
+      "before_rank": 3,
+      "after_rank": 1,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1239",
+      "cohort": "primary64",
+      "incident": "Panel left open with energised parts exposed to the walkway",
+      "hazard": "live_parts",
+      "expected_section": "1910.303",
+      "before_rank": 8,
+      "after_rank": 5,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1250",
+      "cohort": "additional80",
+      "incident": "Work performed on an energised circuit without insulating gloves issued",
+      "hazard": "electrical_ppe",
+      "expected_section": "1910.335",
+      "before_rank": 6,
+      "after_rank": 3,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1258",
+      "cohort": "primary64",
+      "incident": "No hours-of-duty entry filed for the completed assignment",
+      "hazard": "duty_records",
+      "expected_section": "228.11",
+      "before_rank": 3,
+      "after_rank": 4,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1259",
+      "cohort": "primary64",
+      "incident": "Sling used with a crushed eye fitting and no legible capacity tag",
+      "hazard": "sling",
+      "expected_section": "1910.184",
+      "before_rank": 1,
+      "after_rank": 1,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1262",
+      "cohort": "primary64",
+      "incident": "Employee working the open edge of the stack with no arrest system attached",
+      "hazard": "fall_protection",
+      "expected_section": "1910.28",
+      "before_rank": 3,
+      "after_rank": 2,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1263",
+      "cohort": "primary64",
+      "incident": "Lift truck kept in service after the mast chain was found slack and frayed",
+      "hazard": "truck_defect",
+      "expected_section": "1910.178",
+      "before_rank": 3,
+      "after_rank": 2,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1276",
+      "cohort": "primary64",
+      "incident": "Junction box cover missing and live conductors reachable from the aisle",
+      "hazard": "live_parts",
+      "expected_section": "1910.303",
+      "before_rank": 2,
+      "after_rank": 1,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1277",
+      "cohort": "primary64",
+      "incident": "Standing oily runoff spread over the pedestrian route with no containment",
+      "hazard": "housekeeping",
+      "expected_section": "1910.22",
+      "before_rank": null,
+      "after_rank": 16,
+      "top16_change": "recovered"
+    },
+    {
+      "event_id": "LOG-1279",
+      "cohort": "primary64",
+      "incident": "Train employee remained on duty to complete consist tie-down",
+      "hazard": "duty_limit",
+      "expected_section": "21103",
+      "before_rank": 11,
+      "after_rank": 10,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1281",
+      "cohort": "primary64",
+      "incident": "Palletised freight left obstructing the designated traffic aisle",
+      "hazard": "aisle_obstruction",
+      "expected_section": "1910.176",
+      "before_rank": null,
+      "after_rank": 10,
+      "top16_change": "recovered"
+    },
+    {
+      "event_id": "LOG-1282",
+      "cohort": "primary64",
+      "incident": "Duty record for the tour left unsigned and incomplete",
+      "hazard": "duty_records",
+      "expected_section": "228.11",
+      "before_rank": 3,
+      "after_rank": 1,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1288",
+      "cohort": "primary64",
+      "incident": "Multi-piece rim assembly inflated outside any restraining device",
+      "hazard": "rim_wheel",
+      "expected_section": "1910.177",
+      "before_rank": 1,
+      "after_rank": 1,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1290",
+      "cohort": "primary64",
+      "incident": "Worker on the container roof at eight feet with no fall protection rigged",
+      "hazard": "fall_protection",
+      "expected_section": "1910.28",
+      "before_rank": 2,
+      "after_rank": 1,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1291",
+      "cohort": "primary64",
+      "incident": "Overhead crane run with the upper limit switch known inoperative",
+      "hazard": "crane_inspection",
+      "expected_section": "1910.179",
+      "before_rank": 1,
+      "after_rank": 1,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1293",
+      "cohort": "additional80",
+      "incident": "Work performed on an energised circuit without insulating gloves issued",
+      "hazard": "electrical_ppe",
+      "expected_section": "1910.335",
+      "before_rank": 2,
+      "after_rank": 4,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1301",
+      "cohort": "primary64",
+      "incident": "Stair run to the dispatch office in use with the handrail detached",
+      "hazard": "stairway",
+      "expected_section": "1910.25",
+      "before_rank": 8,
+      "after_rank": 7,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1306",
+      "cohort": "primary64",
+      "incident": "Panel left open with energised parts exposed to the walkway",
+      "hazard": "live_parts",
+      "expected_section": "1910.303",
+      "before_rank": 2,
+      "after_rank": 3,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1308",
+      "cohort": "primary64",
+      "incident": "Elevated platform rail installed well below the required height",
+      "hazard": "guardrail",
+      "expected_section": "1910.29",
+      "before_rank": 6,
+      "after_rank": 4,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1314",
+      "cohort": "primary64",
+      "incident": "Portable dockboard shifted under the forklift with no securing device fitted",
+      "hazard": "dockboard",
+      "expected_section": "1910.26",
+      "before_rank": 9,
+      "after_rank": 5,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1317",
+      "cohort": "additional80",
+      "incident": "Portable dockboard shifted under the forklift with no securing device fitted",
+      "hazard": "dockboard",
+      "expected_section": "1910.26",
+      "before_rank": 7,
+      "after_rank": 3,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1322",
+      "cohort": "primary64",
+      "incident": "Standing oily runoff spread over the pedestrian route with no containment",
+      "hazard": "housekeeping",
+      "expected_section": "1910.22",
+      "before_rank": null,
+      "after_rank": 16,
+      "top16_change": "recovered"
+    },
+    {
+      "event_id": "LOG-1323",
+      "cohort": "primary64",
+      "incident": "Junction box cover missing and live conductors reachable from the aisle",
+      "hazard": "live_parts",
+      "expected_section": "1910.303",
+      "before_rank": 4,
+      "after_rank": 2,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1338",
+      "cohort": "primary64",
+      "incident": "Multi-piece rim assembly inflated outside any restraining device",
+      "hazard": "rim_wheel",
+      "expected_section": "1910.177",
+      "before_rank": 1,
+      "after_rank": 1,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1342",
+      "cohort": "primary64",
+      "incident": "Portable ladder with a cracked side rail used to reach the container roof",
+      "hazard": "ladder",
+      "expected_section": "1910.23",
+      "before_rank": 1,
+      "after_rank": 1,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1347",
+      "cohort": "additional80",
+      "incident": "Worker on the container roof at eight feet with no fall protection rigged",
+      "hazard": "fall_protection",
+      "expected_section": "1910.28",
+      "before_rank": 3,
+      "after_rank": 1,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1348",
+      "cohort": "additional80",
+      "incident": "Employee working the open edge of the stack with no arrest system attached",
+      "hazard": "fall_protection",
+      "expected_section": "1910.28",
+      "before_rank": 4,
+      "after_rank": 2,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1371",
+      "cohort": "additional80",
+      "incident": "Work performed on an energised circuit without insulating gloves issued",
+      "hazard": "electrical_ppe",
+      "expected_section": "1910.335",
+      "before_rank": 4,
+      "after_rank": 4,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1394",
+      "cohort": "primary64",
+      "incident": "Mast raised inside the approach boundary of a live overhead line",
+      "hazard": "approach_distance",
+      "expected_section": "1910.333",
+      "before_rank": 4,
+      "after_rank": 2,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1398",
+      "cohort": "additional80",
+      "incident": "Worker on the container roof at eight feet with no fall protection rigged",
+      "hazard": "fall_protection",
+      "expected_section": "1910.28",
+      "before_rank": 2,
+      "after_rank": 1,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1404",
+      "cohort": "primary64",
+      "incident": "Truck with failed service brake returned to yard duty without repair",
+      "hazard": "truck_defect",
+      "expected_section": "1910.178",
+      "before_rank": 6,
+      "after_rank": 5,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1409",
+      "cohort": "primary64",
+      "incident": "Elevated platform rail installed well below the required height",
+      "hazard": "guardrail",
+      "expected_section": "1910.29",
+      "before_rank": 7,
+      "after_rank": 3,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1418",
+      "cohort": "primary64",
+      "incident": "Palletised freight left obstructing the designated traffic aisle",
+      "hazard": "aisle_obstruction",
+      "expected_section": "1910.176",
+      "before_rank": null,
+      "after_rank": 16,
+      "top16_change": "recovered"
+    },
+    {
+      "event_id": "LOG-1421",
+      "cohort": "primary64",
+      "incident": "Duty record for the tour left unsigned and incomplete",
+      "hazard": "duty_records",
+      "expected_section": "228.11",
+      "before_rank": 3,
+      "after_rank": 1,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1425",
+      "cohort": "primary64",
+      "incident": "Elevated platform rail installed well below the required height",
+      "hazard": "guardrail",
+      "expected_section": "1910.29",
+      "before_rank": 6,
+      "after_rank": 5,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1429",
+      "cohort": "additional80",
+      "incident": "Duty record for the tour left unsigned and incomplete",
+      "hazard": "duty_records",
+      "expected_section": "228.11",
+      "before_rank": 2,
+      "after_rank": 1,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1434",
+      "cohort": "additional80",
+      "incident": "Portable dockboard shifted under the forklift with no securing device fitted",
+      "hazard": "dockboard",
+      "expected_section": "1910.26",
+      "before_rank": 7,
+      "after_rank": 3,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1437",
+      "cohort": "additional80",
+      "incident": "Panel left open with energised parts exposed to the walkway",
+      "hazard": "live_parts",
+      "expected_section": "1910.303",
+      "before_rank": 8,
+      "after_rank": 5,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1439",
+      "cohort": "primary64",
+      "incident": "Portable ladder with a cracked side rail used to reach the container roof",
+      "hazard": "ladder",
+      "expected_section": "1910.23",
+      "before_rank": 2,
+      "after_rank": 2,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1442",
+      "cohort": "primary64",
+      "incident": "Covered switch employee continued yard moves past scheduled relief",
+      "hazard": "duty_limit",
+      "expected_section": "21103",
+      "before_rank": null,
+      "after_rank": null,
+      "top16_change": "still_missing"
+    },
+    {
+      "event_id": "LOG-1443",
+      "cohort": "additional80",
+      "incident": "Mast raised inside the approach boundary of a live overhead line",
+      "hazard": "approach_distance",
+      "expected_section": "1910.333",
+      "before_rank": 2,
+      "after_rank": 2,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1445",
+      "cohort": "additional80",
+      "incident": "Rim wheel serviced without deflating and without a restraining cage",
+      "hazard": "rim_wheel",
+      "expected_section": "1910.177",
+      "before_rank": 3,
+      "after_rank": 1,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1463",
+      "cohort": "primary64",
+      "incident": "Stair run to the dispatch office in use with the handrail detached",
+      "hazard": "stairway",
+      "expected_section": "1910.25",
+      "before_rank": 9,
+      "after_rank": 7,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1472",
+      "cohort": "primary64",
+      "incident": "Hydraulic fluid pooled across the marked walking route and left unattended",
+      "hazard": "housekeeping",
+      "expected_section": "1910.22",
+      "before_rank": null,
+      "after_rank": 13,
+      "top16_change": "recovered"
+    },
+    {
+      "event_id": "LOG-1474",
+      "cohort": "primary64",
+      "incident": "Train employee remained on duty to complete consist tie-down",
+      "hazard": "duty_limit",
+      "expected_section": "21103",
+      "before_rank": 12,
+      "after_rank": 8,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1485",
+      "cohort": "additional80",
+      "incident": "Spilled coolant left across the marked pedestrian path",
+      "hazard": "housekeeping",
+      "expected_section": "1910.22",
+      "before_rank": null,
+      "after_rank": null,
+      "top16_change": "still_missing"
+    },
+    {
+      "event_id": "LOG-1487",
+      "cohort": "additional80",
+      "incident": "Work performed on an energised circuit without insulating gloves issued",
+      "hazard": "electrical_ppe",
+      "expected_section": "1910.335",
+      "before_rank": 9,
+      "after_rank": 4,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1490",
+      "cohort": "primary64",
+      "incident": "Cargo stacked with a three-foot overhang blocking the marked aisle",
+      "hazard": "aisle_obstruction",
+      "expected_section": "1910.176",
+      "before_rank": 11,
+      "after_rank": 2,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1495",
+      "cohort": "primary64",
+      "incident": "Sling used with a crushed eye fitting and no legible capacity tag",
+      "hazard": "sling",
+      "expected_section": "1910.184",
+      "before_rank": 1,
+      "after_rank": 1,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1496",
+      "cohort": "additional80",
+      "incident": "Lift truck kept in service after the mast chain was found slack and frayed",
+      "hazard": "truck_defect",
+      "expected_section": "1910.178",
+      "before_rank": 2,
+      "after_rank": 1,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1508",
+      "cohort": "additional80",
+      "incident": "Lift truck kept in service after the mast chain was found slack and frayed",
+      "hazard": "truck_defect",
+      "expected_section": "1910.178",
+      "before_rank": 3,
+      "after_rank": 1,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1517",
+      "cohort": "additional80",
+      "incident": "Elevated platform rail installed well below the required height",
+      "hazard": "guardrail",
+      "expected_section": "1910.29",
+      "before_rank": 2,
+      "after_rank": 2,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1521",
+      "cohort": "primary64",
+      "incident": "Gantry hoist operated with the periodic inspection more than a year overdue",
+      "hazard": "crane_inspection",
+      "expected_section": "1910.179",
+      "before_rank": 1,
+      "after_rank": 1,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1534",
+      "cohort": "additional80",
+      "incident": "Truck with failed service brake returned to yard duty without repair",
+      "hazard": "truck_defect",
+      "expected_section": "1910.178",
+      "before_rank": 5,
+      "after_rank": 3,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1537",
+      "cohort": "primary64",
+      "incident": "Wire rope sling with twelve broken wires in one lay kept in the active lift",
+      "hazard": "sling",
+      "expected_section": "1910.184",
+      "before_rank": 5,
+      "after_rank": 1,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1540",
+      "cohort": "additional80",
+      "incident": "Hydraulic fluid pooled across the marked walking route and left unattended",
+      "hazard": "housekeeping",
+      "expected_section": "1910.22",
+      "before_rank": null,
+      "after_rank": 14,
+      "top16_change": "recovered"
+    },
+    {
+      "event_id": "LOG-1544",
+      "cohort": "additional80",
+      "incident": "Stair run to the dispatch office in use with the handrail detached",
+      "hazard": "stairway",
+      "expected_section": "1910.25",
+      "before_rank": 10,
+      "after_rank": 5,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1558",
+      "cohort": "additional80",
+      "incident": "Employee working the open edge of the stack with no arrest system attached",
+      "hazard": "fall_protection",
+      "expected_section": "1910.28",
+      "before_rank": 3,
+      "after_rank": 2,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1565",
+      "cohort": "primary64",
+      "incident": "Fixed ladder to the ramp platform in use with two rungs missing",
+      "hazard": "ladder",
+      "expected_section": "1910.23",
+      "before_rank": 2,
+      "after_rank": 2,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1575",
+      "cohort": "additional80",
+      "incident": "Panel left open with energised parts exposed to the walkway",
+      "hazard": "live_parts",
+      "expected_section": "1910.303",
+      "before_rank": 3,
+      "after_rank": 4,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1588",
+      "cohort": "primary64",
+      "incident": "Freight train employee remained in covered service through relief delay",
+      "hazard": "duty_limit",
+      "expected_section": "21103",
+      "before_rank": null,
+      "after_rank": 14,
+      "top16_change": "recovered"
+    },
+    {
+      "event_id": "LOG-1589",
+      "cohort": "additional80",
+      "incident": "Junction box cover missing and live conductors reachable from the aisle",
+      "hazard": "live_parts",
+      "expected_section": "1910.303",
+      "before_rank": 3,
+      "after_rank": 2,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1591",
+      "cohort": "additional80",
+      "incident": "Worker on the container roof at eight feet with no fall protection rigged",
+      "hazard": "fall_protection",
+      "expected_section": "1910.28",
+      "before_rank": 1,
+      "after_rank": 1,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1594",
+      "cohort": "primary64",
+      "incident": "Gantry hoist operated with the periodic inspection more than a year overdue",
+      "hazard": "crane_inspection",
+      "expected_section": "1910.179",
+      "before_rank": 1,
+      "after_rank": 1,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1615",
+      "cohort": "additional80",
+      "incident": "Gantry hoist operated with the periodic inspection more than a year overdue",
+      "hazard": "crane_inspection",
+      "expected_section": "1910.179",
+      "before_rank": 1,
+      "after_rank": 1,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1623",
+      "cohort": "primary64",
+      "incident": "Portable ladder with a cracked side rail used to reach the container roof",
+      "hazard": "ladder",
+      "expected_section": "1910.23",
+      "before_rank": 5,
+      "after_rank": 2,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1670",
+      "cohort": "additional80",
+      "incident": "Covered switch employee continued yard moves past scheduled relief",
+      "hazard": "duty_limit",
+      "expected_section": "21103",
+      "before_rank": null,
+      "after_rank": null,
+      "top16_change": "still_missing"
+    },
+    {
+      "event_id": "LOG-1674",
+      "cohort": "additional80",
+      "incident": "Platform guardrail measured at twenty-eight inches above the walking level",
+      "hazard": "guardrail",
+      "expected_section": "1910.29",
+      "before_rank": 5,
+      "after_rank": 4,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1676",
+      "cohort": "additional80",
+      "incident": "Fixed ladder to the ramp platform in use with two rungs missing",
+      "hazard": "ladder",
+      "expected_section": "1910.23",
+      "before_rank": 1,
+      "after_rank": 1,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1677",
+      "cohort": "additional80",
+      "incident": "Sling used with a crushed eye fitting and no legible capacity tag",
+      "hazard": "sling",
+      "expected_section": "1910.184",
+      "before_rank": 1,
+      "after_rank": 2,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1682",
+      "cohort": "additional80",
+      "incident": "Sling used with a crushed eye fitting and no legible capacity tag",
+      "hazard": "sling",
+      "expected_section": "1910.184",
+      "before_rank": 1,
+      "after_rank": 1,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1688",
+      "cohort": "additional80",
+      "incident": "Elevated platform rail installed well below the required height",
+      "hazard": "guardrail",
+      "expected_section": "1910.29",
+      "before_rank": 7,
+      "after_rank": 3,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1690",
+      "cohort": "additional80",
+      "incident": "Dockboard placed without anchors and moved during transit into the boxcar",
+      "hazard": "dockboard",
+      "expected_section": "1910.26",
+      "before_rank": 11,
+      "after_rank": 6,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1692",
+      "cohort": "additional80",
+      "incident": "Fixed ladder to the ramp platform in use with two rungs missing",
+      "hazard": "ladder",
+      "expected_section": "1910.23",
+      "before_rank": 2,
+      "after_rank": 2,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1696",
+      "cohort": "additional80",
+      "incident": "Mast raised inside the approach boundary of a live overhead line",
+      "hazard": "approach_distance",
+      "expected_section": "1910.333",
+      "before_rank": 4,
+      "after_rank": 2,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1698",
+      "cohort": "primary64",
+      "incident": "Palletised freight left obstructing the designated traffic aisle",
+      "hazard": "aisle_obstruction",
+      "expected_section": "1910.176",
+      "before_rank": null,
+      "after_rank": 16,
+      "top16_change": "recovered"
+    },
+    {
+      "event_id": "LOG-1705",
+      "cohort": "additional80",
+      "incident": "Open-sided stairway to the ramp office missing its handrail",
+      "hazard": "stairway",
+      "expected_section": "1910.25",
+      "before_rank": 15,
+      "after_rank": 9,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1711",
+      "cohort": "additional80",
+      "incident": "Mast raised inside the approach boundary of a live overhead line",
+      "hazard": "approach_distance",
+      "expected_section": "1910.333",
+      "before_rank": 3,
+      "after_rank": 2,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1721",
+      "cohort": "additional80",
+      "incident": "Freight train employee remained in covered service through relief delay",
+      "hazard": "duty_limit",
+      "expected_section": "21103",
+      "before_rank": null,
+      "after_rank": 14,
+      "top16_change": "recovered"
+    },
+    {
+      "event_id": "LOG-1724",
+      "cohort": "additional80",
+      "incident": "No hours-of-duty entry filed for the completed assignment",
+      "hazard": "duty_records",
+      "expected_section": "228.11",
+      "before_rank": 3,
+      "after_rank": 3,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1733",
+      "cohort": "additional80",
+      "incident": "Multi-piece rim assembly inflated outside any restraining device",
+      "hazard": "rim_wheel",
+      "expected_section": "1910.177",
+      "before_rank": 2,
+      "after_rank": 1,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1750",
+      "cohort": "additional80",
+      "incident": "Rim wheel serviced without deflating and without a restraining cage",
+      "hazard": "rim_wheel",
+      "expected_section": "1910.177",
+      "before_rank": 2,
+      "after_rank": 1,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1754",
+      "cohort": "additional80",
+      "incident": "Dockboard placed without anchors and moved during transit into the boxcar",
+      "hazard": "dockboard",
+      "expected_section": "1910.26",
+      "before_rank": 13,
+      "after_rank": 7,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1755",
+      "cohort": "additional80",
+      "incident": "Freight train employee remained in covered service through relief delay",
+      "hazard": "duty_limit",
+      "expected_section": "21103",
+      "before_rank": null,
+      "after_rank": 13,
+      "top16_change": "recovered"
+    },
+    {
+      "event_id": "LOG-1759",
+      "cohort": "additional80",
+      "incident": "Portable ladder with a cracked side rail used to reach the container roof",
+      "hazard": "ladder",
+      "expected_section": "1910.23",
+      "before_rank": 2,
+      "after_rank": 2,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1763",
+      "cohort": "additional80",
+      "incident": "Junction box cover missing and live conductors reachable from the aisle",
+      "hazard": "live_parts",
+      "expected_section": "1910.303",
+      "before_rank": 4,
+      "after_rank": 3,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1768",
+      "cohort": "additional80",
+      "incident": "Gantry hoist operated with the periodic inspection more than a year overdue",
+      "hazard": "crane_inspection",
+      "expected_section": "1910.179",
+      "before_rank": 1,
+      "after_rank": 1,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1777",
+      "cohort": "additional80",
+      "incident": "Overhead crane run with the upper limit switch known inoperative",
+      "hazard": "crane_inspection",
+      "expected_section": "1910.179",
+      "before_rank": 1,
+      "after_rank": 1,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1779",
+      "cohort": "additional80",
+      "incident": "Cargo stacked with a three-foot overhang blocking the marked aisle",
+      "hazard": "aisle_obstruction",
+      "expected_section": "1910.176",
+      "before_rank": 5,
+      "after_rank": 2,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1787",
+      "cohort": "additional80",
+      "incident": "Freight train employee remained in covered service through relief delay",
+      "hazard": "duty_limit",
+      "expected_section": "21103",
+      "before_rank": null,
+      "after_rank": 15,
+      "top16_change": "recovered"
+    },
+    {
+      "event_id": "LOG-1798",
+      "cohort": "additional80",
+      "incident": "Multi-piece rim assembly inflated outside any restraining device",
+      "hazard": "rim_wheel",
+      "expected_section": "1910.177",
+      "before_rank": 1,
+      "after_rank": 1,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1810",
+      "cohort": "additional80",
+      "incident": "Train employee remained on duty to complete consist tie-down",
+      "hazard": "duty_limit",
+      "expected_section": "21103",
+      "before_rank": 11,
+      "after_rank": 7,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1817",
+      "cohort": "additional80",
+      "incident": "Duty record for the tour left unsigned and incomplete",
+      "hazard": "duty_records",
+      "expected_section": "228.11",
+      "before_rank": 2,
+      "after_rank": 1,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1824",
+      "cohort": "additional80",
+      "incident": "Duty record for the tour left unsigned and incomplete",
+      "hazard": "duty_records",
+      "expected_section": "228.11",
+      "before_rank": 1,
+      "after_rank": 2,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1829",
+      "cohort": "additional80",
+      "incident": "Standing oily runoff spread over the pedestrian route with no containment",
+      "hazard": "housekeeping",
+      "expected_section": "1910.22",
+      "before_rank": null,
+      "after_rank": null,
+      "top16_change": "still_missing"
+    },
+    {
+      "event_id": "LOG-1832",
+      "cohort": "additional80",
+      "incident": "Overhead crane run with the upper limit switch known inoperative",
+      "hazard": "crane_inspection",
+      "expected_section": "1910.179",
+      "before_rank": 1,
+      "after_rank": 1,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1850",
+      "cohort": "additional80",
+      "incident": "Cargo stacked with a three-foot overhang blocking the marked aisle",
+      "hazard": "aisle_obstruction",
+      "expected_section": "1910.176",
+      "before_rank": 10,
+      "after_rank": 5,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1859",
+      "cohort": "additional80",
+      "incident": "Wire rope sling with twelve broken wires in one lay kept in the active lift",
+      "hazard": "sling",
+      "expected_section": "1910.184",
+      "before_rank": 5,
+      "after_rank": 1,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1863",
+      "cohort": "additional80",
+      "incident": "Duty record for the tour left unsigned and incomplete",
+      "hazard": "duty_records",
+      "expected_section": "228.11",
+      "before_rank": 1,
+      "after_rank": 1,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1869",
+      "cohort": "additional80",
+      "incident": "Stair run to the dispatch office in use with the handrail detached",
+      "hazard": "stairway",
+      "expected_section": "1910.25",
+      "before_rank": 7,
+      "after_rank": 6,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1887",
+      "cohort": "additional80",
+      "incident": "Truck with failed service brake returned to yard duty without repair",
+      "hazard": "truck_defect",
+      "expected_section": "1910.178",
+      "before_rank": 4,
+      "after_rank": 1,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1889",
+      "cohort": "additional80",
+      "incident": "Platform guardrail measured at twenty-eight inches above the walking level",
+      "hazard": "guardrail",
+      "expected_section": "1910.29",
+      "before_rank": 5,
+      "after_rank": 3,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1892",
+      "cohort": "additional80",
+      "incident": "Palletised freight left obstructing the designated traffic aisle",
+      "hazard": "aisle_obstruction",
+      "expected_section": "1910.176",
+      "before_rank": 16,
+      "after_rank": 16,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1894",
+      "cohort": "additional80",
+      "incident": "Hydraulic fluid pooled across the marked walking route and left unattended",
+      "hazard": "housekeeping",
+      "expected_section": "1910.22",
+      "before_rank": 16,
+      "after_rank": 14,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1900",
+      "cohort": "additional80",
+      "incident": "Sling used with a crushed eye fitting and no legible capacity tag",
+      "hazard": "sling",
+      "expected_section": "1910.184",
+      "before_rank": 1,
+      "after_rank": 1,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1906",
+      "cohort": "additional80",
+      "incident": "Open-sided stairway to the ramp office missing its handrail",
+      "hazard": "stairway",
+      "expected_section": "1910.25",
+      "before_rank": 13,
+      "after_rank": 6,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1911",
+      "cohort": "additional80",
+      "incident": "Lift truck kept in service after the mast chain was found slack and frayed",
+      "hazard": "truck_defect",
+      "expected_section": "1910.178",
+      "before_rank": 2,
+      "after_rank": 1,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1915",
+      "cohort": "additional80",
+      "incident": "Dockboard placed without anchors and moved during transit into the boxcar",
+      "hazard": "dockboard",
+      "expected_section": "1910.26",
+      "before_rank": 9,
+      "after_rank": 4,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1916",
+      "cohort": "additional80",
+      "incident": "Hydraulic fluid pooled across the marked walking route and left unattended",
+      "hazard": "housekeeping",
+      "expected_section": "1910.22",
+      "before_rank": null,
+      "after_rank": 15,
+      "top16_change": "recovered"
+    },
+    {
+      "event_id": "LOG-1918",
+      "cohort": "additional80",
+      "incident": "Portable ladder with a cracked side rail used to reach the container roof",
+      "hazard": "ladder",
+      "expected_section": "1910.23",
+      "before_rank": 1,
+      "after_rank": 2,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1920",
+      "cohort": "additional80",
+      "incident": "Mast raised inside the approach boundary of a live overhead line",
+      "hazard": "approach_distance",
+      "expected_section": "1910.333",
+      "before_rank": 1,
+      "after_rank": 1,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1926",
+      "cohort": "additional80",
+      "incident": "Cargo stacked with a three-foot overhang blocking the marked aisle",
+      "hazard": "aisle_obstruction",
+      "expected_section": "1910.176",
+      "before_rank": 10,
+      "after_rank": 4,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1937",
+      "cohort": "additional80",
+      "incident": "Rim wheel serviced without deflating and without a restraining cage",
+      "hazard": "rim_wheel",
+      "expected_section": "1910.177",
+      "before_rank": 1,
+      "after_rank": 1,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1953",
+      "cohort": "additional80",
+      "incident": "Portable ladder with a cracked side rail used to reach the container roof",
+      "hazard": "ladder",
+      "expected_section": "1910.23",
+      "before_rank": 1,
+      "after_rank": 2,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1954",
+      "cohort": "additional80",
+      "incident": "Wire rope sling with twelve broken wires in one lay kept in the active lift",
+      "hazard": "sling",
+      "expected_section": "1910.184",
+      "before_rank": 6,
+      "after_rank": 1,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1960",
+      "cohort": "additional80",
+      "incident": "Stair run to the dispatch office in use with the handrail detached",
+      "hazard": "stairway",
+      "expected_section": "1910.25",
+      "before_rank": 9,
+      "after_rank": 4,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1965",
+      "cohort": "additional80",
+      "incident": "Palletised freight left obstructing the designated traffic aisle",
+      "hazard": "aisle_obstruction",
+      "expected_section": "1910.176",
+      "before_rank": null,
+      "after_rank": 10,
+      "top16_change": "recovered"
+    },
+    {
+      "event_id": "LOG-1979",
+      "cohort": "additional80",
+      "incident": "Spreader boom worked within four feet of the energised catenary",
+      "hazard": "approach_distance",
+      "expected_section": "1910.333",
+      "before_rank": 2,
+      "after_rank": 4,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1982",
+      "cohort": "additional80",
+      "incident": "Platform guardrail measured at twenty-eight inches above the walking level",
+      "hazard": "guardrail",
+      "expected_section": "1910.29",
+      "before_rank": 2,
+      "after_rank": 3,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1988",
+      "cohort": "additional80",
+      "incident": "Junction box cover missing and live conductors reachable from the aisle",
+      "hazard": "live_parts",
+      "expected_section": "1910.303",
+      "before_rank": 2,
+      "after_rank": 1,
+      "top16_change": "retained"
+    },
+    {
+      "event_id": "LOG-1995",
+      "cohort": "additional80",
+      "incident": "Overhead crane run with the upper limit switch known inoperative",
+      "hazard": "crane_inspection",
+      "expected_section": "1910.179",
+      "before_rank": 1,
+      "after_rank": 1,
+      "top16_change": "retained"
+    }
+  ]
+}

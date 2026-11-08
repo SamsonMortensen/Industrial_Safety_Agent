@@ -1,0 +1,145 @@
+event_id,cohort,incident,hazard,expected_section,before_rank,after_rank,top16_change
+LOG-1000,primary64,Spreader boom worked within four feet of the energised catenary,approach_distance,1910.333,5,8,retained
+LOG-1006,primary64,Portable dockboard shifted under the forklift with no securing device fitted,dockboard,1910.26,5,2,retained
+LOG-1011,primary64,Hydraulic fluid pooled across the marked walking route and left unattended,housekeeping,1910.22,,14,recovered
+LOG-1022,primary64,Mast raised inside the approach boundary of a live overhead line,approach_distance,1910.333,6,5,retained
+LOG-1024,primary64,Multi-piece rim assembly inflated outside any restraining device,rim_wheel,1910.177,1,1,retained
+LOG-1027,primary64,Worker on the container roof at eight feet with no fall protection rigged,fall_protection,1910.28,3,1,retained
+LOG-1043,primary64,Work performed on an energised circuit without insulating gloves issued,electrical_ppe,1910.335,5,4,retained
+LOG-1046,primary64,Elevated platform rail installed well below the required height,guardrail,1910.29,6,5,retained
+LOG-1051,primary64,Open-sided stairway to the ramp office missing its handrail,stairway,1910.25,12,8,retained
+LOG-1058,primary64,Rim wheel serviced without deflating and without a restraining cage,rim_wheel,1910.177,3,2,retained
+LOG-1071,primary64,Wire rope sling with twelve broken wires in one lay kept in the active lift,sling,1910.184,1,1,retained
+LOG-1093,primary64,Portable dockboard shifted under the forklift with no securing device fitted,dockboard,1910.26,8,3,retained
+LOG-1127,primary64,Employee working the open edge of the stack with no arrest system attached,fall_protection,1910.28,2,1,retained
+LOG-1132,primary64,Employee worked exposed live parts with no protective equipment in use,electrical_ppe,1910.335,2,3,retained
+LOG-1150,primary64,Employee worked exposed live parts with no protective equipment in use,electrical_ppe,1910.335,2,3,retained
+LOG-1162,primary64,Employee worked exposed live parts with no protective equipment in use,electrical_ppe,1910.335,4,3,retained
+LOG-1163,primary64,Gantry hoist operated with the periodic inspection more than a year overdue,crane_inspection,1910.179,1,1,retained
+LOG-1183,additional80,Work performed on an energised circuit without insulating gloves issued,electrical_ppe,1910.335,2,3,retained
+LOG-1198,primary64,Mast raised inside the approach boundary of a live overhead line,approach_distance,1910.333,6,5,retained
+LOG-1222,primary64,Lift truck kept in service after the mast chain was found slack and frayed,truck_defect,1910.178,2,1,retained
+LOG-1224,primary64,No hours-of-duty entry filed for the completed assignment,duty_records,228.11,2,3,retained
+LOG-1228,primary64,Open-sided stairway to the ramp office missing its handrail,stairway,1910.25,13,8,retained
+LOG-1233,primary64,Dockboard placed without anchors and moved during transit into the boxcar,dockboard,1910.26,14,3,retained
+LOG-1237,primary64,Lift truck kept in service after the mast chain was found slack and frayed,truck_defect,1910.178,3,1,retained
+LOG-1239,primary64,Panel left open with energised parts exposed to the walkway,live_parts,1910.303,8,5,retained
+LOG-1250,additional80,Work performed on an energised circuit without insulating gloves issued,electrical_ppe,1910.335,6,3,retained
+LOG-1258,primary64,No hours-of-duty entry filed for the completed assignment,duty_records,228.11,3,4,retained
+LOG-1259,primary64,Sling used with a crushed eye fitting and no legible capacity tag,sling,1910.184,1,1,retained
+LOG-1262,primary64,Employee working the open edge of the stack with no arrest system attached,fall_protection,1910.28,3,2,retained
+LOG-1263,primary64,Lift truck kept in service after the mast chain was found slack and frayed,truck_defect,1910.178,3,2,retained
+LOG-1276,primary64,Junction box cover missing and live conductors reachable from the aisle,live_parts,1910.303,2,1,retained
+LOG-1277,primary64,Standing oily runoff spread over the pedestrian route with no containment,housekeeping,1910.22,,16,recovered
+LOG-1279,primary64,Train employee remained on duty to complete consist tie-down,duty_limit,21103,11,10,retained
+LOG-1281,primary64,Palletised freight left obstructing the designated traffic aisle,aisle_obstruction,1910.176,,10,recovered
+LOG-1282,primary64,Duty record for the tour left unsigned and incomplete,duty_records,228.11,3,1,retained
+LOG-1288,primary64,Multi-piece rim assembly inflated outside any restraining device,rim_wheel,1910.177,1,1,retained
+LOG-1290,primary64,Worker on the container roof at eight feet with no fall protection rigged,fall_protection,1910.28,2,1,retained
+LOG-1291,primary64,Overhead crane run with the upper limit switch known inoperative,crane_inspection,1910.179,1,1,retained
+LOG-1293,additional80,Work performed on an energised circuit without insulating gloves issued,electrical_ppe,1910.335,2,4,retained
+LOG-1301,primary64,Stair run to the dispatch office in use with the handrail detached,stairway,1910.25,8,7,retained
+LOG-1306,primary64,Panel left open with energised parts exposed to the walkway,live_parts,1910.303,2,3,retained
+LOG-1308,primary64,Elevated platform rail installed well below the required height,guardrail,1910.29,6,4,retained
+LOG-1314,primary64,Portable dockboard shifted under the forklift with no securing device fitted,dockboard,1910.26,9,5,retained
+LOG-1317,additional80,Portable dockboard shifted under the forklift with no securing device fitted,dockboard,1910.26,7,3,retained
+LOG-1322,primary64,Standing oily runoff spread over the pedestrian route with no containment,housekeeping,1910.22,,16,recovered
+LOG-1323,primary64,Junction box cover missing and live conductors reachable from the aisle,live_parts,1910.303,4,2,retained
+LOG-1338,primary64,Multi-piece rim assembly inflated outside any restraining device,rim_wheel,1910.177,1,1,retained
+LOG-1342,primary64,Portable ladder with a cracked side rail used to reach the container roof,ladder,1910.23,1,1,retained
+LOG-1347,additional80,Worker on the container roof at eight feet with no fall protection rigged,fall_protection,1910.28,3,1,retained
+LOG-1348,additional80,Employee working the open edge of the stack with no arrest system attached,fall_protection,1910.28,4,2,retained
+LOG-1371,additional80,Work performed on an energised circuit without insulating gloves issued,electrical_ppe,1910.335,4,4,retained
+LOG-1394,primary64,Mast raised inside the approach boundary of a live overhead line,approach_distance,1910.333,4,2,retained
+LOG-1398,additional80,Worker on the container roof at eight feet with no fall protection rigged,fall_protection,1910.28,2,1,retained
+LOG-1404,primary64,Truck with failed service brake returned to yard duty without repair,truck_defect,1910.178,6,5,retained
+LOG-1409,primary64,Elevated platform rail installed well below the required height,guardrail,1910.29,7,3,retained
+LOG-1418,primary64,Palletised freight left obstructing the designated traffic aisle,aisle_obstruction,1910.176,,16,recovered
+LOG-1421,primary64,Duty record for the tour left unsigned and incomplete,duty_records,228.11,3,1,retained
+LOG-1425,primary64,Elevated platform rail installed well below the required height,guardrail,1910.29,6,5,retained
+LOG-1429,additional80,Duty record for the tour left unsigned and incomplete,duty_records,228.11,2,1,retained
+LOG-1434,additional80,Portable dockboard shifted under the forklift with no securing device fitted,dockboard,1910.26,7,3,retained
+LOG-1437,additional80,Panel left open with energised parts exposed to the walkway,live_parts,1910.303,8,5,retained
+LOG-1439,primary64,Portable ladder with a cracked side rail used to reach the container roof,ladder,1910.23,2,2,retained
+LOG-1442,primary64,Covered switch employee continued yard moves past scheduled relief,duty_limit,21103,,,still_missing
+LOG-1443,additional80,Mast raised inside the approach boundary of a live overhead line,approach_distance,1910.333,2,2,retained
+LOG-1445,additional80,Rim wheel serviced without deflating and without a restraining cage,rim_wheel,1910.177,3,1,retained
+LOG-1463,primary64,Stair run to the dispatch office in use with the handrail detached,stairway,1910.25,9,7,retained
+LOG-1472,primary64,Hydraulic fluid pooled across the marked walking route and left unattended,housekeeping,1910.22,,13,recovered
+LOG-1474,primary64,Train employee remained on duty to complete consist tie-down,duty_limit,21103,12,8,retained
+LOG-1485,additional80,Spilled coolant left across the marked pedestrian path,housekeeping,1910.22,,,still_missing
+LOG-1487,additional80,Work performed on an energised circuit without insulating gloves issued,electrical_ppe,1910.335,9,4,retained
+LOG-1490,primary64,Cargo stacked with a three-foot overhang blocking the marked aisle,aisle_obstruction,1910.176,11,2,retained
+LOG-1495,primary64,Sling used with a crushed eye fitting and no legible capacity tag,sling,1910.184,1,1,retained
+LOG-1496,additional80,Lift truck kept in service after the mast chain was found slack and frayed,truck_defect,1910.178,2,1,retained
+LOG-1508,additional80,Lift truck kept in service after the mast chain was found slack and frayed,truck_defect,1910.178,3,1,retained
+LOG-1517,additional80,Elevated platform rail installed well below the required height,guardrail,1910.29,2,2,retained
+LOG-1521,primary64,Gantry hoist operated with the periodic inspection more than a year overdue,crane_inspection,1910.179,1,1,retained
+LOG-1534,additional80,Truck with failed service brake returned to yard duty without repair,truck_defect,1910.178,5,3,retained
+LOG-1537,primary64,Wire rope sling with twelve broken wires in one lay kept in the active lift,sling,1910.184,5,1,retained
+LOG-1540,additional80,Hydraulic fluid pooled across the marked walking route and left unattended,housekeeping,1910.22,,14,recovered
+LOG-1544,additional80,Stair run to the dispatch office in use with the handrail detached,stairway,1910.25,10,5,retained
+LOG-1558,additional80,Employee working the open edge of the stack with no arrest system attached,fall_protection,1910.28,3,2,retained
+LOG-1565,primary64,Fixed ladder to the ramp platform in use with two rungs missing,ladder,1910.23,2,2,retained
+LOG-1575,additional80,Panel left open with energised parts exposed to the walkway,live_parts,1910.303,3,4,retained
+LOG-1588,primary64,Freight train employee remained in covered service through relief delay,duty_limit,21103,,14,recovered
+LOG-1589,additional80,Junction box cover missing and live conductors reachable from the aisle,live_parts,1910.303,3,2,retained
+LOG-1591,additional80,Worker on the container roof at eight feet with no fall protection rigged,fall_protection,1910.28,1,1,retained
+LOG-1594,primary64,Gantry hoist operated with the periodic inspection more than a year overdue,crane_inspection,1910.179,1,1,retained
+LOG-1615,additional80,Gantry hoist operated with the periodic inspection more than a year overdue,crane_inspection,1910.179,1,1,retained
+LOG-1623,primary64,Portable ladder with a cracked side rail used to reach the container roof,ladder,1910.23,5,2,retained
+LOG-1670,additional80,Covered switch employee continued yard moves past scheduled relief,duty_limit,21103,,,still_missing
+LOG-1674,additional80,Platform guardrail measured at twenty-eight inches above the walking level,guardrail,1910.29,5,4,retained
+LOG-1676,additional80,Fixed ladder to the ramp platform in use with two rungs missing,ladder,1910.23,1,1,retained
+LOG-1677,additional80,Sling used with a crushed eye fitting and no legible capacity tag,sling,1910.184,1,2,retained
+LOG-1682,additional80,Sling used with a crushed eye fitting and no legible capacity tag,sling,1910.184,1,1,retained
+LOG-1688,additional80,Elevated platform rail installed well below the required height,guardrail,1910.29,7,3,retained
+LOG-1690,additional80,Dockboard placed without anchors and moved during transit into the boxcar,dockboard,1910.26,11,6,retained
+LOG-1692,additional80,Fixed ladder to the ramp platform in use with two rungs missing,ladder,1910.23,2,2,retained
+LOG-1696,additional80,Mast raised inside the approach boundary of a live overhead line,approach_distance,1910.333,4,2,retained
+LOG-1698,primary64,Palletised freight left obstructing the designated traffic aisle,aisle_obstruction,1910.176,,16,recovered
+LOG-1705,additional80,Open-sided stairway to the ramp office missing its handrail,stairway,1910.25,15,9,retained
+LOG-1711,additional80,Mast raised inside the approach boundary of a live overhead line,approach_distance,1910.333,3,2,retained
+LOG-1721,additional80,Freight train employee remained in covered service through relief delay,duty_limit,21103,,14,recovered
+LOG-1724,additional80,No hours-of-duty entry filed for the completed assignment,duty_records,228.11,3,3,retained
+LOG-1733,additional80,Multi-piece rim assembly inflated outside any restraining device,rim_wheel,1910.177,2,1,retained
+LOG-1750,additional80,Rim wheel serviced without deflating and without a restraining cage,rim_wheel,1910.177,2,1,retained
+LOG-1754,additional80,Dockboard placed without anchors and moved during transit into the boxcar,dockboard,1910.26,13,7,retained
+LOG-1755,additional80,Freight train employee remained in covered service through relief delay,duty_limit,21103,,13,recovered
+LOG-1759,additional80,Portable ladder with a cracked side rail used to reach the container roof,ladder,1910.23,2,2,retained
+LOG-1763,additional80,Junction box cover missing and live conductors reachable from the aisle,live_parts,1910.303,4,3,retained
+LOG-1768,additional80,Gantry hoist operated with the periodic inspection more than a year overdue,crane_inspection,1910.179,1,1,retained
+LOG-1777,additional80,Overhead crane run with the upper limit switch known inoperative,crane_inspection,1910.179,1,1,retained
+LOG-1779,additional80,Cargo stacked with a three-foot overhang blocking the marked aisle,aisle_obstruction,1910.176,5,2,retained
+LOG-1787,additional80,Freight train employee remained in covered service through relief delay,duty_limit,21103,,15,recovered
+LOG-1798,additional80,Multi-piece rim assembly inflated outside any restraining device,rim_wheel,1910.177,1,1,retained
+LOG-1810,additional80,Train employee remained on duty to complete consist tie-down,duty_limit,21103,11,7,retained
+LOG-1817,additional80,Duty record for the tour left unsigned and incomplete,duty_records,228.11,2,1,retained
+LOG-1824,additional80,Duty record for the tour left unsigned and incomplete,duty_records,228.11,1,2,retained
+LOG-1829,additional80,Standing oily runoff spread over the pedestrian route with no containment,housekeeping,1910.22,,,still_missing
+LOG-1832,additional80,Overhead crane run with the upper limit switch known inoperative,crane_inspection,1910.179,1,1,retained
+LOG-1850,additional80,Cargo stacked with a three-foot overhang blocking the marked aisle,aisle_obstruction,1910.176,10,5,retained
+LOG-1859,additional80,Wire rope sling with twelve broken wires in one lay kept in the active lift,sling,1910.184,5,1,retained
+LOG-1863,additional80,Duty record for the tour left unsigned and incomplete,duty_records,228.11,1,1,retained
+LOG-1869,additional80,Stair run to the dispatch office in use with the handrail detached,stairway,1910.25,7,6,retained
+LOG-1887,additional80,Truck with failed service brake returned to yard duty without repair,truck_defect,1910.178,4,1,retained
+LOG-1889,additional80,Platform guardrail measured at twenty-eight inches above the walking level,guardrail,1910.29,5,3,retained
+LOG-1892,additional80,Palletised freight left obstructing the designated traffic aisle,aisle_obstruction,1910.176,16,16,retained
+LOG-1894,additional80,Hydraulic fluid pooled across the marked walking route and left unattended,housekeeping,1910.22,16,14,retained
+LOG-1900,additional80,Sling used with a crushed eye fitting and no legible capacity tag,sling,1910.184,1,1,retained
+LOG-1906,additional80,Open-sided stairway to the ramp office missing its handrail,stairway,1910.25,13,6,retained
+LOG-1911,additional80,Lift truck kept in service after the mast chain was found slack and frayed,truck_defect,1910.178,2,1,retained
+LOG-1915,additional80,Dockboard placed without anchors and moved during transit into the boxcar,dockboard,1910.26,9,4,retained
+LOG-1916,additional80,Hydraulic fluid pooled across the marked walking route and left unattended,housekeeping,1910.22,,15,recovered
+LOG-1918,additional80,Portable ladder with a cracked side rail used to reach the container roof,ladder,1910.23,1,2,retained
+LOG-1920,additional80,Mast raised inside the approach boundary of a live overhead line,approach_distance,1910.333,1,1,retained
+LOG-1926,additional80,Cargo stacked with a three-foot overhang blocking the marked aisle,aisle_obstruction,1910.176,10,4,retained
+LOG-1937,additional80,Rim wheel serviced without deflating and without a restraining cage,rim_wheel,1910.177,1,1,retained
+LOG-1953,additional80,Portable ladder with a cracked side rail used to reach the container roof,ladder,1910.23,1,2,retained
+LOG-1954,additional80,Wire rope sling with twelve broken wires in one lay kept in the active lift,sling,1910.184,6,1,retained
+LOG-1960,additional80,Stair run to the dispatch office in use with the handrail detached,stairway,1910.25,9,4,retained
+LOG-1965,additional80,Palletised freight left obstructing the designated traffic aisle,aisle_obstruction,1910.176,,10,recovered
+LOG-1979,additional80,Spreader boom worked within four feet of the energised catenary,approach_distance,1910.333,2,4,retained
+LOG-1982,additional80,Platform guardrail measured at twenty-eight inches above the walking level,guardrail,1910.29,2,3,retained
+LOG-1988,additional80,Junction box cover missing and live conductors reachable from the aisle,live_parts,1910.303,2,1,retained
+LOG-1995,additional80,Overhead crane run with the upper limit switch known inoperative,crane_inspection,1910.179,1,1,retained
