@@ -28,11 +28,16 @@ def _contains(text: str, terms: tuple[str, ...]) -> bool:
     return any(term in text for term in terms)
 
 
+def _normalized_text(value: Any) -> str:
+    """Normalize matching text while retaining the original event evidence."""
+    return " ".join(str(value).lower().split())
+
+
 def _combined_text(row: Dict[str, Any]) -> str:
     return " ".join(
-        str(row.get(field, ""))
+        _normalized_text(row.get(field, ""))
         for field in ("Equipment_Type", "Location", "Reported_Incident")
-    ).lower()
+    )
 
 
 def _decision(
@@ -49,7 +54,7 @@ def evaluate_event(row: Dict[str, Any]) -> PolicyDecision:
     """Return a conservative policy verdict for one operational event."""
 
     text = _combined_text(row)
-    incident = str(row.get("Reported_Incident", "")).lower()
+    incident = _normalized_text(row.get("Reported_Incident", ""))
     if _contains(incident, (
         "does not show", "doesn't show", "cannot determine", "cannot confirm",
         "can't determine", "can't confirm", "unknown", "uncertain", "unclear",

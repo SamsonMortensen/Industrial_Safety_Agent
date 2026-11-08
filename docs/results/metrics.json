@@ -1,0 +1,555 @@
+{
+  "schema": "public_results_metrics_v1",
+  "audit": [
+    {
+      "clips": 1000,
+      "confusion": {
+        "true_positive": 103,
+        "false_positive": 4,
+        "true_negative": 852,
+        "false_negative": 41
+      },
+      "accuracy": 0.955,
+      "precision": 0.9626168224299065,
+      "recall": 0.7152777777777778,
+      "specificity": 0.9953271028037384,
+      "balanced_accuracy": 0.8553024402907581,
+      "equal_cost_error_rate": 0.045,
+      "false_alert_rate": 0.004672897196261682,
+      "miss_rate": 0.2847222222222222,
+      "name": "Grounded v1",
+      "source": "json/audit_results.json"
+    },
+    {
+      "clips": 1000,
+      "confusion": {
+        "true_positive": 82,
+        "false_positive": 1,
+        "true_negative": 855,
+        "false_negative": 62
+      },
+      "accuracy": 0.937,
+      "precision": 0.9879518072289156,
+      "recall": 0.5694444444444444,
+      "specificity": 0.9988317757009346,
+      "balanced_accuracy": 0.7841381100726895,
+      "equal_cost_error_rate": 0.063,
+      "false_alert_rate": 0.0011682242990654205,
+      "miss_rate": 0.4305555555555556,
+      "name": "Raw v2",
+      "source": "json/full_audit_results.json"
+    },
+    {
+      "clips": 1000,
+      "confusion": {
+        "true_positive": 98,
+        "false_positive": 0,
+        "true_negative": 856,
+        "false_negative": 46
+      },
+      "accuracy": 0.954,
+      "precision": 1.0,
+      "recall": 0.6805555555555556,
+      "specificity": 1.0,
+      "balanced_accuracy": 0.8402777777777778,
+      "equal_cost_error_rate": 0.046,
+      "false_alert_rate": 0.0,
+      "miss_rate": 0.3194444444444444,
+      "name": "Policy-controlled v2",
+      "source": "json/full_audit_policy_controlled.json"
+    }
+  ],
+  "retrieval": {
+    "cases": 144,
+    "methods": {
+      "Hybrid fusion": {
+        "1": 0.4027777777777778,
+        "4": 0.7986111111111112,
+        "8": 0.9861111111111112,
+        "16": 1.0
+      },
+      "Applicability reranking": {
+        "1": 0.3125,
+        "4": 0.7708333333333334,
+        "8": 0.9236111111111112,
+        "16": 1.0
+      }
+    }
+  },
+  "qlora": {
+    "base": {
+      "cases": 56,
+      "parsed": 0,
+      "verdict_correct": 0,
+      "violation_cases": 28,
+      "citation_correct_on_violations": 1,
+      "joint_correct": 0
+    },
+    "qlora_sft": {
+      "cases": 56,
+      "parsed": 56,
+      "verdict_correct": 50,
+      "violation_cases": 28,
+      "citation_correct_on_violations": 16,
+      "joint_correct": 41
+    }
+  },
+  "incident_coverage": {
+    "cases": 500,
+    "triggered": 500,
+    "nonempty_retrieval": 500,
+    "unique_top_authorities": 24
+  },
+  "person": {
+    "pilot": {
+      "coverage": {
+        "development_train": {
+          "clips": 14,
+          "groups": 7
+        },
+        "development_validation": {
+          "clips": 4,
+          "groups": 2
+        }
+      },
+      "metrics": {
+        "train_majority_baseline": {
+          "clips": 4,
+          "confusion": {
+            "true_positive": 2,
+            "false_positive": 2,
+            "true_negative": 0,
+            "false_negative": 0
+          },
+          "accuracy": 0.5,
+          "precision": 0.5,
+          "recall": 1.0,
+          "specificity": 0.0,
+          "balanced_accuracy": 0.5,
+          "equal_cost_error_rate": 0.5,
+          "false_alert_rate": 1.0,
+          "miss_rate": 0.0,
+          "source_groups": 2,
+          "fully_correct_groups": 1,
+          "group_exact_95": [
+            0.01257911709342505,
+            0.9874208829065749
+          ]
+        },
+        "frozen_zero_shot_baseline": {
+          "clips": 4,
+          "confusion": {
+            "true_positive": 2,
+            "false_positive": 2,
+            "true_negative": 0,
+            "false_negative": 0
+          },
+          "accuracy": 0.5,
+          "precision": 0.5,
+          "recall": 1.0,
+          "specificity": 0.0,
+          "balanced_accuracy": 0.5,
+          "equal_cost_error_rate": 0.5,
+          "false_alert_rate": 1.0,
+          "miss_rate": 0.0,
+          "source_groups": 2,
+          "fully_correct_groups": 1,
+          "group_exact_95": [
+            0.01257911709342505,
+            0.9874208829065749
+          ]
+        },
+        "trained_logistic_probe": {
+          "clips": 4,
+          "confusion": {
+            "true_positive": 2,
+            "false_positive": 0,
+            "true_negative": 2,
+            "false_negative": 0
+          },
+          "accuracy": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "specificity": 1.0,
+          "balanced_accuracy": 1.0,
+          "equal_cost_error_rate": 0.0,
+          "false_alert_rate": 0.0,
+          "miss_rate": 0.0,
+          "source_groups": 2,
+          "fully_correct_groups": 2,
+          "group_exact_95": [
+            0.15811388300841894,
+            1.0
+          ]
+        }
+      },
+      "score_diagnostics": {
+        "trained_logistic_probe": {
+          "group_weighted_brier": 0.013759705816176722,
+          "group_weighted_log_loss": 0.08867168310215946
+        }
+      }
+    },
+    "round2": {
+      "coverage": {
+        "development_train": {
+          "clips": 52,
+          "groups": 26
+        },
+        "development_validation": {
+          "clips": 10,
+          "groups": 5
+        }
+      },
+      "metrics": {
+        "training_majority": {
+          "clips": 10,
+          "confusion": {
+            "true_positive": 8,
+            "false_positive": 2,
+            "true_negative": 0,
+            "false_negative": 0
+          },
+          "accuracy": 0.8,
+          "precision": 0.8,
+          "recall": 1.0,
+          "specificity": 0.0,
+          "balanced_accuracy": 0.5,
+          "equal_cost_error_rate": 0.2,
+          "false_alert_rate": 1.0,
+          "miss_rate": 0.0,
+          "source_groups": 5,
+          "fully_correct_groups": 4,
+          "group_exact_95": [
+            0.28358206388191043,
+            0.9949492366205319
+          ]
+        },
+        "fixed_prompt_baseline": {
+          "clips": 10,
+          "confusion": {
+            "true_positive": 8,
+            "false_positive": 1,
+            "true_negative": 1,
+            "false_negative": 0
+          },
+          "accuracy": 0.9,
+          "precision": 0.8888888888888888,
+          "recall": 1.0,
+          "specificity": 0.5,
+          "balanced_accuracy": 0.75,
+          "equal_cost_error_rate": 0.1,
+          "false_alert_rate": 0.5,
+          "miss_rate": 0.0,
+          "source_groups": 5,
+          "fully_correct_groups": 4,
+          "group_exact_95": [
+            0.28358206388191043,
+            0.9949492366205319
+          ]
+        },
+        "frozen_first_pilot": {
+          "clips": 10,
+          "confusion": {
+            "true_positive": 8,
+            "false_positive": 1,
+            "true_negative": 1,
+            "false_negative": 0
+          },
+          "accuracy": 0.9,
+          "precision": 0.8888888888888888,
+          "recall": 1.0,
+          "specificity": 0.5,
+          "balanced_accuracy": 0.75,
+          "equal_cost_error_rate": 0.1,
+          "false_alert_rate": 0.5,
+          "miss_rate": 0.0,
+          "source_groups": 5,
+          "fully_correct_groups": 4,
+          "group_exact_95": [
+            0.28358206388191043,
+            0.9949492366205319
+          ]
+        },
+        "expanded_classifier": {
+          "clips": 10,
+          "confusion": {
+            "true_positive": 8,
+            "false_positive": 1,
+            "true_negative": 1,
+            "false_negative": 0
+          },
+          "accuracy": 0.9,
+          "precision": 0.8888888888888888,
+          "recall": 1.0,
+          "specificity": 0.5,
+          "balanced_accuracy": 0.75,
+          "equal_cost_error_rate": 0.1,
+          "false_alert_rate": 0.5,
+          "miss_rate": 0.0,
+          "source_groups": 5,
+          "fully_correct_groups": 4,
+          "group_exact_95": [
+            0.28358206388191043,
+            0.9949492366205319
+          ]
+        }
+      },
+      "score_diagnostics": {
+        "frozen_first_pilot": {
+          "group_weighted_brier": 0.10492762432466496,
+          "group_weighted_log_loss": 0.6747032506010523
+        },
+        "expanded_classifier": {
+          "group_weighted_brier": 0.08150525493395033,
+          "group_weighted_log_loss": 0.2362762064305904
+        }
+      }
+    },
+    "round3": {
+      "coverage": {
+        "development_train": {
+          "clips": 80,
+          "groups": 40
+        },
+        "development_validation": {
+          "clips": 8,
+          "groups": 4
+        }
+      },
+      "metrics": {
+        "training_majority": {
+          "clips": 8,
+          "confusion": {
+            "true_positive": 4,
+            "false_positive": 4,
+            "true_negative": 0,
+            "false_negative": 0
+          },
+          "accuracy": 0.5,
+          "precision": 0.5,
+          "recall": 1.0,
+          "specificity": 0.0,
+          "balanced_accuracy": 0.5,
+          "equal_cost_error_rate": 0.5,
+          "false_alert_rate": 1.0,
+          "miss_rate": 0.0,
+          "source_groups": 4,
+          "fully_correct_groups": 2,
+          "group_exact_95": [
+            0.06758598648854294,
+            0.9324140135114571
+          ]
+        },
+        "fixed_prompt_baseline": {
+          "clips": 8,
+          "confusion": {
+            "true_positive": 4,
+            "false_positive": 4,
+            "true_negative": 0,
+            "false_negative": 0
+          },
+          "accuracy": 0.5,
+          "precision": 0.5,
+          "recall": 1.0,
+          "specificity": 0.0,
+          "balanced_accuracy": 0.5,
+          "equal_cost_error_rate": 0.5,
+          "false_alert_rate": 1.0,
+          "miss_rate": 0.0,
+          "source_groups": 4,
+          "fully_correct_groups": 2,
+          "group_exact_95": [
+            0.06758598648854294,
+            0.9324140135114571
+          ]
+        },
+        "frozen_first_pilot": {
+          "clips": 8,
+          "confusion": {
+            "true_positive": 2,
+            "false_positive": 0,
+            "true_negative": 4,
+            "false_negative": 2
+          },
+          "accuracy": 0.75,
+          "precision": 1.0,
+          "recall": 0.5,
+          "specificity": 1.0,
+          "balanced_accuracy": 0.75,
+          "equal_cost_error_rate": 0.25,
+          "false_alert_rate": 0.0,
+          "miss_rate": 0.5,
+          "source_groups": 4,
+          "fully_correct_groups": 2,
+          "group_exact_95": [
+            0.06758598648854294,
+            0.9324140135114571
+          ]
+        },
+        "frozen_round2": {
+          "clips": 8,
+          "confusion": {
+            "true_positive": 4,
+            "false_positive": 0,
+            "true_negative": 4,
+            "false_negative": 0
+          },
+          "accuracy": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "specificity": 1.0,
+          "balanced_accuracy": 1.0,
+          "equal_cost_error_rate": 0.0,
+          "false_alert_rate": 0.0,
+          "miss_rate": 0.0,
+          "source_groups": 4,
+          "fully_correct_groups": 4,
+          "group_exact_95": [
+            0.3976353643835253,
+            1.0
+          ]
+        },
+        "round3_classifier": {
+          "clips": 8,
+          "confusion": {
+            "true_positive": 4,
+            "false_positive": 0,
+            "true_negative": 4,
+            "false_negative": 0
+          },
+          "accuracy": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "specificity": 1.0,
+          "balanced_accuracy": 1.0,
+          "equal_cost_error_rate": 0.0,
+          "false_alert_rate": 0.0,
+          "miss_rate": 0.0,
+          "source_groups": 4,
+          "fully_correct_groups": 4,
+          "group_exact_95": [
+            0.3976353643835253,
+            1.0
+          ]
+        }
+      },
+      "score_diagnostics": {
+        "frozen_first_pilot": {
+          "group_weighted_brier": 0.10984375714899858,
+          "group_weighted_log_loss": 0.3200435221886141
+        },
+        "frozen_round2": {
+          "group_weighted_brier": 0.0040471879849590655,
+          "group_weighted_log_loss": 0.042298285994142884
+        },
+        "round3_classifier": {
+          "group_weighted_brier": 0.0026325059122159706,
+          "group_weighted_log_loss": 0.024414030140494935
+        }
+      }
+    },
+    "calibration": {
+      "coverage": {
+        "classifier_fit": {
+          "clips": 36,
+          "groups": 18
+        },
+        "temperature_fit": {
+          "clips": 16,
+          "groups": 8
+        },
+        "development_validation": {
+          "clips": 10,
+          "groups": 5
+        }
+      },
+      "metrics": {
+        "previous_expanded_classifier": {
+          "clips": 10,
+          "confusion": {
+            "true_positive": 8,
+            "false_positive": 1,
+            "true_negative": 1,
+            "false_negative": 0
+          },
+          "accuracy": 0.9,
+          "precision": 0.8888888888888888,
+          "recall": 1.0,
+          "specificity": 0.5,
+          "balanced_accuracy": 0.75,
+          "equal_cost_error_rate": 0.1,
+          "false_alert_rate": 0.5,
+          "miss_rate": 0.0,
+          "source_groups": 5,
+          "fully_correct_groups": 4,
+          "group_exact_95": [
+            0.28358206388191043,
+            0.9949492366205319
+          ]
+        },
+        "new_probe_uncalibrated": {
+          "clips": 10,
+          "confusion": {
+            "true_positive": 8,
+            "false_positive": 1,
+            "true_negative": 1,
+            "false_negative": 0
+          },
+          "accuracy": 0.9,
+          "precision": 0.8888888888888888,
+          "recall": 1.0,
+          "specificity": 0.5,
+          "balanced_accuracy": 0.75,
+          "equal_cost_error_rate": 0.1,
+          "false_alert_rate": 0.5,
+          "miss_rate": 0.0,
+          "source_groups": 5,
+          "fully_correct_groups": 4,
+          "group_exact_95": [
+            0.28358206388191043,
+            0.9949492366205319
+          ]
+        },
+        "new_probe_temperature_scaled": {
+          "clips": 10,
+          "confusion": {
+            "true_positive": 8,
+            "false_positive": 1,
+            "true_negative": 1,
+            "false_negative": 0
+          },
+          "accuracy": 0.9,
+          "precision": 0.8888888888888888,
+          "recall": 1.0,
+          "specificity": 0.5,
+          "balanced_accuracy": 0.75,
+          "equal_cost_error_rate": 0.1,
+          "false_alert_rate": 0.5,
+          "miss_rate": 0.0,
+          "source_groups": 5,
+          "fully_correct_groups": 4,
+          "group_exact_95": [
+            0.28358206388191043,
+            0.9949492366205319
+          ]
+        }
+      },
+      "score_diagnostics": {
+        "previous_expanded_classifier": {
+          "group_weighted_brier": 0.08150525493395033,
+          "group_weighted_log_loss": 0.2362762064305904
+        },
+        "new_probe_uncalibrated": {
+          "group_weighted_brier": 0.07259803289049518,
+          "group_weighted_log_loss": 0.19443994509954568
+        },
+        "new_probe_temperature_scaled": {
+          "group_weighted_brier": 0.07736567520773417,
+          "group_weighted_log_loss": 0.2135267960584771
+        }
+      },
+      "temperature": 0.8796823309853159
+    }
+  }
+}

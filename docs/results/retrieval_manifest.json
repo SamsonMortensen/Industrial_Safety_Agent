@@ -1,0 +1,22 @@
+{
+  "schema": "retrieval_comparison_manifest_v1",
+  "inputs_sha256_lf": {
+    "data/retrieval_comparison/before.json": "6d06a21954cd17b444a262d41c28522e53851f22698f6da45bbb994caa84d979",
+    "data/retrieval_comparison/after.json": "9a3760d6ccb8a9d01786a5ec4ded817b3973c07a7dea9266d8b89a5b6ffbbe0f",
+    "data/retrieval_comparison/exploration.json": "f0ff4ea2be6e3731daf9b72c51a7f6acbfebf8fd30a62e8e8713eb4a6a211cef",
+    "data/retrieval_comparison/protocol.json": "ea3a9c06e7d1702c011f04e68159d98a7e8b629d4efcb6dfaf2f267604b80b5f",
+    "data/retrieval_comparison/candidate_freeze.json": "4e823a7aed5d5ef5b09c80fb692b6f223e131e4ded442f87b6694e7ed145ffd7",
+    "code/capture_retrieval_run.py": "725f85016d67212eda7c009b1b88076985c83c79184fe9e0646470fc845af46a",
+    "code/report_retrieval_comparison.py": "5c159e8f2ad1d4593a94b62c1241f4a713af71de68d7dabb4069227ee8f96b3a",
+    "code/autonomous_investigator.py": "5c2ba322b162c74ce0ce6f980aa49aeb8601ad56607b5cf9fa899979f75b0e7d",
+    "code/public_results.py": "372925fdf9a4841f5f0dc011c1dea08dc9778600bb037f9f04b357a7cccff572"
+  },
+  "outputs_sha256_lf_text_raw_png": {
+    "docs/RETRIEVAL_IMPROVEMENT.md": "45a58fb372feace75dc2c04a4ba19efb1f0022b8da4afe62db57cf12abfbf482",
+    "docs/results/retrieval_comparison.json": "23a17f7f3bb8bd2662e347e83c412ac31966a1b7fa0e40a424830a1474295854",
+    "docs/results/retrieval_cases.csv": "44cf3daeb8cb31ae693fadb31702dd9ffed97e2d69eb1d1a6a649e7e5bc82317",
+    "docs/results/retrieval_before_after.png": "b2ec73d51c1e6d1119c1f1d69c74ecab20e5ab17923922906c63db69af4bca7f",
+    "docs/results/original_nine_misses.png": "4dbfc9322ec22dc5e37ab1d7a65fb574fc629ff050f66c00ee627d0923b5587b",
+    "docs/results/retrieval_rank_cutoffs.png": "3a032318b7f798468bc257ddb3f0047692be1d7cb871bf4cf957fa50d9919104"
+  }
+}

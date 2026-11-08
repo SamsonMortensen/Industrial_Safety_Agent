@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import asyncio
 import sys
 from pathlib import Path
 
@@ -25,7 +26,7 @@ _http_guard.start()
 
 def validate_notebook(root: Path = ROOT) -> int:
     import nbformat
-    from jupyter_client import KernelManager
+    from jupyter_client import AsyncKernelManager
     from nbclient import NotebookClient
 
     path = root / "main.ipynb"
@@ -36,7 +37,7 @@ def validate_notebook(root: Path = ROOT) -> int:
     notebook.cells.insert(0, nbformat.v4.new_code_cell(OFFLINE_GUARD))
 
     # Use this interpreter even if another Python kernel is registered globally.
-    manager = KernelManager(kernel_name="python3")
+    manager = AsyncKernelManager(kernel_name="python3")
     manager.kernel_spec.argv = [
         sys.executable,
         "-m",
@@ -53,9 +54,12 @@ def validate_notebook(root: Path = ROOT) -> int:
         allow_errors=False,
         resources={"metadata": {"path": str(root)}},
     )
-    # We supplied the manager, so explicitly own its cleanup on success or error.
-    with client.setup_kernel(cleanup_kc=True):
-        client.execute()
+    # Own both kernel cleanup and event-loop teardown, including on cell errors.
+    # Leaving Jupyter's implicit loop open can crash Windows at interpreter exit.
+    # ZMQ needs selector callbacks; choose the loop locally without changing policy.
+    loop_factory = asyncio.SelectorEventLoop if sys.platform == "win32" else None
+    with asyncio.Runner(loop_factory=loop_factory) as runner:
+        runner.run(client.async_execute(cleanup_kc=True))
     if path.read_bytes() != original:
         raise RuntimeError("The source notebook changed during validation.")
     return code_cells
