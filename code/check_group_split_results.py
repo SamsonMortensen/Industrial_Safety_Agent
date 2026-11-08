@@ -13,7 +13,7 @@ from vision_split_examples import named_examples, stress_examples, summarize
 
 ROOT = Path(__file__).resolve().parent.parent
 REPORT = ROOT / 'docs/results/group_split_before_after.json'
-BASE_COMMIT = '3cae7f76789fdd3cd964ae1591e8b80b85cc237e'
+BASE_COMMIT = '2beeb66d422b0270b05967c9b91d23555d060261'
 BASE_SOURCE_SHA256 = 'ff952628253a1991e45f6adcad128b88aca92ed66bde67785ee59379cff126f9'
 
 

@@ -1,11 +1,11 @@
 {
   "schema": "synthetic_group_split_comparison_v2",
-  "baseline_commit": "3cae7f76789fdd3cd964ae1591e8b80b85cc237e",
+  "baseline_commit": "2beeb66d422b0270b05967c9b91d23555d060261",
   "baseline_source_sha256_lf": "ff952628253a1991e45f6adcad128b88aca92ed66bde67785ee59379cff126f9",
   "candidate_sources_sha256_lf": {
     "code/vision_manifest.py": "dc93ec4d7da46604ecca1b911b1ed97a338675fa575eda5cb862c4f79547b38d",
     "code/vision_split_examples.py": "7e283d89527ba10e68b34da4331a95dba2bc8bf73bc4f463ab3e52ab5a089779",
-    "code/check_group_split_results.py": "a86ec78f337634cd5eb3547a78d51d7be97fc2d5238ba7ae6844da543fe0f949"
+    "code/check_group_split_results.py": "ee3738fd8f6b64f12bec89b2b37aca85433a5531d6a67681c2088b326d207986"
   },
   "named_cases": [
     {

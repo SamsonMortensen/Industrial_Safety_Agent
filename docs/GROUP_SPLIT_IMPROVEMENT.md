@@ -8,7 +8,7 @@ These are tests of data allocation. They do not measure Person detection, model 
 
 ## Matched examples
 
-Every comparison uses the same rows, group identities, labels, seed, and requested ratios. The baseline is the splitter at commit [`3cae7f7`](https://github.com/SamsonMortensen/Industrial_Safety_Agent/blob/3cae7f76789fdd3cd964ae1591e8b80b85cc237e/code/vision_manifest.py). Counts are shown as **training / validation / test**.
+Every comparison uses the same rows, group identities, labels, seed, and requested ratios. The baseline is the splitter at commit [`2beeb66`](https://github.com/SamsonMortensen/Industrial_Safety_Agent/blob/2beeb66d422b0270b05967c9b91d23555d060261/code/vision_manifest.py). Counts are shown as **training / validation / test**.
 
 | Synthetic example | Requested shares | Before | After |
 | --- | --- | --- | --- |
@@ -53,7 +53,7 @@ The first command regenerates the synthetic cases, recomputes candidate allocati
 To rerun both algorithms, use a full Git clone that contains the baseline commit and a new worktree/output path:
 
 ```powershell
-git worktree add --detach ../safety-split-baseline 3cae7f76789fdd3cd964ae1591e8b80b85cc237e
+git worktree add --detach ../safety-split-baseline 2beeb66d422b0270b05967c9b91d23555d060261
 python -B code/check_group_split_results.py --baseline-source ../safety-split-baseline/code/vision_manifest.py --out benchmark_runs/group_split_reproduced.json
 ```
 
