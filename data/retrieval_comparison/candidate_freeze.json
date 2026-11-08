@@ -1,0 +1,16 @@
+{
+  "frozen_utc": "2026-11-08T04:54:09.129459+00:00",
+  "selected_variant": "incident_anchored_factual_queries",
+  "source_sha256": "a76483a228c69a4858dbca553b4c8e37e2ff6c8639b5e34e53e42dea9883e9aa",
+  "source_lf_sha256": "5c2ba322b162c74ce0ce6f980aa49aeb8601ad56607b5cf9fa899979f75b0e7d",
+  "primary_result": {
+    "before": 55,
+    "after": 63,
+    "cases": 64,
+    "top16_new_misses": 0
+  },
+  "secondary_80_results_not_yet_inspected": true,
+  "source_change": "QueryPlanner only; unchanged corpus, labels, retrieval scoring, candidate budget and decision gates.",
+  "remaining_primary_miss": "LOG-1442",
+  "selection_reason": "Recovers eight original misses and improves all recorded rank cutoffs without a top-16 regression on the primary development cases."
+}

@@ -4,6 +4,18 @@ A local, retrieval-grounded safety auditor for intermodal yard operations. It ev
 
 The project combines structured safety rules, local language models, authentic incident narratives, deterministic controls, and a camera-neutral observation interface. Operational data and model inference remain local.
 
+## Data analytics and experimental results
+
+This project also documents the analysis behind the build: data profiling, baseline comparisons, source-group validation, confidence bounds, error analysis, and probability calibration. The [results report](docs/RESULTS.md) shows saved runs, their denominators, and the decisions they support, including ties and a calibration experiment that did not improve validation scores.
+
+![Audit precision and recall with an authority-retrieval comparison](docs/results/audit_tradeoffs.png)
+
+Explore the [1,000-event audit and retrieval analysis](docs/RESULTS.md#1-audit-tradeoffs-and-retrieval), [fine-tuning results](docs/RESULTS.md#2-fine-tuning-distinguish-format-from-domain-correctness), and [Person development comparisons](docs/RESULTS.md#3-person-detection-compare-models-on-the-same-source-groups). The vision results are historical development snapshots; this public checkout can recompute their metrics from anonymous predictions, while the full vision training tools are being prepared separately.
+
+Run `python code/public_results.py --check` to verify the report without downloading models. See the [analytics workflow](docs/ANALYTICS_WORKFLOW.md) for metric definitions, reproducibility, and how future runs enter the record. Independent evaluation and model promotion remain separate from these development results.
+
+**Latest retrieval development result:** incident-focused queries recovered eight of the nine walkthrough misses: **55/64 → 63/64** expected authorities within the top 16. A frozen comparison on the other 80 public cases improved **71/80 → 77/80**. The [before-and-after report](docs/RETRIEVAL_IMPROVEMENT.md) includes readable charts, every original miss, remaining failures, four first-rank regressions, and reproduction commands. These are known synthetic development cases; independent evaluation remains separate.
+
 ## Start with the notebook
 
 I want someone new to this project to be able to open it, try an incident, and see why it returned that result. [main.ipynb](main.ipynb) walks through the actual backend, with explanations beside the code. The deeper scripts are still available below.

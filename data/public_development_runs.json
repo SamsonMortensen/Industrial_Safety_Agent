@@ -1,0 +1,649 @@
+{
+  "schema": "public_development_snapshot_v1",
+  "scope": "Recompute historical development metrics; not retraining or independent evaluation.",
+  "group_ids_are_local_to_each_run": true,
+  "runs": [
+    {
+      "id": "pilot",
+      "provenance": {
+        "completed_at_utc": "2026-10-25T23:01:14.204708+00:00",
+        "source_sha256": {
+          "status.json": "c4aafc463a67a0fe54b7846b1c02adbe807b628e0c58276a139bd8f53ce23902",
+          "results.json": "80d8bafd8b37b913f7ee4f6c39857774a79ed9bf4d2dff0b389fa3e050f92209",
+          "predictions.json": "32dcc1e1a80122c84cd97f60616991cdc0434cbc2c0ee26bbf77f6623240ff0d",
+          "protocol.json": "11a6e48449495bfac04163f8391477926fd1c7c8045b35c02ce24f41749ed680"
+        }
+      },
+      "coverage": {
+        "development_train": {
+          "clips": 14,
+          "groups": 7
+        },
+        "development_validation": {
+          "clips": 4,
+          "groups": 2
+        }
+      },
+      "evidence_type": "selected_synthetic_development",
+      "independent_evaluation_used": false,
+      "model_promoted": false,
+      "models": [
+        "train_majority_baseline",
+        "frozen_zero_shot_baseline",
+        "trained_logistic_probe"
+      ],
+      "rows": [
+        {
+          "case": "v001",
+          "group": "g01",
+          "target": 0,
+          "predictions": {
+            "train_majority_baseline": 1,
+            "frozen_zero_shot_baseline": 1,
+            "trained_logistic_probe": 0
+          },
+          "scores": {
+            "trained_logistic_probe": 0.2179180922111493
+          }
+        },
+        {
+          "case": "v002",
+          "group": "g01",
+          "target": 0,
+          "predictions": {
+            "train_majority_baseline": 1,
+            "frozen_zero_shot_baseline": 1,
+            "trained_logistic_probe": 0
+          },
+          "scores": {
+            "trained_logistic_probe": 0.08579311653641877
+          }
+        },
+        {
+          "case": "v003",
+          "group": "g02",
+          "target": 1,
+          "predictions": {
+            "train_majority_baseline": 1,
+            "frozen_zero_shot_baseline": 1,
+            "trained_logistic_probe": 1
+          },
+          "scores": {
+            "trained_logistic_probe": 0.9924168507428812
+          }
+        },
+        {
+          "case": "v004",
+          "group": "g02",
+          "target": 1,
+          "predictions": {
+            "train_majority_baseline": 1,
+            "frozen_zero_shot_baseline": 1,
+            "trained_logistic_probe": 1
+          },
+          "scores": {
+            "trained_logistic_probe": 0.9884862971172326
+          }
+        }
+      ],
+      "encoder": {
+        "model": "google/siglip2-base-patch16-224",
+        "revision": "75de2d55ec2d0b4efc50b3e9ad70dba96a7b2fa2"
+      }
+    },
+    {
+      "id": "round2",
+      "provenance": {
+        "completed_at_utc": "2026-10-25T23:31:22.921190+00:00",
+        "source_sha256": {
+          "status.json": "ded1241e1969464b8f12b9f4dfcf9dcd33eeac7956f0d3d97fb831d686b10042",
+          "results.json": "6943994c9eb5314ced73633fa4e4d6f9ff402826642972c6e71bc99761df80c4",
+          "predictions.json": "45b552c86a98d85cbebf3a7b21cd566abd95b213f703905533e9586f13992346",
+          "protocol.json": "249eae77ccc371fa10c4daeac5961055b5db7ef76f9e8eb18ace66d62e844e6b"
+        }
+      },
+      "coverage": {
+        "development_train": {
+          "clips": 52,
+          "groups": 26
+        },
+        "development_validation": {
+          "clips": 10,
+          "groups": 5
+        }
+      },
+      "evidence_type": "selected_synthetic_development",
+      "independent_evaluation_used": false,
+      "model_promoted": false,
+      "models": [
+        "training_majority",
+        "fixed_prompt_baseline",
+        "frozen_first_pilot",
+        "expanded_classifier"
+      ],
+      "rows": [
+        {
+          "case": "v001",
+          "group": "g01",
+          "target": 1,
+          "predictions": {
+            "training_majority": 1,
+            "fixed_prompt_baseline": 1,
+            "frozen_first_pilot": 1,
+            "expanded_classifier": 1
+          },
+          "scores": {
+            "frozen_first_pilot": 0.9993202744030378,
+            "expanded_classifier": 0.9999749493530214
+          }
+        },
+        {
+          "case": "v002",
+          "group": "g01",
+          "target": 1,
+          "predictions": {
+            "training_majority": 1,
+            "fixed_prompt_baseline": 1,
+            "frozen_first_pilot": 1,
+            "expanded_classifier": 1
+          },
+          "scores": {
+            "frozen_first_pilot": 0.9981263358459412,
+            "expanded_classifier": 0.9999885365634197
+          }
+        },
+        {
+          "case": "v003",
+          "group": "g02",
+          "target": 0,
+          "predictions": {
+            "training_majority": 1,
+            "fixed_prompt_baseline": 0,
+            "frozen_first_pilot": 1,
+            "expanded_classifier": 1
+          },
+          "scores": {
+            "frozen_first_pilot": 0.9983064850868993,
+            "expanded_classifier": 0.9024938471842398
+          }
+        },
+        {
+          "case": "v004",
+          "group": "g02",
+          "target": 0,
+          "predictions": {
+            "training_majority": 1,
+            "fixed_prompt_baseline": 1,
+            "frozen_first_pilot": 0,
+            "expanded_classifier": 0
+          },
+          "scores": {
+            "frozen_first_pilot": 0.20344846865860555,
+            "expanded_classifier": 0.00025561676260299113
+          }
+        },
+        {
+          "case": "v005",
+          "group": "g03",
+          "target": 1,
+          "predictions": {
+            "training_majority": 1,
+            "fixed_prompt_baseline": 1,
+            "frozen_first_pilot": 1,
+            "expanded_classifier": 1
+          },
+          "scores": {
+            "frozen_first_pilot": 0.9972478589041496,
+            "expanded_classifier": 0.9995870271243701
+          }
+        },
+        {
+          "case": "v006",
+          "group": "g03",
+          "target": 1,
+          "predictions": {
+            "training_majority": 1,
+            "fixed_prompt_baseline": 1,
+            "frozen_first_pilot": 1,
+            "expanded_classifier": 1
+          },
+          "scores": {
+            "frozen_first_pilot": 0.9972064800699552,
+            "expanded_classifier": 0.9774266816310595
+          }
+        },
+        {
+          "case": "v007",
+          "group": "g04",
+          "target": 1,
+          "predictions": {
+            "training_majority": 1,
+            "fixed_prompt_baseline": 1,
+            "frozen_first_pilot": 1,
+            "expanded_classifier": 1
+          },
+          "scores": {
+            "frozen_first_pilot": 0.8945468789368781,
+            "expanded_classifier": 0.9947081443575826
+          }
+        },
+        {
+          "case": "v008",
+          "group": "g04",
+          "target": 1,
+          "predictions": {
+            "training_majority": 1,
+            "fixed_prompt_baseline": 1,
+            "frozen_first_pilot": 1,
+            "expanded_classifier": 1
+          },
+          "scores": {
+            "frozen_first_pilot": 0.9918889971736558,
+            "expanded_classifier": 0.9981583556383973
+          }
+        },
+        {
+          "case": "v009",
+          "group": "g05",
+          "target": 1,
+          "predictions": {
+            "training_majority": 1,
+            "fixed_prompt_baseline": 1,
+            "frozen_first_pilot": 1,
+            "expanded_classifier": 1
+          },
+          "scores": {
+            "frozen_first_pilot": 0.9930934740039692,
+            "expanded_classifier": 0.9997942804609518
+          }
+        },
+        {
+          "case": "v010",
+          "group": "g05",
+          "target": 1,
+          "predictions": {
+            "training_majority": 1,
+            "fixed_prompt_baseline": 1,
+            "frozen_first_pilot": 1,
+            "expanded_classifier": 1
+          },
+          "scores": {
+            "frozen_first_pilot": 0.9960092867853401,
+            "expanded_classifier": 0.9959780507445252
+          }
+        }
+      ],
+      "encoder": {
+        "model": "google/siglip2-base-patch16-224",
+        "revision": "75de2d55ec2d0b4efc50b3e9ad70dba96a7b2fa2"
+      }
+    },
+    {
+      "id": "round3",
+      "provenance": {
+        "completed_at_utc": "2026-10-26T00:13:59.274456+00:00",
+        "source_sha256": {
+          "status.json": "19641ab333f5f1a91f4e919e0af88dd2a797b7c3e4b516bfdb845641532dd360",
+          "results.json": "d3b7d3eaa833a4033cdc5e0f086b2849c19b9d51f071b14b6f61c2bb0201d98d",
+          "predictions.json": "0c9d2ca56acc0f352cd5253ba8208408df76e4cd6f7e674494f6591016798c4a",
+          "protocol.json": "485b49fd4c7d5683208020e68bad7830ee4ba1d1c08a603badf09dc258830ad1"
+        }
+      },
+      "coverage": {
+        "development_train": {
+          "clips": 80,
+          "groups": 40
+        },
+        "development_validation": {
+          "clips": 8,
+          "groups": 4
+        }
+      },
+      "evidence_type": "selected_synthetic_development",
+      "independent_evaluation_used": false,
+      "model_promoted": false,
+      "models": [
+        "training_majority",
+        "fixed_prompt_baseline",
+        "frozen_first_pilot",
+        "frozen_round2",
+        "round3_classifier"
+      ],
+      "rows": [
+        {
+          "case": "v001",
+          "group": "g01",
+          "target": 1,
+          "predictions": {
+            "training_majority": 1,
+            "fixed_prompt_baseline": 1,
+            "frozen_first_pilot": 0,
+            "frozen_round2": 1,
+            "round3_classifier": 1
+          },
+          "scores": {
+            "frozen_first_pilot": 0.4544501377677966,
+            "frozen_round2": 0.9351278548611524,
+            "round3_classifier": 0.9980503701190876
+          }
+        },
+        {
+          "case": "v002",
+          "group": "g01",
+          "target": 1,
+          "predictions": {
+            "training_majority": 1,
+            "fixed_prompt_baseline": 1,
+            "frozen_first_pilot": 1,
+            "frozen_round2": 1,
+            "round3_classifier": 1
+          },
+          "scores": {
+            "frozen_first_pilot": 0.9984206574534645,
+            "frozen_round2": 0.9998173493871738,
+            "round3_classifier": 0.9999728726646756
+          }
+        },
+        {
+          "case": "v003",
+          "group": "g02",
+          "target": 1,
+          "predictions": {
+            "training_majority": 1,
+            "fixed_prompt_baseline": 1,
+            "frozen_first_pilot": 1,
+            "frozen_round2": 1,
+            "round3_classifier": 1
+          },
+          "scores": {
+            "frozen_first_pilot": 0.9489498294636499,
+            "frozen_round2": 0.9431259966968658,
+            "round3_classifier": 0.9743583695512477
+          }
+        },
+        {
+          "case": "v004",
+          "group": "g02",
+          "target": 1,
+          "predictions": {
+            "training_majority": 1,
+            "fixed_prompt_baseline": 1,
+            "frozen_first_pilot": 0,
+            "frozen_round2": 1,
+            "round3_classifier": 1
+          },
+          "scores": {
+            "frozen_first_pilot": 0.3668577836479743,
+            "frozen_round2": 0.8457411310203606,
+            "round3_classifier": 0.8577021463468609
+          }
+        },
+        {
+          "case": "v005",
+          "group": "g03",
+          "target": 0,
+          "predictions": {
+            "training_majority": 1,
+            "fixed_prompt_baseline": 1,
+            "frozen_first_pilot": 0,
+            "frozen_round2": 0,
+            "round3_classifier": 0
+          },
+          "scores": {
+            "frozen_first_pilot": 0.29412139678269356,
+            "frozen_round2": 0.0310141993729366,
+            "round3_classifier": 0.0016217571480776334
+          }
+        },
+        {
+          "case": "v006",
+          "group": "g03",
+          "target": 0,
+          "predictions": {
+            "training_majority": 1,
+            "fixed_prompt_baseline": 1,
+            "frozen_first_pilot": 0,
+            "frozen_round2": 0,
+            "round3_classifier": 0
+          },
+          "scores": {
+            "frozen_first_pilot": 0.0032688750998691105,
+            "frozen_round2": 7.25967883144897e-05,
+            "round3_classifier": 1.2411404288803795e-05
+          }
+        },
+        {
+          "case": "v007",
+          "group": "g04",
+          "target": 0,
+          "predictions": {
+            "training_majority": 1,
+            "fixed_prompt_baseline": 1,
+            "frozen_first_pilot": 0,
+            "frozen_round2": 0,
+            "round3_classifier": 0
+          },
+          "scores": {
+            "frozen_first_pilot": 0.004004123698714511,
+            "frozen_round2": 7.306888248781615e-05,
+            "round3_classifier": 6.6715544492375725e-06
+          }
+        },
+        {
+          "case": "v008",
+          "group": "g04",
+          "target": 0,
+          "predictions": {
+            "training_majority": 1,
+            "fixed_prompt_baseline": 1,
+            "frozen_first_pilot": 0,
+            "frozen_round2": 0,
+            "round3_classifier": 0
+          },
+          "scores": {
+            "frozen_first_pilot": 0.3018503106709873,
+            "frozen_round2": 0.013294104738885459,
+            "round3_classifier": 0.012142604498310535
+          }
+        }
+      ],
+      "encoder": {
+        "model": "google/siglip2-base-patch16-224",
+        "revision": "75de2d55ec2d0b4efc50b3e9ad70dba96a7b2fa2"
+      }
+    },
+    {
+      "id": "calibration",
+      "provenance": {
+        "completed_at_utc": "2026-10-25T23:43:16.703658+00:00",
+        "source_sha256": {
+          "status.json": "f5f6b3b8f84ddf8c8633fcaa7575c34718c396238c98d0ec50b429849fae475b",
+          "results.json": "8ef8909d1dd692e658cdb81ce1e735602ecc5e9097ca9e0ddb87d324b181ed1a",
+          "predictions.json": "f6128539339055797e1d9331564a90ab55158954aa8cf63f0fb2dcbcf59ff91d",
+          "protocol.json": "0af65bebd9362f2b8bf453dc2286065b5d57af65a386008fe2a812f3b0486837"
+        }
+      },
+      "coverage": {
+        "classifier_fit": {
+          "clips": 36,
+          "groups": 18
+        },
+        "temperature_fit": {
+          "clips": 16,
+          "groups": 8
+        },
+        "development_validation": {
+          "clips": 10,
+          "groups": 5
+        }
+      },
+      "evidence_type": "selected_synthetic_development",
+      "independent_evaluation_used": false,
+      "model_promoted": false,
+      "models": [
+        "previous_expanded_classifier",
+        "new_probe_uncalibrated",
+        "new_probe_temperature_scaled"
+      ],
+      "rows": [
+        {
+          "case": "v001",
+          "group": "g01",
+          "target": 1,
+          "predictions": {
+            "previous_expanded_classifier": 1,
+            "new_probe_uncalibrated": 1,
+            "new_probe_temperature_scaled": 1
+          },
+          "scores": {
+            "previous_expanded_classifier": 0.9999749493530214,
+            "new_probe_uncalibrated": 0.9999719059191039,
+            "new_probe_temperature_scaled": 0.9999932993853238
+          }
+        },
+        {
+          "case": "v002",
+          "group": "g01",
+          "target": 1,
+          "predictions": {
+            "previous_expanded_classifier": 1,
+            "new_probe_uncalibrated": 1,
+            "new_probe_temperature_scaled": 1
+          },
+          "scores": {
+            "previous_expanded_classifier": 0.9999885365634197,
+            "new_probe_uncalibrated": 0.9999855565302945,
+            "new_probe_temperature_scaled": 0.9999968548147823
+          }
+        },
+        {
+          "case": "v003",
+          "group": "g02",
+          "target": 0,
+          "predictions": {
+            "previous_expanded_classifier": 1,
+            "new_probe_uncalibrated": 1,
+            "new_probe_temperature_scaled": 1
+          },
+          "scores": {
+            "previous_expanded_classifier": 0.9024938471842398,
+            "new_probe_uncalibrated": 0.8517488238167814,
+            "new_probe_temperature_scaled": 0.8794802144336867
+          }
+        },
+        {
+          "case": "v004",
+          "group": "g02",
+          "target": 0,
+          "predictions": {
+            "previous_expanded_classifier": 0,
+            "new_probe_uncalibrated": 0,
+            "new_probe_temperature_scaled": 0
+          },
+          "scores": {
+            "previous_expanded_classifier": 0.00025561676260299113,
+            "new_probe_uncalibrated": 0.0003814156523574122,
+            "new_probe_temperature_scaled": 0.0001300033654136609
+          }
+        },
+        {
+          "case": "v005",
+          "group": "g03",
+          "target": 1,
+          "predictions": {
+            "previous_expanded_classifier": 1,
+            "new_probe_uncalibrated": 1,
+            "new_probe_temperature_scaled": 1
+          },
+          "scores": {
+            "previous_expanded_classifier": 0.9995870271243701,
+            "new_probe_uncalibrated": 0.9992736486490974,
+            "new_probe_temperature_scaled": 0.9997295577750865
+          }
+        },
+        {
+          "case": "v006",
+          "group": "g03",
+          "target": 1,
+          "predictions": {
+            "previous_expanded_classifier": 1,
+            "new_probe_uncalibrated": 1,
+            "new_probe_temperature_scaled": 1
+          },
+          "scores": {
+            "previous_expanded_classifier": 0.9774266816310595,
+            "new_probe_uncalibrated": 0.9791402406404139,
+            "new_probe_temperature_scaled": 0.9875717368540089
+          }
+        },
+        {
+          "case": "v007",
+          "group": "g04",
+          "target": 1,
+          "predictions": {
+            "previous_expanded_classifier": 1,
+            "new_probe_uncalibrated": 1,
+            "new_probe_temperature_scaled": 1
+          },
+          "scores": {
+            "previous_expanded_classifier": 0.9947081443575826,
+            "new_probe_uncalibrated": 0.9932523339807517,
+            "new_probe_temperature_scaled": 0.9965794751426826
+          }
+        },
+        {
+          "case": "v008",
+          "group": "g04",
+          "target": 1,
+          "predictions": {
+            "previous_expanded_classifier": 1,
+            "new_probe_uncalibrated": 1,
+            "new_probe_temperature_scaled": 1
+          },
+          "scores": {
+            "previous_expanded_classifier": 0.9981583556383973,
+            "new_probe_uncalibrated": 0.9981351225037418,
+            "new_probe_temperature_scaled": 0.9992094591497886
+          }
+        },
+        {
+          "case": "v009",
+          "group": "g05",
+          "target": 1,
+          "predictions": {
+            "previous_expanded_classifier": 1,
+            "new_probe_uncalibrated": 1,
+            "new_probe_temperature_scaled": 1
+          },
+          "scores": {
+            "previous_expanded_classifier": 0.9997942804609518,
+            "new_probe_uncalibrated": 0.9997285266495574,
+            "new_probe_temperature_scaled": 0.999911681943943
+          }
+        },
+        {
+          "case": "v010",
+          "group": "g05",
+          "target": 1,
+          "predictions": {
+            "previous_expanded_classifier": 1,
+            "new_probe_uncalibrated": 1,
+            "new_probe_temperature_scaled": 1
+          },
+          "scores": {
+            "previous_expanded_classifier": 0.9959780507445252,
+            "new_probe_uncalibrated": 0.9955972796475209,
+            "new_probe_temperature_scaled": 0.9978976364930521
+          }
+        }
+      ],
+      "encoder": {
+        "model": "google/siglip2-base-patch16-224",
+        "revision": "75de2d55ec2d0b4efc50b3e9ad70dba96a7b2fa2"
+      },
+      "temperature": 0.8796823309853159,
+      "validation_previously_exposed": true,
+      "calibrator_accepted": false
+    }
+  ]
+}
