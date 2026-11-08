@@ -6,6 +6,7 @@ import argparse
 import csv
 import hashlib
 import json
+import math
 import random
 from collections import Counter, defaultdict
 from pathlib import Path
@@ -49,10 +50,20 @@ def assign_group_splits(
     train_ratio: float = 0.70,
     validation_ratio: float = 0.15,
 ) -> list[dict[str, str]]:
-    """Assign whole groups to splits while roughly preserving label balance."""
-    if train_ratio <= 0 or validation_ratio <= 0 or train_ratio + validation_ratio >= 1:
+    """Greedily balance row and label counts without splitting source groups.
+
+    Ratios are approximate: indivisible groups and label balance can conflict.
+    This is a development split heuristic, not an independent evaluation design.
+    """
+    ratios = {
+        "train": train_ratio,
+        "validation": validation_ratio,
+        "test": 1 - train_ratio - validation_ratio,
+    }
+    if (any(not math.isfinite(ratio) or ratio <= 0 for ratio in ratios.values())
+            or train_ratio + validation_ratio >= 1):
         raise ValueError(
-            "Ratios must leave positive train, validation, and test partitions"
+            "Ratios must be finite and leave positive train, validation, and test partitions"
         )
 
     groups: dict[str, list[dict[str, str]]] = defaultdict(list)
@@ -62,17 +73,11 @@ def assign_group_splits(
         raise ValueError("At least three independent groups are required")
 
     totals = Counter(row["label"] for row in rows)
-    targets = {
-        "train": {label: count * train_ratio for label, count in totals.items()},
-        "validation": {
-            label: count * validation_ratio for label, count in totals.items()
-        },
-        "test": {
-            label: count * (1 - train_ratio - validation_ratio)
-            for label, count in totals.items()
-        },
-    }
+    targets = {name: {label: count * ratio for label, count in totals.items()}
+               for name, ratio in ratios.items()}
+    row_targets = {name: len(rows) * ratio for name, ratio in ratios.items()}
     split_counts = {name: Counter() for name in targets}
+    split_sizes: Counter[str] = Counter()
     assignments: dict[str, str] = {}
 
     ordered_groups = sorted(
@@ -80,23 +85,31 @@ def assign_group_splits(
         key=lambda group_id: (
             -len(groups[group_id]),
             _stable_seed(seed, group_id),
+            group_id,
         ),
     )
     for group_id in ordered_groups:
         labels = Counter(row["label"] for row in groups[group_id])
+        size = len(groups[group_id])
         candidates = []
         for split_name in ("train", "validation", "test"):
-            score = 0.0
-            for label, count in labels.items():
-                projected = split_counts[split_name][label] + count
-                target = max(targets[split_name][label], 1.0)
-                score += ((projected - target) / target) ** 2
-            candidates.append((score, split_name))
+            # Compare the increase in sum((count - target)**2 / target),
+            # for both total rows and each label. The -2*size terms are
+            # identical for every split, so they do not affect the choice.
+            terms = [(2 * split_sizes[split_name] * size + size * size)
+                     / row_targets[split_name]]
+            for label in sorted(labels):
+                count = labels[label]
+                current = split_counts[split_name][label]
+                terms.append((2 * current * count + count * count)
+                             / targets[split_name][label])
+            candidates.append((math.fsum(terms), split_name))
         minimum = min(score for score, _ in candidates)
         tied = [name for score, name in candidates if abs(score - minimum) < 1e-12]
         chosen = random.Random(_stable_seed(seed, group_id)).choice(tied)
         assignments[group_id] = chosen
         split_counts[chosen].update(labels)
+        split_sizes[chosen] += size
 
     # A small manifest can leave a split empty. Move one whole group if needed.
     group_counts = Counter(assignments.values())
