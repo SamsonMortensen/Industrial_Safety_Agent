@@ -45,22 +45,5 @@ jobs:
             --gitleaks-ignore-path "$scanner_dir/no-ignores" --ignore-gitleaks-allow \
             --redact=100 --no-banner --no-color)
           "${scanner[@]}" dir "$scanner_dir/current"
-          if [[ "$EVENT_NAME" == pull_request ]]; then
-            [[ "$PR_BASE_SHA" =~ ^[0-9a-f]{40}$ && "$PR_HEAD_SHA" =~ ^[0-9a-f]{40}$ ]]
-            "${scanner[@]}" git . --log-opts="$PR_BASE_SHA..$PR_HEAD_SHA"
-          elif [[ "$BEFORE_SHA" =~ ^[0-9a-f]{40}$ && "$BEFORE_SHA" != 0000000000000000000000000000000000000000 ]]; then
-            "${scanner[@]}" git . --log-opts="$BEFORE_SHA..$GITHUB_SHA"
-          else
-            # New branch pushes have no before SHA. Scan their complete new
-            # history, including credentials removed again before the tip.
-            [[ "$GITHUB_SHA" =~ ^[0-9a-f]{40}$ ]]
-            default_ref="refs/remotes/origin/$DEFAULT_BRANCH"
-            if [[ "$GITHUB_REF" != "refs/heads/$DEFAULT_BRANCH" ]] && \
-               base_sha="$(git merge-base "$GITHUB_SHA" "$default_ref")"; then
-              [[ "$base_sha" =~ ^[0-9a-f]{40}$ ]]
-              "${scanner[@]}" git . --log-opts="$base_sha..$GITHUB_SHA"
-            else
-              # No shared default-branch history: scan all reachable commits.
-              "${scanner[@]}" git . --log-opts="$GITHUB_SHA"
-            fi
-          fi
+          log_opts="$(python -B code/publication_scan_range.py)"
+          "${scanner[@]}" git . --log-opts="$log_opts"
