@@ -61,8 +61,12 @@ jobs:
           'commit': os.environ['GITHUB_SHA'], 'runner_os': os.environ['RUNNER_OS'],
           'python': platform.python_version(),
           'checks_status': os.environ['CI_CHECK_STATUS']}, indent=2), encoding='utf-8')"
-      - name: Preserve public development evidence
+      - name: Check evidence before upload
+        id: publication_privacy
         if: always()
+        run: python -B code/check_publication_privacy.py --ci-artifacts
+      - name: Preserve public development evidence
+        if: always() && steps.publication_privacy.outcome == 'success'
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: public-development-evidence-${{ matrix.os }}-py${{ matrix.python }}
@@ -74,7 +78,21 @@ jobs:
             benchmark_runs/retrieval_ci.json
             docs/RETRIEVAL_IMPROVEMENT.md
             docs/RESULTS.md
-            docs/results/*.png
-            docs/results/*.json
+            docs/results/audit_tradeoffs.png
+            docs/results/calibration_diagnostics.png
+            docs/results/person_development.png
+            docs/results/original_nine_misses.png
+            docs/results/retrieval_before_after.png
+            docs/results/retrieval_rank_cutoffs.png
+            docs/results/group_split_before_after.png
+            docs/results/manifest.json
+            docs/results/metrics.json
+            docs/results/retrieval_comparison.json
+            docs/results/retrieval_manifest.json
+            docs/results/group_split_before_after.json
             docs/results/retrieval_cases.csv
-            data/retrieval_comparison/*.json
+            data/retrieval_comparison/after.json
+            data/retrieval_comparison/before.json
+            data/retrieval_comparison/candidate_freeze.json
+            data/retrieval_comparison/exploration.json
+            data/retrieval_comparison/protocol.json

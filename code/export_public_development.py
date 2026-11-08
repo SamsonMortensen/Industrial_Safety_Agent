@@ -4,9 +4,12 @@ Explicit completed runs only; no directory crawling or independent-evaluation in
 Source hashes identify the saved artifacts, not a certification of their labels.
 """
 import argparse
+from datetime import datetime
 import hashlib
 import json
+import math
 from pathlib import Path
+import re
 
 from public_results import classification, probability_metrics
 
@@ -16,6 +19,50 @@ EXPECTED_MODELS = {
     "round3": ("training_majority", "fixed_prompt_baseline", "frozen_first_pilot", "frozen_round2", "round3_classifier"),
     "calibration": ("previous_expanded_classifier", "new_probe_uncalibrated", "new_probe_temperature_scaled"),
 }
+EXPECTED_SCORES = {
+    "pilot": ("trained_logistic_probe",),
+    "round2": ("frozen_first_pilot", "expanded_classifier"),
+    "round3": ("frozen_first_pilot", "frozen_round2", "round3_classifier"),
+    "calibration": EXPECTED_MODELS["calibration"],
+}
+
+
+def utc_timestamp(value):
+    # Preserve valid producer timestamps, but never carry arbitrary status text.
+    pattern = r"[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\.[0-9]{1,6})?(?:Z|\+00:00)"
+    if not isinstance(value, str) or re.fullmatch(pattern, value) is None:
+        raise ValueError("Completion time must be a UTC ISO timestamp")
+    try:
+        datetime.fromisoformat(value.replace("Z", "+00:00"))
+    except ValueError:
+        raise ValueError("Completion time must be a valid UTC ISO timestamp") from None
+    return value
+
+
+def finite_number(value, field, *, probability=False, positive=False):
+    if type(value) not in (int, float) or (type(value) is float and not math.isfinite(value)):
+        raise ValueError(f"{field} must be a finite number")
+    if (probability and not 0 <= value <= 1) or (positive and value <= 0):
+        raise ValueError(f"{field} is outside its permitted range")
+    return value
+
+
+def binary(value):
+    if type(value) is not int or value not in (0, 1):
+        raise ValueError("Targets and predictions must be binary integers")
+    return value
+
+
+def count(value):
+    if type(value) is not int or value < 0:
+        raise ValueError("Coverage counts must be nonnegative integers")
+    return value
+
+
+def public_scores(values, run_id):
+    # Future private metadata in the source mapping must not widen the export.
+    return {model: finite_number(values[model], "Score", probability=True)
+            for model in EXPECTED_SCORES[run_id]}
 
 
 def digest(path):
@@ -36,7 +83,7 @@ def read_completed(root):
         raise ValueError("This export is for unpromoted development experiments")
     rows = json.loads((root / "predictions.json").read_text(encoding="utf-8"))
     return result, rows, {
-        "completed_at_utc": status["completed_at_utc"],
+        "completed_at_utc": utc_timestamp(status["completed_at_utc"]),
         "source_sha256": {name: digest(root / name) for name in
                           ("status.json", "results.json", "predictions.json", "protocol.json")},
     }
@@ -57,22 +104,24 @@ def export_run(root, run_id, schema, metric_key):
     for i, row in enumerate(selected):
         if run_id == "pilot":
             # The pilot's training majority is derived from training targets only.
-            train = [r["target"] for r in rows if r["partition"] == "development_train"]
+            train = [binary(r["target"]) for r in rows if r["partition"] == "development_train"]
             majority = int(sum(train) > len(train) / 2)
             predictions = {"train_majority_baseline": majority,
                            "frozen_zero_shot_baseline": row["zero_shot_prediction"],
                            "trained_logistic_probe": row["trained_prediction"]}
             scores = {"trained_logistic_probe": row["trained_score_uncalibrated"]}
         elif run_id == "calibration":
-            scores = {k: row["scores"][k] for k in metrics}
+            scores = public_scores(row["scores"], run_id)
             predictions = {k: int(v >= .5) for k, v in scores.items()}
         else:
             predictions = {k: row["predictions"][k] for k in metrics}
             scores = (row["scores_uncalibrated"] if run_id == "round3" else {
                 "frozen_first_pilot": row["frozen_score_uncalibrated"],
                 "expanded_classifier": row["expanded_score_uncalibrated"]})
+        scores = public_scores(scores, run_id)
+        predictions = {model: binary(predictions[model]) for model in EXPECTED_MODELS[run_id]}
         public_rows.append({"case": f"v{i + 1:03}", "group": groups[row["group_id"]],
-                            "target": row.get("target", row.get("person")),
+                            "target": binary(row.get("target", row.get("person"))),
                             "predictions": predictions, "scores": scores})
 
     # Verify that the anonymous export reproduces the saved report before writing it.
@@ -100,8 +149,8 @@ def export_run(root, run_id, schema, metric_key):
     roles = ("classifier_fit", "temperature_fit", "development_validation") if run_id == "calibration" else ("development_train", "development_validation")
     for role in roles:
         counts = coverage[role]
-        clean_coverage[role] = {"clips": int(counts["clips"]),
-                                "groups": int(counts.get("groups", counts.get("source_groups")))}
+        clean_coverage[role] = {"clips": count(counts["clips"]),
+                                "groups": count(counts.get("groups", counts.get("source_groups")))}
     exported = {"id": run_id, "provenance": provenance, "coverage": clean_coverage,
                 "evidence_type": "selected_synthetic_development",
                 "independent_evaluation_used": False, "model_promoted": False,
@@ -115,7 +164,7 @@ def export_run(root, run_id, schema, metric_key):
     if run_id == "calibration":
         if result["calibrated_model_accepted"] is not False:
             raise ValueError("Expected the unaccepted calibration experiment")
-        exported["temperature"] = result["temperature"]["temperature"]
+        exported["temperature"] = finite_number(result["temperature"]["temperature"], "Temperature", positive=True)
         exported["validation_previously_exposed"] = True
         exported["calibrator_accepted"] = False
     return exported
@@ -137,7 +186,7 @@ def main():
               "runs": [export_run(getattr(args, name), name, schema, key)
                        for name, schema, key in specs]}
     args.out.parent.mkdir(parents=True, exist_ok=True)
-    args.out.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
+    args.out.write_text(json.dumps(result, indent=2, allow_nan=False) + "\n", encoding="utf-8")
     print("Exported four completed development runs with anonymous validation rows.")
 
 
