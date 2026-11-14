@@ -66,6 +66,11 @@ def assess_for_learning(
 
     predicted = 1 if verdict == "VIOLATION" else 0 if verdict == "CLEAR" else None
     citation = _normalized_citation(citation)
+    if predicted is None:
+        return LearningDecision(
+            False, "quarantine", "unresolved",
+            "Only a resolved CLEAR or VIOLATION decision can become a trusted precedent.",
+        )
 
     review_state = str(row.get("Review_Status", "")).strip().lower()
     if review_state in APPROVED_REVIEW_STATES:

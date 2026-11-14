@@ -9,7 +9,7 @@ from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "code"))
-from report_retrieval_comparison import check, compare, read, validate_capture
+from report_retrieval_comparison import check, compare, current_capture, read, validate_capture
 import capture_retrieval_run as capture
 
 
@@ -32,7 +32,7 @@ class RetrievalComparisonTests(unittest.TestCase):
             validate_capture(self.after)
 
     def test_fresh_capture_accepts_python311_metrics_with_exact_same_records(self):
-        fresh = copy.deepcopy(self.after)
+        fresh = copy.deepcopy(current_capture(ROOT, self.after))
         with patch.object(capture, "sum", sequential_sum, create=True):
             fresh["metrics"] = {cohort: capture.summarize([r for r in fresh["records"]
                                 if cohort == "all144" or r["cohort"] == cohort])
@@ -44,7 +44,7 @@ class RetrievalComparisonTests(unittest.TestCase):
             check(ROOT, fresh=path)
 
     def test_fresh_record_change_is_not_covered_by_float_tolerance(self):
-        fresh = copy.deepcopy(self.after)
+        fresh = copy.deepcopy(current_capture(ROOT, self.after))
         fresh["records"][0]["queries"][0] += " changed"
         with tempfile.TemporaryDirectory() as directory:
             path = Path(directory) / "capture.json"

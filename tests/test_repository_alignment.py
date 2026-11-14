@@ -92,8 +92,10 @@ class RepositoryAlignmentTests(unittest.TestCase):
             },
         ]
         metrics = compute_metrics(rows)
-        self.assertEqual(metrics["false_positives"], 1)
-        self.assertEqual(metrics["false_negatives"], 1)
+        self.assertEqual(metrics["false_positives"], 0)
+        self.assertEqual(metrics["false_negatives"], 0)
+        self.assertEqual(metrics["unresolved_positive_cases"], 1)
+        self.assertEqual(metrics["unresolved_negative_cases"], 1)
         self.assertEqual(metrics["accuracy"], 0.0)
         self.assertEqual(metrics["unparsed"], 2)
 

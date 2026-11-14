@@ -1,0 +1,83 @@
+{
+  "schema": "decision_scoring_software_regressions_v1",
+  "scope": "Four invented control-denial cases and eight mocked empty responses. Known development counterexamples, not independent model evaluation.",
+  "baseline_commit": "21e54059fc229626415f10ae5964c247f26f6fbc",
+  "baseline_source_sha256_lf": {
+    "code/audit_agent.py": "81dd70c52368a1493803bd7fa8a7cfced05a338933a45c0e8e2c470653355a94",
+    "code/audit_agent_v2.py": "a1f3b21397512492d5d4549b20320e4e8a1d859540e7a84f74726045125c2c3f",
+    "code/hybrid_policy.py": "8a0fc425c9f043b680370877f56ec00b2faffef834be3f0b7f40df06b8f8f74b",
+    "code/apply_policy_controls.py": "81543ce4de52acb4fe0e30c286b7adfbac012db8ae5bd49f4fddf624b7e34eaf",
+    "code/self_reflection.py": "36a21e8fc5fa1bf130ab511a14cff7ba4239051b7b03eb61349784bc09b078d1",
+    "code/scaled_benchmark.py": "f96363d120551a50e45e29f126a5fd4849456f6e6ce27796ff561559f2bfee1c",
+    "code/validate_saved_evaluation.py": "95245b1f654a61adceaec623cd4a714889de29b8d8f79fb34e64b8c598f3c57a"
+  },
+  "candidate_source_sha256_lf": {
+    "code/audit_agent.py": "210df386c6837bfd021a317c84d34720ae28220026ede978033a760696dd6db7",
+    "code/audit_agent_v2.py": "e5d572f3f6c2a270b27bc4b2c6f2f76543359352d6bfba13c6ed97bf14aa4c32",
+    "code/audit_outcomes.py": "0a3069c7626c66f255fe1241ab9b3171407049ae26991bb22a5d212f91ce21b0",
+    "code/hybrid_policy.py": "3a5d4e204188e20151f31f5b05bc3a9b9e1995ad005c9bc23e04b4be74d24060",
+    "code/apply_policy_controls.py": "619cda10393d19277358eef094af51ad2d402c0e8f40663d3aa67df54a7b749d",
+    "code/self_reflection.py": "dd18e30ffbdfd5377e701a415c8c31c483e79ae73cda218ba61e33c9a7f98fbc",
+    "code/scaled_benchmark.py": "ff4a3556a252ddcc449d76d1f1152d135d5b1a3eebd55547dae73a1c90d2ae7a",
+    "code/validate_saved_evaluation.py": "659bbe3bfcbc3fa42ed50f735846ff2876814263e062b712f71dc1633846a63b"
+  },
+  "control_denial_cases": [
+    {
+      "incident": "Oil spill on the employee walkway was not cleaned.",
+      "before": "CLEAR",
+      "after": "REVIEW"
+    },
+    {
+      "incident": "Crane was not grounded and came within four feet of the energized conductor.",
+      "before": "CLEAR",
+      "after": "REVIEW"
+    },
+    {
+      "incident": "Broken sling was not removed from service and remained in the active lift.",
+      "before": "CLEAR",
+      "after": "REVIEW"
+    },
+    {
+      "incident": "Work at the open edge proceeded without fall-arrest.",
+      "before": "CLEAR",
+      "after": "REVIEW"
+    }
+  ],
+  "empty_response_cases": {
+    "cases": 8,
+    "positive_labels": 4,
+    "negative_labels": 4,
+    "before": {
+      "reported_accuracy": 0.5,
+      "true_negatives": 4,
+      "inferred_negative_predictions": 8
+    },
+    "after": {
+      "scoring_schema": "selective_binary_v2",
+      "accuracy": 0.0,
+      "true_negatives": 0,
+      "labeled_decision_coverage": 0.0,
+      "unresolved_positive_cases": 4,
+      "unresolved_negative_cases": 4,
+      "missed_positive_cases": 4
+    },
+    "explanation": "No decisions means no correct decisions. The lower score removes credit previously given to failed replies."
+  },
+  "public_policy_compatibility": [
+    {
+      "fixture": "data/scaled_benchmark_train.csv",
+      "cases": 70,
+      "status_or_citation_changes": []
+    },
+    {
+      "fixture": "data/scaled_benchmark_holdout.csv",
+      "cases": 56,
+      "status_or_citation_changes": []
+    }
+  ],
+  "model_requests": 0,
+  "independent_evaluation_used": false,
+  "calibration_reserve_used": false,
+  "real_model_training_performed": false,
+  "model_promoted": false
+}

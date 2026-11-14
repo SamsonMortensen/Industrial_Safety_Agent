@@ -46,6 +46,10 @@ import aiohttp
 import numpy as np
 import requests
 from ollama_config import ollama_base_url
+from audit_outcomes import (
+    guard_grounded_decision, label_from_value, parse_audit_response,
+    prediction_from_record, prediction_from_status, score_outcomes,
+)
 
 ROOT = Path(__file__).resolve().parent.parent
 REGS = ROOT / "json" / "regulations.json"
@@ -99,12 +103,12 @@ YARD EVENT
 
 AUDITING INSTRUCTIONS:
 Decide whether the event below violates a requirement that is actually stated in the retrieved excerpts.
-Base the decision only on what those excerpts require and what the event reports. Do not apply a safety rule you happen to know but cannot locate in the excerpts, and do not cite a section number that does not appear above, even if you believe it is the governing rule. If the excerpts do not contain the rule you need, answer CLEAR.
+Base the decision only on what those excerpts require and what the event reports. Do not apply a safety rule you happen to know but cannot locate in the excerpts, and do not cite a section number that does not appear above, even if you believe it is the governing rule. If the excerpts do not contain the rule you need, or a required fact or control is missing or uncertain, answer REVIEW with CITATION: NONE. Missing evidence is not a clearance.
 If a requirement in the excerpts is breached, answer VIOLATION and cite that section number exactly as it appears.
 Otherwise answer CLEAR with CITATION: NONE.
 
 Answer in exactly this format and nothing else:
-STATUS: CLEAR or VIOLATION
+STATUS: CLEAR, VIOLATION, or REVIEW
 CITATION: exact section number copied from the excerpts above, or NONE
 REASON: one concise sentence.
 """
@@ -254,17 +258,7 @@ def build_query(row, strategy="triangulated"):
 
 
 def parse(text):
-    status = re.search(r"STATUS:\s*(VIOLATION|CLEAR)", text, re.I)
-    citation = re.search(r"CITATION:\s*([^\n]+)", text, re.I)
-    reason = re.search(r"REASON:\s*([^\n]+)", text, re.I)
-    cite = citation.group(1).strip() if citation else "NONE"
-    m = re.search(r"\b(\d{3,4}\.\d+|21103)\b", cite)
-    return {
-        "status": (status.group(1).upper() if status else "UNPARSED"),
-        "citation_raw": cite,
-        "citation": (m.group(1) if m else None),
-        "reason": (reason.group(1).strip() if reason else ""),
-    }
+    return parse_audit_response(text)
 
 
 async def ask_async(session, prompt, sem):
@@ -376,8 +370,8 @@ async def audit_async(
                 "citation": None,
                 "reason": "Operator shift duration is within statutory limits and no equipment incident or hazard reported.",
                 "predicted": 0,
-                "actual": int(row["Is_Violation"]),
-                "actual_type": row["Violation_Type"],
+                "actual": label_from_value(row.get("Is_Violation")),
+                "actual_type": row.get("Violation_Type", "unknown"),
                 "expected_section": row.get("Expected_Section"),
                 "retrieved": [],
                 "citation_exists": None,
@@ -426,16 +420,18 @@ async def audit_async(
 
         for (idx, row, hits, _), raw in zip(llm_tasks, raw_responses):
             parsed = parse(raw)
-            cite = parsed["citation"]
             retrieved_sections = {c["section"] for c in hits}
+            if grounded:
+                parsed = guard_grounded_decision(parsed, retrieved_sections, sections)
+            cite = parsed["citation"]
 
             parsed.update(
                 {
                     "log_id": row["Log_ID"],
                     "audited_by": "model",
-                    "predicted": 1 if parsed["status"] == "VIOLATION" else 0,
-                    "actual": int(row["Is_Violation"]),
-                    "actual_type": row["Violation_Type"],
+                    "predicted": prediction_from_status(parsed["status"]),
+                    "actual": label_from_value(row.get("Is_Violation")),
+                    "actual_type": row.get("Violation_Type", "unknown"),
                     "expected_section": row.get("Expected_Section"),
                     "retrieved": sorted(retrieved_sections),
                     "citation_exists": (None if cite is None else cite in sections),
@@ -452,25 +448,8 @@ async def audit_async(
 
 
 def _core_metrics(results):
-    """Confusion matrix and derived rates over whatever subset is passed in."""
-    tp = sum(r["predicted"] and r["actual"] for r in results)
-    fp = sum(r["predicted"] and not r["actual"] for r in results)
-    fn = sum(not r["predicted"] and r["actual"] for r in results)
-    tn = sum(not r["predicted"] and not r["actual"] for r in results)
-    precision = tp / (tp + fp) if tp + fp else 0.0
-    recall = tp / (tp + fn) if tp + fn else 0.0
-    f1 = 2 * precision * recall / (precision + recall) if precision + recall else 0.0
-    return {
-        "n": len(results),
-        "true_positives": tp,
-        "false_positives": fp,
-        "false_negatives": fn,
-        "true_negatives": tn,
-        "precision": round(precision, 4),
-        "recall": round(recall, 4),
-        "f1": round(f1, 4),
-        "accuracy": round((tp + tn) / len(results), 4) if results else None,
-    }
+    """Strict labeled correctness, explicit decisions, and unresolved outcomes."""
+    return score_outcomes(results)
 
 
 def score(results):
@@ -499,7 +478,8 @@ def score(results):
     # governing this hazard? Read off the row, so adding a hazard type needs no
     # change here. Distinct from validity (is it real) and grounding (was it
     # retrieved): a citation can pass both and still be the wrong rule.
-    caught = [r for r in results if r["actual"] and r["predicted"]]
+    caught = [r for r in results if label_from_value(r.get("actual")) == 1
+              and prediction_from_record(r) == 1]
     right = [
         r
         for r in caught
@@ -515,7 +495,7 @@ def score(results):
             "citations_correct_rule": len(right),
             "model_audited": len(model_rows),
             "triage_cleared": len(triage_rows),
-            "triage_missed_violations": sum(r["actual"] for r in triage_rows),
+            "triage_missed_violations": sum(r.get("actual") == 1 for r in triage_rows),
             "model_only": model_only,
             "citations_given": len(cited),
             "citations_fabricated": len(fabricated),

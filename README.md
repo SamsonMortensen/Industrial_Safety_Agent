@@ -18,6 +18,14 @@ Run `python code/public_results.py --check` to verify the report without downloa
 
 **Source-group allocation:** the [split-balance report](docs/GROUP_SPLIT_IMPROVEMENT.md) shows a 70/15/15 synthetic example improving from **132/84/84 to 210/45/45 rows**, with whole source groups preserved. It also reports all 100 exploratory cases, including eight where the allocation score worsened. These are data-allocation checks, not model-performance results.
 
+## Decision and scoring contract
+
+A control word alone is not enough to clear an event. “The walkway was not cleaned” must not be treated like “the walkway was cleaned.” The policy now checks common denials, planned or late action, continuing exposure, and controls applied to another object. These checks cover specific language patterns; uncertain cases still need review.
+
+New audit runs use `selective_binary_v2`. Only `CLEAR` and `VIOLATION` become binary decisions. `REVIEW`, malformed replies and inference failures stay unresolved, and missing labels stay missing. Strict accuracy counts correct decisions across all labeled cases, including unresolved cases. Reports also show decision coverage, review volume and failures, so readers can see how often the system declined or failed to decide.
+
+The [decision and scoring report](docs/DECISION_SCORING.md) explains the fixes with before-and-after examples. Historical reports keep their original evidence and scoring definitions. These regression checks establish software behavior; independent evaluation and model promotion remain separate.
+
 ## Start with the notebook
 
 Before publishing changes or reports, follow the [publication privacy checks](docs/PUBLICATION_PRIVACY.md). They help keep credentials, private reviews, personal paths, and saved notebook outputs out of shared files. Independent evaluation and model promotion keep their own approval gates.

@@ -7,9 +7,10 @@
     "data/retrieval_comparison/protocol.json": "ea3a9c06e7d1702c011f04e68159d98a7e8b629d4efcb6dfaf2f267604b80b5f",
     "data/retrieval_comparison/candidate_freeze.json": "4e823a7aed5d5ef5b09c80fb692b6f223e131e4ded442f87b6694e7ed145ffd7",
     "code/capture_retrieval_run.py": "725f85016d67212eda7c009b1b88076985c83c79184fe9e0646470fc845af46a",
-    "code/report_retrieval_comparison.py": "9d21e8ea648dffac4f8e3b9d7c065243d5f2664442ca27dbad6a89911de8722c",
+    "code/report_retrieval_comparison.py": "d74691673e216deabef11ad0b1d586ef358d50693a4f0af4008498193686c917",
     "code/autonomous_investigator.py": "5c2ba322b162c74ce0ce6f980aa49aeb8601ad56607b5cf9fa899979f75b0e7d",
-    "code/public_results.py": "372925fdf9a4841f5f0dc011c1dea08dc9778600bb037f9f04b357a7cccff572"
+    "code/public_results.py": "372925fdf9a4841f5f0dc011c1dea08dc9778600bb037f9f04b357a7cccff572",
+    "data/retrieval_comparison/reproductions/decision_scoring_20261114.json": "50df94f5dc07db5d97f126a5edc805426ff0d84dba1041632694836a07a442a7"
   },
   "outputs_sha256_lf_text_raw_png": {
     "docs/RETRIEVAL_IMPROVEMENT.md": "bfe400788359ba6d74e8d0bb59325be0de50db04c75ef1d1a5db2acef66c4250",

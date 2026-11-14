@@ -1,11 +1,8 @@
-"""Autonomous Continuous Learning Compliance Auditor (v2).
+"""Audit observations with retrieved rules and reviewed examples.
 
-Features:
-1. Multi-hazard triangulation over dynamically expanding regulatory pillars.
-2. Dynamic episodic memory & few-shot exemplar retrieval from past runs.
-3. Negative precedent (pitfall) avoidance.
-4. Self-reflection & automated statutory re-grounding verification.
-5. Persistent cross-run metrics tracking and continuous self-improvement.
+The runner can record proposed retrieval gaps, reuse trusted examples, and ask
+for a critique. It keeps unresolved decisions visible in the results. These
+mechanisms support development experiments; they do not prove improvement.
 """
 
 import argparse
@@ -22,6 +19,8 @@ from typing import Any, Dict, List, Set, Tuple
 import aiohttp
 import numpy as np
 from ollama_config import ollama_base_url
+from audit_outcomes import (guard_grounded_decision, label_from_value,
+                            parse_audit_response, prediction_from_record, prediction_from_status, score_outcomes)
 
 ROOT = Path(__file__).resolve().parent.parent
 JSON_DIR = ROOT / "json"
@@ -83,12 +82,12 @@ YARD EVENT TO AUDIT:
 
 AUDITING INSTRUCTIONS:
 Decide whether the event below violates a requirement that is actually stated in the retrieved excerpts.
-Base the decision only on what those excerpts require and what the event reports. Do not apply a safety rule you happen to know but cannot locate in the excerpts, and do not cite a section number that does not appear above, even if you believe it is the governing rule. If the excerpts do not contain the rule you need, answer CLEAR.
+Base the decision only on what those excerpts require and what the event reports. Do not apply a safety rule you happen to know but cannot locate in the excerpts, and do not cite a section number that does not appear above, even if you believe it is the governing rule. If the excerpts do not contain the rule you need, or a required event fact is missing, answer REVIEW.
 If a requirement in the excerpts is breached, answer VIOLATION and cite that section number exactly as it appears.
-Otherwise answer CLEAR with CITATION: NONE.
+Answer CLEAR with CITATION: NONE only when the supplied facts and governing excerpts support clearance. Otherwise answer REVIEW with CITATION: NONE.
 
 Answer in exactly this format and nothing else:
-STATUS: CLEAR or VIOLATION
+STATUS: CLEAR, VIOLATION, or REVIEW
 CITATION: exact section number copied from the excerpts above, or NONE
 REASON: one concise sentence.
 """
@@ -158,19 +157,27 @@ def retrieve_triangulated_adaptive(
 
 
 def parse_response(text: str) -> Dict[str, Any]:
-    # Strip any thinking tags if present
-    cleaned = re.sub(r"<think>.*?</think>", "", text, flags=re.DOTALL).strip()
-    status = re.search(r"STATUS:\s*(VIOLATION|CLEAR)", cleaned, re.I)
-    citation = re.search(r"CITATION:\s*([^\n]+)", cleaned, re.I)
-    reason = re.search(r"REASON:\s*([^\n]+)", cleaned, re.I)
-    cite = citation.group(1).strip() if citation else "NONE"
-    m = re.search(r"\b(\d{3,4}\.\d+|21103)\b", cite)
-    return {
-        "status": (status.group(1).upper() if status else "UNPARSED"),
-        "citation_raw": cite,
-        "citation": (m.group(1) if m else None),
-        "reason": (reason.group(1).strip() if reason else ""),
-    }
+    """Use the shared response contract across audit and critique paths."""
+    return parse_audit_response(text)
+
+
+def _unretrieved_proposals(responses, retrieved_sections, valid_sections):
+    """Keep real section proposals as retrieval diagnostics, not accepted verdicts.
+
+    A guard may remove an unsupported citation from the effective decision.
+    Preserve that observation without treating it as a correct rule or trusted
+    training label. Count a repeated proposal only once for the event.
+    """
+    proposed = set()
+    for response in responses:
+        status = response.get("status")
+        citation = response.get("citation")
+        if response.get("decision_source") == "grounding_guard":
+            status = response.get("unguarded_status")
+            citation = response.get("unguarded_citation")
+        if status == "VIOLATION" and citation in valid_sections and citation not in retrieved_sections:
+            proposed.add(citation)
+    return proposed
 
 
 async def ask_async(session, prompt, sem):
@@ -287,7 +294,7 @@ async def run_continuous_audit(
                 "citation": None,
                 "reason": "Operator shift duration is within statutory limits and no equipment incident or hazard reported.",
                 "predicted": 0,
-                "actual": int(row.get("Is_Violation", 0)),
+                "actual": label_from_value(row.get("Is_Violation")),
                 "actual_type": row.get("Violation_Type", "none"),
                 "expected_section": row.get("Expected_Section"),
                 "retrieved": [],
@@ -381,6 +388,7 @@ async def run_continuous_audit(
             # 4. Parsing, Verification, and Self-Reflection Critique Loop
             for (idx, row, hits, p), raw in zip(llm_tasks, raw_responses):
                 parsed = parse_response(raw)
+                initial_response = dict(parsed)
 
                 # Self-Reflection & Critique check
                 if enable_self_reflection:
@@ -398,15 +406,20 @@ async def run_continuous_audit(
                         )
                     parsed = refined
 
-                cite = parsed["citation"]
                 retrieved_sections = {c["section"] for c in hits}
+                proposed_gap_sections = _unretrieved_proposals(
+                    (initial_response, parsed), retrieved_sections, verifier.valid_sections
+                )
+                parsed = guard_grounded_decision(parsed, retrieved_sections, verifier.valid_sections)
+                parsed["initial_response"] = initial_response
+                cite = parsed["citation"]
 
                 parsed.update(
                     {
                         "log_id": row.get("Log_ID"),
                         "audited_by": "model",
-                        "predicted": 1 if parsed["status"] == "VIOLATION" else 0,
-                        "actual": int(row.get("Is_Violation", 0)),
+                        "predicted": prediction_from_status(parsed["status"]),
+                        "actual": label_from_value(row.get("Is_Violation")),
                         "actual_type": row.get("Violation_Type", "none"),
                         "expected_section": row.get("Expected_Section"),
                         "retrieved": sorted(list(retrieved_sections)),
@@ -420,12 +433,10 @@ async def run_continuous_audit(
                 )
                 results[idx] = parsed
 
-                # A real section the model reached for but retrieval never showed it.
-                # Label-free evidence of a blindspot, and it names the missing rule.
-                if parsed.get("citation_exists") and not parsed.get(
-                    "citation_was_retrieved"
-                ):
-                    pillar_bank.record_retrieval_gap(cite, row)
+                # A real section proposed outside the excerpts can be investigated
+                # as a retrieval gap. It does not establish which rule applies.
+                for proposed_section in sorted(proposed_gap_sections):
+                    pillar_bank.record_retrieval_gap(proposed_section, row)
 
                 # 5. Ingest into Episodic Memory Bank
                 is_grounded = (
@@ -470,7 +481,7 @@ async def run_continuous_audit(
     return results, metrics_extra
 
 
-def _core_metrics(results):
+def _historical_core_metrics(results):
     """Confusion matrix with unparsed outputs scored as strict errors."""
     tp = sum(r.get("predicted") == 1 and r["actual"] == 1 for r in results)
     fp = sum(r.get("predicted") != 0 and r["actual"] == 0 for r in results)
@@ -492,8 +503,14 @@ def _core_metrics(results):
     }
 
 
-def compute_metrics(results):
-    """Report the model's performance separately from the triage stage's.
+def compute_historical_metrics(results):
+    """Recompute historical saved reports only; never select new candidates with this.
+
+    This retains the old abstention-as-confusion-error convention so archived
+    reports can be checked without rewriting their evidence. New runs must use
+    compute_metrics, whose explicit scoring schema separates unresolved cases.
+
+    Report the model's performance separately from the triage stage's.
 
     A keyword pre-filter clears routine events without a model call. Those
     verdicts are constants, not predictions, so folding them into one accuracy
@@ -505,8 +522,8 @@ def compute_metrics(results):
     model_rows = [r for r in results if r.get("audited_by") == "model"]
     triage_rows = [r for r in results if r.get("audited_by") == "triage"]
 
-    corpus = _core_metrics(results)
-    model_only = _core_metrics(model_rows)
+    corpus = _historical_core_metrics(results)
+    model_only = _historical_core_metrics(model_rows)
 
     cited = [r for r in results if r["citation"] is not None]
     fabricated = [r for r in cited if not r["citation_exists"]]
@@ -547,6 +564,34 @@ def compute_metrics(results):
             "unparsed": sum(r["status"] == "UNPARSED" for r in results),
         }
     )
+    return out
+
+
+def compute_metrics(results):
+    """Score new runs with explicit unresolved outcomes and labeled coverage."""
+    results = list(results)
+    model_rows = [r for r in results if r.get("audited_by") == "model"]
+    triage_rows = [r for r in results if r.get("audited_by") == "triage"]
+    cited = [r for r in results if r.get("citation") is not None]
+    fabricated = [r for r in cited if not r.get("citation_exists")]
+    ungrounded = [r for r in cited if r.get("citation_exists") and not r.get("citation_was_retrieved")]
+    caught = [r for r in results if label_from_value(r.get("actual")) == 1 and prediction_from_record(r) == 1]
+    right = [r for r in caught if r.get("citation") and r.get("citation") == r.get("expected_section")]
+    out = score_outcomes(results)
+    out.update({
+        "citation_correctness": round(len(right) / len(caught), 4) if caught else None,
+        "citations_correct_rule": len(right),
+        "model_audited": len(model_rows),
+        "triage_cleared": len(triage_rows),
+        "triage_missed_violations": sum(label_from_value(r.get("actual")) == 1 for r in triage_rows),
+        "model_only": score_outcomes(model_rows),
+        "citations_given": len(cited),
+        "citations_fabricated": len(fabricated),
+        "citations_outside_retrieved_set": len(ungrounded),
+        "citation_validity": round(1 - len(fabricated) / len(cited), 4) if cited else None,
+        "citations_grounded": len(cited) - len(fabricated) - len(ungrounded),
+        "grounded_citation_rate": round((len(cited) - len(fabricated) - len(ungrounded)) / len(cited), 4) if cited else None,
+    })
     return out
 
 
