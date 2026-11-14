@@ -1,8 +1,7 @@
-"""Self-Reflection, Critique, and Statutory Grounding Engine.
+"""Check audit replies and ask for a critique when the checks fail.
 
-Validates compliance decisions against actual federal law (Title 29 & Title 49 CFR),
-checks factual consistency with event telemetry, and triggers an automated critique loop
-to eliminate hallucinations and over-eager citations.
+Citation membership and a few explicit event checks can reject unsupported
+answers. They do not establish legal correctness or eliminate model errors.
 """
 
 import json
@@ -13,6 +12,7 @@ from typing import Any, Dict, List, Tuple
 
 import aiohttp
 from ollama_config import ollama_base_url
+from audit_outcomes import guard_grounded_decision, parse_audit_response
 
 ROOT = Path(__file__).resolve().parent.parent
 JSON_DIR = ROOT / "json"
@@ -83,8 +83,11 @@ class StatutoryGroundedVerifier:
         }
 
         # 1. Format and parsing check
-        if status == "UNPARSED":
-            issues.append("Response failed strict formatting syntax.")
+        if status not in {"CLEAR", "VIOLATION"}:
+            issues.append(
+                "The decision remains unresolved and cannot be verified as a binary outcome."
+                if status == "REVIEW" else "Response failed strict formatting syntax."
+            )
             confidence = 0.0
             return {
                 "is_valid": False,
@@ -185,8 +188,9 @@ class StatutoryGroundedVerifier:
 class SelfReflectionCritic:
     """Dispatches self-reflection and re-grounding critique when potential hallucinations or errors occur."""
 
-    def __init__(self, verifier: StatutoryGroundedVerifier):
+    def __init__(self, verifier: StatutoryGroundedVerifier, model: str = CHAT_MODEL):
         self.verifier = verifier
+        self.model = model
 
     async def critique_and_reground_async(
         self,
@@ -196,17 +200,28 @@ class SelfReflectionCritic:
         row: Dict[str, Any],
         retrieved_chunks: List[Dict[str, Any]],
         sem: Any,
+        *,
+        record_preference: bool = True,
     ) -> Tuple[Dict[str, Any], bool, str]:
-        """Run self-reflection loop if verification fails.
+        """Run a critique if verification fails.
+
+        Evaluation callers can disable preference recording so their cases do
+        not become persistent training candidates.
 
         Returns:
             (refined_parsed_result, was_corrected, critique_log)
         """
         verification = self.verifier.verify(parsed_result, row, retrieved_chunks)
+        retrieved_sections = {chunk.get("section") for chunk in retrieved_chunks if chunk.get("section")}
+        if parsed_result.get("status") == "REVIEW":
+            # A request for missing evidence is not a formatting failure to retry away.
+            result = dict(parsed_result, confidence=0.0, critique_applied=False)
+            return result, False, "Decision remains unresolved pending evidence or review."
         if verification["is_valid"]:
-            parsed_result["confidence"] = verification["confidence"]
-            parsed_result["critique_applied"] = False
-            return parsed_result, False, ""
+            result = guard_grounded_decision(parsed_result, retrieved_sections, self.verifier.valid_sections)
+            result["confidence"] = verification["confidence"] if result["status"] != "REVIEW" else 0.0
+            result["critique_applied"] = False
+            return result, False, ""
 
         # Construct Critique Prompt
         issues_str = "\n".join(f"- {issue}" for issue in verification["issues"])
@@ -223,16 +238,17 @@ VERIFICATION FOUND THE FOLLOWING ISSUES:
 
 Please carefully re-evaluate the YARD EVENT against the RETRIEVED REGULATIONS.
 - If the event does NOT violate any retrieved regulation or statutory limit, output STATUS: CLEAR and CITATION: NONE.
+- If the governing authority, a required fact, or the asserted control cannot be established, output STATUS: REVIEW and CITATION: NONE. Absence of evidence is not a clearance.
 - Do NOT cite any section number that does not appear in RETRIEVED REGULATIONS.
 
 Answer strictly in this format and nothing else:
-STATUS: CLEAR or VIOLATION
+STATUS: CLEAR, VIOLATION, or REVIEW
 CITATION: exact section number present in the retrieved regulations, or NONE
 REASON: one concise sentence.
 """
         async with sem:
             payload = {
-                "model": CHAT_MODEL,
+                "model": self.model,
                 "messages": [{"role": "user", "content": critique_prompt}],
                 "stream": False,
                 "think": False,
@@ -251,49 +267,34 @@ REASON: one concise sentence.
                 print(f"[SelfReflection] LLM critique call failed: {e}")
                 raw_corrected = ""
 
-        # Parse refined response (strip think tags)
-        cleaned = re.sub(
-            r"<think>.*?</think>", "", raw_corrected, flags=re.DOTALL
-        ).strip()
-        status_match = re.search(r"STATUS:\s*(VIOLATION|CLEAR)", cleaned, re.I)
-        cit_match = re.search(r"CITATION:\s*([^\n]+)", cleaned, re.I)
-        reason_match = re.search(r"REASON:\s*([^\n]+)", cleaned, re.I)
-
-        cite_str = cit_match.group(1).strip() if cit_match else "NONE"
-        sec_m = re.search(r"\b(\d{3,4}\.\d+|21103)\b", cite_str)
-
+        # A failed critique remains failed; it must not inherit the prior verdict.
         refined = {
-            "status": (
-                status_match.group(1).upper()
-                if status_match
-                else parsed_result.get("status")
-            ),
-            "citation_raw": cite_str,
-            "citation": (sec_m.group(1) if sec_m else None),
-            "reason": (
-                reason_match.group(1).strip()
-                if reason_match
-                else parsed_result.get("reason")
-            ),
+            **parse_audit_response(raw_corrected),
             "critique_applied": True,
             "original_verdict": f"{parsed_result.get('status')}: {parsed_result.get('citation')}",
             "critique_issues": verification["issues"],
         }
+        refined = guard_grounded_decision(refined, retrieved_sections, self.verifier.valid_sections)
 
         # Second verification pass on refined result
         second_verif = self.verifier.verify(refined, row, retrieved_chunks)
         refined["confidence"] = second_verif["confidence"]
         refined["second_pass_valid"] = second_verif["is_valid"]
+        if not second_verif["is_valid"] and refined["status"] in {"CLEAR", "VIOLATION"}:
+            refined.update(status="REVIEW", citation=None, citation_raw="NONE", confidence=0.0,
+                           reason="The critique did not resolve the evidence checks; reviewer assessment is required.",
+                           decision_source="critique_verification_guard")
 
-        was_corrected = refined["status"] != parsed_result.get("status") or refined[
-            "citation"
-        ] != parsed_result.get("citation")
+        was_corrected = second_verif["is_valid"] and (
+            refined["status"] != parsed_result.get("status") or refined["citation"] != parsed_result.get("citation")
+        )
         critique_summary = (
             f"Critique resolved issues: {', '.join(verification['issues'])}"
+            if second_verif["is_valid"] else "Critique left the decision unresolved."
         )
 
         # If correction occurred, record preference optimization pair to disk
-        if was_corrected:
+        if was_corrected and record_preference:
             dpo_file = JSON_DIR / "dpo_pairs_raw.json"
             existing_pairs = []
             if dpo_file.exists():

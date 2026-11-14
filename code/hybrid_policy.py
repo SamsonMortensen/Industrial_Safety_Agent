@@ -9,6 +9,7 @@ it is not allowed to change their status or citation.
 
 from dataclasses import asdict, dataclass
 import math
+import re
 from typing import Any, Dict, List, Optional
 
 
@@ -30,7 +31,10 @@ def _contains(text: str, terms: tuple[str, ...]) -> bool:
 
 def _normalized_text(value: Any) -> str:
     """Normalize matching text while retaining the original event evidence."""
-    return " ".join(str(value).lower().split())
+    text = str(value).lower().translate(str.maketrans({
+        "\u2019": "'", "\u2010": "-", "\u2011": "-", "\u2013": "-",
+    }))
+    return " ".join(text.split())
 
 
 def _combined_text(row: Dict[str, Any]) -> str:
@@ -48,6 +52,259 @@ def _decision(
     evidence: List[str],
 ) -> PolicyDecision:
     return PolicyDecision(status, citation, reason, rule, evidence)
+
+
+@dataclass(frozen=True)
+class ControlAssertion:
+    """A bounded language check, not a probability or a general language parser."""
+
+    state: str
+    evidence: tuple[str, ...]
+
+
+def _control_matches(incident: str, rule: str):
+    # Boundaries avoid matching 'grounded' in 'ungrounded' or 'contained' in
+    # 'uncontained'. Plural nouns such as barriers still match their control.
+    terms = sorted(CONTROL_TERMS[rule], key=len, reverse=True)
+    pattern = r"(?<!\w)(?:" + "|".join(re.escape(t) for t in terms) + r")(?:s)?(?!\w)"
+    return list(re.finditer(pattern, incident))
+
+
+CONTROL_TERMS = {'walking_surface_housekeeping': ('cleaned',
+                                  'cleanup',
+                                  'dried',
+                                  'left it dry',
+                                  'contained',
+                                  'captured',
+                                  'separator',
+                                  'drained',
+                                  'drip pan',
+                                  'sump',
+                                  'barricaded',
+                                  'alternate dry',
+                                  'sealed',
+                                  'without releasing',
+                                  'curbed treatment bay',
+                                  'remained inside'),
+ 'electrical_work_practices': ('de-energized',
+                               'lockout',
+                               'locked out',
+                               'grounded',
+                               'safe distance',
+                               'outside',
+                               'barrier',
+                               'stopped at',
+                               'approved envelope'),
+ 'slings': ('removed from service',
+            'tagged out',
+            'replaced',
+            'undamaged',
+            'no visible damage',
+            'approved',
+            'acceptable',
+            'within capacity',
+            'within its marked',
+            'legible rating',
+            'legibly tagged'),
+ 'materials_handling_aisles': ('stayed clear',
+                               'stayed unobstructed',
+                               'remained open',
+                               'preserved',
+                               'inside',
+                               'without extending',
+                               'without projecting',
+                               'restored full',
+                               'behind the floor line'),
+ 'fall_protection': ('complete guardrail',
+                     'inspected guardrail',
+                     'self-closing gate',
+                     'connected restraint',
+                     'travel-restraint',
+                     'fall-arrest',
+                     'guardrails enclosed',
+                     'edge protection',
+                     'protected every open',
+                     'temporary rails',
+                     'guarded work',
+                     'enclosed the work area',
+                     'prevented the employee from reaching'),
+ 'dockboards': ('secured',
+                'anchored',
+                'anchors were engaged',
+                'locked',
+                'positive restraint',
+                'positive securing',
+                'wheel restraints',
+                'confirmed',
+                'capacity',
+                'adequate bearing',
+                'bearing, and anchoring')}
+
+CONTROL_SUBJECTS = {'walking_surface_housekeeping': ('\\b(?:walkway|walking|crosswalk|footpath|aisle|spill|leak|oil|fluid|runoff|water|lubricant|hose|containment)\\b',),
+ 'electrical_work_practices': ('\\b(?:circuit|line|conductor|voltage|energized|crane|boom|substation|electrical|lockout|equipment|approach|barrier)\\b',),
+ 'slings': ('\\b(?:sling|slings|rigging|chain|rope|rigger|hardware|fitting)\\b',),
+ 'materials_handling_aisles': ('\\b(?:aisle|passage|exit|access|pallets?|cargo|freight|racks?|loads?|storage|container|staging)\\b',),
+ 'dockboards': ('\\b(?:dockboard|dockboards|plate|leveler|restraints?|forklift|bearing|anchoring)\\b',),
+ 'fall_protection': ('\\b(?:platform|edge|fall|guardrails?|restraint|rails|scaffold|elevated|opening|anchorage|worker|employee|work)\\b',)}
+
+
+CLAUSE_BOUNDARY = re.compile(
+    r"[.;!?]|\b(?:but|however|whereas|although|while|yet)\b|"
+    r",(?=\s*(?:the|a|an|it|they|he|she)\b)|"
+    r"\band\s+(?=(?:the|a|an|it|they|he|she|was|were|is|are)\b)"
+)
+DENIAL = re.compile(
+    r"\b(?:not|never|no|without|neither|nor|lacks?|lacked|lacking|missing|absent|"
+    r"failed\s+to|fails?\s+to|unable\s+to|cannot|can't|isn't|wasn't|weren't|"
+    r"aren't|hasn't|haven't|hadn't|didn't|don't|doesn't|won't|wouldn't|couldn't|shouldn't|mustn't)\b"
+)
+NONASSERTED = re.compile(
+    r"\b(?:will|would|should|could|must|may|might|needs?|needed|requires?|required|"
+    r"planned|plans?|planning|promised|scheduled|requested|pending|awaiting|"
+    r"intends?|intended|if|unless)\b"
+)
+POST_DENIAL = re.compile(
+    r"^\s*(?:(?:system|control|equipment|protection|method|barrier|was|were|is|are|"
+    r"remained|found|reported|confirmed|has|have|had|been|being|temporarily)\s+){0,5}"
+    r"(?:not\b|never\b|absent\b|missing\b|unavailable\b|disconnected\b|failed\b|"
+    r"removed\b|dismantled\b|detached\b|disabled\b|bypassed\b|unhooked\b|disengaged\b)"
+)
+POST_NONASSERTED = re.compile(
+    r"^\s*(?:(?:system|control|equipment|protection|was|were|is|are|remained)\s+){0,4}"
+    r"(?:available\b|nearby\b|stored\b|planned\b|pending\b|scheduled\b|requested\b|"
+    r"required\b|needed\b|to\s+be\b|will\b|would\b|should\b|could\b|must\b|may\b|might\b)"
+)
+LATE_CONTROL = re.compile(
+    r"\b(?:later|eventually|subsequently|tomorrow)\b|\bnext\s+(?:shift|day|week)\b|"
+    r"\bafter\s+(?:the\s+)?(?:incident|exposure|lift|crossing|work\s+(?:began|started)|"
+    r"employees?\s+(?:entered|crossed|slipped)|people\s+(?:entered|crossed))\b"
+)
+OTHER_OBJECT = re.compile(r"\b(?:another|different|other|spare|second|unrelated|elsewhere|adjacent|nearby)\b")
+INCOMPLETE_CONTROL = re.compile(r"\b(?:partly|partially|incompletely|barely)\b|\bonly\s+in\s+part\b")
+# A completed cleanup does not clear a later spill on the same walking route.
+# This covers an explicit renewed exposure, not general narrative chronology.
+RENEWED_WALKWAY_SPILL = re.compile(
+    r"\b(?:fresh|new|additional)\s+(?:oil|fluid|grease|coolant|diesel|water)\b"
+    r"[^.;!?]{0,45}\b(?:spilled|leaked|covered|reached|spread|flowed)\b"
+    r"[^.;!?]{0,65}\b(?:walkway|walking\s+route|crosswalk|footpath|aisle)\b"
+)
+CONTINUING_HAZARD = {
+    "walking_surface_housekeeping": re.compile(
+        r"\b(?:remained|remains|still|continued)\b.{0,45}\b(?:oily|slick|slippery|wet|uncontained|spill|oil)\b"
+    ),
+    "electrical_work_practices": re.compile(
+        r"\b(?:remained|remains|still)\b.{0,35}\b(?:energized|live|exposed|inside)\b"
+    ),
+    "slings": re.compile(
+        r"\b(?:damaged|broken|cracked|defective|abraded)\b.{0,70}"
+        r"\b(?:remained|remains|still|continued|kept)\b.{0,40}\b(?:active|use|service|lift|load)\b"
+    ),
+    "materials_handling_aisles": re.compile(
+        r"\b(?:remained|remains|still|continued)\b.{0,35}\b(?:blocked|obstructed|narrowed|closed)\b"
+    ),
+    "dockboards": re.compile(
+        r"\b(?:remained|remains|still|continued)\b.{0,35}\b(?:loose|unsecured|sliding|moving|shifting)\b"
+    ),
+    "fall_protection": re.compile(
+        r"\b(?:remained|remains|still|continued)\b.{0,35}\b(?:unprotected|unguarded|disconnected|exposed)\b"
+    ),
+}
+CONTROL_ACTIONS = {
+    "cleaned", "dried", "contained", "captured", "drained", "barricaded", "sealed",
+    "de-energized", "locked out", "grounded", "removed from service", "tagged out",
+    "replaced", "approved", "preserved", "secured", "anchored", "locked", "confirmed",
+}
+
+
+def _scope_matches(text: str, rule: str) -> bool:
+    return any(re.search(pattern, text) for pattern in CONTROL_SUBJECTS[rule])
+
+
+def _explicit_other_subject(prefix: str, suffix: str, control: str, rule: str) -> bool:
+    """Reject an explicitly different controlled object, even near a hazard noun.
+
+    For example, a truck cleaned beside a walkway is not a cleaned walkway.
+    This checks common passive and direct-object constructions; ambiguous
+    language remains outside the supported automatic clearance contract.
+    """
+    if control not in CONTROL_ACTIONS:
+        return False
+    subject = re.search(
+        r"(?:^|,|\band\b)([^,;]+?)\s+(?:was|were|is|are|has\s+been|had\s+been)\s*$",
+        prefix,
+    )
+    if subject:
+        words = subject.group(1).strip()
+        if words not in {"it", "they", "this", "these"}:
+            return not _scope_matches(words, rule)
+    # An active verb followed by a noun phrase has an explicit object.
+    obj = re.match(r"\s+(?:the|a|an)\s+(.+?)(?=\s+(?:before|after|beside|near|while|and|at|in|on)\b|$)", suffix)
+    if not subject and obj:
+        return not _scope_matches(obj.group(1), rule)
+    return False
+
+
+def _control_assertion(incident: str, rule: str) -> ControlAssertion:
+    """Require an affirmative, current control tied to this hazard's evidence.
+
+    Scope is deliberately bounded. Clauses about an unrelated object, promised
+    controls, explicit denials and contradictory accounts do not establish a
+    maintained control. Cases outside these language patterns need review; no
+    absence of a negation is treated as proof that an arbitrary control works.
+    """
+    clauses = []
+    begin = 0
+    for boundary in CLAUSE_BOUNDARY.finditer(incident):
+        clauses.append((begin, boundary.start(), incident[begin:boundary.start()]))
+        begin = boundary.end()
+    clauses.append((begin, len(incident), incident[begin:]))
+    matches = _control_matches(incident, rule)
+    if not matches:
+        return ControlAssertion("unknown", ())
+    if CONTINUING_HAZARD[rule].search(incident):
+        return ControlAssertion("unknown", ("A continuing hazard contradicts a maintained control.",))
+    states = []
+    evidence = []
+    for match in matches:
+        start, stop, clause = next(
+            c for c in clauses if c[0] <= match.start() < c[1]
+        )
+        prefix = incident[start:match.start()]
+        suffix = incident[match.end():stop]
+        # The words *inside* a control phrase can be affirmative: e.g. 'no
+        # visible damage' and 'without releasing'. Only its surrounding scope
+        # is checked for denial.
+        assertion_prefix = re.sub(r"\bnot\s+only\b", "", prefix)
+        if DENIAL.search(assertion_prefix) or POST_DENIAL.search(suffix):
+            state = "denied"
+        elif (NONASSERTED.search(prefix) or POST_NONASSERTED.search(suffix)
+              or LATE_CONTROL.search(clause) or OTHER_OBJECT.search(clause)
+              or INCOMPLETE_CONTROL.search(clause)
+              or (rule == "walking_surface_housekeeping"
+                  and RENEWED_WALKWAY_SPILL.search(incident[match.end():]))
+              or _explicit_other_subject(prefix, suffix, match.group(), rule)):
+            state = "unknown"
+        else:
+            scoped = _scope_matches(clause, rule)
+            # A continuation ('and dried', ', locked out') can inherit the
+            # subject of its sentence. A separate sentence cannot silently
+            # reuse a different event's scope.
+            sentence_start = max(incident.rfind(p, 0, match.start()) for p in '.;!?') + 1
+            sentence = incident[sentence_start:stop]
+            continuation = bool(re.match(r"\s*(?:was|were|is|are|it|they|and|,)\b", clause))
+            if not scoped and continuation:
+                scoped = _scope_matches(sentence, rule)
+            # These very narrow phrases identify their object intrinsically.
+            if rule == "fall_protection" and match.group().startswith(("fall-arrest", "travel-restraint", "guardrail")):
+                scoped = True
+            state = "affirmed" if scoped else "unknown"
+        states.append(state)
+        evidence.append(f"{state}: {match.group()}")
+    if "denied" in states:
+        return ControlAssertion("denied", tuple(evidence))
+    if "unknown" in states:
+        return ControlAssertion("unknown", tuple(evidence))
+    return ControlAssertion("affirmed", tuple(evidence))
 
 
 def evaluate_event(row: Dict[str, Any]) -> PolicyDecision:
@@ -189,27 +446,7 @@ def evaluate_event(row: Dict[str, Any]) -> PolicyDecision:
             "sheen",
         ),
     )
-    surface_control = _contains(
-        incident,
-        (
-            "cleaned",
-            "cleanup",
-            "dried",
-            "left it dry",
-            "contained",
-            "captured",
-            "separator",
-            "drained",
-            "drip pan",
-            "sump",
-            "barricaded",
-            "alternate dry",
-            "sealed",
-            "without releasing",
-            "curbed treatment bay",
-            "remained inside",
-        ),
-    )
+    surface_control = _control_matches(incident, "walking_surface_housekeeping")
     if walking_surface and (fluid or surface_control):
         controlled = surface_control and "uncontained" not in incident
         candidates.append(
@@ -239,20 +476,7 @@ def evaluate_event(row: Dict[str, Any]) -> PolicyDecision:
         ),
     )
     if electrical_context:
-        controlled = _contains(
-            incident,
-            (
-                "de-energized",
-                "lockout",
-                "locked out",
-                "grounded",
-                "safe distance",
-                "outside",
-                "barrier",
-                "stopped at",
-                "approved envelope",
-            ),
-        )
+        controlled = _control_matches(incident, "electrical_work_practices")
         exposed = _contains(
             incident,
             (
@@ -297,22 +521,7 @@ def evaluate_event(row: Dict[str, Any]) -> PolicyDecision:
         ),
     )
     if sling_context:
-        controlled = _contains(
-            incident,
-            (
-                "removed from service",
-                "tagged out",
-                "replaced",
-                "undamaged",
-                "no visible damage",
-                "approved",
-                "acceptable",
-                "within capacity",
-                "within its marked",
-                "legible rating",
-                "legibly tagged",
-            ),
-        )
+        controlled = _control_matches(incident, "slings")
         damaged = _contains(
             incident,
             (
@@ -365,20 +574,7 @@ def evaluate_event(row: Dict[str, Any]) -> PolicyDecision:
         ),
     )
     if aisle_context and material_context:
-        controlled = _contains(
-            incident,
-            (
-                "stayed clear",
-                "stayed unobstructed",
-                "remained open",
-                "preserved",
-                "inside",
-                "without extending",
-                "without projecting",
-                "restored full",
-                "behind the floor line",
-            ),
-        )
+        controlled = _control_matches(incident, "materials_handling_aisles")
         obstructed = _contains(
             incident,
             (
@@ -434,22 +630,7 @@ def evaluate_event(row: Dict[str, Any]) -> PolicyDecision:
                 "lacked safe handholds",
             ),
         )
-        controlled = not unsafe and _contains(
-            incident,
-            (
-                "secured",
-                "anchored",
-                "anchors were engaged",
-                "locked",
-                "positive restraint",
-                "positive securing",
-                "wheel restraints",
-                "confirmed",
-                "capacity",
-                "adequate bearing",
-                "bearing, and anchoring",
-            ),
-        )
+        controlled = not unsafe and _control_matches(incident, "dockboards")
         if controlled or unsafe:
             candidates.append(
                 _decision(
@@ -472,24 +653,7 @@ def evaluate_event(row: Dict[str, Any]) -> PolicyDecision:
         text, ("platform", "catwalk", "edge", "drop", "opening", "scaffold")
     )
     if fall_context:
-        controlled = _contains(
-            incident,
-            (
-                "complete guardrail",
-                "inspected guardrail",
-                "self-closing gate",
-                "connected restraint",
-                "travel-restraint",
-                "fall-arrest",
-                "guardrails enclosed",
-                "edge protection",
-                "protected every open",
-                "temporary rails",
-                "guarded work",
-                "enclosed the work area",
-                "prevented the employee from reaching",
-            ),
-        )
+        controlled = _control_matches(incident, "fall_protection")
         exposed = _contains(
             incident,
             (
@@ -519,6 +683,18 @@ def evaluate_event(row: Dict[str, Any]) -> PolicyDecision:
                     ],
                 )
             )
+
+    # A recognized keyword is only a proposal for a control. Validate its
+    # assertion before allowing it to clear an otherwise hazardous event.
+    for index, candidate in enumerate(candidates):
+        if candidate.status == "CLEAR" and candidate.rule in CONTROL_TERMS:
+            assertion = _control_assertion(incident, candidate.rule)
+            if assertion.state != "affirmed":
+                candidates[index] = PolicyDecision(
+                    "REVIEW", None,
+                    "A relevant control is denied, not yet established, or not tied to this event; review the observation.",
+                    candidate.rule, list(assertion.evidence),
+                )
 
     if not candidates:
         return PolicyDecision(

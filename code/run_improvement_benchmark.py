@@ -19,6 +19,8 @@ ROOT = Path(__file__).resolve().parent.parent
 JSON_DIR = ROOT / "json"
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
+from audit_outcomes import format_metric, guard_grounded_decision, label_from_value, prediction_from_status, strictly_correct
+
 from audit_agent_v2 import (
     AUTONOMOUS_LEARNING_PROMPT,
     CHAT_MODEL,
@@ -417,10 +419,12 @@ async def run_audit_pass(
 
             coros.append(_ask())
 
-        raw_responses = await asyncio.gather(*coros)
+        raw_responses = await asyncio.gather(*coros, return_exceptions=True)
+        raw_responses = ["" if isinstance(raw, BaseException) else raw for raw in raw_responses]
 
         for (idx, row, hits, p), raw in zip(llm_tasks, raw_responses):
             parsed = parse_response(raw)
+            initial_response = dict(parsed)
 
             # Self-reflection is enabled only for Continuous Learning Agent (not baseline)
             if not is_baseline:
@@ -431,14 +435,16 @@ async def run_audit_pass(
                     critique_corrections_count += 1
                 parsed = refined
 
-            cite = parsed["citation"]
             retrieved_sections = {c["section"] for c in hits}
+            parsed = guard_grounded_decision(parsed, retrieved_sections, verifier.valid_sections)
+            parsed["initial_response"] = initial_response
+            cite = parsed["citation"]
 
             parsed.update(
                 {
                     "log_id": row.get("Log_ID"),
-                    "predicted": 1 if parsed["status"] == "VIOLATION" else 0,
-                    "actual": int(row.get("Is_Violation", 0)),
+                    "predicted": prediction_from_status(parsed["status"]),
+                    "actual": label_from_value(row.get("Is_Violation")),
                     "actual_type": row.get("Violation_Type", "none"),
                     "expected_citation": row.get("Expected_Citation", "NONE"),
                     "retrieved": sorted(list(retrieved_sections)),
@@ -517,7 +523,7 @@ async def execute_experiment():
     )
     baseline_metrics["time"] = round(time.time() - t0, 1)
     print(
-        f"    Baseline Result -> Accuracy: {baseline_metrics['accuracy']:.2%} | F1: {baseline_metrics['f1']:.4f} | Precision: {baseline_metrics['precision']:.4f} | Recall: {baseline_metrics['recall']:.4f}"
+        f"    Baseline Result -> Accuracy: {format_metric(baseline_metrics['accuracy'], '.2%')} | F1: {format_metric(baseline_metrics['f1'], '.4f')} | Precision: {format_metric(baseline_metrics['precision'], '.4f')} | Recall: {format_metric(baseline_metrics['recall'], '.4f')}"
     )
 
     # -------------------------------------------------------------------------
@@ -547,7 +553,7 @@ async def execute_experiment():
     )
     run1_metrics["time"] = round(time.time() - t0, 1)
     print(
-        f"    Run 1 Result    -> Accuracy: {run1_metrics['accuracy']:.2%} | F1: {run1_metrics['f1']:.4f} | Self-Critique Corrections: {run1_metrics['critique_corrections']} | Precedents Indexed: {len(exp_memory.episodes)}"
+        f"    Run 1 Result    -> Accuracy: {format_metric(run1_metrics['accuracy'], '.2%')} | F1: {format_metric(run1_metrics['f1'], '.4f')} | Self-Critique Corrections: {run1_metrics['critique_corrections']} | Precedents Indexed: {len(exp_memory.episodes)}"
     )
 
     # -------------------------------------------------------------------------
@@ -570,7 +576,7 @@ async def execute_experiment():
     )
     run2_metrics["time"] = round(time.time() - t0, 1)
     print(
-        f"    Run 2 Result    -> Accuracy: {run2_metrics['accuracy']:.2%} | F1: {run2_metrics['f1']:.4f} | Precision: {run2_metrics['precision']:.4f} | Recall: {run2_metrics['recall']:.4f}"
+        f"    Run 2 Result    -> Accuracy: {format_metric(run2_metrics['accuracy'], '.2%')} | F1: {format_metric(run2_metrics['f1'], '.4f')} | Precision: {format_metric(run2_metrics['precision'], '.4f')} | Recall: {format_metric(run2_metrics['recall'], '.4f')}"
     )
 
     # -------------------------------------------------------------------------
@@ -584,23 +590,29 @@ async def execute_experiment():
     )
     print("-" * 88)
     print(
-        f"{'Accuracy':<30} {baseline_metrics['accuracy']:<20.2%} {run1_metrics['accuracy']:<20.2%} {run2_metrics['accuracy']:<20.2%}"
+        f"{'Accuracy':<30} {format_metric(baseline_metrics['accuracy'], '.2%'):<20} {format_metric(run1_metrics['accuracy'], '.2%'):<20} {format_metric(run2_metrics['accuracy'], '.2%'):<20}"
     )
     print(
-        f"{'F1 Score':<30} {baseline_metrics['f1']:<20.4f} {run1_metrics['f1']:<20.4f} {run2_metrics['f1']:<20.4f}"
+        f"{'F1 Score':<30} {format_metric(baseline_metrics['f1'], '.4f'):<20} {format_metric(run1_metrics['f1'], '.4f'):<20} {format_metric(run2_metrics['f1'], '.4f'):<20}"
     )
     print(
-        f"{'Precision':<30} {baseline_metrics['precision']:<20.4f} {run1_metrics['precision']:<20.4f} {run2_metrics['precision']:<20.4f}"
+        f"{'Precision':<30} {format_metric(baseline_metrics['precision'], '.4f'):<20} {format_metric(run1_metrics['precision'], '.4f'):<20} {format_metric(run2_metrics['precision'], '.4f'):<20}"
     )
     print(
-        f"{'Recall':<30} {baseline_metrics['recall']:<20.4f} {run1_metrics['recall']:<20.4f} {run2_metrics['recall']:<20.4f}"
+        f"{'Recall':<30} {format_metric(baseline_metrics['recall'], '.4f'):<20} {format_metric(run1_metrics['recall'], '.4f'):<20} {format_metric(run2_metrics['recall'], '.4f'):<20}"
     )
-    print(
-        f"{'False Positives (Alarms)':<30} {baseline_metrics['false_positives']:<20} {run1_metrics['false_positives']:<20} {run2_metrics['false_positives']:<20}"
-    )
-    print(
-        f"{'False Negatives (Misses)':<30} {baseline_metrics['false_negatives']:<20} {run1_metrics['false_negatives']:<20} {run2_metrics['false_negatives']:<20}"
-    )
+    for label, key, spec in (
+        ("False positive alerts", "false_positives", "d"),
+        ("False negative decisions", "false_negatives", "d"),
+        ("Missed positive cases", "missed_positive_cases", "d"),
+        ("Unresolved cases", "unresolved_count", "d"),
+        ("Review cases", "review_count", "d"),
+        ("Failed responses", "inference_error_count", "d"),
+        ("Decision coverage (labeled)", "labeled_decision_coverage", ".2%"),
+    ):
+        values = " ".join(f"{format_metric(metrics[key], spec):<20}"
+                          for metrics in (baseline_metrics, run1_metrics, run2_metrics))
+        print(f"{label:<30} {values}")
     print(
         f"{'Hallucinated Citations':<30} {baseline_metrics['citations_fabricated']:<20} {run1_metrics['citations_fabricated']:<20} {run2_metrics['citations_fabricated']:<20}"
     )
@@ -613,8 +625,8 @@ async def execute_experiment():
     print("\n>>> Cases Corrected by Continuous Learning:")
     improvements_found = 0
     for b_res, r_res, row in zip(baseline_results, run2_results, dataset):
-        b_correct = b_res["predicted"] == b_res["actual"]
-        r_correct = r_res["predicted"] == r_res["actual"]
+        b_correct = strictly_correct(b_res)
+        r_correct = strictly_correct(r_res)
         if not b_correct and r_correct:
             improvements_found += 1
             print(

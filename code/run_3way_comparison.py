@@ -26,6 +26,8 @@ ROOT = Path(__file__).resolve().parent.parent
 JSON_DIR = ROOT / "json"
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
+from audit_outcomes import format_metric, guard_grounded_decision, label_from_value, prediction_from_status, strictly_correct
+
 from audit_agent_v2 import (
     CHAT_MODEL,
     NUM_CTX,
@@ -124,8 +126,8 @@ async def audit_ungrounded(
                 {
                     "log_id": row.get("Log_ID"),
                     "audited_by": "model",
-                    "predicted": 1 if parsed["status"] == "VIOLATION" else 0,
-                    "actual": int(row.get("Is_Violation", 0)),
+                    "predicted": prediction_from_status(parsed["status"]),
+                    "actual": label_from_value(row.get("Is_Violation")),
                     "actual_type": row.get("Violation_Type", "none"),
                     "expected_section": row.get("Expected_Section"),
                     "retrieved": [],
@@ -166,7 +168,7 @@ async def run_3way_comparison():
     )
     ungrounded_metrics["time"] = round(time.time() - t0, 1)
     print(
-        f"    Completed in {ungrounded_metrics['time']}s | F1: {ungrounded_metrics['f1']:.4f} | Citations Fabricated: {ungrounded_metrics['citations_fabricated']}"
+        f"    Completed in {ungrounded_metrics['time']}s | F1: {format_metric(ungrounded_metrics['f1'], '.4f')} | Citations Fabricated: {ungrounded_metrics['citations_fabricated']}"
     )
 
     # -------------------------------------------------------------------------
@@ -196,7 +198,7 @@ async def run_3way_comparison():
     )
     static_metrics["time"] = round(time.time() - t0, 1)
     print(
-        f"    Completed in {static_metrics['time']}s | F1: {static_metrics['f1']:.4f} | Precision: {static_metrics['precision']:.4f} | Recall: {static_metrics['recall']:.4f}"
+        f"    Completed in {static_metrics['time']}s | F1: {format_metric(static_metrics['f1'], '.4f')} | Precision: {format_metric(static_metrics['precision'], '.4f')} | Recall: {format_metric(static_metrics['recall'], '.4f')}"
     )
 
     # -------------------------------------------------------------------------
@@ -239,7 +241,7 @@ async def run_3way_comparison():
     )
     cl_metrics["time"] = round(time.time() - t0, 1)
     print(
-        f"    Completed in {cl_metrics['time']}s | F1: {cl_metrics['f1']:.4f} | Precedents Accumulated: {len(cl_mem.episodes)}"
+        f"    Completed in {cl_metrics['time']}s | F1: {format_metric(cl_metrics['f1'], '.4f')} | Precedents Accumulated: {len(cl_mem.episodes)}"
     )
 
     # -------------------------------------------------------------------------
@@ -253,17 +255,29 @@ async def run_3way_comparison():
     )
     print("-" * 92)
     print(
-        f"{'Accuracy':<32} {ungrounded_metrics['accuracy']:<20.2%} {static_metrics['accuracy']:<20.2%} {cl_metrics['accuracy']:<20.2%}"
+        f"{'Accuracy':<32} {format_metric(ungrounded_metrics['accuracy'], '.2%'):<20} {format_metric(static_metrics['accuracy'], '.2%'):<20} {format_metric(cl_metrics['accuracy'], '.2%'):<20}"
     )
     print(
-        f"{'F1 Score':<32} {ungrounded_metrics['f1']:<20.4f} {static_metrics['f1']:<20.4f} {cl_metrics['f1']:<20.4f}"
+        f"{'F1 Score':<32} {format_metric(ungrounded_metrics['f1'], '.4f'):<20} {format_metric(static_metrics['f1'], '.4f'):<20} {format_metric(cl_metrics['f1'], '.4f'):<20}"
     )
     print(
-        f"{'Precision':<32} {ungrounded_metrics['precision']:<20.4f} {static_metrics['precision']:<20.4f} {cl_metrics['precision']:<20.4f}"
+        f"{'Precision':<32} {format_metric(ungrounded_metrics['precision'], '.4f'):<20} {format_metric(static_metrics['precision'], '.4f'):<20} {format_metric(cl_metrics['precision'], '.4f'):<20}"
     )
     print(
-        f"{'Recall':<32} {ungrounded_metrics['recall']:<20.4f} {static_metrics['recall']:<20.4f} {cl_metrics['recall']:<20.4f}"
+        f"{'Recall':<32} {format_metric(ungrounded_metrics['recall'], '.4f'):<20} {format_metric(static_metrics['recall'], '.4f'):<20} {format_metric(cl_metrics['recall'], '.4f'):<20}"
     )
+    for label, key, spec in (
+        ("False positive alerts", "false_positives", "d"),
+        ("False negative decisions", "false_negatives", "d"),
+        ("Missed positive cases", "missed_positive_cases", "d"),
+        ("Unresolved cases", "unresolved_count", "d"),
+        ("Review cases", "review_count", "d"),
+        ("Failed responses", "inference_error_count", "d"),
+        ("Decision coverage (labeled)", "labeled_decision_coverage", ".2%"),
+    ):
+        values = " ".join(f"{format_metric(metrics[key], spec):<20}"
+                          for metrics in (ungrounded_metrics, static_metrics, cl_metrics))
+        print(f"{label:<32} {values}")
     print(
         f"{'Citations Given':<32} {ungrounded_metrics['citations_given']:<20} {static_metrics['citations_given']:<20} {cl_metrics['citations_given']:<20}"
     )
@@ -271,12 +285,9 @@ async def run_3way_comparison():
         f"{'Fabricated/Hallucinated Laws':<32} {ungrounded_metrics['citations_fabricated']:<20} {static_metrics['citations_fabricated']:<20} {cl_metrics['citations_fabricated']:<20}"
     )
 
-    def _pct(v):
-        return "n/a" if v is None else f"{v:.2%}"
-
     print(
-        f"{'Citation Validity Rate':<32} {_pct(ungrounded_metrics['citation_validity']):<20} "
-        f"{_pct(static_metrics['citation_validity']):<20} {_pct(cl_metrics['citation_validity']):<20}"
+        f"{'Citation Validity Rate':<32} {format_metric(ungrounded_metrics['citation_validity'], '.2%'):<20} "
+        f"{format_metric(static_metrics['citation_validity'], '.2%'):<20} {format_metric(cl_metrics['citation_validity'], '.2%'):<20}"
     )
     print(
         f"{'Persistent Precedent Memory':<32} {'None':<20} {'None':<20} {f'{len(cl_mem.episodes)} Verified Cases':<20}"
@@ -295,8 +306,8 @@ async def run_3way_comparison():
 
     gains, losses = [], []
     for u_res, cl_res, row in zip(ungrounded_results, cl_results, rows):
-        u_ok = u_res["predicted"] == u_res["actual"]
-        c_ok = cl_res["predicted"] == cl_res["actual"]
+        u_ok = strictly_correct(u_res)
+        c_ok = strictly_correct(cl_res)
         if c_ok and not u_ok:
             gains.append((row, u_res, cl_res))
         elif u_ok and not c_ok:

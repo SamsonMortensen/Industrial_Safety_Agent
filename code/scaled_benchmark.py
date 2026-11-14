@@ -34,6 +34,8 @@ OLLAMA = os.getenv("OLLAMA_HOST", "http://localhost:11434")
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
+from audit_outcomes import format_metric, guard_grounded_decision, label_from_value, prediction_from_record, prediction_from_status
+
 from audit_agent_v2 import (
     AUTONOMOUS_LEARNING_PROMPT,
     CHAT_MODEL,
@@ -498,7 +500,7 @@ async def evaluate_strategy(
     chunks: List[Dict[str, Any]],
     vectors: np.ndarray,
     memory: EpisodicMemoryBank,
-    pillar_bank: AdaptivePillarBank,
+    pillar_bank: AdaptivePillarBank | None,
     verifier: StatutoryGroundedVerifier,
     critic: SelfReflectionCritic,
     model: str,
@@ -522,10 +524,12 @@ async def evaluate_strategy(
     results = []
     async with aiohttp.ClientSession() as session:
         raw_outputs = await asyncio.gather(
-            *(ask_model(session, prompt, model, semaphore) for _, _, prompt in prepared)
+            *(ask_model(session, prompt, model, semaphore) for _, _, prompt in prepared),
+            return_exceptions=True,
         )
         for (row, hits, prompt), raw_output in zip(prepared, raw_outputs):
-            parsed = parse_response(raw_output)
+            parsed = parse_response("" if isinstance(raw_output, BaseException) else raw_output)
+            initial_response = dict(parsed)
             if use_reflection:
                 parsed, was_corrected, _ = await critic.critique_and_reground_async(
                     session,
@@ -538,14 +542,17 @@ async def evaluate_strategy(
                 )
                 corrections += int(was_corrected)
 
-            citation = parsed.get("citation")
             retrieved_sections = {chunk["section"] for chunk in hits}
+            parsed = guard_grounded_decision(parsed, retrieved_sections, verifier.valid_sections)
+            parsed["initial_response"] = initial_response
+            citation = parsed.get("citation")
             expected_citation = row["Expected_Citation"]
             parsed.update(
                 {
                     "log_id": row["Log_ID"],
-                    "predicted": 1 if parsed.get("status") == "VIOLATION" else 0,
-                    "actual": int(row["Is_Violation"]),
+                    "audited_by": "model",
+                    "predicted": prediction_from_status(parsed.get("status")),
+                    "actual": label_from_value(row.get("Is_Violation")),
                     "actual_type": row["Violation_Type"],
                     "expected_citation": expected_citation,
                     "retrieved": sorted(retrieved_sections),
@@ -560,7 +567,7 @@ async def evaluate_strategy(
                     "citation_correct": (
                         citation == expected_citation
                         if expected_citation != "NONE"
-                        else citation is None
+                        else citation is None and parsed.get("status") == "CLEAR"
                     ),
                 }
             )
@@ -574,7 +581,7 @@ async def evaluate_strategy(
                 sum(result["citation_correct"] for result in violations)
                 / len(violations),
                 4,
-            ),
+            ) if violations else None,
             "retrieval_recall": round(
                 sum(
                     result["expected_citation"] in result["retrieved"]
@@ -582,7 +589,7 @@ async def evaluate_strategy(
                 )
                 / len(violations),
                 4,
-            ),
+            ) if violations else None,
             "critique_corrections": corrections,
             "runtime_seconds": round(time.perf_counter() - started, 2),
         }
@@ -619,7 +626,7 @@ def evaluate_hybrid(
                     if decision.status == "CLEAR"
                     else None
                 ),
-                "actual": int(row["Is_Violation"]),
+                "actual": label_from_value(row.get("Is_Violation")),
                 "actual_type": row["Violation_Type"],
                 "expected_citation": expected_citation,
                 "retrieved": [chunk["section"] for chunk in selected_chunks],
@@ -638,13 +645,7 @@ def evaluate_hybrid(
         )
         results.append(result)
 
-    metric_results = []
-    for result in results:
-        metric_result = dict(result)
-        if metric_result["predicted"] is None:
-            metric_result["predicted"] = 1 - metric_result["actual"]
-        metric_results.append(metric_result)
-    metrics = compute_metrics(metric_results)
+    metrics = compute_metrics(results)
     violations = [result for result in results if result["actual"] == 1]
     review_count = sum(result["status"] == "REVIEW" for result in results)
     metrics.update(
@@ -653,7 +654,7 @@ def evaluate_hybrid(
                 sum(result["citation_correct"] for result in violations)
                 / len(violations),
                 4,
-            ),
+            ) if violations else None,
             "retrieval_recall": round(
                 sum(
                     result["expected_citation"] in result["retrieved"]
@@ -661,9 +662,9 @@ def evaluate_hybrid(
                 )
                 / len(violations),
                 4,
-            ),
+            ) if violations else None,
             "review_count": review_count,
-            "automation_coverage": round(1 - review_count / len(results), 4),
+            "automation_coverage": metrics["automation_coverage"],
             "critique_corrections": 0,
             "runtime_seconds": round(time.perf_counter() - started, 4),
         }
@@ -688,11 +689,30 @@ def wilson_interval(successes: int, total: int, z: float = 1.96) -> List[float]:
 def exact_mcnemar(
     left: Sequence[Dict[str, Any]], right: Sequence[Dict[str, Any]]
 ) -> Dict[str, Any]:
+    """Compare strict correctness only for the same uniquely identified cases."""
+    def indexed(records):
+        index = {}
+        for record in records:
+            case_id = record.get("log_id")
+            if not isinstance(case_id, str) or not case_id.strip() or case_id in index:
+                raise ValueError("Paired comparisons require unique nonempty case IDs.")
+            if label_from_value(record.get("actual")) is None:
+                raise ValueError("Paired comparisons require a binary label for every case.")
+            index[case_id] = record
+        return index
+
+    left_index, right_index = indexed(left), indexed(right)
+    if not left_index or set(left_index) != set(right_index):
+        raise ValueError("Paired comparisons require equal nonempty case-ID sets.")
     left_only = 0
     right_only = 0
-    for left_result, right_result in zip(left, right):
-        left_correct = left_result["predicted"] == left_result["actual"]
-        right_correct = right_result["predicted"] == right_result["actual"]
+    for case_id, left_result in left_index.items():
+        right_result = right_index[case_id]
+        actual = label_from_value(left_result["actual"])
+        if actual != label_from_value(right_result["actual"]):
+            raise ValueError("Paired cases disagree on the actual label.")
+        left_correct = prediction_from_record(left_result) == actual
+        right_correct = prediction_from_record(right_result) == actual
         left_only += int(left_correct and not right_correct)
         right_only += int(right_correct and not left_correct)
     discordant = left_only + right_only
@@ -782,7 +802,8 @@ async def run_benchmark(args: argparse.Namespace) -> Dict[str, Any]:
         )
         if needs_llm:
             seed_trusted_memory(memory, train)
-        pillar_bank = AdaptivePillarBank(state_file=temporary_path / "pillars.json")
+        # The policy-only path needs no embeddings or model service.
+        pillar_bank = AdaptivePillarBank(state_file=temporary_path / "pillars.json") if needs_llm else None
 
         strategies: Dict[str, Any] = {}
         for strategy in args.strategies:
@@ -854,8 +875,8 @@ async def run_benchmark(args: argparse.Namespace) -> Dict[str, Any]:
             "training_method": "trusted episodic in-context memory plus scope-aware policy control",
             "weight_fine_tuning_performed": False,
             "weight_fine_tuning_note": (
-                "The host reported no usable CUDA device. This run evaluates trusted "
-                "episodic learning and does not claim a LoRA or DPO weight update."
+                "This benchmark does not perform weight updates. Model-backed strategies "
+                "can use trusted examples; the hybrid-only strategy runs the deterministic policy."
             ),
         },
         "strategies": strategies,
@@ -891,8 +912,8 @@ def main() -> int:
     for name, payload in report["strategies"].items():
         metrics = payload["metrics"]
         print(
-            f"  {name:28} accuracy={metrics['accuracy']:.4f} "
-            f"f1={metrics['f1']:.4f} citation_correctness={metrics['citation_correctness']:.4f} "
+            f"  {name:28} accuracy={format_metric(metrics['accuracy'])} "
+            f"f1={format_metric(metrics['f1'])} citation_correctness={format_metric(metrics['citation_correctness'])} "
             f"seconds={metrics['runtime_seconds']:.2f}"
         )
     print(f"\nWrote {args.out}")
