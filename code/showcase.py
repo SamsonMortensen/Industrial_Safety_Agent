@@ -30,6 +30,12 @@ try:
     )
     from hybrid_policy import evaluate_event
     from learning_policy import assess_for_learning
+    from investigation_support import (
+        FocusedQueryPlanner,
+        build_investigation_support,
+        focused_queries,
+        relevant_excerpt,
+    )
     from ollama_config import ollama_base_url
 except ModuleNotFoundError as error:
     raise SystemExit(
@@ -171,19 +177,69 @@ def make_investigator(chunks: list[dict], reasoner=None):
     return AutonomousInvestigator(
         HybridRetriever(chunks),
         trigger_engine=TriggerEngine(sample_rate=0.0),
+        query_planner=FocusedQueryPlanner(),
         policy_fn=evaluate_event,
         reasoner=reasoner,
         candidate_limit=TOP_K,
     )
 
 
+def attach_excerpt(candidate: dict, chunks: list[dict], query_text: str) -> None:
+    """Attach a verbatim passage from this retrieved authority, with provenance."""
+    choices = []
+    for index, chunk in enumerate(chunks):
+        if (str(chunk.get("section", "")) == candidate["section"]
+                and str(chunk.get("citation", "")) == candidate["citation"]):
+            excerpt = relevant_excerpt(str(chunk.get("text", "")), query_text)
+            choices.append((excerpt["score"], -index, excerpt, index))
+    if not choices:
+        index = candidate["chunk_index"]
+        excerpt = relevant_excerpt(str(chunks[index]["text"]), query_text)
+    else:
+        _, _, excerpt, index = max(choices, key=lambda item: item[:2])
+    candidate.update(excerpt=excerpt["text"], excerpt_start=excerpt["start"],
+                     excerpt_end=excerpt["end"], excerpt_chunk_index=index,
+                     excerpt_chunk_sha256=hashlib.sha256(str(chunks[index]["text"]).encode("utf-8")).hexdigest())
+
+
 def investigate(observation: Observation, investigator, chunks: list[dict]) -> dict:
     result = investigator.investigate(observation).to_dict()
-    # Excerpts are read from the corpus used in this run, not generated text.
+    # A retrieved section is a research lead, not proof that it governs the event.
+    query_text = " ".join(result["queries"])
     for candidate in result["candidates"]:
-        candidate["excerpt"] = chunks[candidate["chunk_index"]]["text"][:500]
+        attach_excerpt(candidate, chunks, query_text)
+    # The combined ranks remain visible. Separate leads explain which existing
+    # candidate best matches each focused search, without adding authorities.
+    available = {item["section"]: (rank, item) for rank, item in enumerate(result["candidates"], 1)}
+    leads = []
+    if result["queries"]:
+        for query in focused_queries(observation)[:3]:
+            for item in investigator.retriever.search([query], top_k=TOP_K):
+                if item.section in available:
+                    rank, candidate = available[item.section]
+                    lead = dict(candidate, research_query=query, combined_candidate_rank=rank)
+                    attach_excerpt(lead, chunks, query)
+                    if not any(old["section"] == lead["section"] for old in leads):
+                        leads.append(lead)
+                    break
+    result["evidence_leads"] = leads
     result["summary"] = observation.summary
     result["source_id"] = observation.source_id
+    result["observation_context"] = {
+        "actors": observation.actors,
+        "equipment": observation.equipment,
+        "location": observation.location,
+        "actions": observation.actions,
+        "conditions": observation.conditions,
+        "controls": observation.controls,
+        "measurements": observation.measurements,
+        "relations": [relation.sentence() for relation in observation.relations],
+    }
+    result["support"] = build_investigation_support(
+        observation, result["status"], result["candidates"],
+        decision_source=result["decision_source"],
+    )
+    result["retrieval_profile"] = "focused_safety_information_v1"
     result["citation_in_candidates"] = (
         result["citation"] in {item["section"] for item in result["candidates"]}
         if result["citation"]
@@ -265,6 +321,7 @@ def run_benchmark(size: int, retriever, root: Path = ROOT) -> dict:
     return {
         "source": "live_computation_on_saved_synthetic_inputs",
         "retrieval": "lexical_with_applicability_reranking",
+        "query_planner": "published_reference_query_planner",
         "cases": len(records),
         "hazard_families": len({item["hazard"] for item in records}),
         "recall_at_16": (
@@ -272,11 +329,13 @@ def run_benchmark(size: int, retriever, root: Path = ROOT) -> dict:
             if records
             else None
         ),
+        "recall_at_1": sum(item["rank"] is not None and item["rank"] <= 1 for item in records) / len(records) if records else None,
+        "recall_at_5": sum(item["rank"] is not None and item["rank"] <= 5 for item in records) / len(records) if records else None,
         "labels_used_for_sample_selection": True,
         "labels_used_to_form_queries": False,
         "dataset_sha256": file_hash(root / "daily_yard_log.csv"),
         "records": records,
-        "note": "A small, known synthetic sample. This measures authority retrieval, not legal accuracy or field performance.",
+        "note": "A small, known synthetic sample using the published reference query planner. This separate benchmark does not test the focused interactive query expansions or establish legal accuracy or field performance.",
     }
 
 
@@ -387,6 +446,7 @@ def run_showcase(observations, *, benchmark_cases=16, reasoner=None, root=ROOT) 
         "generated_utc": datetime.now(timezone.utc).isoformat(),
         "live_run": {
             "retrieval": "lexical_with_applicability_reranking",
+            "retrieval_profile": "focused_safety_information_v1",
             "observations": results,
             "benchmark": run_benchmark(benchmark_cases, investigator.retriever, root),
             "grounding_check": grounding_example(chunks),
@@ -401,12 +461,19 @@ def run_showcase(observations, *, benchmark_cases=16, reasoner=None, root=ROOT) 
             "model_requests": reasoner.calls if reasoner else 0,
             "training_performed": False,
             "learning_memory_modified": False,
+            "source_sha256": {
+                name: file_hash(root / name)
+                for name in ("code/showcase.py", "code/investigation_support.py",
+                             "code/autonomous_investigator.py", "code/hybrid_policy.py",
+                             "json/regulations.json", "json/statutes.json")
+            },
             "measurement_scope": "Tour work after imports; peak resident memory of this Python process only. Ollama memory is excluded.",
         },
         "limits": {
             "max_observations": MAX_OBSERVATIONS,
             "max_benchmark_cases": MAX_BENCHMARK_CASES,
             "model_request_budget": 1 if reasoner else 0,
+            "focused_evidence_searches": 3,
             "model_read_timeout_seconds": (
                 reasoner.delegate.timeout if reasoner else None
             ),
@@ -415,6 +482,7 @@ def run_showcase(observations, *, benchmark_cases=16, reasoner=None, root=ROOT) 
             "Included observations and review approvals are synthetic examples, not live camera detections or real reviewer approvals.",
             "CLEAR applies to the checked condition. NO_ACTION means no trigger fired, not that the environment is safe.",
             "Retrieval scores and trigger scores are not calibrated probabilities of a violation.",
+            "Focused search expansions are research hypotheses, not additional observed facts. Practical precautions do not establish a regulatory violation.",
             "Saved results came from earlier runs and were not recomputed by this tour. The corpus uses the pinned 2025-01-01 eCFR edition.",
         ],
     }
@@ -423,10 +491,28 @@ def run_showcase(observations, *, benchmark_cases=16, reasoner=None, root=ROOT) 
 def render_observation(item: dict) -> str:
     lines = [
         f"\n{item['event_id']}: {item['summary']}",
-        "  Trigger: " + (", ".join(item["trigger"]["reasons"]) or "none"),
-        f"  Decision: {item['status']} | {item['decision_source']}",
-        f"  Reason: {item['reason']}",
     ]
+    support = item.get("support", {})
+    if support:
+        lines.append("  Assessment: " + support["first_assessment"])
+        for text in support["possible_concerns"]:
+            lines.append("  Possible concern: " + text)
+        for text in support["immediate_precautions"]:
+            lines.append("  Practical next step: " + text)
+        for text in support["evidence_notes"]:
+            lines.append("  Evidence: " + text)
+        for text in support["priority_clarifications"]:
+            lines.append("  Useful follow-up: " + text)
+    for lead in item.get("evidence_leads", []):
+        lines.append(f"  Focused evidence lead: {lead['citation']} | {lead['heading']} (combined rank {lead['combined_candidate_rank']})")
+    lines.extend([
+        f"  Automated decision: {item['status']} | {item['decision_source']}",
+        f"  Decision reason: {item['reason']}",
+        "  Trigger: " + (", ".join(item["trigger"]["reasons"]) or "none"),
+    ])
+    context = {key: value for key, value in item.get("observation_context", {}).items() if value}
+    if context:
+        lines.append("  Supplied context: " + json.dumps(context, ensure_ascii=False))
     if item["citation"]:
         lines.append(
             f"  Citation: {item['citation']} | present in retrieved set: {item['citation_in_candidates']}"

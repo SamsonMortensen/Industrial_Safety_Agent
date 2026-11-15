@@ -1,0 +1,94 @@
+{
+  "schema": "helpful_investigation_development_cases_v1",
+  "scope": "Known invented development regression cases. These are not independent evaluation or reviewer-approved training labels.",
+  "labels_used_to_form_queries": false,
+  "independent_evaluation": false,
+  "cases": [
+    {
+      "id": "charger_elevated_movable",
+      "text": "A warehouse turret truck charger rests on a platform six feet above an aisle. It is not bolted down and can be moved easily.",
+      "expected_status": "REVIEW",
+      "evidence_section": "1910.303"
+    },
+    {
+      "id": "charger_without_bolts",
+      "text": "A charger is on an elevated platform without mounting bolts. It can slide toward the aisle.",
+      "expected_status": "REVIEW",
+      "evidence_section": "1910.303"
+    },
+    {
+      "id": "charger_retained",
+      "text": "A charger on an elevated shelf is secured by its approved retaining bracket. No person is working on the shelf.",
+      "forbidden_status": "VIOLATION"
+    },
+    {
+      "id": "charger_unplugged",
+      "text": "An unplugged battery charger is loose on a high shelf above an occupied aisle.",
+      "expected_status": "REVIEW",
+      "evidence_section": "1910.303"
+    },
+    {
+      "id": "equipment_high_no_worker",
+      "text": "A pump stands on a high platform without mounting bolts. No employee is on the platform.",
+      "forbidden_status": "VIOLATION"
+    },
+    {
+      "id": "sling_damage_denied",
+      "text": "The sling has no broken wires and remains in service.",
+      "forbidden_status": "VIOLATION"
+    },
+    {
+      "id": "sling_damage_present",
+      "text": "A wire-rope sling with broken outer wires remained in an active lift.",
+      "expected_status": "VIOLATION",
+      "expected_citation": "1910.184"
+    },
+    {
+      "id": "spill_absent",
+      "text": "No oil spill is present on the walkway.",
+      "forbidden_status": "VIOLATION"
+    },
+    {
+      "id": "spill_present",
+      "text": "An oil spill remains on the employee walkway.",
+      "expected_status": "VIOLATION",
+      "expected_citation": "1910.22"
+    },
+    {
+      "id": "cabinet_unknown",
+      "text": "A worker is beside an equipment cabinet. The image does not show whether it is energized or isolated.",
+      "expected_status": "REVIEW"
+    },
+    {
+      "id": "guard_unknown",
+      "text": "The image does not show whether the platform has a guardrail.",
+      "expected_status": "REVIEW"
+    },
+    {
+      "id": "machine_guard_missing",
+      "text": "A worker can reach an exposed rotating shaft on a production machine. The guard is missing.",
+      "expected_status": "REVIEW"
+    },
+    {
+      "id": "unfamiliar_condition",
+      "text": "Unfamiliar equipment in an occupied aisle has begun rattling and moving unexpectedly.",
+      "expected_status": "REVIEW"
+    },
+    {
+      "id": "shift_context",
+      "observation": {
+        "event_id": "shift_context",
+        "source_id": "development-text",
+        "summary": "No incident reported",
+        "equipment": [
+          "forklift"
+        ],
+        "measurements": {
+          "operator_shift_hours": 13
+        },
+        "human_flag": true
+      },
+      "expected_status": "REVIEW"
+    }
+  ]
+}

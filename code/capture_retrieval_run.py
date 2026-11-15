@@ -16,10 +16,26 @@ from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parents[1]
 DATASET_SHA256 = "a01f4e6b6b9d2faf7783fd0ee9a3876d073c275a3ef09387a979fd901a274301"
+BASE_CAPTURE_SOURCES = (
+    "daily_yard_log.csv", "json/regulations.json", "json/statutes.json",
+    "code/autonomous_investigator.py", "code/showcase.py", "code/hybrid_policy.py",
+)
+ADDED_CAPTURE_DEPENDENCIES = ("code/investigation_support.py",)
 
 
 def file_hash(path):
     return hashlib.sha256(path.read_bytes().replace(b"\r\n", b"\n")).hexdigest()
+
+
+def capture_sources(repo):
+    """Bind the known interactive dependency without breaking old checkouts.
+
+    Historical versions predate investigation_support. A current checkout that
+    contains it must record its hash even though this benchmark deliberately
+    calls the original QueryPlanner rather than the interactive planner.
+    """
+    return [*BASE_CAPTURE_SOURCES, *(name for name in ADDED_CAPTURE_DEPENDENCIES
+                                    if (repo / name).is_file())]
 
 
 def summarize(records):
@@ -70,8 +86,7 @@ def capture(repo):
                               if chunks[index]["section"] == expected), None) for q in queries],
                 }
             records.append(record)
-    sources = ["daily_yard_log.csv", "json/regulations.json", "json/statutes.json",
-               "code/autonomous_investigator.py", "code/showcase.py", "code/hybrid_policy.py"]
+    sources = capture_sources(repo)
     return {"schema": "lexical_retrieval_development_capture_v1", "captured_utc": datetime.now(timezone.utc).isoformat(),
             "runtime": {"python": platform.python_version(), "platform": platform.system()},
             "mode": "lexical_with_applicability_reranking", "top_k": 16,

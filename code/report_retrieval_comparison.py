@@ -13,11 +13,15 @@ DATA = "data/retrieval_comparison"
 REPORT = "docs/RETRIEVAL_IMPROVEMENT.md"
 FIGURES = ("retrieval_before_after.png", "original_nine_misses.png", "retrieval_rank_cutoffs.png")
 COHORTS = {"primary64": "Original 64 development cases", "additional80": "Additional 80 public cases", "all144": "All 144 public cases"}
-REPRODUCTION = f"{DATA}/reproductions/decision_scoring_20261114.json"
-REPRODUCTION_SCHEMA = "lexical_retrieval_compatibility_reproduction_v1"
-# This reviewed repair changes decision policy, which the lexical capture imports
-# but never calls. No retrieval implementation or input change is exempted.
-REPRODUCTION_CHANGED_SOURCES = ("code/hybrid_policy.py",)
+PREVIOUS_REPRODUCTION = f"{DATA}/reproductions/decision_scoring_20261114.json"
+PREVIOUS_REPRODUCTION_SHA256_LF = "50df94f5dc07db5d97f126a5edc805426ff0d84dba1041632694836a07a442a7"
+REPRODUCTION = f"{DATA}/reproductions/actionable_investigation_20261115.json"
+REPRODUCTION_SCHEMA = "lexical_retrieval_compatibility_reproduction_v2"
+# Interactive guidance and policy change, but this historical benchmark still
+# calls the published QueryPlanner directly. Its core, corpus and cases stay
+# frozen, and every case/query/rank must reproduce the old result exactly.
+REPRODUCTION_CHANGED_SOURCES = ("code/hybrid_policy.py", "code/showcase.py")
+REPRODUCTION_ADDED_SOURCES = ("code/investigation_support.py",)
 
 
 def read(path):
@@ -241,21 +245,24 @@ def sources(root=ROOT):
     paths = [f"{DATA}/{name}.json" for name in ("before", "after", "exploration", "protocol", "candidate_freeze")] + [
         "code/capture_retrieval_run.py", "code/report_retrieval_comparison.py", "code/autonomous_investigator.py",
         "code/public_results.py"]
-    if (root / REPRODUCTION).is_file():
-        paths.append(REPRODUCTION)
+    for name in (PREVIOUS_REPRODUCTION, REPRODUCTION, *REPRODUCTION_ADDED_SOURCES):
+        if (root / name).is_file():
+            paths.append(name)
     return paths
 
 
 def current_capture(root, historical):
     """Verify a named compatibility reproduction without rewriting the old run.
 
-    The sole permitted historical-source difference is the reviewed policy
-    module. Every current captured hash and every case/query/rank must match the
-    named reproduction. All retrieval code, source data and budget stay frozen.
+    The permitted source changes and new dependency are explicitly versioned.
+    Every current captured hash and every case/query/rank must match the named
+    reproduction. Retrieval core, source data and budget stay frozen.
     This is a reproducibility check on exposed cases, not a new improvement.
     """
     path = root / REPRODUCTION
     if not path.is_file():
+        if any((root / name).exists() for name in REPRODUCTION_ADDED_SOURCES):
+            raise ValueError("Current dependency requires the named retrieval reproduction")
         for name, expected in historical["input_and_code_sha256_lf"].items():
             if file_hash(root / name) != expected:
                 raise ValueError("Current source/input differs from the after-run: " + name)
@@ -263,7 +270,8 @@ def current_capture(root, historical):
     reproduction = read(path)
     if (reproduction.get("schema") != REPRODUCTION_SCHEMA
             or reproduction.get("compatibility_only") is not True
-            or reproduction.get("changed_source_files") != list(REPRODUCTION_CHANGED_SOURCES)):
+            or reproduction.get("changed_source_files") != list(REPRODUCTION_CHANGED_SOURCES)
+            or reproduction.get("added_source_files") != list(REPRODUCTION_ADDED_SOURCES)):
         raise ValueError("Unsupported named retrieval reproduction")
     for field in ("independent_evaluation_used", "calibration_reserve_used",
                   "model_training_performed", "model_promoted"):
@@ -271,13 +279,22 @@ def current_capture(root, historical):
             raise ValueError("Only development compatibility reproduction is allowed")
     links = {f"{DATA}/{name}.json": file_hash(root / DATA / f"{name}.json")
              for name in ("after", "protocol", "candidate_freeze")}
+    previous_path = root / PREVIOUS_REPRODUCTION
+    if not previous_path.is_file() or file_hash(previous_path) != PREVIOUS_REPRODUCTION_SHA256_LF:
+        raise ValueError("The previous named reproduction must remain unchanged")
+    previous = read(previous_path)
+    if links != previous["historical_artifacts_sha256_lf"]:
+        raise ValueError("The historical after-run, protocol or freeze changed")
+    if historical != read(root / DATA / "after.json"):
+        raise ValueError("Historical capture differs from the unchanged after-run")
+    links[PREVIOUS_REPRODUCTION] = PREVIOUS_REPRODUCTION_SHA256_LF
     if reproduction.get("historical_artifacts_sha256_lf") != links:
         raise ValueError("Reproduction is not linked to the unchanged historical evidence")
     candidate = reproduction["capture"]
     validate_capture(candidate)
     old_hashes = historical["input_and_code_sha256_lf"]
     new_hashes = candidate["input_and_code_sha256_lf"]
-    if set(new_hashes) != set(old_hashes):
+    if set(new_hashes) != set(old_hashes) | set(REPRODUCTION_ADDED_SOURCES):
         raise ValueError("Reproduction input/source inventory changed")
     changed = {name for name in old_hashes if old_hashes[name] != new_hashes[name]}
     if changed != set(REPRODUCTION_CHANGED_SOURCES):
@@ -348,7 +365,7 @@ def main():
         check(fresh=args.candidate_capture)
         print("Matched retrieval comparison verified: inputs, counts, ranks, report and figures agree.")
         if (ROOT / REPRODUCTION).is_file():
-            print("Historical evidence is unchanged; the named decision-policy reproduction verifies the same retrieval outcomes. No new improvement claim is made.")
+            print("Historical evidence is unchanged; the named interactive-guidance reproduction verifies the same retrieval outcomes. No new improvement claim is made.")
         return
     data, prose = prepare(ROOT)
     out = ROOT / "docs/results"; out.mkdir(parents=True, exist_ok=True)

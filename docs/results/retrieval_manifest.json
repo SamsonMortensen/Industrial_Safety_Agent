@@ -6,11 +6,13 @@
     "data/retrieval_comparison/exploration.json": "f0ff4ea2be6e3731daf9b72c51a7f6acbfebf8fd30a62e8e8713eb4a6a211cef",
     "data/retrieval_comparison/protocol.json": "ea3a9c06e7d1702c011f04e68159d98a7e8b629d4efcb6dfaf2f267604b80b5f",
     "data/retrieval_comparison/candidate_freeze.json": "4e823a7aed5d5ef5b09c80fb692b6f223e131e4ded442f87b6694e7ed145ffd7",
-    "code/capture_retrieval_run.py": "725f85016d67212eda7c009b1b88076985c83c79184fe9e0646470fc845af46a",
-    "code/report_retrieval_comparison.py": "d74691673e216deabef11ad0b1d586ef358d50693a4f0af4008498193686c917",
+    "code/capture_retrieval_run.py": "a85f6c51adf31e3c8b79cff47c8d4d4ac058b3775866179fb700d8f6f215caf9",
+    "code/report_retrieval_comparison.py": "ef9d3066a49122449bf9dc915c530d57abcdcfb9bf828f97a5813899bb5f1f05",
     "code/autonomous_investigator.py": "5c2ba322b162c74ce0ce6f980aa49aeb8601ad56607b5cf9fa899979f75b0e7d",
     "code/public_results.py": "372925fdf9a4841f5f0dc011c1dea08dc9778600bb037f9f04b357a7cccff572",
-    "data/retrieval_comparison/reproductions/decision_scoring_20261114.json": "50df94f5dc07db5d97f126a5edc805426ff0d84dba1041632694836a07a442a7"
+    "data/retrieval_comparison/reproductions/decision_scoring_20261114.json": "50df94f5dc07db5d97f126a5edc805426ff0d84dba1041632694836a07a442a7",
+    "data/retrieval_comparison/reproductions/actionable_investigation_20261115.json": "6762d62fc9a31cbead74ad28c640a7fef27a8eea554933cb025e61a18009075a",
+    "code/investigation_support.py": "5a902e1f86bd2f77227b7e9ee72357e2cdea0e1ffe758d46b7ecfca4b02d77f2"
   },
   "outputs_sha256_lf_text_raw_png": {
     "docs/RETRIEVAL_IMPROVEMENT.md": "bfe400788359ba6d74e8d0bb59325be0de50db04c75ef1d1a5db2acef66c4250",

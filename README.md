@@ -26,6 +26,14 @@ New audit runs use `selective_binary_v2`. Only `CLEAR` and `VIOLATION` become bi
 
 The [decision and scoring report](docs/DECISION_SCORING.md) explains the fixes with before-and-after examples. Historical reports keep their original evidence and scoring definitions. These regression checks establish software behavior; independent evaluation and model promotion remain separate.
 
+## Useful help while a decision is open
+
+If someone reports loose equipment above an aisle, the response should explain what could go wrong and what to do next. The interactive notebook and terminal walkthrough now give a practical first assessment, conditional precautions, relevant evidence leads, and a small number of follow-up questions. `REVIEW` keeps an unsupported legal conclusion open while still helping with the reported condition.
+
+Focused searches keep the original observation intact. Evidence leads include verbatim passages and source offsets; the combined candidate ranks remain visible. Equipment height alone does not establish worker fall exposure, and a denied hazard must not become an asserted one. These are bounded language checks, not unrestricted understanding of every description.
+
+The [useful-assessment workflow and data plan](docs/USEFUL_SAFETY_ASSESSMENT.md) explains the charger example and how reviewed, versioned evidence can improve coverage. The default walkthrough still makes no model requests or training updates. Its published-reference benchmark is labeled separately from the focused interactive search path.
+
 ## Start with the notebook
 
 Before publishing changes or reports, follow the [publication privacy checks](docs/PUBLICATION_PRIVACY.md). They help keep credentials, private reviews, personal paths, and saved notebook outputs out of shared files. Independent evaluation and model promotion keep their own approval gates.
