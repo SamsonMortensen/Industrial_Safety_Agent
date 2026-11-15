@@ -52,6 +52,15 @@ class RetrievalComparisonTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "after-run: records"):
                 check(ROOT, fresh=path)
 
+    def test_fresh_interactive_profile_cannot_claim_reference_compatibility(self):
+        fresh = copy.deepcopy(current_capture(ROOT, self.after))
+        fresh["retrieval_profile"] = "wording_semantic_v1"
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "capture.json"
+            path.write_text(json.dumps(fresh), encoding="utf-8")
+            with self.assertRaisesRegex(ValueError, "after-run: retrieval_profile"):
+                check(ROOT, fresh=path)
+
     def test_metric_counts_and_meaningful_float_changes_still_fail(self):
         for key, value in (("cases", 64.0), ("hits_at_16", 62),
                            ("mean_reciprocal_rank_at_16", .49)):

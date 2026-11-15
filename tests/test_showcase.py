@@ -17,6 +17,59 @@ from hybrid_policy import evaluate_event
 
 
 class ShowcaseTests(unittest.TestCase):
+    def test_spill_wording_finds_verbatim_evidence_without_question_verdict(self):
+        chunks = showcase.load_corpus()
+        investigator = showcase.make_investigator(chunks, retrieval_profile="wording")
+        for prompt in ("An oil spill remains on the employee walkway.",
+                       "Is an oil spill on the walkway covered by housekeeping?"):
+            result = showcase.investigate(showcase.text_observation(prompt), investigator, chunks)
+            closest = result["citation_alignment"]["highest_ranked_research_match"]
+            self.assertEqual(closest["section"], "1910.22")
+            self.assertIn("spills", closest["excerpt"].lower())
+            source = chunks[closest["excerpt_chunk_index"]]["text"]
+            self.assertEqual(source[closest["excerpt_start"]:closest["excerpt_end"]], closest["excerpt"])
+            self.assertFalse(result["citation_alignment"]["accepted_as_correct"])
+            if prompt.startswith("Is"):
+                self.assertEqual((result["status"], result["citation"]), ("REVIEW", None))
+
+    def test_historical_small_benchmark_keeps_legacy_ranking(self):
+        report = showcase.run_showcase([], benchmark_cases=16)
+        benchmark = report["live_run"]["benchmark"]
+        expected = showcase.run_benchmark(16, showcase.HybridRetriever(showcase.load_corpus()))
+        self.assertEqual(benchmark, expected)
+        self.assertEqual(benchmark["recall_at_1"], 6 / 16)
+        self.assertEqual(benchmark["recall_at_5"], 11 / 16)
+
+    def test_default_exposes_wording_evidence_without_changing_primary_decision_candidates(self):
+        chunks = showcase.load_corpus()
+        observation = showcase.text_observation("An oil spill remains on the employee walkway.")
+        investigator = showcase.make_investigator(chunks)
+        expected = investigator.investigate(observation).to_dict()
+        result = showcase.investigate(observation, investigator, chunks)
+        self.assertEqual([r["section"] for r in expected["candidates"]], [r["section"] for r in result["candidates"]])
+        self.assertEqual((result["status"], result["citation"]), ("REVIEW", None))
+        self.assertIn("1910.22", [r["section"] for r in result["additional_wording_evidence"]])
+        self.assertTrue(all(not r["accepted_as_correct"] for r in result["additional_wording_evidence"]))
+
+    def test_long_structured_report_keeps_reference_result_when_research_is_bounded(self):
+        observation = showcase.Observation.from_mapping({"summary": "Detailed observation. " * 220, "human_flag": True})
+        chunks = showcase.load_corpus()
+        result = showcase.investigate(observation, showcase.make_investigator(chunks), chunks)
+        self.assertEqual(result["citation_alignment"]["status"], "research_query_limit")
+        self.assertEqual(result["additional_wording_status"], "skipped_query_limit")
+        self.assertEqual(result["summary"], observation.summary)
+
+    def test_interactive_mode_retains_the_explicit_profile(self):
+        with patch.object(showcase, "make_investigator", wraps=showcase.make_investigator) as make, patch("builtins.input", return_value="quit"), contextlib.redirect_stdout(io.StringIO()):
+            showcase.interactive_session(retrieval_profile="wording")
+        self.assertEqual(make.call_args.kwargs["retrieval_profile"], "wording")
+
+    def test_semantic_flags_require_explicit_pair_before_requests(self):
+        for arguments in (["--semantic-index", "missing.npz"], ["--embedding-digest", "a" * 64]):
+            with patch.object(sys, "argv", ["showcase", *arguments]), contextlib.redirect_stderr(io.StringIO()), self.assertRaises(SystemExit) as raised:
+                showcase.main()
+            self.assertEqual(raised.exception.code, 2)
+
     @classmethod
     def setUpClass(cls):
         cls.observations = showcase.load_observations(

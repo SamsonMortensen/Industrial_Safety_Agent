@@ -37,6 +37,8 @@ try:
         relevant_excerpt,
     )
     from ollama_config import ollama_base_url
+    from wording_retrieval import WordingRetriever, PROFILE, wording_excerpt
+    from citation_alignment import InteractiveInvestigator, citation_alignment
 except ModuleNotFoundError as error:
     raise SystemExit(
         f"Missing dependency: {error.name}. Run this Python with "
@@ -173,15 +175,23 @@ class OneRequestReasoner:
         return self.delegate.decide(observation, candidates)
 
 
-def make_investigator(chunks: list[dict], reasoner=None):
-    return AutonomousInvestigator(
-        HybridRetriever(chunks),
+def make_investigator(chunks: list[dict], reasoner=None, *, semantic_index=None, retrieval_profile="reference"):
+    if retrieval_profile not in {"reference", "wording"}:
+        raise ValueError("Choose reference or wording retrieval")
+    if semantic_index is not None and retrieval_profile != "wording":
+        raise ValueError("Semantic retrieval requires the explicit wording profile")
+    wording = WordingRetriever(chunks, semantic_index=semantic_index)
+    investigator = InteractiveInvestigator(
+        wording if retrieval_profile == "wording" else HybridRetriever(chunks),
         trigger_engine=TriggerEngine(sample_rate=0.0),
         query_planner=FocusedQueryPlanner(),
         policy_fn=evaluate_event,
         reasoner=reasoner,
         candidate_limit=TOP_K,
     )
+    investigator.wording_retriever = wording
+    investigator.retrieval_profile = retrieval_profile
+    return investigator
 
 
 def attach_excerpt(candidate: dict, chunks: list[dict], query_text: str) -> None:
@@ -190,11 +200,11 @@ def attach_excerpt(candidate: dict, chunks: list[dict], query_text: str) -> None
     for index, chunk in enumerate(chunks):
         if (str(chunk.get("section", "")) == candidate["section"]
                 and str(chunk.get("citation", "")) == candidate["citation"]):
-            excerpt = relevant_excerpt(str(chunk.get("text", "")), query_text)
+            excerpt = wording_excerpt(str(chunk.get("text", "")), query_text)
             choices.append((excerpt["score"], -index, excerpt, index))
     if not choices:
         index = candidate["chunk_index"]
-        excerpt = relevant_excerpt(str(chunks[index]["text"]), query_text)
+        excerpt = wording_excerpt(str(chunks[index]["text"]), query_text)
     else:
         _, _, excerpt, index = max(choices, key=lambda item: item[:2])
     candidate.update(excerpt=excerpt["text"], excerpt_start=excerpt["start"],
@@ -223,6 +233,30 @@ def investigate(observation: Observation, investigator, chunks: list[dict]) -> d
                         leads.append(lead)
                     break
     result["evidence_leads"] = leads
+    diagnostics = investigator.wording_retriever
+    result["citation_alignment"] = (citation_alignment(observation.summary, result["candidates"], diagnostics)
+        if len(observation.summary) <= MAX_TEXT_CHARS else {
+            "status": "research_query_limit", "highest_ranked_research_match": None,
+            "accepted_as_correct": False, "governing_citation_established": False,
+            "scope": "The structured report exceeds the wording research limit. Primary reference results remain available."
+        })
+    # Expanded search stays separate until it earns a primary-ranking release.
+    # These candidates do not enter the incident decision above.
+    additional = []
+    research_query_fits = all(len(query) <= MAX_TEXT_CHARS for query in result["queries"])
+    if investigator.retrieval_profile == "reference" and result["queries"] and research_query_fits:
+        expanded = investigator.reranker.rerank(
+            observation, diagnostics.search(result["queries"], top_k=TOP_K))
+        primary_top = {item["section"] for item in result["candidates"][:3]}
+        for candidate in expanded[:5]:
+            if candidate.section not in primary_top and len(additional) < 3:
+                item = candidate.to_dict()
+                attach_excerpt(item, chunks, query_text)
+                item["match_basis"] = diagnostics.match_diagnostics(observation.summary, item)
+                item["accepted_as_correct"] = False
+                additional.append(item)
+    result["additional_wording_evidence"] = additional
+    result["additional_wording_status"] = "within_query_limit" if research_query_fits else "skipped_query_limit"
     result["summary"] = observation.summary
     result["source_id"] = observation.source_id
     result["observation_context"] = {
@@ -239,7 +273,12 @@ def investigate(observation: Observation, investigator, chunks: list[dict]) -> d
         observation, result["status"], result["candidates"],
         decision_source=result["decision_source"],
     )
-    result["retrieval_profile"] = "focused_safety_information_v1"
+    if result["decision_source"] == "information_request":
+        result["support"]["first_assessment"] = (
+            "This request asks which safety requirements may be relevant. Inspect the matching passages below; any practical precautions are conditional on an actual exposure."
+        )
+    result["retrieval_profile"] = (PROFILE if investigator.retrieval_profile == "wording"
+                                   else "reference_primary_with_wording_research_v1")
     result["citation_in_candidates"] = (
         result["citation"] in {item["section"] for item in result["candidates"]}
         if result["citation"]
@@ -437,18 +476,19 @@ def saved_evidence(root: Path = ROOT) -> list[dict]:
     return entries
 
 
-def run_showcase(observations, *, benchmark_cases=16, reasoner=None, root=ROOT) -> dict:
+def run_showcase(observations, *, benchmark_cases=16, reasoner=None, root=ROOT, semantic_index=None, retrieval_profile="reference") -> dict:
     started = time.perf_counter()
     chunks = load_corpus(root)
-    investigator = make_investigator(chunks, reasoner)
+    investigator = make_investigator(chunks, reasoner, semantic_index=semantic_index,
+                                     retrieval_profile=retrieval_profile)
     results = [investigate(item, investigator, chunks) for item in observations]
     return {
         "generated_utc": datetime.now(timezone.utc).isoformat(),
         "live_run": {
-            "retrieval": "lexical_with_applicability_reranking",
-            "retrieval_profile": "focused_safety_information_v1",
+            "retrieval": "wording_aware_with_applicability_reranking" if retrieval_profile == "wording" else "reference_primary_with_additional_research",
+            "retrieval_profile": PROFILE if retrieval_profile == "wording" else "reference_primary_with_wording_research_v1",
             "observations": results,
-            "benchmark": run_benchmark(benchmark_cases, investigator.retriever, root),
+            "benchmark": run_benchmark(benchmark_cases, HybridRetriever(chunks), root),
             "grounding_check": grounding_example(chunks),
             "learning_gate_examples": learning_examples(),
         },
@@ -459,11 +499,13 @@ def run_showcase(observations, *, benchmark_cases=16, reasoner=None, root=ROOT) 
             "python": platform.python_version(),
             "os": platform.system(),
             "model_requests": reasoner.calls if reasoner else 0,
+            "semantic_retrieval": semantic_index.profile if semantic_index else None,
             "training_performed": False,
             "learning_memory_modified": False,
             "source_sha256": {
                 name: file_hash(root / name)
                 for name in ("code/showcase.py", "code/investigation_support.py",
+                             "code/wording_retrieval.py", "code/citation_alignment.py", "code/evidence_embeddings.py",
                              "code/autonomous_investigator.py", "code/hybrid_policy.py",
                              "json/regulations.json", "json/statutes.json")
             },
@@ -505,6 +547,18 @@ def render_observation(item: dict) -> str:
             lines.append("  Useful follow-up: " + text)
     for lead in item.get("evidence_leads", []):
         lines.append(f"  Focused evidence lead: {lead['citation']} | {lead['heading']} (combined rank {lead['combined_candidate_rank']})")
+    alignment = item.get("citation_alignment", {})
+    closest = alignment.get("highest_ranked_research_match")
+    if closest:
+        lines.append(f"  Primary search lead (verify scope): {closest['citation']} | {closest['heading']}")
+        lines.append("    " + closest["excerpt"])
+    elif alignment:
+        lines.append("  No supported citation match identified. The corpus may need another authority, or the request may need more context.")
+    if alignment:
+        lines.append("  " + alignment["scope"])
+    for lead in item.get("additional_wording_evidence", []):
+        lines.append(f"  Additional wording evidence to review: {lead['citation']} | {lead['heading']}")
+        lines.append("    " + lead["excerpt"])
     lines.extend([
         f"  Automated decision: {item['status']} | {item['decision_source']}",
         f"  Decision reason: {item['reason']}",
@@ -595,11 +649,12 @@ def export_path(requested: Path) -> Path:
     return path
 
 
-def interactive_session(root=ROOT):
+def interactive_session(root=ROOT, *, retrieval_profile="reference", semantic_index=None):
     chunks = load_corpus(root)
-    investigator = make_investigator(chunks)
+    investigator = make_investigator(chunks, retrieval_profile=retrieval_profile, semantic_index=semantic_index)
     print(
-        "\nEnter an incident to investigate offline. Type quit to finish. Nothing is saved."
+        "\nEnter an incident to investigate. Type quit to finish. Nothing is saved. "
+        + ("Local semantic requests are enabled." if semantic_index else "This session stays offline.")
     )
     while True:
         try:
@@ -654,6 +709,12 @@ def main() -> int:
     parser.add_argument(
         "--timeout", type=int, default=30, help="Model read timeout, 1 to 60 seconds"
     )
+    parser.add_argument("--semantic-index", type=Path,
+                        help="Explicit frozen local passage index; enables local embedding requests")
+    parser.add_argument("--embedding-digest",
+                        help="Required with --semantic-index: SHA-256 of the installed embedding model")
+    parser.add_argument("--retrieval-profile", choices=("reference", "wording"), default="reference",
+                        help="reference keeps the primary ranking; wording tests the expanded ranker")
     args = parser.parse_args()
     try:
         if not 0 <= args.benchmark_cases <= MAX_BENCHMARK_CASES:
@@ -662,6 +723,10 @@ def main() -> int:
             raise ValueError("--timeout must be between 1 and 60 seconds")
         if args.interactive and args.json:
             raise ValueError("Use --interactive or --json, not both")
+        if bool(args.semantic_index) != bool(args.embedding_digest):
+            raise ValueError("Use --semantic-index and --embedding-digest together")
+        if args.semantic_index and args.retrieval_profile != "wording":
+            raise ValueError("--semantic-index requires --retrieval-profile wording")
         output = export_path(args.out) if args.out else None
         observations = (
             [text_observation(args.text)]
@@ -673,9 +738,16 @@ def main() -> int:
         reasoner = (
             OneRequestReasoner(args.model, args.timeout) if args.reasoner else None
         )
+        semantic_index = None
+        if args.semantic_index:
+            from evidence_embeddings import FrozenSemanticIndex, OllamaEmbedder
+            embedder = OllamaEmbedder(model_digest=args.embedding_digest, base_url=ollama_base_url())
+            semantic_index = FrozenSemanticIndex.load(args.semantic_index, load_corpus(), embedder)
         print("Running the local walkthrough...", file=sys.stderr, flush=True)
         report = run_showcase(
-            observations, benchmark_cases=args.benchmark_cases, reasoner=reasoner
+            observations, benchmark_cases=args.benchmark_cases, reasoner=reasoner,
+            semantic_index=semantic_index,
+            retrieval_profile=args.retrieval_profile,
         )
         rendered = json.dumps(report, indent=2, allow_nan=False)
         if output:
@@ -685,7 +757,7 @@ def main() -> int:
             print(f"Saved {output}", file=sys.stderr)
         print(rendered if args.json else render_report(report))
         if args.interactive:
-            interactive_session()
+            interactive_session(retrieval_profile=args.retrieval_profile, semantic_index=semantic_index)
         return 0
     except (ValueError, OSError, KeyError, TypeError) as error:
         parser.exit(2, f"Showcase could not run: {error}\n")

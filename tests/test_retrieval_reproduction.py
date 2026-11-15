@@ -9,11 +9,12 @@ import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "code"))
-from capture_retrieval_run import BASE_CAPTURE_SOURCES, capture_sources, file_hash
+from capture_retrieval_run import ADDED_CAPTURE_DEPENDENCIES, BASE_CAPTURE_SOURCES, capture_sources, file_hash
 from report_retrieval_comparison import (
-    DATA, PREVIOUS_REPRODUCTION, REPRODUCTION, REPRODUCTION_ADDED_SOURCES,
+    COMPATIBILITY_MANIFEST, DATA, EARLIER_REPRODUCTION, HISTORICAL_MANIFEST,
+    PREVIOUS_REPRODUCTION, REPRODUCTION, REPRODUCTION_ADDED_SOURCES,
     REPRODUCTION_CHANGED_SOURCES, REPRODUCTION_SCHEMA, current_capture, read,
-    validate_capture,
+    artifact_hash, build_reproduction, check, outputs, validate_capture, write_compatibility_manifest,
 )
 
 
@@ -23,40 +24,34 @@ class RetrievalReproductionTests(unittest.TestCase):
         self.addCleanup(self.directory.cleanup)
         self.root = Path(self.directory.name)
         self.historical = read(ROOT / DATA / "after.json")
-        names = set(self.historical["input_and_code_sha256_lf"])
-        names.update(f"{DATA}/{name}.json" for name in ("after", "protocol", "candidate_freeze"))
+        previous = read(ROOT / PREVIOUS_REPRODUCTION)["capture"]
+        names = set(previous["input_and_code_sha256_lf"])
+        names.update(f"{DATA}/{name}.json" for name in ("before", "after", "exploration", "protocol", "candidate_freeze"))
         names.update(REPRODUCTION_ADDED_SOURCES)
-        names.add(PREVIOUS_REPRODUCTION)
+        names.update((EARLIER_REPRODUCTION, PREVIOUS_REPRODUCTION, HISTORICAL_MANIFEST,
+                      "code/capture_retrieval_run.py", "code/report_retrieval_comparison.py", "code/public_results.py"))
+        names.update(outputs())
         for name in names:
             target = self.root / name
             target.parent.mkdir(parents=True, exist_ok=True)
-            shutil.copyfile(ROOT / name, target)
+            if (ROOT / name).is_file():
+                shutil.copyfile(ROOT / name, target)
+            elif name in REPRODUCTION_ADDED_SOURCES:
+                target.write_text("# Synthetic reviewed helper.\n", encoding="utf-8")
+            else:
+                self.fail("Missing historical fixture: " + name)
         # The historical benchmark calls the frozen QueryPlanner directly.
-        # Give the two permitted modules explicit synthetic versions while
-        # retaining the retrieval core and all case-level outcomes.
+        # Give only the showcase an explicit synthetic revision, keeping the
+        # policy, prior helper, retrieval core and all case outcomes frozen.
         for name in REPRODUCTION_CHANGED_SOURCES:
             with (self.root / name).open("a", encoding="utf-8") as stream:
                 stream.write("\n# Synthetic compatibility-test revision.\n")
         candidate = copy.deepcopy(self.historical)
+        candidate["retrieval_profile"] = "published_reference_lexical_v1"
         candidate["input_and_code_sha256_lf"] = {
             name: file_hash(self.root / name) for name in capture_sources(self.root)
         }
-        self.reproduction = {
-            "schema": REPRODUCTION_SCHEMA,
-            "compatibility_only": True,
-            "changed_source_files": list(REPRODUCTION_CHANGED_SOURCES),
-            "added_source_files": list(REPRODUCTION_ADDED_SOURCES),
-            "independent_evaluation_used": False,
-            "calibration_reserve_used": False,
-            "model_training_performed": False,
-            "model_promoted": False,
-            "historical_artifacts_sha256_lf": {
-                f"{DATA}/{name}.json": file_hash(self.root / DATA / f"{name}.json")
-                for name in ("after", "protocol", "candidate_freeze")
-            },
-            "capture": candidate,
-        }
-        self.reproduction["historical_artifacts_sha256_lf"][PREVIOUS_REPRODUCTION] = file_hash(self.root / PREVIOUS_REPRODUCTION)
+        self.reproduction = build_reproduction(self.root, candidate)
         self.write_reproduction()
 
     def write_reproduction(self):
@@ -65,10 +60,10 @@ class RetrievalReproductionTests(unittest.TestCase):
         path.write_text(json.dumps(self.reproduction), encoding="utf-8")
 
     def test_named_interactive_reproduction_preserves_original_evidence(self):
-        hashes = dict(self.reproduction["historical_artifacts_sha256_lf"])
+        hashes = dict(self.reproduction["historical_artifacts_sha256_lf_text_raw_png"])
         result = current_capture(self.root, self.historical)
         self.assertEqual(result["records"], self.historical["records"])
-        self.assertEqual(hashes, {name: file_hash(self.root / name) for name in hashes})
+        self.assertEqual(hashes, {name: artifact_hash(self.root / name) for name in hashes})
 
     def test_source_edit_after_capture_is_rejected(self):
         for name in (*REPRODUCTION_CHANGED_SOURCES, *REPRODUCTION_ADDED_SOURCES):
@@ -82,7 +77,7 @@ class RetrievalReproductionTests(unittest.TestCase):
                     (self.root / name).write_bytes(original)
 
     def test_retrieval_code_corpus_and_fixture_changes_are_not_exempted(self):
-        for name in ("code/autonomous_investigator.py",
+        for name in ("code/autonomous_investigator.py", "code/hybrid_policy.py", "code/investigation_support.py",
                      "json/regulations.json", "json/statutes.json", "daily_yard_log.csv"):
             with self.subTest(name=name):
                 original = (self.root / name).read_bytes()
@@ -117,23 +112,23 @@ class RetrievalReproductionTests(unittest.TestCase):
             current_capture(self.root, self.historical)
 
     def test_altered_historical_link_is_rejected(self):
-        for key in self.reproduction["historical_artifacts_sha256_lf"]:
+        for key in self.reproduction["historical_artifacts_sha256_lf_text_raw_png"]:
             with self.subTest(name=key):
-                original = self.reproduction["historical_artifacts_sha256_lf"][key]
+                original = self.reproduction["historical_artifacts_sha256_lf_text_raw_png"][key]
                 try:
-                    self.reproduction["historical_artifacts_sha256_lf"][key] = "0" * 64
+                    self.reproduction["historical_artifacts_sha256_lf_text_raw_png"][key] = "0" * 64
                     self.write_reproduction()
                     with self.assertRaisesRegex(ValueError, "unchanged historical evidence"):
                         current_capture(self.root, self.historical)
                 finally:
-                    self.reproduction["historical_artifacts_sha256_lf"][key] = original
+                    self.reproduction["historical_artifacts_sha256_lf_text_raw_png"][key] = original
 
     def test_previous_reproduction_cannot_be_rewritten_even_with_updated_link(self):
         path = self.root / PREVIOUS_REPRODUCTION
         path.write_bytes(path.read_bytes() + b"\n")
-        self.reproduction["historical_artifacts_sha256_lf"][PREVIOUS_REPRODUCTION] = file_hash(path)
+        self.reproduction["historical_artifacts_sha256_lf_text_raw_png"][PREVIOUS_REPRODUCTION] = file_hash(path)
         self.write_reproduction()
-        with self.assertRaisesRegex(ValueError, "previous named reproduction must remain unchanged"):
+        with self.assertRaisesRegex(ValueError, "previous named reproduction.*must remain unchanged"):
             current_capture(self.root, self.historical)
 
     def test_old_evidence_cannot_be_rewritten_even_with_updated_link(self):
@@ -141,16 +136,16 @@ class RetrievalReproductionTests(unittest.TestCase):
             key = f"{DATA}/{name}.json"
             path = self.root / key
             original = path.read_bytes()
-            old_link = self.reproduction["historical_artifacts_sha256_lf"][key]
+            old_link = self.reproduction["historical_artifacts_sha256_lf_text_raw_png"][key]
             try:
                 path.write_bytes(original + b"\n")
-                self.reproduction["historical_artifacts_sha256_lf"][key] = file_hash(path)
+                self.reproduction["historical_artifacts_sha256_lf_text_raw_png"][key] = file_hash(path)
                 self.write_reproduction()
                 with self.assertRaisesRegex(ValueError, "historical after-run, protocol or freeze changed"):
                     current_capture(self.root, self.historical)
             finally:
                 path.write_bytes(original)
-                self.reproduction["historical_artifacts_sha256_lf"][key] = old_link
+                self.reproduction["historical_artifacts_sha256_lf_text_raw_png"][key] = old_link
 
     def test_case_query_changes_fail_even_when_ranks_are_identical(self):
         self.reproduction["capture"]["records"][0]["queries"][0] += " altered"
@@ -205,7 +200,7 @@ class RetrievalReproductionTests(unittest.TestCase):
             current_capture(self.root, self.historical)
 
     def test_capture_inventory_tracks_the_new_dependency_and_old_checkouts(self):
-        self.assertEqual(capture_sources(self.root), [*BASE_CAPTURE_SOURCES, *REPRODUCTION_ADDED_SOURCES])
+        self.assertEqual(capture_sources(self.root), [*BASE_CAPTURE_SOURCES, *ADDED_CAPTURE_DEPENDENCIES])
         with tempfile.TemporaryDirectory() as directory:
             self.assertEqual(capture_sources(Path(directory)), list(BASE_CAPTURE_SOURCES))
 
@@ -213,6 +208,69 @@ class RetrievalReproductionTests(unittest.TestCase):
         (self.root / REPRODUCTION).unlink()
         with self.assertRaisesRegex(ValueError, "requires the named retrieval reproduction"):
             current_capture(self.root, self.historical)
+
+    def test_both_previous_reproductions_and_the_original_manifest_are_pinned(self):
+        for name in (EARLIER_REPRODUCTION, PREVIOUS_REPRODUCTION, HISTORICAL_MANIFEST):
+            with self.subTest(name=name):
+                path = self.root / name
+                old = path.read_bytes()
+                try:
+                    path.write_bytes(old + b"\n")
+                    with self.assertRaisesRegex(ValueError, "must remain unchanged"):
+                        current_capture(self.root, self.historical)
+                finally:
+                    path.write_bytes(old)
+
+    def test_historical_reports_figures_and_exploration_cannot_be_rewritten(self):
+        for name in (*outputs(), f"{DATA}/before.json", f"{DATA}/exploration.json"):
+            with self.subTest(name=name):
+                path = self.root / name
+                old = path.read_bytes()
+                try:
+                    path.write_bytes(old + b"\n")
+                    with self.assertRaisesRegex(ValueError, "Historical comparison"):
+                        current_capture(self.root, self.historical)
+                finally:
+                    path.write_bytes(old)
+
+    def test_new_manifest_preserves_all_historical_artifacts_and_is_exclusive(self):
+        names = self.reproduction["historical_artifacts_sha256_lf_text_raw_png"]
+        before = {name: (self.root / name).read_bytes() for name in names}
+        path = write_compatibility_manifest(self.root)
+        self.assertEqual(path, self.root / COMPATIBILITY_MANIFEST)
+        self.assertEqual(read(path)["schema"], "retrieval_compatibility_manifest_v3")
+        self.assertEqual(before, {name: (self.root / name).read_bytes() for name in names})
+        self.assertEqual(check(self.root)["metrics"]["all144"]["after"]["hits_at_16"], 140)
+        with self.assertRaises(FileExistsError):
+            write_compatibility_manifest(self.root)
+
+    def test_new_manifest_binds_the_report_tools_and_all_new_helpers(self):
+        write_compatibility_manifest(self.root)
+        for name in ("code/capture_retrieval_run.py", "code/report_retrieval_comparison.py", *REPRODUCTION_ADDED_SOURCES):
+            with self.subTest(name=name):
+                path = self.root / name
+                old = path.read_bytes()
+                try:
+                    path.write_bytes(old + b"\n# changed\n")
+                    with self.assertRaises(ValueError):
+                        check(self.root)
+                finally:
+                    path.write_bytes(old)
+
+    def test_missing_or_old_manifest_cannot_validate_the_current_revision(self):
+        with self.assertRaisesRegex(ValueError, "named compatibility manifest"):
+            check(self.root)
+        shutil.copyfile(self.root / HISTORICAL_MANIFEST, self.root / COMPATIBILITY_MANIFEST)
+        with self.assertRaisesRegex(ValueError, "integrity check failed"):
+            check(self.root)
+
+    def test_interactive_profiles_cannot_be_reported_as_reference_compatibility(self):
+        for profile in (None, "wording_hybrid_v1", "semantic"):
+            with self.subTest(profile=profile):
+                self.reproduction["capture"]["retrieval_profile"] = profile
+                self.write_reproduction()
+                with self.assertRaisesRegex(ValueError, "frozen reference profile"):
+                    current_capture(self.root, self.historical)
 
 
 if __name__ == "__main__":

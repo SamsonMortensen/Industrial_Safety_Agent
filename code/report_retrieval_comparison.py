@@ -13,15 +13,22 @@ DATA = "data/retrieval_comparison"
 REPORT = "docs/RETRIEVAL_IMPROVEMENT.md"
 FIGURES = ("retrieval_before_after.png", "original_nine_misses.png", "retrieval_rank_cutoffs.png")
 COHORTS = {"primary64": "Original 64 development cases", "additional80": "Additional 80 public cases", "all144": "All 144 public cases"}
-PREVIOUS_REPRODUCTION = f"{DATA}/reproductions/decision_scoring_20261114.json"
-PREVIOUS_REPRODUCTION_SHA256_LF = "50df94f5dc07db5d97f126a5edc805426ff0d84dba1041632694836a07a442a7"
-REPRODUCTION = f"{DATA}/reproductions/actionable_investigation_20261115.json"
-REPRODUCTION_SCHEMA = "lexical_retrieval_compatibility_reproduction_v2"
-# Interactive guidance and policy change, but this historical benchmark still
-# calls the published QueryPlanner directly. Its core, corpus and cases stay
-# frozen, and every case/query/rank must reproduce the old result exactly.
-REPRODUCTION_CHANGED_SOURCES = ("code/hybrid_policy.py", "code/showcase.py")
-REPRODUCTION_ADDED_SOURCES = ("code/investigation_support.py",)
+EARLIER_REPRODUCTION = f"{DATA}/reproductions/decision_scoring_20261114.json"
+EARLIER_REPRODUCTION_SHA256_LF = "50df94f5dc07db5d97f126a5edc805426ff0d84dba1041632694836a07a442a7"
+PREVIOUS_REPRODUCTION = f"{DATA}/reproductions/actionable_investigation_20261115.json"
+PREVIOUS_REPRODUCTION_SHA256_LF = "6762d62fc9a31cbead74ad28c640a7fef27a8eea554933cb025e61a18009075a"
+REPRODUCTION = f"{DATA}/reproductions/wording_retrieval_20261115.json"
+REPRODUCTION_SCHEMA = "lexical_retrieval_compatibility_reproduction_v3"
+HISTORICAL_MANIFEST = "docs/results/retrieval_manifest.json"
+HISTORICAL_MANIFEST_SHA256_LF = "f22a154aaca3d223d0cdaa58c373f5345c5303452c997d21e1a487ee4ecfd2ce"
+COMPATIBILITY_MANIFEST = "docs/results/retrieval_compatibility_manifest_v3.json"
+# Compare this revision with PR #6, not with a changing list of exemptions.
+# The old core, policy, helper, corpus and cases stay frozen. New interactive
+# retrieval has separate results; all reference queries and ranks stay exact.
+REPRODUCTION_CHANGED_SOURCES = ("code/showcase.py",)
+REPRODUCTION_ADDED_SOURCES = (
+    "code/wording_retrieval.py", "code/evidence_embeddings.py", "code/citation_alignment.py",
+)
 
 
 def read(path):
@@ -244,30 +251,47 @@ def draw(data, out):
 def sources(root=ROOT):
     paths = [f"{DATA}/{name}.json" for name in ("before", "after", "exploration", "protocol", "candidate_freeze")] + [
         "code/capture_retrieval_run.py", "code/report_retrieval_comparison.py", "code/autonomous_investigator.py",
-        "code/public_results.py"]
-    for name in (PREVIOUS_REPRODUCTION, REPRODUCTION, *REPRODUCTION_ADDED_SOURCES):
+        "code/public_results.py", "code/investigation_support.py", HISTORICAL_MANIFEST]
+    for name in (EARLIER_REPRODUCTION, PREVIOUS_REPRODUCTION, REPRODUCTION, *REPRODUCTION_ADDED_SOURCES):
         if (root / name).is_file():
             paths.append(name)
     return paths
 
 
-def current_capture(root, historical):
-    """Verify a named compatibility reproduction without rewriting the old run.
+def historical_links(root, historical):
+    """Verify both prior reproductions and every saved report without edits."""
+    pinned = {EARLIER_REPRODUCTION: EARLIER_REPRODUCTION_SHA256_LF,
+              PREVIOUS_REPRODUCTION: PREVIOUS_REPRODUCTION_SHA256_LF,
+              HISTORICAL_MANIFEST: HISTORICAL_MANIFEST_SHA256_LF}
+    for name, expected in pinned.items():
+        if not (root / name).is_file() or file_hash(root / name) != expected:
+            raise ValueError("The previous named reproduction or historical manifest must remain unchanged: " + name)
+    earlier = read(root / EARLIER_REPRODUCTION)
+    previous = read(root / PREVIOUS_REPRODUCTION)
+    links = {f"{DATA}/{name}.json": file_hash(root / DATA / f"{name}.json")
+             for name in ("after", "protocol", "candidate_freeze")}
+    if links != earlier["historical_artifacts_sha256_lf"]:
+        raise ValueError("The historical after-run, protocol or freeze changed")
+    previous_links = dict(links, **{EARLIER_REPRODUCTION: EARLIER_REPRODUCTION_SHA256_LF})
+    if previous_links != previous["historical_artifacts_sha256_lf"]:
+        raise ValueError("The previous reproduction chain does not match")
+    if historical != read(root / DATA / "after.json"):
+        raise ValueError("Historical capture differs from the unchanged after-run")
+    manifest = read(root / HISTORICAL_MANIFEST)
+    for name in (f"{DATA}/before.json", f"{DATA}/exploration.json"):
+        expected = manifest["inputs_sha256_lf"][name]
+        if file_hash(root / name) != expected:
+            raise ValueError("Historical comparison evidence changed: " + name)
+        links[name] = expected
+    for name, expected in manifest["outputs_sha256_lf_text_raw_png"].items():
+        if artifact_hash(root / name) != expected:
+            raise ValueError("Historical comparison report or figure changed: " + name)
+        links[name] = expected
+    links.update(pinned)
+    return links
 
-    The permitted source changes and new dependency are explicitly versioned.
-    Every current captured hash and every case/query/rank must match the named
-    reproduction. Retrieval core, source data and budget stay frozen.
-    This is a reproducibility check on exposed cases, not a new improvement.
-    """
-    path = root / REPRODUCTION
-    if not path.is_file():
-        if any((root / name).exists() for name in REPRODUCTION_ADDED_SOURCES):
-            raise ValueError("Current dependency requires the named retrieval reproduction")
-        for name, expected in historical["input_and_code_sha256_lf"].items():
-            if file_hash(root / name) != expected:
-                raise ValueError("Current source/input differs from the after-run: " + name)
-        return historical
-    reproduction = read(path)
+
+def _validate_reproduction(root, historical, reproduction):
     if (reproduction.get("schema") != REPRODUCTION_SCHEMA
             or reproduction.get("compatibility_only") is not True
             or reproduction.get("changed_source_files") != list(REPRODUCTION_CHANGED_SOURCES)
@@ -277,22 +301,14 @@ def current_capture(root, historical):
                   "model_training_performed", "model_promoted"):
         if reproduction.get(field) is not False:
             raise ValueError("Only development compatibility reproduction is allowed")
-    links = {f"{DATA}/{name}.json": file_hash(root / DATA / f"{name}.json")
-             for name in ("after", "protocol", "candidate_freeze")}
-    previous_path = root / PREVIOUS_REPRODUCTION
-    if not previous_path.is_file() or file_hash(previous_path) != PREVIOUS_REPRODUCTION_SHA256_LF:
-        raise ValueError("The previous named reproduction must remain unchanged")
-    previous = read(previous_path)
-    if links != previous["historical_artifacts_sha256_lf"]:
-        raise ValueError("The historical after-run, protocol or freeze changed")
-    if historical != read(root / DATA / "after.json"):
-        raise ValueError("Historical capture differs from the unchanged after-run")
-    links[PREVIOUS_REPRODUCTION] = PREVIOUS_REPRODUCTION_SHA256_LF
-    if reproduction.get("historical_artifacts_sha256_lf") != links:
+    if reproduction.get("historical_artifacts_sha256_lf_text_raw_png") != historical_links(root, historical):
         raise ValueError("Reproduction is not linked to the unchanged historical evidence")
+    previous = read(root / PREVIOUS_REPRODUCTION)["capture"]
     candidate = reproduction["capture"]
     validate_capture(candidate)
-    old_hashes = historical["input_and_code_sha256_lf"]
+    if candidate.get("retrieval_profile") != "published_reference_lexical_v1":
+        raise ValueError("Compatibility requires the explicit frozen reference profile")
+    old_hashes = previous["input_and_code_sha256_lf"]
     new_hashes = candidate["input_and_code_sha256_lf"]
     if set(new_hashes) != set(old_hashes) | set(REPRODUCTION_ADDED_SOURCES):
         raise ValueError("Reproduction input/source inventory changed")
@@ -300,14 +316,49 @@ def current_capture(root, historical):
     if changed != set(REPRODUCTION_CHANGED_SOURCES):
         raise ValueError("Reproduction changes frozen retrieval code or inputs")
     for name, expected in new_hashes.items():
-        if file_hash(root / name) != expected:
+        if not (root / name).is_file() or file_hash(root / name) != expected:
             raise ValueError("Current source/input differs from the named reproduction: " + name)
     for key in ("records", "mode", "top_k"):
-        if candidate[key] != historical[key]:
+        if candidate[key] != historical[key] or previous[key] != historical[key]:
             raise ValueError("Compatibility reproduction differs from historical after-run: " + key)
-    if not metrics_equal(candidate["metrics"], historical["metrics"]):
+    if (not metrics_equal(candidate["metrics"], historical["metrics"])
+            or not metrics_equal(previous["metrics"], historical["metrics"])):
         raise ValueError("Compatibility reproduction metrics differ from historical after-run")
     return candidate
+
+
+def build_reproduction(root, candidate):
+    """Prepare the new wrapper after a fresh frozen reference capture; no writes."""
+    historical = read(root / DATA / "after.json")
+    reproduction = {
+        "schema": REPRODUCTION_SCHEMA, "captured_utc": candidate["captured_utc"],
+        "compatibility_only": True,
+        "scope": "The frozen lexical reference reproduces its historical queries and ranks. New interactive wording and semantic retrieval require their own development results.",
+        "changed_source_files": list(REPRODUCTION_CHANGED_SOURCES),
+        "added_source_files": list(REPRODUCTION_ADDED_SOURCES),
+        "independent_evaluation_used": False, "calibration_reserve_used": False,
+        "model_training_performed": False, "model_promoted": False,
+        "historical_artifacts_sha256_lf_text_raw_png": historical_links(root, historical),
+        "capture": candidate,
+    }
+    _validate_reproduction(root, historical, reproduction)
+    return reproduction
+
+
+def current_capture(root, historical):
+    """Use v3 for new helpers; never treat old evidence as a new-profile result."""
+    path = root / REPRODUCTION
+    if path.is_file():
+        return _validate_reproduction(root, historical, read(path))
+    if any((root / name).exists() for name in REPRODUCTION_ADDED_SOURCES):
+        raise ValueError("Current dependency requires the named retrieval reproduction")
+    # A read-only check against the unchanged PR #6 checkout remains possible.
+    historical_links(root, historical)
+    previous = read(root / PREVIOUS_REPRODUCTION)["capture"]
+    for name, expected in previous["input_and_code_sha256_lf"].items():
+        if not (root / name).is_file() or file_hash(root / name) != expected:
+            raise ValueError("Current source/input differs from the previous reproduction: " + name)
+    return previous
 
 
 def outputs():
@@ -335,8 +386,8 @@ def check(root=ROOT, fresh=None):
     if fresh is not None:
         saved = current_capture(root, read(root / DATA / "after.json")); candidate = read(fresh)
         validate_capture(candidate)
-        for key in ("records", "input_and_code_sha256_lf", "mode", "top_k"):
-            if candidate[key] != saved[key]:
+        for key in ("records", "input_and_code_sha256_lf", "mode", "top_k", "retrieval_profile"):
+            if candidate.get(key) != saved.get(key):
                 raise ValueError("Fresh candidate run differs from saved after-run: " + key)
         if not metrics_equal(saved["metrics"], candidate["metrics"]):
             raise ValueError("Fresh candidate run differs from saved after-run: metrics")
@@ -345,8 +396,10 @@ def check(root=ROOT, fresh=None):
     for path, value in expected_text.items():
         if (root / path).read_text(encoding="utf-8") != value:
             raise ValueError("Generated comparison is stale: " + path)
-    manifest = read(root / "docs/results/retrieval_manifest.json")
-    if manifest["inputs_sha256_lf"] != {p: file_hash(root / p) for p in sources(root)} or manifest["outputs_sha256_lf_text_raw_png"] != {p: artifact_hash(root / p) for p in outputs()}:
+    if not (root / COMPATIBILITY_MANIFEST).is_file():
+        raise ValueError("The current revision needs its named compatibility manifest")
+    manifest = read(root / COMPATIBILITY_MANIFEST)
+    if manifest != compatibility_manifest(root):
         raise ValueError("Comparison integrity check failed")
     return data
 
@@ -354,6 +407,23 @@ def check(root=ROOT, fresh=None):
 def artifact_hash(path):
     import hashlib
     return hashlib.sha256(path.read_bytes()).hexdigest() if path.suffix == ".png" else file_hash(path)
+
+
+def compatibility_manifest(root=ROOT):
+    """Bind this checker and wrapper while retaining the previous manifest."""
+    return {"schema": "retrieval_compatibility_manifest_v3",
+            "historical_manifest_sha256_lf": HISTORICAL_MANIFEST_SHA256_LF,
+            "inputs_sha256_lf": {p: file_hash(root / p) for p in sources(root)},
+            "outputs_sha256_lf_text_raw_png": {p: artifact_hash(root / p) for p in outputs()}}
+
+
+def write_compatibility_manifest(root=ROOT):
+    """Create new evidence once; never regenerate historical figures or prose."""
+    prepare(root)
+    path = root / COMPATIBILITY_MANIFEST
+    with path.open("x", encoding="utf-8") as stream:
+        stream.write(json_text(compatibility_manifest(root)))
+    return path
 
 
 def main():
@@ -365,18 +435,10 @@ def main():
         check(fresh=args.candidate_capture)
         print("Matched retrieval comparison verified: inputs, counts, ranks, report and figures agree.")
         if (ROOT / REPRODUCTION).is_file():
-            print("Historical evidence is unchanged; the named interactive-guidance reproduction verifies the same retrieval outcomes. No new improvement claim is made.")
+            print("Historical evidence is unchanged; the v3 reproduction verifies the frozen reference outcomes. Interactive retrieval is evaluated separately.")
         return
-    data, prose = prepare(ROOT)
-    out = ROOT / "docs/results"; out.mkdir(parents=True, exist_ok=True)
-    draw(data, out)
-    (ROOT / REPORT).write_text(prose, encoding="utf-8")
-    (out / "retrieval_comparison.json").write_text(json_text(data), encoding="utf-8")
-    (out / "retrieval_cases.csv").write_text(csv_text(data), encoding="utf-8", newline="")
-    manifest = {"schema": "retrieval_comparison_manifest_v1", "inputs_sha256_lf": {p: file_hash(ROOT / p) for p in sources()},
-                "outputs_sha256_lf_text_raw_png": {p: artifact_hash(ROOT / p) for p in outputs()}}
-    (out / "retrieval_manifest.json").write_text(json_text(manifest), encoding="utf-8")
-    print("Generated readable retrieval comparison, three figures, all-case CSV and integrity manifest.")
+    write_compatibility_manifest(ROOT)
+    print("Created the v3 compatibility manifest. Historical reports, figures and evidence were preserved.")
 
 
 if __name__ == "__main__":

@@ -1,0 +1,97 @@
+{
+  "schema": "grouped_wording_retrieval_protocol_v1",
+  "authored_at_utc": "2026-11-15T22:42:25.178274+00:00",
+  "baseline_commit": "03c125129ca88975fa16591dd66b9b61d0ae5592",
+  "total_cases": 96,
+  "total_groups": 32,
+  "variants_per_group": 3,
+  "development": {
+    "cases": 48,
+    "groups": 16,
+    "file": "development.json",
+    "sha256": "4ca317ea439f219e8bbb29f37682cddddbda5f38ed56a98c59b0224f71bd35f3",
+    "original_sha256": "d427d85516cc4af485762debd74a07d2597c9f3aed7a9b17e8064c3800110eaa"
+  },
+  "frozen_comparison": {
+    "cases": 48,
+    "groups": 16,
+    "file": "comparison.json",
+    "sha256": "df5f467301e7a62d57b40b02b9179abf5d98ea3d3ab3f3464065beeae4443935",
+    "implementation_agent_may_read_after_candidate_freeze_only": true,
+    "reference_catalog": "reference_catalog.json",
+    "original_sha256": "db883273e8b319d5043e8b2ad8d0cf7181cddbaed36290e0b2f9de15e88b77f6",
+    "original_reference_catalog_sha256": "3cb93b367bb18b07429eba8ee457d9aac431c9a12cb998b8acc99fd687c3893c",
+    "reference_catalog_sha256": "587d14904ef75981e3a28eff5cdadfb2ccb999f3b3f1cbce78eb2b8f2dc11550"
+  },
+  "grouping": "Invented scenario groups, not real source groups; wording variants within a group are correlated.",
+  "split_assignment": "For each of seven safety themes, two scenario groups are development and two are frozen. Four boundary groups are split two and two. Split fixed before candidate tuning.",
+  "evaluation_plan": {
+    "query_construction": "Only prompt enters planner/retriever; no expected sections, family, group ID, or support refs enter the query.",
+    "single_authority": [
+      "Recall@1",
+      "Recall@3",
+      "Recall@5",
+      "Recall@16",
+      "MRR@16"
+    ],
+    "multiple_authorities": [
+      "All required targets present within top3",
+      "All required targets present within top5",
+      "All required targets present within top16"
+    ],
+    "boundary_cases": [
+      "No forced governing citation for insufficient facts or unrelated input",
+      "Explicit missing-corpus distinction for known absent authority"
+    ],
+    "scope": [
+      "Relevance to a denied or controlled condition is allowed; a retrieved citation is not a violation label.",
+      "No single-most-aligned requirement for multi-hazard or insufficient-facts prompts."
+    ],
+    "aggregation": "Report raw counts and per-group means. Do not count three paraphrases as independent field examples. Report regressions and unresolved cases.",
+    "candidate_freeze": "Record exact code and corpus hashes before inspecting frozen comparison prompts or labels. One matched baseline/candidate comparison; if inspected for tuning it becomes development data.",
+    "language": "Mostly English with one Spanish development question and one French frozen-comparison question; report those separately instead of implying general multilingual validation.",
+    "best_match_acceptance": "Score relevance acceptance separately: accepted supported matches on target cases and false accepted matches on no-authority/corpus-gap cases. Raw candidate presence does not establish support or a violation."
+  },
+  "boundaries": {
+    "independent_field_performance_claim_allowed": false,
+    "reviewer_approved_training_labels": false,
+    "existing_independent_evaluation_used": false,
+    "calibration_reserve_used": false,
+    "model_calls": 0,
+    "training_performed": false,
+    "model_promoted": false
+  },
+  "development_family_counts": {
+    "walking_surface": 6,
+    "charging_installation": 6,
+    "electrical_work": 6,
+    "lifting_slings": 6,
+    "material_handling_aisles": 6,
+    "dockboards": 6,
+    "employee_fall": 6,
+    "corpus_gap": 3,
+    "unrelated": 3
+  },
+  "comparison_group_counts_only": {
+    "groups": 16,
+    "cases": 48
+  },
+  "authoring_note": "The comparison prompts, labels and comparison-only references stayed sealed until the candidate code and corpus were frozen. Public case files preserve every original field and label; only CRLF file line endings were normalized to LF.",
+  "original_protocol_sha256": "57be2f46f147fe762358e75b6e9d77dc3621f183977fb908caf0a83c4fe8eec3",
+  "original_candidate_freeze_sha256": "25e1837c6d39bb347d8dd7a383756e1c03f01474e8472b523fa10de6aecada25",
+  "baseline_source_sha256_lf": {
+    "code/autonomous_investigator.py": "5c2ba322b162c74ce0ce6f980aa49aeb8601ad56607b5cf9fa899979f75b0e7d",
+    "code/investigation_support.py": "5a902e1f86bd2f77227b7e9ee72357e2cdea0e1ffe758d46b7ecfca4b02d77f2",
+    "code/showcase.py": "2957e5f73c1fd181af4bdfff9ba6c21dd4db82d16a26de545d1070d06983b01c",
+    "json/regulations.json": "30a8d3f0a1855e0180349a243fe80c86be097ef42a55cfb3990cef65f56a7b88",
+    "json/statutes.json": "cba756e84b9ba6c5d52d55765a23de7851129d8c9602edae2987eb1172ceed8b"
+  },
+  "original_reference_catalog_sha256": "c1943611bbb7510a5b226643aa693240e07ac7472b0208ce374dde1682789ef3",
+  "original_authoring_script_sha256": "bcfdfb552d1ebae2a7182a8693cc7b192986c3bc79d320ea323fc56b8d8dfa14",
+  "reference_catalog": "reference_catalog.json",
+  "reference_catalog_sha256": "587d14904ef75981e3a28eff5cdadfb2ccb999f3b3f1cbce78eb2b8f2dc11550",
+  "candidate_freeze": "candidate_freeze.json",
+  "candidate_freeze_sha256": "13359341c91cba3512eb32712c90e0e62ca619fa0843ee004cb85a8c7733faf1",
+  "release_note": "These authored cases are now public regression fixtures. They are not independent field evaluation or reviewer-approved training labels. Later tuning against them makes them development data. The original frozen comparison and the later public wrapper verification are separate records.",
+  "source_hash_format": "SHA-256 after replacing CRLF file line endings with LF; source text is otherwise unchanged."
+}

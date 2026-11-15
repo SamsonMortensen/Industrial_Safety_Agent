@@ -34,6 +34,8 @@ Focused searches keep the original observation intact. Evidence leads include ve
 
 The [useful-assessment workflow and data plan](docs/USEFUL_SAFETY_ASSESSMENT.md) explains the charger example and how reviewed, versioned evidence can improve coverage. The default walkthrough still makes no model requests or training updates. Its published-reference benchmark is labeled separately from the focused interactive search path.
 
+The [wording comparison](docs/WORDING_RETRIEVAL.md) follows a real miss: “oil spill” did not retrieve the same evidence as “oil spills.” The walkthrough now shows additional wording-based evidence with verbatim passages, while keeping its primary ranking and decision checks separate. Questions and hypotheticals receive research evidence without being treated as reported violations. The expanded ranker is available with `--retrieval-profile wording`; it remains experimental because it recovered more authorities but also worsened some first-place matches. The report includes those regressions and the optional local semantic comparison.
+
 ## Start with the notebook
 
 Before publishing changes or reports, follow the [publication privacy checks](docs/PUBLICATION_PRIVACY.md). They help keep credentials, private reviews, personal paths, and saved notebook outputs out of shared files. Independent evaluation and model promotion keep their own approval gates.

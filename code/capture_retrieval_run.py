@@ -20,7 +20,10 @@ BASE_CAPTURE_SOURCES = (
     "daily_yard_log.csv", "json/regulations.json", "json/statutes.json",
     "code/autonomous_investigator.py", "code/showcase.py", "code/hybrid_policy.py",
 )
-ADDED_CAPTURE_DEPENDENCIES = ("code/investigation_support.py",)
+ADDED_CAPTURE_DEPENDENCIES = (
+    "code/investigation_support.py", "code/wording_retrieval.py",
+    "code/evidence_embeddings.py", "code/citation_alignment.py",
+)
 
 
 def file_hash(path):
@@ -28,11 +31,11 @@ def file_hash(path):
 
 
 def capture_sources(repo):
-    """Bind the known interactive dependency without breaking old checkouts.
+    """Bind versioned interactive dependencies without changing reference ranks.
 
-    Historical versions predate investigation_support. A current checkout that
-    contains it must record its hash even though this benchmark deliberately
-    calls the original QueryPlanner rather than the interactive planner.
+    Older checkouts predate these helpers. Record each one that exists, while
+    still constructing the original retriever and QueryPlanner below. Loading
+    the optional embedding module must never activate it for this comparison.
     """
     return [*BASE_CAPTURE_SOURCES, *(name for name in ADDED_CAPTURE_DEPENDENCIES
                                     if (repo / name).is_file())]
@@ -90,6 +93,7 @@ def capture(repo):
     return {"schema": "lexical_retrieval_development_capture_v1", "captured_utc": datetime.now(timezone.utc).isoformat(),
             "runtime": {"python": platform.python_version(), "platform": platform.system()},
             "mode": "lexical_with_applicability_reranking", "top_k": 16,
+            "retrieval_profile": "published_reference_lexical_v1",
             "input_and_code_sha256_lf": {p: file_hash(repo / p) for p in sources},
             "independent_evaluation_used": False, "calibration_reserve_used": False, "model_requests": 0,
             "selection_note": "Primary 64 cases were used to diagnose/select the change. Remaining 80 are a same-fixture development regression check, not independent data.",
