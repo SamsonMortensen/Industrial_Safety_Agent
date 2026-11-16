@@ -352,7 +352,15 @@ def main() -> int:
     try:
         hardware = cuda_preflight(args.min_free_gib)
         records = build_sft_records(args.train_file)
-    except (RuntimeError, FileNotFoundError) as error:
+    except ValueError as error:
+        parser.exit(
+            2,
+            f"Preflight failed: {error}\n"
+            "Review the training labels and recorded facts before retrying. "
+            "Do not relabel, drop rows, or change the policy just to pass this check. "
+            "No training has started.\n",
+        )
+    except (RuntimeError, OSError) as error:
         parser.exit(2, f"Preflight failed: {error}\n")
     print(json.dumps({"hardware": hardware, "train_examples": len(records)}, indent=2))
     if args.preflight_only:

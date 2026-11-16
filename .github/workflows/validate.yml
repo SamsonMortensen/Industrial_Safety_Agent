@@ -40,6 +40,13 @@ jobs:
         run: python -m compileall -q code tests
       - name: Run public regression tests
         run: python -m unittest discover -s tests -v
+      - name: Check the copied PowerShell setup blocks
+        if: runner.os == 'Windows'
+        shell: powershell
+        run: ./tests/check_readme_powershell.ps1
+      - name: Check the copied Linux setup block
+        if: runner.os == 'Linux'
+        run: python -B tests/check_readme_shell.py
       - name: Verify saved evaluation without model weights
         run: python code/validate_saved_evaluation.py
       - name: Verify public analytics and result provenance

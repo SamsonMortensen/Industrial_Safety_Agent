@@ -44,36 +44,90 @@ I want someone new to this project to be able to open it, try an incident, and s
 
 The default notebook runs on the CPU. It does not need a GPU, Ollama, a camera, a model download, or an account. It does not train or change learning memory. You need internet access for the initial repository and package downloads. After setup, the walkthrough runs locally without model requests.
 
+Here is what we have actually checked:
+
+| Device or workflow | Current support |
+| --- | --- |
+| Windows CPU walkthrough and notebook | Covered by automated checks with Python 3.14; the commands below support PowerShell 5.1. |
+| Linux CPU walkthrough and notebook | Covered by automated checks on Ubuntu with Python 3.11. |
+| macOS CPU walkthrough and notebook | A terminal recipe is provided below; macOS is not currently tested in CI. |
+| QLoRA training | Requires a compatible NVIDIA GPU, driver, CUDA-enabled PyTorch, and enough GPU memory. CPU, Apple GPU/MPS, and AMD/ROCm training are not implemented by this trainer. |
+
+The steps numbered below are for Windows. On Linux or macOS, use the [CPU quickstart](#linux-and-macos-cpu-quickstart). A passing CPU walkthrough does not verify a device's training stack.
+
 ### 1. Check Git and Python
 
 Install [Git](https://git-scm.com/downloads) and [Python](https://www.python.org/downloads/) if needed, then open a new PowerShell window. Run:
 
 ```powershell
+$ErrorActionPreference = 'Stop'
 git --version
+if ($LASTEXITCODE -ne 0) { throw 'Git is unavailable. Stop and fix that first.' }
 python --version
+if ($LASTEXITCODE -ne 0) { throw 'Python is unavailable. Stop and fix that first.' }
 ```
 
 Both commands should print a version. Use Python 3.11 or newer; automated checks cover Python 3.11 on Linux and 3.14 on Windows. If Windows does not recognize `python`, try `py --version`. If that works, use `py` for the environment-creation command below. Otherwise, finish installing Python and reopen PowerShell before continuing.
 
 ### 2. Install and open the notebook
 
-Choose a folder where you keep projects. Run these commands one line at a time in PowerShell, not inside a notebook cell. Stop if a command reports an error. The first two commands create and enter the repository folder.
+Choose **one** checkout option first. Run these blocks in PowerShell, not inside a notebook cell. A failed clone must not send the next commands into an older checkout. The selection below sets `SafetyProjectRoot`; repeat it when opening a new terminal.
+
+**Fresh public clone:** enter a full path for a new folder outside any existing checkout. The folder must not already exist. Do not run another clone command from inside your development repository.
 
 ```powershell
-git clone https://github.com/SamsonMortensen/Industrial_Safety_Agent.git
-cd Industrial_Safety_Agent
-python -m venv .venv
-.\.venv\Scripts\python.exe -m pip install -r requirements.txt
-.\.venv\Scripts\python.exe -m pip check
-.\.venv\Scripts\python.exe -m ipykernel install --sys-prefix --name industrial-safety --display-name "Industrial Safety (.venv)"
-.\.venv\Scripts\python.exe -m notebook main.ipynb --ip=127.0.0.1
+$global:SafetyProjectRoot = $null
+& {
+    $ErrorActionPreference = 'Stop'
+    $destination = Read-Host 'Full path for a NEW public checkout'
+    if (-not [System.IO.Path]::IsPathRooted($destination)) { throw 'Use a full path.' }
+    if (Test-Path -LiteralPath $destination) { throw 'That folder exists. Use the existing-checkout option or choose a new path.' }
+    git clone https://github.com/SamsonMortensen/Industrial_Safety_Agent.git $destination
+    if ($LASTEXITCODE -ne 0) { throw 'Clone failed. No checkout was selected; stop here.' }
+    Set-Location -LiteralPath $destination
+    $global:SafetyProjectRoot = (Get-Location).Path
+}
 ```
 
-Already have an unchanged public clone? Open PowerShell in that repository directory and skip the clone and `cd` commands. If the folder contains additional development files, use a separate fresh clone to reproduce the public walkthrough. Creating `.venv` does not remove or separate those files.
+**Existing public clone:** select its root directly. Do not clone again. If it contains additional development files, use the fresh-clone option to reproduce the public walkthrough; creating `.venv` does not separate those files.
+
+```powershell
+$global:SafetyProjectRoot = $null
+& {
+    $ErrorActionPreference = 'Stop'
+    $existing = Read-Host 'Full path to the EXISTING public checkout'
+    Set-Location -LiteralPath $existing
+    if (-not (Test-Path -LiteralPath '.\requirements.txt') -or -not (Test-Path -LiteralPath '.\code\showcase.py')) { throw 'This is not the project root. Stop and select the correct folder.' }
+    git rev-parse --show-toplevel
+    if ($LASTEXITCODE -ne 0) { throw 'Git could not verify this checkout.' }
+    $global:SafetyProjectRoot = (Get-Location).Path
+}
+```
+
+After that selection succeeds, install and open the notebook. These blocks work in Windows PowerShell 5.1: `$ErrorActionPreference` handles PowerShell errors, while each `$LASTEXITCODE` check stops a failed external program before the next step. Keep the surrounding `& { ... }` when copying a block.
+
+```powershell
+& {
+    $ErrorActionPreference = 'Stop'
+    if (-not $SafetyProjectRoot -or (Get-Location).Path -ne $SafetyProjectRoot) { throw 'Select a checkout above before installing anything.' }
+    if (-not (Test-Path -LiteralPath '.\.venv\Scripts\python.exe')) {
+        python -m venv .venv
+        if ($LASTEXITCODE -ne 0) { throw 'Environment creation failed.' }
+    }
+    .\.venv\Scripts\python.exe -m pip install -r requirements.txt
+    if ($LASTEXITCODE -ne 0) { throw 'Package installation failed. Do not continue to the notebook.' }
+    .\.venv\Scripts\python.exe -m pip check
+    if ($LASTEXITCODE -ne 0) { throw 'Resolve the dependency conflicts first.' }
+    .\.venv\Scripts\python.exe -m ipykernel install --sys-prefix --name industrial-safety --display-name "Industrial Safety (.venv)"
+    if ($LASTEXITCODE -ne 0) { throw 'Kernel registration failed.' }
+    .\.venv\Scripts\python.exe -m notebook main.ipynb --ip=127.0.0.1
+    if ($LASTEXITCODE -ne 0) { throw 'The notebook server did not finish successfully.' }
+}
+```
 
 The package installation may take a few minutes. `Requirement already satisfied` is normal. `pip check` should report `No broken requirements found`. The kernel command connects this notebook to the same Python environment that received the packages; no environment activation is needed.
 
-On Linux/macOS, create the environment with `python3 -m venv .venv`, then replace `.\.venv\Scripts\python.exe` with `.venv/bin/python` in the remaining commands.
+Linux and macOS use a different shell; follow the complete [CPU quickstart](#linux-and-macos-cpu-quickstart) below instead of copying these PowerShell blocks.
 
 ### 3. Run the cells and try an incident
 
@@ -88,12 +142,53 @@ Jupyter can save your edits and outputs in the notebook. Avoid personal informat
 ### If something stops
 
 - **`git` or `python` is not recognized:** finish installing it, reopen PowerShell, and repeat the version checks.
-- **The destination folder already exists:** enter the existing public clone, or choose a different parent folder for a fresh clone. Do not delete your development folder.
+- **The destination folder already exists or cloning failed:** stop. Use the checkout selection above before running another setup block. Do not delete your development folder or create a nested clone inside it.
 - **`requirements.txt` or `main.ipynb` is not found:** check that the terminal is in the repository folder.
 - **A notebook reports a missing module:** install `requirements.txt` with the exact project Python command above, repeat the kernel registration, and restart the notebook with **Industrial Safety (.venv)** selected. Bare `pip` may install into a different environment.
 - **Local tests ask for `torch` or `streamlit`:** the published notebook and public tests do not require them. Check whether the folder also contains private vision code, and use a fresh public clone for this walkthrough.
 - **A cell refers to a name that is not defined:** restart the kernel and run the cells from the top.
 - **You only installed `requirements-showcase.txt`:** that installs the CLI-only dependencies. Install `requirements.txt` before opening the notebook or running the full public validation checks.
+
+### Linux and macOS CPU quickstart
+
+Install Git and Python 3.11 or a newer version compatible with the dependencies. Ubuntu with Python 3.11 is the Linux CI configuration; this macOS recipe has not been CI-tested. Use a terminal running bash, zsh, or a POSIX-compatible shell. No PyTorch or GPU packages are needed for this path.
+
+Enter the full path to either an existing public checkout or a new folder outside any existing checkout. Do not enter quotes around the path. The block reuses an existing checkout and only clones when the destination is absent. Keep the surrounding parentheses: they stop the dependent commands on failure without closing your terminal.
+
+```sh
+(
+    set -eu
+    git --version
+    python3 -c 'import sys; print(sys.version); assert sys.version_info >= (3, 11), "Python 3.11 or newer is required"'
+    printf 'Full checkout path (existing or new): '
+    IFS= read -r safety_project
+    case "$safety_project" in
+        /*) ;;
+        *) printf '%s\n' 'Use a full path beginning with /.' >&2; exit 1 ;;
+    esac
+    if [ -e "$safety_project" ]; then
+        cd "$safety_project"
+        if [ ! -e .git ] || [ ! -f requirements.txt ] || [ ! -f code/showcase.py ]; then
+            printf '%s\n' 'That folder is not the project root. Stop and select the checkout.' >&2
+            exit 1
+        fi
+        git rev-parse --show-toplevel
+    else
+        git clone https://github.com/SamsonMortensen/Industrial_Safety_Agent.git "$safety_project"
+        cd "$safety_project"
+    fi
+    if [ ! -x .venv/bin/python ]; then
+        python3 -m venv .venv
+    fi
+    .venv/bin/python -m pip install -r requirements.txt
+    .venv/bin/python -m pip check
+    .venv/bin/python code/check_setup.py
+    .venv/bin/python -m ipykernel install --sys-prefix --name industrial-safety --display-name 'Industrial Safety (.venv)'
+    .venv/bin/python -m notebook main.ipynb --ip=127.0.0.1
+)
+```
+
+Select **Industrial Safety (.venv)** in the notebook and follow [step 3](#3-run-the-cells-and-try-an-incident). If you prefer the terminal walkthrough, replace the final notebook launch with `.venv/bin/python code/showcase.py`. If environment creation fails because `venv` is missing, install the venv support for your Python through your operating system's package manager, then rerun the block. Package or setup errors must be resolved before continuing.
 
 ## Prefer the terminal?
 
@@ -101,17 +196,24 @@ I want people to be able to see what this does without setting up a training mac
 
 It works through six different observations, shows what triggered each investigation, builds the queries, retrieves authorities, and returns a decision or sends the case to review. It also checks the citation guard, demonstrates the learning approval rules, and runs a 16-case retrieval benchmark across 16 hazard families.
 
-You need Git and Python 3.11 or newer. No GPU, Ollama server, model download, or account is needed for the default run. From PowerShell:
+You need Git and Python 3.11 or newer. No GPU, Ollama server, model download, or account is needed for the default run. On Windows, first choose a fresh or existing checkout in [step 2](#2-install-and-open-the-notebook), then run this CLI-only setup. Linux/macOS readers can use the [CPU quickstart](#linux-and-macos-cpu-quickstart) and its terminal option.
 
 ```powershell
-git clone https://github.com/SamsonMortensen/Industrial_Safety_Agent.git
-cd Industrial_Safety_Agent
-python -m venv .venv
-.\.venv\Scripts\python.exe -m pip install -r requirements-showcase.txt
-.\.venv\Scripts\python.exe code/showcase.py
+& {
+    $ErrorActionPreference = 'Stop'
+    if (-not $SafetyProjectRoot -or (Get-Location).Path -ne $SafetyProjectRoot) { throw 'Select a checkout in step 2 first.' }
+    if (-not (Test-Path -LiteralPath '.\.venv\Scripts\python.exe')) {
+        python -m venv .venv
+        if ($LASTEXITCODE -ne 0) { throw 'Environment creation failed.' }
+    }
+    .\.venv\Scripts\python.exe -m pip install -r requirements-showcase.txt
+    if ($LASTEXITCODE -ne 0) { throw 'Package installation failed. Stop before running the walkthrough.' }
+    .\.venv\Scripts\python.exe code/showcase.py
+    if ($LASTEXITCODE -ne 0) { throw 'The walkthrough failed; inspect the first error.' }
+}
 ```
 
-Already cloned? Start from the repository directory and skip the first two commands. On Linux/macOS, use `python3 -m venv .venv` and `.venv/bin/python` for the remaining commands.
+There is no second clone step here.
 
 The default run uses CPU-based lexical retrieval and the existing applicability and policy checks. Live results are labeled separately from the saved full-audit, hybrid-retrieval, incident-coverage, and QLoRA results. Those larger runs are not repeated by the walkthrough. The camera examples are structured observations, not live image recognition.
 
@@ -310,28 +412,44 @@ The notebook setup already installs `requirements.txt`, which also covers the pu
 - Git and Python 3.11 or compatible
 - [Ollama](https://ollama.com) for live embedding and language-model runs; not required for saved-result validation or lexical-only examples
 
-Commands below use Windows PowerShell from the repository root. The explicit Python paths avoid environment-activation and interpreter mismatches. On Linux/macOS, use `.venv/bin/python` instead of `.\.venv\Scripts\python.exe`.
+Commands below use Windows PowerShell from the repository root. First complete the [fresh or existing checkout selection](#2-install-and-open-the-notebook); do not clone again. The explicit Python paths avoid environment-activation and interpreter mismatches. The [Linux/macOS CPU recipe](#linux-and-macos-cpu-quickstart) handles initial setup in those shells. For individual Python commands below, use `.venv/bin/python`; the PowerShell variables and control blocks do not translate by replacing the interpreter path alone.
 
 ```powershell
-git clone https://github.com/SamsonMortensen/Industrial_Safety_Agent.git
-cd Industrial_Safety_Agent
-python -m venv .venv
-.\.venv\Scripts\python.exe -m pip install -r requirements.txt
-.\.venv\Scripts\python.exe -m pip check
-.\.venv\Scripts\python.exe code/check_setup.py
+& {
+    $ErrorActionPreference = 'Stop'
+    if (-not $SafetyProjectRoot -or (Get-Location).Path -ne $SafetyProjectRoot) { throw 'Select a checkout in step 2 first.' }
+    if (-not (Test-Path -LiteralPath '.\.venv\Scripts\python.exe')) {
+        python -m venv .venv
+        if ($LASTEXITCODE -ne 0) { throw 'Environment creation failed.' }
+    }
+    .\.venv\Scripts\python.exe -m pip install -r requirements.txt
+    if ($LASTEXITCODE -ne 0) { throw 'Package installation failed.' }
+    .\.venv\Scripts\python.exe -m pip check
+    if ($LASTEXITCODE -ne 0) { throw 'Resolve the dependency conflicts first.' }
+    .\.venv\Scripts\python.exe code/check_setup.py
+    if ($LASTEXITCODE -ne 0) { throw 'Project setup checks failed.' }
+}
 ```
 
-If the repository is already cloned, start from its directory and skip the first two commands. Virtual environments and trained adapters are not included in a clone.
+Virtual environments and trained adapters are not included in a clone.
 
 ### Validate the repository
 
 Run these after installing `requirements.txt` with the project Python. These checks use the included reference files, require no GPU or model downloads, and do not rerun the 500-case benchmark. Notebook validation runs every code cell in a fresh kernel using the same Python interpreter. It blocks outbound socket and HTTP requests in the walkthrough and does not save the executed notebook.
 
 ```powershell
-.\.venv\Scripts\python.exe -m compileall -q code tests
-.\.venv\Scripts\python.exe -m unittest discover -s tests -v
-.\.venv\Scripts\python.exe code/validate_notebook.py
-.\.venv\Scripts\python.exe code/validate_saved_evaluation.py
+& {
+    $ErrorActionPreference = 'Stop'
+    if (-not $SafetyProjectRoot -or (Get-Location).Path -ne $SafetyProjectRoot) { throw 'Select the public checkout first.' }
+    .\.venv\Scripts\python.exe -m compileall -q code tests
+    if ($LASTEXITCODE -ne 0) { throw 'Compilation failed.' }
+    .\.venv\Scripts\python.exe -m unittest discover -s tests -v
+    if ($LASTEXITCODE -ne 0) { throw 'Tests failed. Stop before the remaining validation steps.' }
+    .\.venv\Scripts\python.exe code/validate_notebook.py
+    if ($LASTEXITCODE -ne 0) { throw 'Notebook validation failed.' }
+    .\.venv\Scripts\python.exe code/validate_saved_evaluation.py
+    if ($LASTEXITCODE -ne 0) { throw 'Saved-evaluation validation failed.' }
+}
 ```
 
 Expected: tests finish with `OK`, notebook validation confirms that all code cells ran, and saved-evaluation validation confirms matching metrics and the holdout hash. The saved-evaluation validator does not verify model weights. These are public-repository checks, not validation of additional private development files.
@@ -359,7 +477,7 @@ ollama pull qwen3.5:9b
 
 ### Run hybrid retrieval and small model audits
 
-These commands make live model requests. The first dense run builds corpus embeddings and can take substantially longer than the offline checks. Start audits at one event and concurrency one; increase `--limit` to 50 or 1000 after checking runtime and memory.
+These commands make live model requests. The first dense run builds corpus embeddings and can take substantially longer than the offline checks. Start audits at one event and concurrency one; increase `--limit` to 50 or 1000 after checking runtime and memory. Unlike the notebook and walkthrough, `audit_agent_v2.py` also writes ignored local learning memory and run history; use a separate experimental checkout if you want to keep an existing memory unchanged.
 
 ```powershell
 .\.venv\Scripts\python.exe code/run_autonomous_investigation.py data/example_camera_observation.json --sample-rate 0 --out benchmark_runs/observation_hybrid.json
@@ -370,7 +488,7 @@ These commands make live model requests. The first dense run builds corpus embed
 .\.venv\Scripts\python.exe code/apply_policy_controls.py --raw benchmark_runs/audit_v2.json --out benchmark_runs/audit_v2_controlled.json
 ```
 
-The observation example uses policy decisions unless `--reasoner` is added. The v2 auditor also writes ignored local learning memory and run history. Small runs check the execution path; they do not establish model quality or reproduce the full-audit results.
+The observation example uses policy decisions unless `--reasoner` is added. Small runs check the execution path; they do not establish model quality or reproduce the full-audit results.
 
 ### Prepare authentic incident text
 
@@ -412,29 +530,83 @@ The corpus, section index, and benchmark log are already included. Run these onl
 
 Fine-tuning is optional, GPU-intensive, and separate from repository validation. The historical `train_lora_dpo.py` filename currently runs QLoRA supervised fine-tuning, not DPO reinforcement learning.
 
-Create a separate environment, then install a CUDA-enabled PyTorch build compatible with your Python, NVIDIA GPU, and driver using the [official PyTorch installation selector](https://pytorch.org/get-started/locally/). Run its installation command with `.\.venv-train\Scripts\python.exe -m pip` instead of bare `pip`. Installing the CUDA Toolkit alone does not enable CUDA in a CPU-only PyTorch build.
+**The bundled historical training file is not ready for a new run under the current policy.** Rows `TR-0062` and `TR-0065` conflict with the current exposure checks. Those records and their old labels remain unchanged so the earlier results stay traceable. Review the facts and labels in a separate development training file; do not rewrite labels simply to make preflight pass. Until that review is complete, stop at hardware/setup checks. A working GPU does not resolve a label conflict.
+
+The following training recipe is for Windows PowerShell and compatible NVIDIA/CUDA hardware. It does not provide a CPU, Apple GPU/MPS, or AMD/ROCm training path. Start from the selected checkout. Before creating the environment, check the Python support listed on the [official PyTorch installation page](https://pytorch.org/get-started/locally/) for your chosen build and the training dependencies. `python --version` must identify that interpreter; if it does not, use the intended interpreter's full path for `python -m venv` below. An existing environment retains its original Python version.
+
+Check the NVIDIA driver, create a separate training environment, and confirm its Python version:
 
 ```powershell
-python -m venv .venv-train
+& {
+    $ErrorActionPreference = 'Stop'
+    if (-not $SafetyProjectRoot -or (Get-Location).Path -ne $SafetyProjectRoot) { throw 'Select a checkout in step 2 first.' }
+    nvidia-smi
+    if ($LASTEXITCODE -ne 0) { throw 'The NVIDIA driver check failed. Stop before training setup.' }
+    if (-not (Test-Path -LiteralPath '.\.venv-train\Scripts\python.exe')) {
+        python -m venv .venv-train
+        if ($LASTEXITCODE -ne 0) { throw 'Training environment creation failed.' }
+    }
+    .\.venv-train\Scripts\python.exe --version
+    if ($LASTEXITCODE -ne 0) { throw 'The training environment Python is unavailable.' }
+}
 ```
 
-After installing CUDA-enabled PyTorch in that environment:
+**Install CUDA-enabled PyTorch before the training requirements.** Use the [official PyTorch installation selector](https://pytorch.org/get-started/locally/) to choose Stable, Windows, Pip, Python, and a CUDA build compatible with your GPU and driver. Copy the CUDA `--index-url` from its command when prompted below. This deliberately does not assume one CUDA version fits every machine. Installing the CUDA Toolkit alone does not turn CPU-only PyTorch into a GPU build.
+
+The command uses `--force-reinstall` inside the separate training environment to replace an existing CPU build, even when its version number is higher than the CUDA build on the selected index. `--upgrade` alone can leave that CPU build installed. Pip documents the [reinstallation option](https://pip.pypa.io/en/stable/cli/pip_install/#cmdoption-force-reinstall); the GPU checks below still need to pass.
+
+This block checks PyTorch's CUDA build, the actual GPU name, and a small GPU operation both before and after the remaining dependencies. Missing PyTorch, a CPU build, driver errors, or installation errors stop the block.
+
+If pip reports Windows error 206 (path too long), choose a short path for a new checkout and create a new training environment there. Do not copy or move an existing virtual environment.
 
 ```powershell
-.\.venv-train\Scripts\python.exe -m pip install -r requirements.txt -r requirements-train.txt
-.\.venv-train\Scripts\python.exe -m pip check
-.\.venv-train\Scripts\python.exe code/train_lora_dpo.py --preflight-only
+& {
+    $ErrorActionPreference = 'Stop'
+    if (-not $SafetyProjectRoot -or (Get-Location).Path -ne $SafetyProjectRoot) { throw 'Select the checkout first.' }
+    $pytorchCudaIndex = Read-Host 'CUDA index URL from the official PyTorch selector'
+    if ($pytorchCudaIndex -notmatch '^https://download\.pytorch\.org/whl/cu[0-9]+/?$') { throw 'Use the official CUDA wheel index, not the CPU index.' }
+    .\.venv-train\Scripts\python.exe -m pip install --upgrade --force-reinstall torch --index-url $pytorchCudaIndex
+    if ($LASTEXITCODE -ne 0) { throw 'CUDA PyTorch installation failed. Stop here.' }
+    $cudaCheck = "import torch; print('PyTorch:', torch.__version__, 'CUDA build:', torch.version.cuda); assert torch.cuda.is_available(), 'CUDA is unavailable in this Python environment'; print('GPU:', torch.cuda.get_device_name(0)); torch.ones(1, device='cuda'); torch.cuda.synchronize(); print('GPU operation passed')"
+    .\.venv-train\Scripts\python.exe -c $cudaCheck
+    if ($LASTEXITCODE -ne 0) { throw 'PyTorch cannot use this GPU. Fix the CUDA installation before continuing.' }
+    .\.venv-train\Scripts\python.exe -m pip install -r requirements.txt -r requirements-train.txt
+    if ($LASTEXITCODE -ne 0) { throw 'Training dependency installation failed.' }
+    .\.venv-train\Scripts\python.exe -m pip check
+    if ($LASTEXITCODE -ne 0) { throw 'Resolve training dependency conflicts first.' }
+    .\.venv-train\Scripts\python.exe -c $cudaCheck
+    if ($LASTEXITCODE -ne 0) { throw 'The GPU check failed after dependency installation. Do not train.' }
+}
 ```
 
-The preflight must report a CUDA device and sufficient free GPU memory before starting training. It does not train or prove that a complete training run will succeed. Use a new output directory for each experiment to preserve existing adapters.
+Only after the development labels have been reviewed, supply that training CSV and a separate, reviewed development holdout. You must verify that their source groups are disjoint; the block below rejects the same filename but does not check source-group overlap. Neither file may come from the calibration reserve or independent evaluation set. The trainer does not open the holdout; evaluation reads it after training.
+
+The next block runs preflight first with the explicit `--train-file`. Any hardware, memory, label, training, or evaluation failure stops the dependent commands. Passing preflight checks consistency and hardware; it is not reviewer approval or a guarantee that training will finish. The timestamped output names preserve earlier runs.
 
 ```powershell
-.\.venv-train\Scripts\python.exe code/train_lora_dpo.py --output-dir training_runs/qlora_trial_01
-.\.venv-train\Scripts\python.exe code/evaluate_finetuned.py --model Qwen/Qwen2.5-3B-Instruct --adapter training_runs/qlora_trial_01 --out benchmark_runs/finetune_trial_01.json
-.\.venv-train\Scripts\python.exe code/validate_saved_evaluation.py --report benchmark_runs/finetune_trial_01.json --adapter training_runs/qlora_trial_01
+& {
+    $ErrorActionPreference = 'Stop'
+    if (-not $SafetyProjectRoot -or (Get-Location).Path -ne $SafetyProjectRoot) { throw 'Select the checkout first.' }
+    $reviewedTrain = Read-Host 'Path to the reviewed DEVELOPMENT training CSV'
+    $reviewedHoldout = Read-Host 'Path to its separate reviewed DEVELOPMENT holdout CSV'
+    if (-not (Test-Path -LiteralPath $reviewedTrain -PathType Leaf) -or -not (Test-Path -LiteralPath $reviewedHoldout -PathType Leaf)) { throw 'Both reviewed development files must exist.' }
+    if ((Resolve-Path -LiteralPath $reviewedTrain).Path -eq (Resolve-Path -LiteralPath $reviewedHoldout).Path) { throw 'Training and holdout must be separate files.' }
+    .\.venv-train\Scripts\python.exe code/train_lora_dpo.py --train-file $reviewedTrain --preflight-only
+    if ($LASTEXITCODE -ne 0) { throw 'Preflight failed. Keep training and evaluation stopped until the hardware and reviewed labels pass.' }
+    $runName = 'qlora_' + (Get-Date -Format 'yyyyMMdd_HHmmss')
+    $adapterPath = Join-Path 'training_runs' $runName
+    $reportPath = Join-Path 'benchmark_runs' ($runName + '.json')
+    if ((Test-Path -LiteralPath $adapterPath) -or (Test-Path -LiteralPath $reportPath)) { throw 'An output already exists. Choose a new run name.' }
+    .\.venv-train\Scripts\python.exe code/train_lora_dpo.py --train-file $reviewedTrain --output-dir $adapterPath
+    if ($LASTEXITCODE -ne 0) { throw 'Training failed. Do not evaluate or validate an absent or incomplete adapter.' }
+    .\.venv-train\Scripts\python.exe code/evaluate_finetuned.py --model Qwen/Qwen2.5-3B-Instruct --adapter $adapterPath --holdout $reviewedHoldout --out $reportPath
+    if ($LASTEXITCODE -ne 0) { throw 'Evaluation failed. Do not validate a missing or stale report.' }
+    .\.venv-train\Scripts\python.exe code/validate_saved_evaluation.py --report $reportPath --adapter $adapterPath --holdout $reviewedHoldout
+    if ($LASTEXITCODE -ne 0) { throw 'Report validation failed; this run is not verified.' }
+}
 ```
 
-Generated adapters, raw incident archives, learned memory, and local model caches are excluded from Git.
+These are development experiments. They do not use independent evaluation or promote a model. Generated adapters, raw incident archives, learned memory, and local model caches are excluded from Git.
 
 ## Project layout
 

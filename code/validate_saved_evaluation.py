@@ -96,6 +96,13 @@ def main() -> int:
     parser.add_argument("--holdout", type=Path, default=DEFAULT_HOLDOUT)
     args = parser.parse_args()
 
+    if not args.report.is_file():
+        parser.exit(
+            2,
+            f"Validation stopped: Saved report not found: {args.report}. "
+            "If this is a new run, training and evaluation must finish successfully first. "
+            "Omit --report to validate the published saved results.\n",
+        )
     report = json.loads(args.report.read_text(encoding="utf-8"))
     historical = hashlib.sha256(args.report.read_bytes().replace(b"\r\n", b"\n")).hexdigest() == LEGACY_REPORT_SHA256_LF
     if not historical and any(
