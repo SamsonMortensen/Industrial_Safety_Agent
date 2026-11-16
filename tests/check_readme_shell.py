@@ -48,7 +48,8 @@ def mocked_recipe(recipe, failure_stage):
     return (
         "git() { printf 'MOCK git %s\\n' \"$*\"; "
         f"if [ '{failure_stage}' = clone ] && [ \"$1\" = clone ]; then return 9; fi; return 0; }}\n"
-        "python3() { printf 'MOCK python3 %s\\n' \"$*\"; return 0; }\n"
+        "python3() { printf 'MOCK python3 %s\\n' \"$*\"; "
+        f"if [ '{failure_stage}' = checkout ] && [ \"$*\" = '-B code/check_public_checkout.py' ]; then return 9; fi; return 0; }}\n"
         "mock_python() { printf 'MOCK project-python %s\\n' \"$*\"; "
         f"if [ '{failure_stage}' = install ] && [ \"$*\" = '-m pip install -r requirements.txt' ]; then return 9; fi; return 0; }}\n"
         + replaced
@@ -77,9 +78,11 @@ def main():
         (fixture / "code").mkdir()
         (fixture / "requirements.txt").touch()
         (fixture / "code/showcase.py").touch()
+        (fixture / "code/check_public_checkout.py").touch()
         for name, stage, destination, expected_code in (
             ("failed_clone", "clone", str(folder / "absent checkout"), 9),
             ("failed_dependencies", "install", str(fixture), 9),
+            ("mixed_checkout", "checkout", str(fixture), 9),
             ("success", "none", str(fixture), 0),
             ("relative_path", "none", "relative/path", 1),
             ("non_project_directory", "none", str(fixture / "code"), 1),
@@ -93,12 +96,14 @@ def main():
                 f"{name}: expected exit {expected_code}, got {result.returncode}; "
                 + result.stdout + result.stderr,
             )
-            if name in {"failed_clone", "relative_path", "non_project_directory"}:
+            if name in {"failed_clone", "relative_path", "non_project_directory", "mixed_checkout"}:
                 require("MOCK project-python" not in result.stdout, name + ": Python ran after a rejected checkout")
                 require("MOCK python3 -m venv" not in result.stdout, name + ": environment creation ran")
             if name == "failed_clone":
                 require("MOCK git clone" in result.stdout, "Clone failure path did not reach the mock")
                 require(not (folder / "absent checkout").exists(), "Clone mock created a checkout")
+            if name == "mixed_checkout":
+                require("MOCK python3 -B code/check_public_checkout.py" in result.stdout, "Checkout check was not reached")
             if name == "failed_dependencies":
                 require("MOCK project-python -m pip install" in result.stdout, "Install failure path did not reach the mock")
                 require("MOCK project-python -m pip check" not in result.stdout, "Dependency checks ran after failed installation")
@@ -106,6 +111,7 @@ def main():
             if name == "success":
                 require("MOCK git clone" not in result.stdout, "Existing checkout was cloned again")
                 for expected in (
+                    "MOCK python3 -B code/check_public_checkout.py",
                     "MOCK project-python -m pip check",
                     "MOCK project-python code/check_setup.py",
                     "MOCK project-python -m ipykernel install",

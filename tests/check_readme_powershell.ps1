@@ -14,6 +14,8 @@ $passed.Add("All $($blocks.Count) PowerShell blocks parsed")
 
 $fresh = @($blocks | Where-Object { $_.Contains('git clone ') })
 if ($fresh.Count -ne 1) { throw 'Expected exactly one clone block.' }
+$existing = @($blocks | Where-Object { $_.Contains("Read-Host 'Full path to the EXISTING public checkout'") })
+if ($existing.Count -ne 1) { throw 'Expected exactly one existing-checkout block.' }
 $setup = @($blocks | Where-Object { $_.Contains('Package installation failed. Do not continue to the notebook.') })
 $gpu = @($blocks | Where-Object { $_.Contains('$pytorchCudaIndex = Read-Host') })
 $training = @($blocks | Where-Object { $_.Contains('$reviewedTrain = Read-Host') })
@@ -40,6 +42,50 @@ try {
     }
     $passed.Add('Failed clone resets checkout selection and stops before changing directory')
     & {
+        function Read-Host { throw 'The recommended clone should choose its default without a prompt.' }
+        function Test-Path { return $true }
+        function git { throw 'An existing destination must not reach Git.' }
+        function python { throw 'An existing destination must not reach Python.' }
+        $global:SafetyProjectRoot = 'older-checkout'
+        $caught = $false
+        try { & ([scriptblock]::Create($fresh[0])) } catch { $caught = $_.Exception.Message -like 'That folder already exists*' }
+        if (-not $caught -or $global:SafetyProjectRoot) { throw 'Existing destination did not stop and clear the selection.' }
+    }
+    $passed.Add('Default clone destination needs no typed path and never replaces an existing folder')
+    foreach ($scenario in @('old_checkout', 'untracked_checker', 'mixed_checkout')) {
+        & {
+            $script:pythonCalls = 0
+            function Read-Host { return (Get-Location).Path }
+            function Set-Location { }
+            function Test-Path {
+                param([string]$LiteralPath)
+                if ($scenario -eq 'old_checkout' -and $LiteralPath -like '*check_public_checkout.py') { return $false }
+                return $true
+            }
+            function git { $global:LASTEXITCODE = if ($scenario -eq 'untracked_checker') { 1 } else { 0 } }
+            function python { $script:pythonCalls++; $global:LASTEXITCODE = 2 }
+            $global:SafetyProjectRoot = 'older-checkout'
+            $message = ''
+            try { & ([scriptblock]::Create($existing[0])) } catch { $message = $_.Exception.Message }
+            $expectedCalls = if ($scenario -eq 'mixed_checkout') { 1 } else { 0 }
+            if (-not $message -or $global:SafetyProjectRoot -or $script:pythonCalls -ne $expectedCalls) {
+                throw "Existing-checkout rejection failed for $scenario."
+            }
+        }
+        $passed.Add("Existing $scenario stops before selecting a public checkout")
+    }
+    & {
+        $script:pythonCalls = 0
+        function Read-Host { return (Get-Location).Path }
+        function Set-Location { }
+        function Test-Path { return $true }
+        function git { $global:LASTEXITCODE = 0 }
+        function python { $script:pythonCalls++; $global:LASTEXITCODE = 0 }
+        & ([scriptblock]::Create($existing[0]))
+        if ($global:SafetyProjectRoot -ne (Get-Location).Path -or $script:pythonCalls -ne 1) { throw 'Clean public checkout was not selected after its check.' }
+    }
+    $passed.Add('A checked existing public checkout is selected without cloning or installing')
+    & {
         $global:SafetyProjectRoot = $null
         function python { throw 'Unexpected environment creation; setup should have stopped.' }
         function Mock-Python { throw 'Unexpected Python call; setup should have stopped.' }
@@ -48,6 +94,20 @@ try {
         if (-not $caught) { throw 'Notebook setup accepted missing checkout selection.' }
     }
     $passed.Add('Notebook setup refuses an unselected checkout before installation')
+    & {
+        $global:SafetyProjectRoot = (Get-Location).Path
+        $script:guardCalls = 0
+        function python {
+            if (($args -join ' ') -ne '-B code/check_public_checkout.py') { throw 'Unexpected environment creation after checkout rejection.' }
+            $script:guardCalls++
+            $global:LASTEXITCODE = 2
+        }
+        function Mock-Python { throw 'Unexpected install or launch after checkout rejection.' }
+        $caught = $false
+        try { & ([scriptblock]::Create((ConvertTo-MockedPythonBlock $setup[0]))) } catch { $caught = $_.Exception.Message -like 'Public checkout validation failed*' }
+        if (-not $caught -or $script:guardCalls -ne 1) { throw 'Notebook setup continued after a rejected checkout.' }
+    }
+    $passed.Add('Mixed checkout stops before environment creation, installation or notebook launch')
     foreach ($scenario in @(
         @{ Name = 'preflight'; FailAt = 1; ExpectedCalls = 1; ExpectedError = 'Preflight failed*' },
         @{ Name = 'training'; FailAt = 2; ExpectedCalls = 2; ExpectedError = 'Training failed*' },
