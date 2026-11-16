@@ -4,6 +4,7 @@ import contextlib
 import io
 import json
 from pathlib import Path
+import shutil
 import subprocess
 import sys
 import tempfile
@@ -175,6 +176,65 @@ class PublicCheckoutTests(unittest.TestCase):
         self.assertFalse(json.loads(stdout.getvalue())["ok"])
         self.assertNotIn(private_text, stdout.getvalue())
         self.assertNotIn(str(self.root), stdout.getvalue())
+
+    def test_newly_staged_private_tree_is_rejected_before_diff(self):
+        private = self.write("data/vision_private/labels.json", "private fixture\n")
+        self.git("add", "data/vision_private/labels.json")
+        real_git = checkout.git
+        calls = []
+
+        def record_git(root, *arguments):
+            calls.append(arguments)
+            return real_git(root, *arguments)
+
+        with patch.object(checkout, "git", side_effect=record_git), patch.object(checkout, "ordinary_path") as inspect:
+            result = checkout.check(self.root)
+        self.assertFalse(result["ok"])
+        self.assertFalse(any(arguments[0] == "diff" for arguments in calls))
+        inspect.assert_not_called()
+        self.assertNotIn("labels.json", json.dumps(result))
+        self.assertEqual(private.read_text(), "private fixture\n")
+
+    def test_newly_staged_input_link_is_rejected_before_diff(self):
+        added = self.write("data/new_fixture/input.json", "fixture\n")
+        self.git("add", "data/new_fixture/input.json")
+        real_link_check = checkout.is_link
+        real_git = checkout.git
+        calls = []
+
+        def record_git(root, *arguments):
+            calls.append(arguments)
+            return real_git(root, *arguments)
+
+        def linked_new_directory(path):
+            return path == added.parent or real_link_check(path)
+
+        with patch.object(checkout, "is_link", side_effect=linked_new_directory), patch.object(checkout, "git", side_effect=record_git):
+            result = checkout.check(self.root)
+        self.assertFalse(result["ok"])
+        self.assertFalse(any(arguments[0] == "diff" for arguments in calls))
+        self.assertEqual(added.read_text(), "fixture\n")
+
+    def test_cli_keeps_selected_checkout_when_checker_is_a_link(self):
+        target = self.root / "code/check_public_checkout.py"
+        target.write_bytes(Path(checkout.__file__).read_bytes())
+        self.git("add", "code/check_public_checkout.py")
+        self.git("commit", "--quiet", "-m", "Runnable checkout guard fixture")
+        with tempfile.TemporaryDirectory() as temporary:
+            selected = Path(temporary) / "selected_checkout"
+            shutil.copytree(self.root, selected)
+            link = selected / "code/check_public_checkout.py"
+            link.unlink()
+            try:
+                link.symlink_to(target)
+            except OSError:
+                self.skipTest("This account cannot create symbolic links")
+            result = subprocess.run(
+                [sys.executable, "-B", str(link)], cwd=selected,
+                capture_output=True, text=True, timeout=30, check=False,
+            )
+            self.assertEqual(result.returncode, 2, result.stdout + result.stderr)
+            self.assertFalse(json.loads(result.stdout)["ok"])
 
 
 if __name__ == "__main__":

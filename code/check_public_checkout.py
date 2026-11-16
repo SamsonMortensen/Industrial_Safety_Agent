@@ -14,7 +14,9 @@ import stat
 import subprocess
 from urllib.parse import urlsplit
 
-ROOT = Path(__file__).resolve().parents[1]
+# Keep the invoked checkout path: resolving a linked script could validate a
+# different build while the caller goes on to install into the original folder.
+ROOT = Path(os.path.abspath(__file__)).parents[1]
 REPOSITORY = "SamsonMortensen/Industrial_Safety_Agent"
 REQUIRED_FILES = (
     "README.md", "main.ipynb", "requirements.txt", "requirements-showcase.txt",
@@ -143,12 +145,13 @@ def check(root: Path = ROOT) -> dict:
             raise CheckoutError("The origin is not the expected public GitHub repository or contains embedded credentials. Select a normal public clone; no remote URL was printed.")
         head = git(root, "rev-parse", "--verify", "HEAD^{commit}").decode("ascii").strip()
         tracked = {os.fsdecode(name) for name in git(root, "ls-tree", "-r", "--name-only", "-z", "HEAD").split(b"\0") if name}
-        if any(name.lower().startswith(PRIVATE_PREFIXES) for name in tracked):
-            raise CheckoutError("This commit includes local resource or private evaluation paths. Preserve this build and choose a separate public clone. Those file contents were not inspected.")
+        indexed = {os.fsdecode(name) for name in git(root, "ls-files", "--cached", "-z").split(b"\0") if name}
+        if any(name.lower().startswith(PRIVATE_PREFIXES) for name in tracked | indexed):
+            raise CheckoutError("This commit or its staged changes include local resource or private evaluation paths. Preserve this build and choose a separate public clone. Those file contents were not inspected.")
         missing = [name for name in REQUIRED_FILES if name not in tracked]
         if missing:
             raise CheckoutError("Required public files are missing or not committed. Use a fresh public checkout before installing packages.")
-        for name in tracked:
+        for name in tracked | indexed:
             if name in REQUIRED_FILES or source_or_input(name):
                 if not ordinary_path(root, name) or not (root / name).is_file():
                     raise CheckoutError("A public source or input file is missing or linked to another build. Use a complete, separate public clone.")
