@@ -8,6 +8,7 @@ import shutil
 import subprocess
 import sys
 import tempfile
+from types import SimpleNamespace
 import unittest
 from unittest.mock import patch
 
@@ -20,7 +21,8 @@ class PublicCheckoutTests(unittest.TestCase):
     def setUp(self):
         temporary = tempfile.TemporaryDirectory()
         self.addCleanup(temporary.cleanup)
-        self.root = Path(temporary.name)
+        # The guard resolves its root; use that same spelling in link mocks.
+        self.root = Path(temporary.name).resolve()
         self.git("init", "--quiet")
         self.git("config", "user.name", "Fixture")
         self.git("config", "user.email", "fixture@example.com")
@@ -235,6 +237,28 @@ class PublicCheckoutTests(unittest.TestCase):
             )
             self.assertEqual(result.returncode, 2, result.stdout + result.stderr)
             self.assertFalse(json.loads(result.stdout)["ok"])
+
+    def test_temp_directory_alias_keeps_mocked_link_checks_effective(self):
+        # A temp provider may return an alias, such as a Windows short path.
+        # Exercise an equivalent lexical alias without requiring symlink rights.
+        for method in (
+            "test_linked_input_parent_is_rejected_before_git_reads_file_content",
+            "test_newly_staged_input_link_is_rejected_before_diff",
+        ):
+            with self.subTest(check=method), tempfile.TemporaryDirectory() as directory:
+                existing = Path(directory) / "existing_subdirectory"
+                existing.mkdir()
+                alias = existing / ".."
+                self.assertNotEqual(alias, alias.resolve())
+                self.assertTrue(alias.samefile(alias.resolve()))
+                temporary = SimpleNamespace(name=str(alias), cleanup=lambda: None)
+                case = type(self)(method)
+                try:
+                    with patch.object(tempfile, "TemporaryDirectory", return_value=temporary):
+                        case.setUp()
+                    getattr(case, method)()
+                finally:
+                    case.doCleanups()
 
 
 if __name__ == "__main__":
