@@ -67,29 +67,34 @@ python --version
 if ($LASTEXITCODE -ne 0) { throw 'Python is unavailable. Stop and fix that first.' }
 ```
 
-Both commands should print a version. Use Python 3.11 or newer; automated checks cover Python 3.11 on Linux and 3.14 on Windows. If Windows does not recognize `python`, try `py --version`. If that works, use `py` for the environment-creation command below. Otherwise, finish installing Python and reopen PowerShell before continuing.
+Both commands should print a version. Use Python 3.11 or newer; automated checks cover Python 3.11 on Linux and 3.14 on Windows. If Windows does not recognize `python`, try `py --version`. If that works, replace bare `python` commands below with `py`; keep the explicit `.venv` interpreter paths as written. Otherwise, finish installing Python and reopen PowerShell before continuing.
 
 ### 2. Install and open the notebook
 
 Choose **one** checkout option first. Run these blocks in PowerShell, not inside a notebook cell. A failed clone must not send the next commands into an older checkout. The selection below sets `SafetyProjectRoot`; repeat it when opening a new terminal.
 
-**Fresh public clone:** enter a full path for a new folder outside any existing checkout. The folder must not already exist. Do not run another clone command from inside your development repository.
+**Recommended: fresh public clone.** This block chooses a folder named `Industrial_Safety_Agent_Public` under your Windows user folder and prints its full path. You do not need to enter your name or guess a destination. If you want another location, change only the `$destination` assignment to a full path for a new folder outside your development checkout. Existing folders are never replaced.
 
 ```powershell
 $global:SafetyProjectRoot = $null
 & {
     $ErrorActionPreference = 'Stop'
-    $destination = Read-Host 'Full path for a NEW public checkout'
+    $destination = Join-Path $env:USERPROFILE 'Industrial_Safety_Agent_Public'
     if (-not [System.IO.Path]::IsPathRooted($destination)) { throw 'Use a full path.' }
-    if (Test-Path -LiteralPath $destination) { throw 'That folder exists. Use the existing-checkout option or choose a new path.' }
+    Write-Host "Public checkout folder: $destination"
+    if (Test-Path -LiteralPath $destination) { throw "That folder already exists: $destination. Select that public checkout below, or choose a new destination. Nothing was replaced." }
     git clone https://github.com/SamsonMortensen/Industrial_Safety_Agent.git $destination
     if ($LASTEXITCODE -ne 0) { throw 'Clone failed. No checkout was selected; stop here.' }
     Set-Location -LiteralPath $destination
+    python -B code/check_public_checkout.py
+    if ($LASTEXITCODE -ne 0) { throw 'Public checkout validation failed. Stop before installing anything.' }
     $global:SafetyProjectRoot = (Get-Location).Path
 }
 ```
 
-**Existing public clone:** select its root directly. Do not clone again. If it contains additional development files, use the fresh-clone option to reproduce the public walkthrough; creating `.venv` does not separate those files.
+**Already have a public clone?** Use this option instead. Paste the full path to the project directory itself, which the default setup names `Industrial_Safety_Agent_Public`. A Windows user folder or a Documents folder alone is not the checkout. If a separate public folder was prepared for you, select that exact folder; do not select your older development build just because its name looks familiar.
+
+The check below rejects a checkout with changed source or additional Python modules in `code` or `tests`, including ignored development files. It checks local source consistency, not whether GitHub has a newer revision. It does not delete files, reset Git, read private model/review directories, or install packages. An older checkout without this check needs a fresh clone for this path. Your development checkout stays available for its own workflow.
 
 ```powershell
 $global:SafetyProjectRoot = $null
@@ -98,8 +103,11 @@ $global:SafetyProjectRoot = $null
     $existing = Read-Host 'Full path to the EXISTING public checkout'
     Set-Location -LiteralPath $existing
     if (-not (Test-Path -LiteralPath '.\requirements.txt') -or -not (Test-Path -LiteralPath '.\code\showcase.py')) { throw 'This is not the project root. Stop and select the correct folder.' }
-    git rev-parse --show-toplevel
-    if ($LASTEXITCODE -ne 0) { throw 'Git could not verify this checkout.' }
+    if (-not (Test-Path -LiteralPath '.\code\check_public_checkout.py')) { throw 'This checkout lacks the public setup check. Use the fresh public clone above; keep the old build intact.' }
+    git ls-files --error-unmatch -- code/check_public_checkout.py > $null
+    if ($LASTEXITCODE -ne 0) { throw 'The public setup check is not tracked in this checkout. Use a fresh public clone.' }
+    python -B code/check_public_checkout.py
+    if ($LASTEXITCODE -ne 0) { throw 'Public checkout validation failed. Stop before installing anything.' }
     $global:SafetyProjectRoot = (Get-Location).Path
 }
 ```
@@ -110,6 +118,8 @@ After that selection succeeds, install and open the notebook. These blocks work 
 & {
     $ErrorActionPreference = 'Stop'
     if (-not $SafetyProjectRoot -or (Get-Location).Path -ne $SafetyProjectRoot) { throw 'Select a checkout above before installing anything.' }
+    python -B code/check_public_checkout.py
+    if ($LASTEXITCODE -ne 0) { throw 'Public checkout validation failed. Stop before installing anything.' }
     if (-not (Test-Path -LiteralPath '.\.venv\Scripts\python.exe')) {
         python -m venv .venv
         if ($LASTEXITCODE -ne 0) { throw 'Environment creation failed.' }
@@ -125,7 +135,7 @@ After that selection succeeds, install and open the notebook. These blocks work 
 }
 ```
 
-The package installation may take a few minutes. `Requirement already satisfied` is normal. `pip check` should report `No broken requirements found`. The kernel command connects this notebook to the same Python environment that received the packages; no environment activation is needed.
+The package installation may take a few minutes. `Requirement already satisfied` is normal. `pip check` should report `No broken requirements found`. The kernel command connects this notebook to the same Python environment that received the packages; no environment activation is needed. Use the full `.\.venv\Scripts\python.exe -m pip` command whenever working on this environment. Bare `pip` can install into your user-wide Python instead; a successful install there does not repair this `.venv`.
 
 Linux and macOS use a different shell; follow the complete [CPU quickstart](#linux-and-macos-cpu-quickstart) below instead of copying these PowerShell blocks.
 
@@ -142,10 +152,11 @@ Jupyter can save your edits and outputs in the notebook. Avoid personal informat
 ### If something stops
 
 - **`git` or `python` is not recognized:** finish installing it, reopen PowerShell, and repeat the version checks.
-- **The destination folder already exists or cloning failed:** stop. Use the checkout selection above before running another setup block. Do not delete your development folder or create a nested clone inside it.
+- **The destination folder already exists or cloning failed:** stop. The fresh-clone block prints its destination. Select that public folder with the existing-checkout option, or change `$destination` to a new folder. Do not substitute your development folder, delete it, or create a nested clone inside it.
 - **`requirements.txt` or `main.ipynb` is not found:** check that the terminal is in the repository folder.
 - **A notebook reports a missing module:** install `requirements.txt` with the exact project Python command above, repeat the kernel registration, and restart the notebook with **Industrial Safety (.venv)** selected. Bare `pip` may install into a different environment.
-- **Local tests ask for `torch` or `streamlit`:** the published notebook and public tests do not require them. Check whether the folder also contains private vision code, and use a fresh public clone for this walkthrough.
+- **Local tests ask for `torch`, `streamlit`, `scipy` or `sklearn`:** the published CPU walkthrough does not need those packages. This usually means extra development tests are being discovered. Check the selected folder before installing anything else. The public checkout check should stop this mixture before installation or tests.
+- **`json/regulations.json` differs from the named reproduction:** the saved comparison expects its frozen input. Use an unchanged public checkout to reproduce it; do not edit expected hashes or replace your development data to force a pass.
 - **A cell refers to a name that is not defined:** restart the kernel and run the cells from the top.
 - **You only installed `requirements-showcase.txt`:** that installs the CLI-only dependencies. Install `requirements.txt` before opening the notebook or running the full public validation checks.
 
@@ -177,6 +188,12 @@ Enter the full path to either an existing public checkout or a new folder outsid
         git clone https://github.com/SamsonMortensen/Industrial_Safety_Agent.git "$safety_project"
         cd "$safety_project"
     fi
+    if [ ! -f code/check_public_checkout.py ]; then
+        printf '%s\n' 'This checkout lacks the public setup check. Use a fresh public clone and keep the old build intact.' >&2
+        exit 1
+    fi
+    git ls-files --error-unmatch -- code/check_public_checkout.py > /dev/null
+    python3 -B code/check_public_checkout.py
     if [ ! -x .venv/bin/python ]; then
         python3 -m venv .venv
     fi
@@ -202,6 +219,8 @@ You need Git and Python 3.11 or newer. No GPU, Ollama server, model download, or
 & {
     $ErrorActionPreference = 'Stop'
     if (-not $SafetyProjectRoot -or (Get-Location).Path -ne $SafetyProjectRoot) { throw 'Select a checkout in step 2 first.' }
+    python -B code/check_public_checkout.py
+    if ($LASTEXITCODE -ne 0) { throw 'Public checkout validation failed. Stop before installing anything.' }
     if (-not (Test-Path -LiteralPath '.\.venv\Scripts\python.exe')) {
         python -m venv .venv
         if ($LASTEXITCODE -ne 0) { throw 'Environment creation failed.' }
@@ -418,6 +437,8 @@ Commands below use Windows PowerShell from the repository root. First complete t
 & {
     $ErrorActionPreference = 'Stop'
     if (-not $SafetyProjectRoot -or (Get-Location).Path -ne $SafetyProjectRoot) { throw 'Select a checkout in step 2 first.' }
+    python -B code/check_public_checkout.py
+    if ($LASTEXITCODE -ne 0) { throw 'Public checkout validation failed. Stop before installing anything.' }
     if (-not (Test-Path -LiteralPath '.\.venv\Scripts\python.exe')) {
         python -m venv .venv
         if ($LASTEXITCODE -ne 0) { throw 'Environment creation failed.' }
@@ -441,6 +462,8 @@ Run these after installing `requirements.txt` with the project Python. These che
 & {
     $ErrorActionPreference = 'Stop'
     if (-not $SafetyProjectRoot -or (Get-Location).Path -ne $SafetyProjectRoot) { throw 'Select the public checkout first.' }
+    .\.venv\Scripts\python.exe -B code/check_public_checkout.py
+    if ($LASTEXITCODE -ne 0) { throw 'Public checkout validation failed. Stop before running the tests.' }
     .\.venv\Scripts\python.exe -m compileall -q code tests
     if ($LASTEXITCODE -ne 0) { throw 'Compilation failed.' }
     .\.venv\Scripts\python.exe -m unittest discover -s tests -v
