@@ -206,15 +206,44 @@ def main() -> int:
     parser.add_argument("--max-new-tokens", type=int, default=96)
     args = parser.parse_args()
 
-    import bitsandbytes
-    import peft
-    import torch
-    import transformers
+    # Check the training output before importing GPU libraries or reading cases.
+    if not (args.adapter / "adapter_config.json").is_file():
+        parser.exit(
+            2,
+            f"Preflight failed: Adapter configuration not found in {args.adapter}. "
+            "Training must finish successfully before evaluation. "
+            "For the published saved results, run code/validate_saved_evaluation.py instead.\n",
+        )
+    if not any((args.adapter / name).is_file() for name in (
+        "adapter_model.safetensors", "adapter_model.bin"
+    )):
+        parser.exit(
+            2,
+            f"Preflight failed: Adapter weights not found in {args.adapter}. "
+            "A configuration file alone is not a trained adapter.\n",
+        )
+    if not args.holdout.is_file():
+        parser.exit(2, f"Preflight failed: Evaluation cases not found: {args.holdout}\n")
+
+    try:
+        import bitsandbytes
+        import peft
+        import torch
+        import transformers
+    except (ImportError, OSError) as error:
+        parser.exit(
+            2,
+            f"Preflight failed: Cannot load the training dependencies in {sys.executable}: "
+            f"{error}. Follow the README Fine-tuning setup.\n",
+        )
 
     if not torch.cuda.is_available():
-        raise RuntimeError("CUDA is required for the matched QLoRA evaluation.")
-    if not args.adapter.exists():
-        raise FileNotFoundError(f"Adapter not found: {args.adapter}")
+        parser.exit(
+            2,
+            f"Preflight failed: CUDA is unavailable in {sys.executable} "
+            f"(PyTorch {torch.__version__}). Matched QLoRA evaluation requires "
+            "the CUDA-enabled training environment.\n",
+        )
 
     rows = load_rows(args.holdout)
     verifier = StatutoryGroundedVerifier()
