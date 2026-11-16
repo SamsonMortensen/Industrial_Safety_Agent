@@ -244,6 +244,26 @@ def _explicit_other_subject(prefix: str, suffix: str, control: str, rule: str) -
     return False
 
 
+def _outside_approach_control(prefix: str, suffix: str) -> bool:
+    """Outside must locate the actor beyond an electrical approach constraint."""
+    actor = r"(?:crane|boom(?:\s+route)?|mast|spreader|equipment|operator|workers?|employees?|personnel|load\s+line|lift|work)"
+    positioned = re.search(
+        rf"\b{actor}\s+(?:(?:was|were|is|are|remained|stayed|kept|worked|operated|"
+        rf"stood|stopped|positioned|held|had|been)\s+){{1,4}}$|"
+        rf"\b(?:kept|held|positioned|stopped|maintained)\s+(?:(?:the|a|an)\s+)?{actor}\s*$",
+        prefix,
+    )
+    constraint = re.match(
+        r"^\s+(?:the\s+)?(?:(?:established|marked|documented|posted|restricted|"
+        r"prohibited|minimum|required|safe|engineering-approved|engineered|"
+        r"energized|energised|electrical)\s+){0,4}"
+        r"(?:approach\s+(?:boundary|area|zone|limits?)|clearance(?:\s+(?:boundary|area|zone|limits?))?|"
+        r"(?:live[- ]line|engineering-approved|approved)\s+envelope)\b",
+        suffix,
+    )
+    return bool(positioned and constraint)
+
+
 def _control_assertion(incident: str, rule: str) -> ControlAssertion:
     """Require an affirmative, current control tied to this hazard's evidence.
 
@@ -282,6 +302,8 @@ def _control_assertion(incident: str, rule: str) -> ControlAssertion:
               or INCOMPLETE_CONTROL.search(clause)
               or (rule == "walking_surface_housekeeping"
                   and RENEWED_WALKWAY_SPILL.search(incident[match.end():]))
+              or (rule == "electrical_work_practices" and match.group() == "outside"
+                  and not _outside_approach_control(prefix, suffix))
               or _explicit_other_subject(prefix, suffix, match.group(), rule)):
             state = "unknown"
         else:
@@ -305,6 +327,112 @@ def _control_assertion(incident: str, rule: str) -> ControlAssertion:
     if "unknown" in states:
         return ControlAssertion("unknown", tuple(evidence))
     return ControlAssertion("affirmed", tuple(evidence))
+
+
+HAZARD_PREFIX_DENIAL = re.compile(
+    r"(?:\b(?:no|not|never|without|neither|nor|isn't|wasn't|weren't|aren't|didn't|doesn't|don't)\s+|\bfree\s+of\s+)"
+    r"(?:(?:any|visible|observed|reported|detected|known|remaining|new|additional|"
+    r"signs?|evidence|of|oil|hydraulic|fluid|coolant|water|grease|spill|spills|"
+    r"leak|leaks|or|and|outer|broken|wires?|slings?|rope|chain|damage|be|been|being|was|were|is|are|the|within|inside|"
+    r"approach|boundary|area|zone)\s+){0,9}$"
+)
+HAZARD_POST_DENIAL = re.compile(
+    r"^(?:-free\b|\s*(?:(?:outer|wires?|parts?|components?|spill|spills|leak|leaks|damage|"
+    r"condition|obstruction|movement|was|were|is|are|has|have|had|been)\s+){0,7}"
+    r"(?:(?:not|never)\s+(?:present|found|seen|observed|reported|detected)\b|absent\b))"
+)
+
+
+def _asserted_hazard(incident: str, pattern: str) -> bool:
+    """Find a supported hazard mention within these bounded language patterns.
+
+    Negation must qualify the hazard itself. A nearby report of no injury does
+    not cancel an oil spill or broken sling. A denied hazard is unresolved; it
+    does not establish a safe environment or supply an affirmative control.
+    """
+    clauses = []
+    begin = 0
+    for boundary in CLAUSE_BOUNDARY.finditer(incident):
+        clauses.append((begin, boundary.start()))
+        begin = boundary.end()
+    clauses.append((begin, len(incident)))
+    for match in re.finditer(pattern, incident):
+        start, stop = next(c for c in clauses if c[0] <= match.start() < c[1])
+        prefix = re.sub(r"\bnot\s+only\b", "", incident[start:match.start()])
+        suffix = incident[match.end():stop]
+        if HAZARD_PREFIX_DENIAL.search(prefix) or HAZARD_POST_DENIAL.search(suffix):
+            continue
+        if NONASSERTED.search(prefix):
+            continue
+        return True
+    return False
+
+
+def _asserted_terms(incident: str, terms: tuple[str, ...]) -> bool:
+    pattern = r"(?<![\w-])(?:" + "|".join(re.escape(term) for term in sorted(terms, key=len, reverse=True)) + r")(?!\w)"
+    return _asserted_hazard(incident, pattern)
+
+
+def _fall_exposure(incident: str) -> bool:
+    # Equipment on a raised shelf is not, by itself, a person working at an
+    # unprotected edge. Missing charger bolts or ladder rungs are different
+    # facts from missing fall protection. Require a concrete activity/location
+    # relation in the same clause as the fall condition. A work light, a work
+    # platform or someone reporting from elsewhere supplies no such relation.
+    person = r"(?:workers?|employees?|persons?|people|personnel|crew|riggers?|fitters?|technicians?)"
+    auxiliary = r"(?:(?:was|were|is|are|has|have|had|been|being|still|directly)\s+){0,4}"
+    activity = r"(?:stood|standing|worked|working|stepped|walked|walking|crossed|crossing|moved|moving|exposed|positioned)"
+    spatial = r"(?:at|on|onto|atop|along|beside|by|over)"
+    descriptors = r"(?:(?:the|a|an|this|that|elevated|open|unprotected|unguarded|open-sided|work|service|loading|[a-z]+-foot|\d+(?:-foot)?)\s+){0,6}"
+    place = descriptors + r"(?:platform|edge|catwalk|drop|scaffold|opening|roof)\b"
+    relation = (
+        rf"\b{person}\s+{auxiliary}(?:{activity}\s+(?:{spatial}\s+)?|{spatial}\s+){place}|"
+        rf"\b(?:work|maintenance)\s+(?:(?:proceeded|continued|occurred|was\s+performed|is\s+performed)\s+)?{spatial}\s+{place}"
+    )
+    protection = (
+        r"\b(?:without|no|missing|absent|lacked|lacking)\s+"
+        r"(?:(?:a|an|any|the|its|adequate|required|attached|both|personal)\s+){0,3}"
+        r"(?:guardrails?|railings?|midrails?|toprails?|rails?|fall[- ]protection|fall[- ]arrest|"
+        r"arrest\s+system|protective\s+system|restraints?|edge\s+protection)\b|"
+        r"\b(?:guardrails?|railings?|midrails?|toprails?|rails?|fall[- ]protection|fall[- ]arrest|"
+        r"arrest\s+system|protective\s+system|restraints?|edge\s+protection)\s+"
+        r"(?:(?:was|were|is|are|remained)\s+)?(?:missing|absent)\b|"
+        r"\b(?:unprotected|unguarded|open)\s+edge\b|\bopen-sided\b"
+    )
+    return any(_asserted_hazard(clause, relation) and _asserted_hazard(clause, protection)
+               for clause in CLAUSE_BOUNDARY.split(incident))
+
+
+def _electrical_actor_exposure(incident: str) -> bool:
+    # An open panel suggests a guarding question, but does not establish that
+    # someone worked on live parts or brought equipment inside an approach
+    # limit. Equipment metadata cannot supply an actor missing from the event.
+    actor = r"\b(?:crane|boom|mast|spreader|cable|equipment|operator|employees?|workers?|personnel|technicians?|load\s+line)\b"
+    energy = r"(?<![\w-])energi[sz]ed\b|\blive[- ](?:line|overhead|busbar|bus|parts?|25)\b"
+    boundary = (
+        r"\b(?:inside|within|entered|crossed|into)\s+"
+        r"(?:(?:a|an|the|posted|marked|restricted|prohibited|minimum|electrical|"
+        r"energized|energised|live|live-line|overhead|conductor|line)\s+){0,7}"
+        r"(?:approach\s+(?:area|boundary|zone|limits?)|clearance(?:\s+(?:area|boundary|zone|limits?))?)\b"
+    )
+    distance = (
+        r"\b(?:four|six|4|6)\s+feet\s+(?:of|from)\s+"
+        r"(?:(?:a|an|the|exposed|unguarded)\s+){0,3}"
+        r"(?:energi[sz]ed|live)\b"
+    )
+    work = (
+        r"\b(?:worked|working|contacted|touched|approached)\s+"
+        r"(?:(?:on|at|with|near|the|exposed|unguarded)\s+){0,5}"
+        r"(?:energi[sz]ed|live)\s+(?:electrical\s+)?parts\b|"
+        r"\b(?:positioned|operated|moved)\s+(?:(?:the|a|an|lifting)\s+){0,3}"
+        r"(?:equipment|crane|mast|spreader)\s+beside\s+(?:exposed|unguarded)\s+"
+        r"(?:energi[sz]ed|live)\s+parts\b"
+    )
+    for clause in CLAUSE_BOUNDARY.split(incident):
+        if (_asserted_hazard(clause, actor) and _asserted_hazard(clause, energy)
+                and any(_asserted_hazard(clause, pattern) for pattern in (boundary, distance, work))):
+            return True
+    return False
 
 
 def evaluate_event(row: Dict[str, Any]) -> PolicyDecision:
@@ -430,13 +558,20 @@ def evaluate_event(row: Dict[str, Any]) -> PolicyDecision:
             "personnel aisle",
         ),
     )
-    fluid = _contains(
+    fluid = _asserted_terms(
         incident,
         (
             "oil",
+            "oily",
             "fluid",
             "leak",
+            "leaks",
+            "leaked",
+            "leaking",
             "spill",
+            "spills",
+            "spilled",
+            "spilling",
             "grease",
             "coolant",
             "diesel",
@@ -465,7 +600,9 @@ def evaluate_event(row: Dict[str, Any]) -> PolicyDecision:
         text,
         (
             "energized",
+            "energised",
             "live line",
+            "live-line",
             "live 25",
             "live overhead",
             "live bus",
@@ -477,7 +614,7 @@ def evaluate_event(row: Dict[str, Any]) -> PolicyDecision:
     )
     if electrical_context:
         controlled = _control_matches(incident, "electrical_work_practices")
-        exposed = _contains(
+        exposed = _asserted_terms(
             incident,
             (
                 "inside",
@@ -492,7 +629,10 @@ def evaluate_event(row: Dict[str, Any]) -> PolicyDecision:
                 "beside",
             ),
         )
-        if controlled or exposed:
+        energized = _asserted_hazard(
+            incident, r"(?<![\w-])energi[sz]ed\b|\blive[- ](?:line|overhead|busbar|bus|parts?|25)\b"
+        )
+        if controlled or (exposed and energized and _electrical_actor_exposure(incident)):
             candidates.append(
                 _decision(
                     "CLEAR" if controlled else "VIOLATION",
@@ -522,7 +662,7 @@ def evaluate_event(row: Dict[str, Any]) -> PolicyDecision:
     )
     if sling_context:
         controlled = _control_matches(incident, "slings")
-        damaged = _contains(
+        damaged = _asserted_terms(
             incident,
             (
                 "broken",
@@ -575,11 +715,15 @@ def evaluate_event(row: Dict[str, Any]) -> PolicyDecision:
     )
     if aisle_context and material_context:
         controlled = _control_matches(incident, "materials_handling_aisles")
-        obstructed = _contains(
+        obstructed = _asserted_terms(
             incident,
             (
                 "blocked",
                 "obstruct",
+                "obstructs",
+                "obstructed",
+                "obstructing",
+                "obstruction",
                 "projected",
                 "across",
                 "narrowed",
@@ -613,7 +757,7 @@ def evaluate_event(row: Dict[str, Any]) -> PolicyDecision:
         and _contains(incident, ("plate", "anchoring", "bearing"))
     )
     if dockboard_context:
-        unsafe = _contains(
+        unsafe = _asserted_terms(
             incident,
             (
                 "unsecured",
@@ -654,20 +798,7 @@ def evaluate_event(row: Dict[str, Any]) -> PolicyDecision:
     )
     if fall_context:
         controlled = _control_matches(incident, "fall_protection")
-        exposed = _contains(
-            incident,
-            (
-                "without",
-                "missing",
-                "absent",
-                "lacked",
-                "unprotected",
-                "open edge",
-                "open-sided",
-                "no guardrail",
-                "no restraint",
-            ),
-        )
+        exposed = _fall_exposure(incident)
         if controlled or exposed:
             candidates.append(
                 _decision(

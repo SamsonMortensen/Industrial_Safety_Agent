@@ -1,0 +1,2676 @@
+{
+  "schema": "useful_assessment_development_results_v1",
+  "generated_at_utc": "2026-11-15T22:06:53.727862+00:00",
+  "scope": "Known invented development cases and previously published synthetic fixtures. Software behavior checks, not independent legal accuracy or field performance.",
+  "inputs_sha256": {
+    "before_cases.json": "69013592bce8cef0453abdcc33dd3792ff322f394f2d884f73e99847f6da2ebd",
+    "after_cases_final.json": "300b59b2656dfff125a3572c49b27962097a5d490fa175bc73f070b3a717e34f",
+    "hazard_assertion_regressions.json": "0ef97e30800aed3418f12af858e34c494e967998c288fe7fc63feeb045755b5f"
+  },
+  "development_fixture": {
+    "path": "data/investigation_development_cases.json",
+    "sha256": "47f827b9befc503d54f8fe3d5c456d9e0b49d3abf8cc6da583353b863791c9d3"
+  },
+  "source_sha256_lf": {
+    "before": {
+      "code/showcase.py": "4d0c229ba1a40d886fd4f4748b3451f43301c0d58d689f15cad8dfc25014b17b",
+      "code/investigation_support.py": null,
+      "code/hybrid_policy.py": "3a5d4e204188e20151f31f5b05bc3a9b9e1995ad005c9bc23e04b4be74d24060",
+      "code/autonomous_investigator.py": "5c2ba322b162c74ce0ce6f980aa49aeb8601ad56607b5cf9fa899979f75b0e7d",
+      "json/regulations.json": "30a8d3f0a1855e0180349a243fe80c86be097ef42a55cfb3990cef65f56a7b88",
+      "json/statutes.json": "cba756e84b9ba6c5d52d55765a23de7851129d8c9602edae2987eb1172ceed8b"
+    },
+    "after": {
+      "code/showcase.py": "2957e5f73c1fd181af4bdfff9ba6c21dd4db82d16a26de545d1070d06983b01c",
+      "code/investigation_support.py": "5a902e1f86bd2f77227b7e9ee72357e2cdea0e1ffe758d46b7ecfca4b02d77f2",
+      "code/hybrid_policy.py": "d5b37142521ea03d463bccf947e4a947d122e87273df53a0a36398382522c095",
+      "code/autonomous_investigator.py": "5c2ba322b162c74ce0ce6f980aa49aeb8601ad56607b5cf9fa899979f75b0e7d",
+      "json/regulations.json": "30a8d3f0a1855e0180349a243fe80c86be097ef42a55cfb3990cef65f56a7b88",
+      "json/statutes.json": "cba756e84b9ba6c5d52d55765a23de7851129d8c9602edae2987eb1172ceed8b"
+    }
+  },
+  "baseline_commit": "c33e1535d77c40b22cc209e1a4b35f7cd1a7977b",
+  "generator_sha256": "c67ab66c94964e78eff6b4c576b3b9d77516a9d00173fdee41b515484bf780cb",
+  "authored_regressions": {
+    "cases": 78,
+    "before_mismatches": 45,
+    "after_mismatches": 0,
+    "expectation_source": "Authored software regression expectations; not independently reviewed field labels.",
+    "test_source_sha256": "c6e2626186b40674d037b293615333e75030398ac591a748222468642cc51994",
+    "records": [
+      {
+        "text": "The sling has no broken wires and remains in service.",
+        "expected_status": "REVIEW",
+        "expected_citation": null,
+        "before": {
+          "status": "VIOLATION",
+          "citation": "1910.184"
+        },
+        "after": {
+          "status": "REVIEW",
+          "citation": null
+        },
+        "before_matches": false,
+        "after_matches": true
+      },
+      {
+        "text": "The sling has no visible broken outer wires and remains in service.",
+        "expected_status": "REVIEW",
+        "expected_citation": null,
+        "before": {
+          "status": "VIOLATION",
+          "citation": "1910.184"
+        },
+        "after": {
+          "status": "REVIEW",
+          "citation": null
+        },
+        "before_matches": false,
+        "after_matches": true
+      },
+      {
+        "text": "Broken wires were not found on the sling.",
+        "expected_status": "REVIEW",
+        "expected_citation": null,
+        "before": {
+          "status": "VIOLATION",
+          "citation": "1910.184"
+        },
+        "after": {
+          "status": "REVIEW",
+          "citation": null
+        },
+        "before_matches": false,
+        "after_matches": true
+      },
+      {
+        "text": "The sling is not cracked and remains in use.",
+        "expected_status": "REVIEW",
+        "expected_citation": null,
+        "before": {
+          "status": "VIOLATION",
+          "citation": "1910.184"
+        },
+        "after": {
+          "status": "REVIEW",
+          "citation": null
+        },
+        "before_matches": false,
+        "after_matches": true
+      },
+      {
+        "text": "No oil spill is present on the walkway.",
+        "expected_status": "REVIEW",
+        "expected_citation": null,
+        "before": {
+          "status": "VIOLATION",
+          "citation": "1910.22"
+        },
+        "after": {
+          "status": "REVIEW",
+          "citation": null
+        },
+        "before_matches": false,
+        "after_matches": true
+      },
+      {
+        "text": "No hydraulic fluid spill is present on the pedestrian walkway.",
+        "expected_status": "REVIEW",
+        "expected_citation": null,
+        "before": {
+          "status": "VIOLATION",
+          "citation": "1910.22"
+        },
+        "after": {
+          "status": "REVIEW",
+          "citation": null
+        },
+        "before_matches": false,
+        "after_matches": true
+      },
+      {
+        "text": "The oil spill was not observed on the walkway.",
+        "expected_status": "REVIEW",
+        "expected_citation": null,
+        "before": {
+          "status": "VIOLATION",
+          "citation": "1910.22"
+        },
+        "after": {
+          "status": "REVIEW",
+          "citation": null
+        },
+        "before_matches": false,
+        "after_matches": true
+      },
+      {
+        "text": "No leak is present on the walkway.",
+        "expected_status": "REVIEW",
+        "expected_citation": null,
+        "before": {
+          "status": "VIOLATION",
+          "citation": "1910.22"
+        },
+        "after": {
+          "status": "REVIEW",
+          "citation": null
+        },
+        "before_matches": false,
+        "after_matches": true
+      },
+      {
+        "text": "Pallets did not obstruct the aisle.",
+        "expected_status": "REVIEW",
+        "expected_citation": null,
+        "before": {
+          "status": "VIOLATION",
+          "citation": "1910.176"
+        },
+        "after": {
+          "status": "REVIEW",
+          "citation": null
+        },
+        "before_matches": false,
+        "after_matches": true
+      },
+      {
+        "text": "Freight never blocked the aisle.",
+        "expected_status": "REVIEW",
+        "expected_citation": null,
+        "before": {
+          "status": "VIOLATION",
+          "citation": "1910.176"
+        },
+        "after": {
+          "status": "REVIEW",
+          "citation": null
+        },
+        "before_matches": false,
+        "after_matches": true
+      },
+      {
+        "text": "The dockboard never shifted under the forklift.",
+        "expected_status": "REVIEW",
+        "expected_citation": null,
+        "before": {
+          "status": "VIOLATION",
+          "citation": "1910.26"
+        },
+        "after": {
+          "status": "REVIEW",
+          "citation": null
+        },
+        "before_matches": false,
+        "after_matches": true
+      },
+      {
+        "text": "The dockboard is not loose during crossing.",
+        "expected_status": "REVIEW",
+        "expected_citation": null,
+        "before": {
+          "status": "VIOLATION",
+          "citation": "1910.26"
+        },
+        "after": {
+          "status": "REVIEW",
+          "citation": null
+        },
+        "before_matches": false,
+        "after_matches": true
+      },
+      {
+        "text": "The conductor was not energized while the crane worked within four feet.",
+        "expected_status": "REVIEW",
+        "expected_citation": null,
+        "before": {
+          "status": "VIOLATION",
+          "citation": "1910.333"
+        },
+        "after": {
+          "status": "REVIEW",
+          "citation": null
+        },
+        "before_matches": false,
+        "after_matches": true
+      },
+      {
+        "text": "The crane was not within the approach boundary of the energized conductor.",
+        "expected_status": "REVIEW",
+        "expected_citation": null,
+        "before": {
+          "status": "VIOLATION",
+          "citation": "1910.333"
+        },
+        "after": {
+          "status": "REVIEW",
+          "citation": null
+        },
+        "before_matches": false,
+        "after_matches": true
+      },
+      {
+        "text": "No wires were broken on the sling, which remained in service.",
+        "expected_status": "REVIEW",
+        "expected_citation": null,
+        "before": {
+          "status": "VIOLATION",
+          "citation": "1910.184"
+        },
+        "after": {
+          "status": "REVIEW",
+          "citation": null
+        },
+        "before_matches": false,
+        "after_matches": true
+      },
+      {
+        "text": "No sling wires were broken during the lift.",
+        "expected_status": "REVIEW",
+        "expected_citation": null,
+        "before": {
+          "status": "VIOLATION",
+          "citation": "1910.184"
+        },
+        "after": {
+          "status": "REVIEW",
+          "citation": null
+        },
+        "before_matches": false,
+        "after_matches": true
+      },
+      {
+        "text": "No hydraulic oil was spilled on the walkway.",
+        "expected_status": "REVIEW",
+        "expected_citation": null,
+        "before": {
+          "status": "VIOLATION",
+          "citation": "1910.22"
+        },
+        "after": {
+          "status": "REVIEW",
+          "citation": null
+        },
+        "before_matches": false,
+        "after_matches": true
+      },
+      {
+        "text": "The walkway was free of oil.",
+        "expected_status": "REVIEW",
+        "expected_citation": null,
+        "before": {
+          "status": "VIOLATION",
+          "citation": "1910.22"
+        },
+        "after": {
+          "status": "REVIEW",
+          "citation": null
+        },
+        "before_matches": false,
+        "after_matches": true
+      },
+      {
+        "text": "An oil-free walkway remained open.",
+        "expected_status": "REVIEW",
+        "expected_citation": null,
+        "before": {
+          "status": "VIOLATION",
+          "citation": "1910.22"
+        },
+        "after": {
+          "status": "REVIEW",
+          "citation": null
+        },
+        "before_matches": false,
+        "after_matches": true
+      },
+      {
+        "text": "Panel left open with energised parts exposed to the walkway.",
+        "expected_status": "REVIEW",
+        "expected_citation": null,
+        "before": {
+          "status": "REVIEW",
+          "citation": null
+        },
+        "after": {
+          "status": "REVIEW",
+          "citation": null
+        },
+        "before_matches": true,
+        "after_matches": true
+      },
+      {
+        "text": "Panel left open with energized parts exposed to the walkway.",
+        "expected_status": "REVIEW",
+        "expected_citation": null,
+        "before": {
+          "status": "VIOLATION",
+          "citation": "1910.333"
+        },
+        "after": {
+          "status": "REVIEW",
+          "citation": null
+        },
+        "before_matches": false,
+        "after_matches": true
+      },
+      {
+        "text": "Electrical equipment has exposed energized parts beside the walkway.",
+        "expected_status": "REVIEW",
+        "expected_citation": null,
+        "before": {
+          "status": "VIOLATION",
+          "citation": "1910.333"
+        },
+        "after": {
+          "status": "REVIEW",
+          "citation": null
+        },
+        "before_matches": false,
+        "after_matches": true
+      },
+      {
+        "text": "A worker reported an open panel with exposed energized parts.",
+        "expected_status": "REVIEW",
+        "expected_citation": null,
+        "before": {
+          "status": "VIOLATION",
+          "citation": "1910.333"
+        },
+        "after": {
+          "status": "REVIEW",
+          "citation": null
+        },
+        "before_matches": false,
+        "after_matches": true
+      },
+      {
+        "text": "The crane is parked inside a maintenance building. An energized conductor is nearby.",
+        "expected_status": "REVIEW",
+        "expected_citation": null,
+        "before": {
+          "status": "VIOLATION",
+          "citation": "1910.333"
+        },
+        "after": {
+          "status": "REVIEW",
+          "citation": null
+        },
+        "before_matches": false,
+        "after_matches": true
+      },
+      {
+        "text": "A worker is inside the office. Electrical equipment beside the walkway remains energized.",
+        "expected_status": "REVIEW",
+        "expected_citation": null,
+        "before": {
+          "status": "VIOLATION",
+          "citation": "1910.333"
+        },
+        "after": {
+          "status": "REVIEW",
+          "citation": null
+        },
+        "before_matches": false,
+        "after_matches": true
+      },
+      {
+        "text": "The crane moved through the yard. An energized overhead conductor is beside the walkway.",
+        "expected_status": "REVIEW",
+        "expected_citation": null,
+        "before": {
+          "status": "VIOLATION",
+          "citation": "1910.333"
+        },
+        "after": {
+          "status": "REVIEW",
+          "citation": null
+        },
+        "before_matches": false,
+        "after_matches": true
+      },
+      {
+        "text": "The crane is parked inside a maintenance building beside an energized conductor.",
+        "expected_status": "REVIEW",
+        "expected_citation": null,
+        "before": {
+          "status": "VIOLATION",
+          "citation": "1910.333"
+        },
+        "after": {
+          "status": "REVIEW",
+          "citation": null
+        },
+        "before_matches": false,
+        "after_matches": true
+      },
+      {
+        "text": "A turret machine charger is on a platform six feet above the ground without mounting bolts.",
+        "expected_status": "REVIEW",
+        "expected_citation": null,
+        "before": {
+          "status": "VIOLATION",
+          "citation": "1910.28"
+        },
+        "after": {
+          "status": "REVIEW",
+          "citation": null
+        },
+        "before_matches": false,
+        "after_matches": true
+      },
+      {
+        "text": "A charger is on an elevated platform with mounting bolts missing.",
+        "expected_status": "REVIEW",
+        "expected_citation": null,
+        "before": {
+          "status": "VIOLATION",
+          "citation": "1910.28"
+        },
+        "after": {
+          "status": "REVIEW",
+          "citation": null
+        },
+        "before_matches": false,
+        "after_matches": true
+      },
+      {
+        "text": "A charger is on a platform six feet above the aisle and can be moved easily.",
+        "expected_status": "REVIEW",
+        "expected_citation": null,
+        "before": {
+          "status": "REVIEW",
+          "citation": null
+        },
+        "after": {
+          "status": "REVIEW",
+          "citation": null
+        },
+        "before_matches": true,
+        "after_matches": true
+      },
+      {
+        "text": "A fixed ladder to the ramp platform is in use with two rungs missing.",
+        "expected_status": "REVIEW",
+        "expected_citation": null,
+        "before": {
+          "status": "VIOLATION",
+          "citation": "1910.28"
+        },
+        "after": {
+          "status": "REVIEW",
+          "citation": null
+        },
+        "before_matches": false,
+        "after_matches": true
+      },
+      {
+        "text": "No worker is at the open edge of the platform with missing guardrails.",
+        "expected_status": "REVIEW",
+        "expected_citation": null,
+        "before": {
+          "status": "VIOLATION",
+          "citation": "1910.28"
+        },
+        "after": {
+          "status": "REVIEW",
+          "citation": null
+        },
+        "before_matches": false,
+        "after_matches": true
+      },
+      {
+        "text": "A worker inspected the charger on the platform without mounting bolts.",
+        "expected_status": "REVIEW",
+        "expected_citation": null,
+        "before": {
+          "status": "VIOLATION",
+          "citation": "1910.28"
+        },
+        "after": {
+          "status": "REVIEW",
+          "citation": null
+        },
+        "before_matches": false,
+        "after_matches": true
+      },
+      {
+        "text": "The elevated catwalk had a missing rail and no personal fall protection.",
+        "expected_status": "REVIEW",
+        "expected_citation": null,
+        "before": {
+          "status": "VIOLATION",
+          "citation": "1910.28"
+        },
+        "after": {
+          "status": "REVIEW",
+          "citation": null
+        },
+        "before_matches": false,
+        "after_matches": true
+      },
+      {
+        "text": "The access platform lacked both guardrails and an approved fall-restraint connection.",
+        "expected_status": "REVIEW",
+        "expected_citation": null,
+        "before": {
+          "status": "VIOLATION",
+          "citation": "1910.28"
+        },
+        "after": {
+          "status": "REVIEW",
+          "citation": null
+        },
+        "before_matches": false,
+        "after_matches": true
+      },
+      {
+        "text": "A charger sits on an elevated work platform without guardrails.",
+        "expected_status": "REVIEW",
+        "expected_citation": null,
+        "before": {
+          "status": "VIOLATION",
+          "citation": "1910.28"
+        },
+        "after": {
+          "status": "REVIEW",
+          "citation": null
+        },
+        "before_matches": false,
+        "after_matches": true
+      },
+      {
+        "text": "A work light is on a platform with missing rails.",
+        "expected_status": "REVIEW",
+        "expected_citation": null,
+        "before": {
+          "status": "VIOLATION",
+          "citation": "1910.28"
+        },
+        "after": {
+          "status": "REVIEW",
+          "citation": null
+        },
+        "before_matches": false,
+        "after_matches": true
+      },
+      {
+        "text": "A worker in the office reported a platform with missing guardrails.",
+        "expected_status": "REVIEW",
+        "expected_citation": null,
+        "before": {
+          "status": "VIOLATION",
+          "citation": "1910.28"
+        },
+        "after": {
+          "status": "REVIEW",
+          "citation": null
+        },
+        "before_matches": false,
+        "after_matches": true
+      },
+      {
+        "text": "A worker remains in the office. A remote platform has missing guardrails.",
+        "expected_status": "REVIEW",
+        "expected_citation": null,
+        "before": {
+          "status": "VIOLATION",
+          "citation": "1910.28"
+        },
+        "after": {
+          "status": "REVIEW",
+          "citation": null
+        },
+        "before_matches": false,
+        "after_matches": true
+      },
+      {
+        "text": "A worker stood on the enclosed platform. A remote platform has missing guardrails.",
+        "expected_status": "REVIEW",
+        "expected_citation": null,
+        "before": {
+          "status": "VIOLATION",
+          "citation": "1910.28"
+        },
+        "after": {
+          "status": "REVIEW",
+          "citation": null
+        },
+        "before_matches": false,
+        "after_matches": true
+      },
+      {
+        "text": "The worker did not stand at the open edge of the platform without guardrails.",
+        "expected_status": "REVIEW",
+        "expected_citation": null,
+        "before": {
+          "status": "VIOLATION",
+          "citation": "1910.28"
+        },
+        "after": {
+          "status": "REVIEW",
+          "citation": null
+        },
+        "before_matches": false,
+        "after_matches": true
+      },
+      {
+        "text": "A crane is parked inside a maintenance building. An energized conductor is outside.",
+        "expected_status": "REVIEW",
+        "expected_citation": null,
+        "before": {
+          "status": "CLEAR",
+          "citation": null
+        },
+        "after": {
+          "status": "REVIEW",
+          "citation": null
+        },
+        "before_matches": false,
+        "after_matches": true
+      },
+      {
+        "text": "A crane stood beside an energized conductor outside the building.",
+        "expected_status": "REVIEW",
+        "expected_citation": null,
+        "before": {
+          "status": "CLEAR",
+          "citation": null
+        },
+        "after": {
+          "status": "REVIEW",
+          "citation": null
+        },
+        "before_matches": false,
+        "after_matches": true
+      },
+      {
+        "text": "An energized conductor is outside the approach boundary.",
+        "expected_status": "REVIEW",
+        "expected_citation": null,
+        "before": {
+          "status": "CLEAR",
+          "citation": null
+        },
+        "after": {
+          "status": "REVIEW",
+          "citation": null
+        },
+        "before_matches": false,
+        "after_matches": true
+      },
+      {
+        "text": "A worker described an energized conductor outside the warehouse.",
+        "expected_status": "REVIEW",
+        "expected_citation": null,
+        "before": {
+          "status": "CLEAR",
+          "citation": null
+        },
+        "after": {
+          "status": "REVIEW",
+          "citation": null
+        },
+        "before_matches": false,
+        "after_matches": true
+      },
+      {
+        "text": "The sling has broken wires and remains in active lifting service.",
+        "expected_status": "VIOLATION",
+        "expected_citation": "1910.184",
+        "before": {
+          "status": "VIOLATION",
+          "citation": "1910.184"
+        },
+        "after": {
+          "status": "VIOLATION",
+          "citation": "1910.184"
+        },
+        "before_matches": true,
+        "after_matches": true
+      },
+      {
+        "text": "No injuries occurred and broken sling wires remained in an active lift.",
+        "expected_status": "VIOLATION",
+        "expected_citation": "1910.184",
+        "before": {
+          "status": "VIOLATION",
+          "citation": "1910.184"
+        },
+        "after": {
+          "status": "VIOLATION",
+          "citation": "1910.184"
+        },
+        "before_matches": true,
+        "after_matches": true
+      },
+      {
+        "text": "No oil spill was present, but the sling had broken wires in an active lift.",
+        "expected_status": "VIOLATION",
+        "expected_citation": "1910.184",
+        "before": {
+          "status": "VIOLATION",
+          "citation": "1910.184"
+        },
+        "after": {
+          "status": "VIOLATION",
+          "citation": "1910.184"
+        },
+        "before_matches": true,
+        "after_matches": true
+      },
+      {
+        "text": "No wires were broken on the spare sling; the lifting sling had cracked fittings.",
+        "expected_status": "VIOLATION",
+        "expected_citation": "1910.184",
+        "before": {
+          "status": "VIOLATION",
+          "citation": "1910.184"
+        },
+        "after": {
+          "status": "VIOLATION",
+          "citation": "1910.184"
+        },
+        "before_matches": true,
+        "after_matches": true
+      },
+      {
+        "text": "Oil spilled across the active employee walkway.",
+        "expected_status": "VIOLATION",
+        "expected_citation": "1910.22",
+        "before": {
+          "status": "VIOLATION",
+          "citation": "1910.22"
+        },
+        "after": {
+          "status": "VIOLATION",
+          "citation": "1910.22"
+        },
+        "before_matches": true,
+        "after_matches": true
+      },
+      {
+        "text": "No injuries occurred and oil spilled across the walkway.",
+        "expected_status": "VIOLATION",
+        "expected_citation": "1910.22",
+        "before": {
+          "status": "VIOLATION",
+          "citation": "1910.22"
+        },
+        "after": {
+          "status": "VIOLATION",
+          "citation": "1910.22"
+        },
+        "before_matches": true,
+        "after_matches": true
+      },
+      {
+        "text": "No oil spill was present; coolant leaked onto the walkway.",
+        "expected_status": "VIOLATION",
+        "expected_citation": "1910.22",
+        "before": {
+          "status": "VIOLATION",
+          "citation": "1910.22"
+        },
+        "after": {
+          "status": "VIOLATION",
+          "citation": "1910.22"
+        },
+        "before_matches": true,
+        "after_matches": true
+      },
+      {
+        "text": "Standing oily runoff spread over the pedestrian route with no containment.",
+        "expected_status": "VIOLATION",
+        "expected_citation": "1910.22",
+        "before": {
+          "status": "VIOLATION",
+          "citation": "1910.22"
+        },
+        "after": {
+          "status": "VIOLATION",
+          "citation": "1910.22"
+        },
+        "before_matches": true,
+        "after_matches": true
+      },
+      {
+        "text": "Palletised freight left obstructing the designated traffic aisle.",
+        "expected_status": "VIOLATION",
+        "expected_citation": "1910.176",
+        "before": {
+          "status": "VIOLATION",
+          "citation": "1910.176"
+        },
+        "after": {
+          "status": "VIOLATION",
+          "citation": "1910.176"
+        },
+        "before_matches": true,
+        "after_matches": true
+      },
+      {
+        "text": "No injuries occurred while pallets obstructed the aisle.",
+        "expected_status": "VIOLATION",
+        "expected_citation": "1910.176",
+        "before": {
+          "status": "VIOLATION",
+          "citation": "1910.176"
+        },
+        "after": {
+          "status": "VIOLATION",
+          "citation": "1910.176"
+        },
+        "before_matches": true,
+        "after_matches": true
+      },
+      {
+        "text": "A dockboard shifted under the forklift with no securing device fitted.",
+        "expected_status": "VIOLATION",
+        "expected_citation": "1910.26",
+        "before": {
+          "status": "VIOLATION",
+          "citation": "1910.26"
+        },
+        "after": {
+          "status": "VIOLATION",
+          "citation": "1910.26"
+        },
+        "before_matches": true,
+        "after_matches": true
+      },
+      {
+        "text": "No injuries occurred while the dockboard shifted under the forklift.",
+        "expected_status": "VIOLATION",
+        "expected_citation": "1910.26",
+        "before": {
+          "status": "VIOLATION",
+          "citation": "1910.26"
+        },
+        "after": {
+          "status": "VIOLATION",
+          "citation": "1910.26"
+        },
+        "before_matches": true,
+        "after_matches": true
+      },
+      {
+        "text": "A crane boom worked within four feet of an energized overhead conductor.",
+        "expected_status": "VIOLATION",
+        "expected_citation": "1910.333",
+        "before": {
+          "status": "VIOLATION",
+          "citation": "1910.333"
+        },
+        "after": {
+          "status": "VIOLATION",
+          "citation": "1910.333"
+        },
+        "before_matches": true,
+        "after_matches": true
+      },
+      {
+        "text": "Spreader boom worked within four feet of the energised catenary.",
+        "expected_status": "VIOLATION",
+        "expected_citation": "1910.333",
+        "before": {
+          "status": "VIOLATION",
+          "citation": "1910.333"
+        },
+        "after": {
+          "status": "VIOLATION",
+          "citation": "1910.333"
+        },
+        "before_matches": true,
+        "after_matches": true
+      },
+      {
+        "text": "No injuries occurred while the crane worked within four feet of an energized overhead conductor.",
+        "expected_status": "VIOLATION",
+        "expected_citation": "1910.333",
+        "before": {
+          "status": "VIOLATION",
+          "citation": "1910.333"
+        },
+        "after": {
+          "status": "VIOLATION",
+          "citation": "1910.333"
+        },
+        "before_matches": true,
+        "after_matches": true
+      },
+      {
+        "text": "Equipment crossed the minimum approach boundary beside the live busbar.",
+        "expected_status": "VIOLATION",
+        "expected_citation": "1910.333",
+        "before": {
+          "status": "VIOLATION",
+          "citation": "1910.333"
+        },
+        "after": {
+          "status": "VIOLATION",
+          "citation": "1910.333"
+        },
+        "before_matches": true,
+        "after_matches": true
+      },
+      {
+        "text": "The boom tip passed inside the posted live-line clearance boundary.",
+        "expected_status": "VIOLATION",
+        "expected_citation": "1910.333",
+        "before": {
+          "status": "REVIEW",
+          "citation": null
+        },
+        "after": {
+          "status": "VIOLATION",
+          "citation": "1910.333"
+        },
+        "before_matches": false,
+        "after_matches": true
+      },
+      {
+        "text": "A worker stood at an open edge without fall protection.",
+        "expected_status": "VIOLATION",
+        "expected_citation": "1910.28",
+        "before": {
+          "status": "VIOLATION",
+          "citation": "1910.28"
+        },
+        "after": {
+          "status": "VIOLATION",
+          "citation": "1910.28"
+        },
+        "before_matches": true,
+        "after_matches": true
+      },
+      {
+        "text": "Work proceeded beside a ten-foot drop with no guardrail or arrest system.",
+        "expected_status": "VIOLATION",
+        "expected_citation": "1910.28",
+        "before": {
+          "status": "VIOLATION",
+          "citation": "1910.28"
+        },
+        "after": {
+          "status": "VIOLATION",
+          "citation": "1910.28"
+        },
+        "before_matches": true,
+        "after_matches": true
+      },
+      {
+        "text": "The charger had no mounting bolts. A worker stood at the open platform edge without fall protection.",
+        "expected_status": "VIOLATION",
+        "expected_citation": "1910.28",
+        "before": {
+          "status": "VIOLATION",
+          "citation": "1910.28"
+        },
+        "after": {
+          "status": "VIOLATION",
+          "citation": "1910.28"
+        },
+        "before_matches": true,
+        "after_matches": true
+      },
+      {
+        "text": "No injuries occurred while the employee worked at an open edge without fall protection.",
+        "expected_status": "VIOLATION",
+        "expected_citation": "1910.28",
+        "before": {
+          "status": "VIOLATION",
+          "citation": "1910.28"
+        },
+        "after": {
+          "status": "VIOLATION",
+          "citation": "1910.28"
+        },
+        "before_matches": true,
+        "after_matches": true
+      },
+      {
+        "text": "A technician stepped onto an open catwalk without fall protection.",
+        "expected_status": "VIOLATION",
+        "expected_citation": "1910.28",
+        "before": {
+          "status": "VIOLATION",
+          "citation": "1910.28"
+        },
+        "after": {
+          "status": "VIOLATION",
+          "citation": "1910.28"
+        },
+        "before_matches": true,
+        "after_matches": true
+      },
+      {
+        "text": "The missing midrail left an employee exposed at the elevated platform edge.",
+        "expected_status": "VIOLATION",
+        "expected_citation": "1910.28",
+        "before": {
+          "status": "VIOLATION",
+          "citation": "1910.28"
+        },
+        "after": {
+          "status": "VIOLATION",
+          "citation": "1910.28"
+        },
+        "before_matches": true,
+        "after_matches": true
+      },
+      {
+        "text": "Maintenance continued beside an open-sided platform without a protective system.",
+        "expected_status": "VIOLATION",
+        "expected_citation": "1910.28",
+        "before": {
+          "status": "VIOLATION",
+          "citation": "1910.28"
+        },
+        "after": {
+          "status": "VIOLATION",
+          "citation": "1910.28"
+        },
+        "before_matches": true,
+        "after_matches": true
+      },
+      {
+        "text": "A worker stood on an elevated work platform without guardrails.",
+        "expected_status": "VIOLATION",
+        "expected_citation": "1910.28",
+        "before": {
+          "status": "VIOLATION",
+          "citation": "1910.28"
+        },
+        "after": {
+          "status": "VIOLATION",
+          "citation": "1910.28"
+        },
+        "before_matches": true,
+        "after_matches": true
+      },
+      {
+        "text": "A worker crossed an unprotected edge eight feet above the lower level.",
+        "expected_status": "VIOLATION",
+        "expected_citation": "1910.28",
+        "before": {
+          "status": "VIOLATION",
+          "citation": "1910.28"
+        },
+        "after": {
+          "status": "VIOLATION",
+          "citation": "1910.28"
+        },
+        "before_matches": true,
+        "after_matches": true
+      },
+      {
+        "text": "A work light stood in the office. A worker stood at the open platform edge without fall protection.",
+        "expected_status": "VIOLATION",
+        "expected_citation": "1910.28",
+        "before": {
+          "status": "VIOLATION",
+          "citation": "1910.28"
+        },
+        "after": {
+          "status": "VIOLATION",
+          "citation": "1910.28"
+        },
+        "before_matches": true,
+        "after_matches": true
+      },
+      {
+        "text": "No wires were broken on the spare sling. The lifting sling had cracked fittings.",
+        "expected_status": "VIOLATION",
+        "expected_citation": "1910.184",
+        "before": {
+          "status": "VIOLATION",
+          "citation": "1910.184"
+        },
+        "after": {
+          "status": "VIOLATION",
+          "citation": "1910.184"
+        },
+        "before_matches": true,
+        "after_matches": true
+      },
+      {
+        "text": "No hydraulic oil was spilled on the walkway, but coolant leaked onto it across the walkway.",
+        "expected_status": "VIOLATION",
+        "expected_citation": "1910.22",
+        "before": {
+          "status": "VIOLATION",
+          "citation": "1910.22"
+        },
+        "after": {
+          "status": "VIOLATION",
+          "citation": "1910.22"
+        },
+        "before_matches": true,
+        "after_matches": true
+      },
+      {
+        "text": "The walkway was free of oil, but coolant spilled across the walkway.",
+        "expected_status": "VIOLATION",
+        "expected_citation": "1910.22",
+        "before": {
+          "status": "VIOLATION",
+          "citation": "1910.22"
+        },
+        "after": {
+          "status": "VIOLATION",
+          "citation": "1910.22"
+        },
+        "before_matches": true,
+        "after_matches": true
+      },
+      {
+        "text": "The crane remained outside the established approach boundary of the energized conductor.",
+        "expected_status": "CLEAR",
+        "expected_citation": null,
+        "before": {
+          "status": "CLEAR",
+          "citation": null
+        },
+        "after": {
+          "status": "CLEAR",
+          "citation": null
+        },
+        "before_matches": true,
+        "after_matches": true
+      },
+      {
+        "text": "The boom route stayed outside the engineering-approved live-line envelope.",
+        "expected_status": "CLEAR",
+        "expected_citation": null,
+        "before": {
+          "status": "REVIEW",
+          "citation": null
+        },
+        "after": {
+          "status": "CLEAR",
+          "citation": null
+        },
+        "before_matches": false,
+        "after_matches": true
+      },
+      {
+        "text": "The operator kept the crane outside the marked approach boundary of the energized line.",
+        "expected_status": "CLEAR",
+        "expected_citation": null,
+        "before": {
+          "status": "CLEAR",
+          "citation": null
+        },
+        "after": {
+          "status": "CLEAR",
+          "citation": null
+        },
+        "before_matches": true,
+        "after_matches": true
+      }
+    ]
+  },
+  "interactive_cases": [
+    {
+      "id": "charger_elevated_movable",
+      "description": "A warehouse turret truck charger rests on a platform six feet above an aisle. It is not bolted down and can be moved easily.",
+      "before": {
+        "status": "REVIEW",
+        "citation": null,
+        "reason": "The event does not contain enough scoped evidence for an automatic federal citation.",
+        "summary": "A warehouse turret truck charger rests on a platform six feet above an aisle. It is not bolted down and can be moved easily.",
+        "query_count": 1,
+        "candidate_count": 16,
+        "first_assessment": null,
+        "practical_next_steps": [],
+        "optional_question_count": 0,
+        "evidence_notes": []
+      },
+      "after": {
+        "status": "REVIEW",
+        "citation": null,
+        "reason": "The event does not contain enough scoped evidence for an automatic federal citation.",
+        "summary": "A warehouse turret truck charger rests on a platform six feet above an aisle. It is not bolted down and can be moved easily.",
+        "query_count": 4,
+        "candidate_count": 16,
+        "first_assessment": "An elevated charger that can move deserves prompt attention: it could slide or fall from its support. The first check is stability and the area below, even while the exact compliance finding remains open.",
+        "practical_next_steps": [
+          "If it is unstable, keep people out of the potential fall zone and notify the responsible supervisor or safety person.",
+          "Have an authorized person assess how to secure or relocate it; do not try to move heavy or energized equipment without the right training and procedure."
+        ],
+        "optional_question_count": 2,
+        "evidence_notes": [
+          "Equipment height alone does not establish a worker fall-protection issue; employee exposure and the installation still matter.",
+          "The retrieved electrical-installation evidence is relevant to mounting and use; check its requirements against the actual installation.",
+          "The mounting text does not establish that every charger must be bolted down.",
+          "The retrieved truck-charging provisions are conditional on the equipment and activity; charging-only exceptions need to be checked before applying the full paragraph."
+        ]
+      },
+      "before_expectation_check": {
+        "expectation": {
+          "expected_status": "REVIEW"
+        },
+        "matches_authored_expectation": true,
+        "mismatched_fields": []
+      },
+      "after_expectation_check": {
+        "expectation": {
+          "expected_status": "REVIEW"
+        },
+        "matches_authored_expectation": true,
+        "mismatched_fields": []
+      }
+    },
+    {
+      "id": "charger_without_bolts",
+      "description": "A charger is on an elevated platform without mounting bolts. It can slide toward the aisle.",
+      "before": {
+        "status": "VIOLATION",
+        "citation": "1910.28",
+        "reason": "Work occurred at an elevated unprotected edge without a fall-protection system.",
+        "summary": "A charger is on an elevated platform without mounting bolts. It can slide toward the aisle.",
+        "query_count": 1,
+        "candidate_count": 16,
+        "first_assessment": null,
+        "practical_next_steps": [],
+        "optional_question_count": 0,
+        "evidence_notes": []
+      },
+      "after": {
+        "status": "REVIEW",
+        "citation": null,
+        "reason": "The event does not contain enough scoped evidence for an automatic federal citation.",
+        "summary": "A charger is on an elevated platform without mounting bolts. It can slide toward the aisle.",
+        "query_count": 4,
+        "candidate_count": 16,
+        "first_assessment": "An elevated charger that can move deserves prompt attention: it could slide or fall from its support. The first check is stability and the area below, even while the exact compliance finding remains open.",
+        "practical_next_steps": [
+          "If it is unstable, keep people out of the potential fall zone and notify the responsible supervisor or safety person.",
+          "Have an authorized person assess how to secure or relocate it; do not try to move heavy or energized equipment without the right training and procedure."
+        ],
+        "optional_question_count": 2,
+        "evidence_notes": [
+          "Equipment height alone does not establish a worker fall-protection issue; employee exposure and the installation still matter.",
+          "The retrieved electrical-installation evidence is relevant to mounting and use; check its requirements against the actual installation.",
+          "The mounting text does not establish that every charger must be bolted down.",
+          "The retrieved truck-charging provisions are conditional on the equipment and activity; charging-only exceptions need to be checked before applying the full paragraph."
+        ]
+      },
+      "before_expectation_check": {
+        "expectation": {
+          "expected_status": "REVIEW"
+        },
+        "matches_authored_expectation": false,
+        "mismatched_fields": [
+          "expected_status"
+        ]
+      },
+      "after_expectation_check": {
+        "expectation": {
+          "expected_status": "REVIEW"
+        },
+        "matches_authored_expectation": true,
+        "mismatched_fields": []
+      }
+    },
+    {
+      "id": "charger_retained",
+      "description": "A charger on an elevated shelf is secured by its approved retaining bracket. No person is working on the shelf.",
+      "before": {
+        "status": "REVIEW",
+        "citation": null,
+        "reason": "The event does not contain enough scoped evidence for an automatic federal citation.",
+        "summary": "A charger on an elevated shelf is secured by its approved retaining bracket. No person is working on the shelf.",
+        "query_count": 1,
+        "candidate_count": 16,
+        "first_assessment": null,
+        "practical_next_steps": [],
+        "optional_question_count": 0,
+        "evidence_notes": []
+      },
+      "after": {
+        "status": "REVIEW",
+        "citation": null,
+        "reason": "The event does not contain enough scoped evidence for an automatic federal citation.",
+        "summary": "A charger on an elevated shelf is secured by its approved retaining bracket. No person is working on the shelf.",
+        "query_count": 4,
+        "candidate_count": 16,
+        "first_assessment": "Check whether the charger is stable, protected from damage, and being used as intended.",
+        "practical_next_steps": [
+          "Report visible instability or damage and have the responsible person check it before continued use."
+        ],
+        "optional_question_count": 2,
+        "evidence_notes": [
+          "The retrieved electrical-installation evidence is relevant to mounting and use; check its requirements against the actual installation.",
+          "The retrieved truck-charging provisions are conditional on the equipment and activity; charging-only exceptions need to be checked before applying the full paragraph."
+        ]
+      },
+      "before_expectation_check": {
+        "expectation": {
+          "forbidden_status": "VIOLATION"
+        },
+        "matches_authored_expectation": true,
+        "mismatched_fields": []
+      },
+      "after_expectation_check": {
+        "expectation": {
+          "forbidden_status": "VIOLATION"
+        },
+        "matches_authored_expectation": true,
+        "mismatched_fields": []
+      }
+    },
+    {
+      "id": "charger_unplugged",
+      "description": "An unplugged battery charger is loose on a high shelf above an occupied aisle.",
+      "before": {
+        "status": "REVIEW",
+        "citation": null,
+        "reason": "The event does not contain enough scoped evidence for an automatic federal citation.",
+        "summary": "An unplugged battery charger is loose on a high shelf above an occupied aisle.",
+        "query_count": 1,
+        "candidate_count": 16,
+        "first_assessment": null,
+        "practical_next_steps": [],
+        "optional_question_count": 0,
+        "evidence_notes": []
+      },
+      "after": {
+        "status": "REVIEW",
+        "citation": null,
+        "reason": "The event does not contain enough scoped evidence for an automatic federal citation.",
+        "summary": "An unplugged battery charger is loose on a high shelf above an occupied aisle.",
+        "query_count": 4,
+        "candidate_count": 16,
+        "first_assessment": "An elevated charger that can move deserves prompt attention: it could slide or fall from its support. The first check is stability and the area below, even while the exact compliance finding remains open.",
+        "practical_next_steps": [
+          "If it is unstable, keep people out of the potential fall zone and notify the responsible supervisor or safety person.",
+          "Have an authorized person assess how to secure or relocate it; do not try to move heavy or energized equipment without the right training and procedure."
+        ],
+        "optional_question_count": 2,
+        "evidence_notes": [
+          "Equipment height alone does not establish a worker fall-protection issue; employee exposure and the installation still matter.",
+          "The retrieved electrical-installation evidence is relevant to mounting and use; check its requirements against the actual installation.",
+          "The retrieved truck-charging provisions are conditional on the equipment and activity; charging-only exceptions need to be checked before applying the full paragraph."
+        ]
+      },
+      "before_expectation_check": {
+        "expectation": {
+          "expected_status": "REVIEW"
+        },
+        "matches_authored_expectation": true,
+        "mismatched_fields": []
+      },
+      "after_expectation_check": {
+        "expectation": {
+          "expected_status": "REVIEW"
+        },
+        "matches_authored_expectation": true,
+        "mismatched_fields": []
+      }
+    },
+    {
+      "id": "equipment_high_no_worker",
+      "description": "A pump stands on a high platform without mounting bolts. No employee is on the platform.",
+      "before": {
+        "status": "VIOLATION",
+        "citation": "1910.28",
+        "reason": "Work occurred at an elevated unprotected edge without a fall-protection system.",
+        "summary": "A pump stands on a high platform without mounting bolts. No employee is on the platform.",
+        "query_count": 1,
+        "candidate_count": 16,
+        "first_assessment": null,
+        "practical_next_steps": [],
+        "optional_question_count": 0,
+        "evidence_notes": []
+      },
+      "after": {
+        "status": "REVIEW",
+        "citation": null,
+        "reason": "The event does not contain enough scoped evidence for an automatic federal citation.",
+        "summary": "A pump stands on a high platform without mounting bolts. No employee is on the platform.",
+        "query_count": 1,
+        "candidate_count": 16,
+        "first_assessment": "Start with the reported condition and who could be affected. The current check has not resolved it, so pass that observation and the available evidence to the responsible person for a focused review.",
+        "practical_next_steps": [
+          "If an immediate hazard is visible, keep people clear and use the site's reporting or safe-stop procedure.",
+          "Record the condition and any control already in place without recreating the exposure."
+        ],
+        "optional_question_count": 2,
+        "evidence_notes": []
+      },
+      "before_expectation_check": {
+        "expectation": {
+          "forbidden_status": "VIOLATION"
+        },
+        "matches_authored_expectation": false,
+        "mismatched_fields": [
+          "forbidden_status"
+        ]
+      },
+      "after_expectation_check": {
+        "expectation": {
+          "forbidden_status": "VIOLATION"
+        },
+        "matches_authored_expectation": true,
+        "mismatched_fields": []
+      }
+    },
+    {
+      "id": "sling_damage_denied",
+      "description": "The sling has no broken wires and remains in service.",
+      "before": {
+        "status": "VIOLATION",
+        "citation": "1910.184",
+        "reason": "Damaged or unidentified sling components remained in lifting service.",
+        "summary": "The sling has no broken wires and remains in service.",
+        "query_count": 1,
+        "candidate_count": 16,
+        "first_assessment": null,
+        "practical_next_steps": [],
+        "optional_question_count": 0,
+        "evidence_notes": []
+      },
+      "after": {
+        "status": "REVIEW",
+        "citation": null,
+        "reason": "The event does not contain enough scoped evidence for an automatic federal citation.",
+        "summary": "The sling has no broken wires and remains in service.",
+        "query_count": 1,
+        "candidate_count": 16,
+        "first_assessment": "The description does not establish damage to the lifting equipment. Check its condition and suitability for the lift through the normal inspection process.",
+        "practical_next_steps": [
+          "Maintain the normal lifting and inspection controls; reassess if a defect is found or conditions change."
+        ],
+        "optional_question_count": 0,
+        "evidence_notes": []
+      },
+      "before_expectation_check": {
+        "expectation": {
+          "forbidden_status": "VIOLATION"
+        },
+        "matches_authored_expectation": false,
+        "mismatched_fields": [
+          "forbidden_status"
+        ]
+      },
+      "after_expectation_check": {
+        "expectation": {
+          "forbidden_status": "VIOLATION"
+        },
+        "matches_authored_expectation": true,
+        "mismatched_fields": []
+      }
+    },
+    {
+      "id": "sling_damage_present",
+      "description": "A wire-rope sling with broken outer wires remained in an active lift.",
+      "before": {
+        "status": "VIOLATION",
+        "citation": "1910.184",
+        "reason": "Damaged or unidentified sling components remained in lifting service.",
+        "summary": "A wire-rope sling with broken outer wires remained in an active lift.",
+        "query_count": 1,
+        "candidate_count": 16,
+        "first_assessment": null,
+        "practical_next_steps": [],
+        "optional_question_count": 0,
+        "evidence_notes": []
+      },
+      "after": {
+        "status": "VIOLATION",
+        "citation": "1910.184",
+        "reason": "Damaged or unidentified sling components remained in lifting service.",
+        "summary": "A wire-rope sling with broken outer wires remained in an active lift.",
+        "query_count": 1,
+        "candidate_count": 16,
+        "first_assessment": "Reported damage to lifting equipment warrants attention before further use. The immediate concern is loss of the load or equipment failure.",
+        "practical_next_steps": [
+          "Keep people clear of any suspended load and use the site's safe-stop and inspection procedure.",
+          "Have the responsible qualified person assess the reported damage before further use."
+        ],
+        "optional_question_count": 1,
+        "evidence_notes": []
+      },
+      "before_expectation_check": {
+        "expectation": {
+          "expected_status": "VIOLATION",
+          "expected_citation": "1910.184"
+        },
+        "matches_authored_expectation": true,
+        "mismatched_fields": []
+      },
+      "after_expectation_check": {
+        "expectation": {
+          "expected_status": "VIOLATION",
+          "expected_citation": "1910.184"
+        },
+        "matches_authored_expectation": true,
+        "mismatched_fields": []
+      }
+    },
+    {
+      "id": "spill_absent",
+      "description": "No oil spill is present on the walkway.",
+      "before": {
+        "status": "REVIEW",
+        "citation": null,
+        "reason": "The deterministic policy proposed 1910.22, but that authority was not present in the retrieved candidate set.",
+        "summary": "No oil spill is present on the walkway.",
+        "query_count": 1,
+        "candidate_count": 16,
+        "first_assessment": null,
+        "practical_next_steps": [],
+        "optional_question_count": 0,
+        "evidence_notes": []
+      },
+      "after": {
+        "status": "REVIEW",
+        "citation": null,
+        "reason": "The event does not contain enough scoped evidence for an automatic federal citation.",
+        "summary": "No oil spill is present on the walkway.",
+        "query_count": 1,
+        "candidate_count": 16,
+        "first_assessment": "The description does not establish liquid on the walking route. Continue the usual surface checks and reassess if a leak or spill appears.",
+        "practical_next_steps": [
+          "Keep normal housekeeping checks in place; this does not clear unrelated hazards in the area."
+        ],
+        "optional_question_count": 0,
+        "evidence_notes": []
+      },
+      "before_expectation_check": {
+        "expectation": {
+          "forbidden_status": "VIOLATION"
+        },
+        "matches_authored_expectation": true,
+        "mismatched_fields": []
+      },
+      "after_expectation_check": {
+        "expectation": {
+          "forbidden_status": "VIOLATION"
+        },
+        "matches_authored_expectation": true,
+        "mismatched_fields": []
+      }
+    },
+    {
+      "id": "spill_present",
+      "description": "An oil spill remains on the employee walkway.",
+      "before": {
+        "status": "REVIEW",
+        "citation": null,
+        "reason": "The deterministic policy proposed 1910.22, but that authority was not present in the retrieved candidate set.",
+        "summary": "An oil spill remains on the employee walkway.",
+        "query_count": 1,
+        "candidate_count": 16,
+        "first_assessment": null,
+        "practical_next_steps": [],
+        "optional_question_count": 0,
+        "evidence_notes": []
+      },
+      "after": {
+        "status": "REVIEW",
+        "citation": null,
+        "reason": "The deterministic policy proposed 1910.22, but that authority was not present in the retrieved candidate set.",
+        "summary": "An oil spill remains on the employee walkway.",
+        "query_count": 1,
+        "candidate_count": 16,
+        "first_assessment": "Check where the liquid is reaching and whether the reported containment is working. A spill in a travel path can create a slip exposure; a contained leak is a different condition.",
+        "practical_next_steps": [
+          "If liquid reaches the walking route, keep people clear while the responsible person arranges suitable containment and cleanup."
+        ],
+        "optional_question_count": 2,
+        "evidence_notes": []
+      },
+      "before_expectation_check": {
+        "expectation": {
+          "expected_status": "VIOLATION",
+          "expected_citation": "1910.22"
+        },
+        "matches_authored_expectation": false,
+        "mismatched_fields": [
+          "expected_status",
+          "expected_citation"
+        ]
+      },
+      "after_expectation_check": {
+        "expectation": {
+          "expected_status": "VIOLATION",
+          "expected_citation": "1910.22"
+        },
+        "matches_authored_expectation": false,
+        "mismatched_fields": [
+          "expected_status",
+          "expected_citation"
+        ]
+      }
+    },
+    {
+      "id": "cabinet_unknown",
+      "description": "A worker is beside an equipment cabinet. The image does not show whether it is energized or isolated.",
+      "before": {
+        "status": "REVIEW",
+        "citation": null,
+        "reason": "The observation explicitly leaves a relevant fact uncertain; confirm it before assigning a citation.",
+        "summary": "A worker is beside an equipment cabinet. The image does not show whether it is energized or isolated.",
+        "query_count": 1,
+        "candidate_count": 16,
+        "first_assessment": null,
+        "practical_next_steps": [],
+        "optional_question_count": 0,
+        "evidence_notes": []
+      },
+      "after": {
+        "status": "REVIEW",
+        "citation": null,
+        "reason": "The observation explicitly leaves a relevant fact uncertain; confirm it before assigning a citation.",
+        "summary": "A worker is beside an equipment cabinet. The image does not show whether it is energized or isolated.",
+        "query_count": 1,
+        "candidate_count": 16,
+        "first_assessment": "The reported electrical condition needs a focused exposure check. Unconfirmed isolation should not be treated as proof that equipment is de-energized.",
+        "practical_next_steps": [
+          "Keep people from approaching exposed parts and have an authorized qualified person verify the energy state and required controls."
+        ],
+        "optional_question_count": 2,
+        "evidence_notes": []
+      },
+      "before_expectation_check": {
+        "expectation": {
+          "expected_status": "REVIEW"
+        },
+        "matches_authored_expectation": true,
+        "mismatched_fields": []
+      },
+      "after_expectation_check": {
+        "expectation": {
+          "expected_status": "REVIEW"
+        },
+        "matches_authored_expectation": true,
+        "mismatched_fields": []
+      }
+    },
+    {
+      "id": "guard_unknown",
+      "description": "The image does not show whether the platform has a guardrail.",
+      "before": {
+        "status": "REVIEW",
+        "citation": null,
+        "reason": "The observation explicitly leaves a relevant fact uncertain; confirm it before assigning a citation.",
+        "summary": "The image does not show whether the platform has a guardrail.",
+        "query_count": 1,
+        "candidate_count": 16,
+        "first_assessment": null,
+        "practical_next_steps": [],
+        "optional_question_count": 0,
+        "evidence_notes": []
+      },
+      "after": {
+        "status": "REVIEW",
+        "citation": null,
+        "reason": "The observation explicitly leaves a relevant fact uncertain; confirm it before assigning a citation.",
+        "summary": "The image does not show whether the platform has a guardrail.",
+        "query_count": 1,
+        "candidate_count": 16,
+        "first_assessment": "Start with the reported condition and who could be affected. The current check has not resolved it, so pass that observation and the available evidence to the responsible person for a focused review.",
+        "practical_next_steps": [
+          "If an immediate hazard is visible, keep people clear and use the site's reporting or safe-stop procedure.",
+          "Record the condition and any control already in place without recreating the exposure."
+        ],
+        "optional_question_count": 2,
+        "evidence_notes": []
+      },
+      "before_expectation_check": {
+        "expectation": {
+          "expected_status": "REVIEW"
+        },
+        "matches_authored_expectation": true,
+        "mismatched_fields": []
+      },
+      "after_expectation_check": {
+        "expectation": {
+          "expected_status": "REVIEW"
+        },
+        "matches_authored_expectation": true,
+        "mismatched_fields": []
+      }
+    },
+    {
+      "id": "machine_guard_missing",
+      "description": "A worker can reach an exposed rotating shaft on a production machine. The guard is missing.",
+      "before": {
+        "status": "REVIEW",
+        "citation": null,
+        "reason": "The event does not contain enough scoped evidence for an automatic federal citation.",
+        "summary": "A worker can reach an exposed rotating shaft on a production machine. The guard is missing.",
+        "query_count": 1,
+        "candidate_count": 16,
+        "first_assessment": null,
+        "practical_next_steps": [],
+        "optional_question_count": 0,
+        "evidence_notes": []
+      },
+      "after": {
+        "status": "REVIEW",
+        "citation": null,
+        "reason": "The event does not contain enough scoped evidence for an automatic federal citation.",
+        "summary": "A worker can reach an exposed rotating shaft on a production machine. The guard is missing.",
+        "query_count": 1,
+        "candidate_count": 16,
+        "first_assessment": "Check the reported machine condition against the task and the protection around moving parts. This workflow has not established whether the machine is adequately guarded.",
+        "practical_next_steps": [
+          "Keep people clear of accessible moving parts and report missing or damaged protection.",
+          "Use the site's authorized isolation and inspection procedure; do not reach into or adjust moving equipment."
+        ],
+        "optional_question_count": 2,
+        "evidence_notes": [
+          "General machine-guarding authority was not retrieved. This limited evidence set cannot settle the guarding question."
+        ]
+      },
+      "before_expectation_check": {
+        "expectation": {
+          "expected_status": "REVIEW"
+        },
+        "matches_authored_expectation": true,
+        "mismatched_fields": []
+      },
+      "after_expectation_check": {
+        "expectation": {
+          "expected_status": "REVIEW"
+        },
+        "matches_authored_expectation": true,
+        "mismatched_fields": []
+      }
+    },
+    {
+      "id": "unfamiliar_condition",
+      "description": "Unfamiliar equipment in an occupied aisle has begun rattling and moving unexpectedly.",
+      "before": {
+        "status": "REVIEW",
+        "citation": null,
+        "reason": "The event does not contain enough scoped evidence for an automatic federal citation.",
+        "summary": "Unfamiliar equipment in an occupied aisle has begun rattling and moving unexpectedly.",
+        "query_count": 1,
+        "candidate_count": 16,
+        "first_assessment": null,
+        "practical_next_steps": [],
+        "optional_question_count": 0,
+        "evidence_notes": []
+      },
+      "after": {
+        "status": "REVIEW",
+        "citation": null,
+        "reason": "The event does not contain enough scoped evidence for an automatic federal citation.",
+        "summary": "Unfamiliar equipment in an occupied aisle has begun rattling and moving unexpectedly.",
+        "query_count": 1,
+        "candidate_count": 16,
+        "first_assessment": "Start with the reported condition and who could be affected. The current check has not resolved it, so pass that observation and the available evidence to the responsible person for a focused review.",
+        "practical_next_steps": [
+          "If an immediate hazard is visible, keep people clear and use the site's reporting or safe-stop procedure.",
+          "Record the condition and any control already in place without recreating the exposure."
+        ],
+        "optional_question_count": 2,
+        "evidence_notes": []
+      },
+      "before_expectation_check": {
+        "expectation": {
+          "expected_status": "REVIEW"
+        },
+        "matches_authored_expectation": true,
+        "mismatched_fields": []
+      },
+      "after_expectation_check": {
+        "expectation": {
+          "expected_status": "REVIEW"
+        },
+        "matches_authored_expectation": true,
+        "mismatched_fields": []
+      }
+    },
+    {
+      "id": "shift_context",
+      "description": "No incident reported",
+      "before": {
+        "status": "REVIEW",
+        "citation": null,
+        "reason": "The event does not contain enough scoped evidence for an automatic federal citation.",
+        "summary": "No incident reported",
+        "query_count": 3,
+        "candidate_count": 16,
+        "first_assessment": null,
+        "practical_next_steps": [],
+        "optional_question_count": 0,
+        "evidence_notes": []
+      },
+      "after": {
+        "status": "REVIEW",
+        "citation": null,
+        "reason": "The event does not contain enough scoped evidence for an automatic federal citation.",
+        "summary": "No incident reported",
+        "query_count": 3,
+        "candidate_count": 16,
+        "first_assessment": "A long operator shift merits a fatigue and task-fitness check. Shift length alone does not establish a railroad hours-of-service violation; the person's actual duties matter.",
+        "practical_next_steps": [
+          "If fatigue is affecting safe work, report it and arrange relief or a pause through the site's procedure."
+        ],
+        "optional_question_count": 1,
+        "evidence_notes": []
+      },
+      "before_expectation_check": {
+        "expectation": {
+          "expected_status": "REVIEW"
+        },
+        "matches_authored_expectation": true,
+        "mismatched_fields": []
+      },
+      "after_expectation_check": {
+        "expectation": {
+          "expected_status": "REVIEW"
+        },
+        "matches_authored_expectation": true,
+        "mismatched_fields": []
+      }
+    }
+  ],
+  "interactive_open_expectations": [
+    {
+      "id": "spill_present",
+      "description": "An oil spill remains on the employee walkway.",
+      "before": {
+        "status": "REVIEW",
+        "citation": null,
+        "reason": "The deterministic policy proposed 1910.22, but that authority was not present in the retrieved candidate set.",
+        "summary": "An oil spill remains on the employee walkway.",
+        "query_count": 1,
+        "candidate_count": 16,
+        "first_assessment": null,
+        "practical_next_steps": [],
+        "optional_question_count": 0,
+        "evidence_notes": []
+      },
+      "after": {
+        "status": "REVIEW",
+        "citation": null,
+        "reason": "The deterministic policy proposed 1910.22, but that authority was not present in the retrieved candidate set.",
+        "summary": "An oil spill remains on the employee walkway.",
+        "query_count": 1,
+        "candidate_count": 16,
+        "first_assessment": "Check where the liquid is reaching and whether the reported containment is working. A spill in a travel path can create a slip exposure; a contained leak is a different condition.",
+        "practical_next_steps": [
+          "If liquid reaches the walking route, keep people clear while the responsible person arranges suitable containment and cleanup."
+        ],
+        "optional_question_count": 2,
+        "evidence_notes": []
+      },
+      "before_expectation_check": {
+        "expectation": {
+          "expected_status": "VIOLATION",
+          "expected_citation": "1910.22"
+        },
+        "matches_authored_expectation": false,
+        "mismatched_fields": [
+          "expected_status",
+          "expected_citation"
+        ]
+      },
+      "after_expectation_check": {
+        "expectation": {
+          "expected_status": "VIOLATION",
+          "expected_citation": "1910.22"
+        },
+        "matches_authored_expectation": false,
+        "mismatched_fields": [
+          "expected_status",
+          "expected_citation"
+        ]
+      }
+    }
+  ],
+  "charger_variants": [
+    {
+      "id": "charger_elevated_movable",
+      "label": "Movable charger above aisle",
+      "before_decision": {
+        "status": "REVIEW",
+        "citation": null
+      },
+      "after_decision": {
+        "status": "REVIEW",
+        "citation": null
+      },
+      "mounting_authority": "1910.303",
+      "before_combined_rank": 6,
+      "after_combined_rank": 12,
+      "first_focused_lead": {
+        "section": "1910.303",
+        "citation": "29 CFR 1910.303",
+        "research_query": "charger electrical equipment mounting fastening firmly secured surface installation",
+        "combined_candidate_rank": 12,
+        "excerpt": "(8) Mounting and cooling of equipment. (i) Electric equipment shall be firmly secured to the surface on which it is mounted. Wooden plugs driven into holes in masonry, concrete, plaster, or similar materials are not considered secure means of fastening electric equipment. (ii) Electric equipment that depends on the natural circulation of air and convection principles for cooling of exposed surfaces shall be installed so that room airflow over such surfaces is not prevented by walls or by adjacent installed equipment. For equipment designed for floor mounting, clearance between top surfaces and adjacent surfaces shall be provided to dissipate ",
+        "excerpt_chunk_index": 148,
+        "excerpt_chunk_sha256": "9e93402cfc03a7977b75c4684dd5be0fe86bdda16c0189bb93226531126adce0",
+        "excerpt_start": 824,
+        "excerpt_end": 1474
+      }
+    },
+    {
+      "id": "charger_without_bolts",
+      "label": "No bolts; can slide",
+      "before_decision": {
+        "status": "VIOLATION",
+        "citation": "1910.28"
+      },
+      "after_decision": {
+        "status": "REVIEW",
+        "citation": null
+      },
+      "mounting_authority": "1910.303",
+      "before_combined_rank": 9,
+      "after_combined_rank": 7,
+      "first_focused_lead": {
+        "section": "1910.303",
+        "citation": "29 CFR 1910.303",
+        "research_query": "charger electrical equipment mounting fastening firmly secured surface installation",
+        "combined_candidate_rank": 7,
+        "excerpt": "(8) Mounting and cooling of equipment. (i) Electric equipment shall be firmly secured to the surface on which it is mounted. Wooden plugs driven into holes in masonry, concrete, plaster, or similar materials are not considered secure means of fastening electric equipment. (ii) Electric equipment that depends on the natural circulation of air and convection principles for cooling of exposed surfaces shall be installed so that room airflow over such surfaces is not prevented by walls or by adjacent installed equipment. For equipment designed for floor mounting, clearance between top surfaces and adjacent surfaces shall be provided to dissipate ",
+        "excerpt_chunk_index": 148,
+        "excerpt_chunk_sha256": "9e93402cfc03a7977b75c4684dd5be0fe86bdda16c0189bb93226531126adce0",
+        "excerpt_start": 824,
+        "excerpt_end": 1474
+      }
+    },
+    {
+      "id": "charger_retained",
+      "label": "Retaining bracket present",
+      "before_decision": {
+        "status": "REVIEW",
+        "citation": null
+      },
+      "after_decision": {
+        "status": "REVIEW",
+        "citation": null
+      },
+      "mounting_authority": "1910.303",
+      "before_combined_rank": 10,
+      "after_combined_rank": 8,
+      "first_focused_lead": {
+        "section": "1910.303",
+        "citation": "29 CFR 1910.303",
+        "research_query": "charger electrical equipment mounting fastening firmly secured surface installation",
+        "combined_candidate_rank": 8,
+        "excerpt": "(8) Mounting and cooling of equipment. (i) Electric equipment shall be firmly secured to the surface on which it is mounted. Wooden plugs driven into holes in masonry, concrete, plaster, or similar materials are not considered secure means of fastening electric equipment. (ii) Electric equipment that depends on the natural circulation of air and convection principles for cooling of exposed surfaces shall be installed so that room airflow over such surfaces is not prevented by walls or by adjacent installed equipment. For equipment designed for floor mounting, clearance between top surfaces and adjacent surfaces shall be provided to dissipate ",
+        "excerpt_chunk_index": 148,
+        "excerpt_chunk_sha256": "9e93402cfc03a7977b75c4684dd5be0fe86bdda16c0189bb93226531126adce0",
+        "excerpt_start": 824,
+        "excerpt_end": 1474
+      }
+    },
+    {
+      "id": "charger_unplugged",
+      "label": "Unplugged on high shelf",
+      "before_decision": {
+        "status": "REVIEW",
+        "citation": null
+      },
+      "after_decision": {
+        "status": "REVIEW",
+        "citation": null
+      },
+      "mounting_authority": "1910.303",
+      "before_combined_rank": 2,
+      "after_combined_rank": 3,
+      "first_focused_lead": {
+        "section": "1910.303",
+        "citation": "29 CFR 1910.303",
+        "research_query": "charger electrical equipment mounting fastening firmly secured surface installation",
+        "combined_candidate_rank": 3,
+        "excerpt": "(8) Mounting and cooling of equipment. (i) Electric equipment shall be firmly secured to the surface on which it is mounted. Wooden plugs driven into holes in masonry, concrete, plaster, or similar materials are not considered secure means of fastening electric equipment. (ii) Electric equipment that depends on the natural circulation of air and convection principles for cooling of exposed surfaces shall be installed so that room airflow over such surfaces is not prevented by walls or by adjacent installed equipment. For equipment designed for floor mounting, clearance between top surfaces and adjacent surfaces shall be provided to dissipate ",
+        "excerpt_chunk_index": 148,
+        "excerpt_chunk_sha256": "9e93402cfc03a7977b75c4684dd5be0fe86bdda16c0189bb93226531126adce0",
+        "excerpt_start": 824,
+        "excerpt_end": 1474
+      }
+    }
+  ],
+  "public_fixture_comparisons": [
+    {
+      "path": "data/scaled_benchmark_train.csv",
+      "sha256": "53cbec1da81d937add157254bf010c4d5892bd0a9b3f498bfd1f3120f0d4e930",
+      "cases": 70,
+      "status_or_citation_changes": [
+        {
+          "row_index": 61,
+          "case_id": "TR-0062",
+          "text": "The elevated catwalk had a missing rail and no personal fall protection",
+          "before": [
+            "VIOLATION",
+            "1910.28"
+          ],
+          "after": [
+            "REVIEW",
+            null
+          ],
+          "reason": "The event does not contain enough scoped evidence for an automatic federal citation."
+        },
+        {
+          "row_index": 64,
+          "case_id": "TR-0065",
+          "text": "The access platform lacked both guardrails and an approved fall-restraint connection",
+          "before": [
+            "VIOLATION",
+            "1910.28"
+          ],
+          "after": [
+            "REVIEW",
+            null
+          ],
+          "reason": "The event does not contain enough scoped evidence for an automatic federal citation."
+        }
+      ],
+      "changed_cases": 2,
+      "newly_unresolved_cases": 2,
+      "newly_resolved_cases": 0,
+      "automatic_decision_coverage_change_percentage_points": -2.857142857142857,
+      "interpretation": "REVIEW withholds a decision. It is not a correct negative prediction; these are known public fixtures, not untouched independent evaluation."
+    },
+    {
+      "path": "data/scaled_benchmark_holdout.csv",
+      "sha256": "3f2a1824bdeb3da2865f72691c9e2f828c261f9ffa04dff78c753e48ab9297bd",
+      "cases": 56,
+      "status_or_citation_changes": [
+        {
+          "row_index": 51,
+          "case_id": "HO-0052",
+          "text": "The platform gate was absent and the employee had no restraint connection",
+          "before": [
+            "VIOLATION",
+            "1910.28"
+          ],
+          "after": [
+            "REVIEW",
+            null
+          ],
+          "reason": "The event does not contain enough scoped evidence for an automatic federal citation."
+        }
+      ],
+      "changed_cases": 1,
+      "newly_unresolved_cases": 1,
+      "newly_resolved_cases": 0,
+      "automatic_decision_coverage_change_percentage_points": -1.7857142857142858,
+      "interpretation": "REVIEW withholds a decision. It is not a correct negative prediction; these are known public fixtures, not untouched independent evaluation."
+    },
+    {
+      "path": "daily_yard_log.csv",
+      "sha256": "a01f4e6b6b9d2faf7783fd0ee9a3876d073c275a3ef09387a979fd901a274301",
+      "cases": 1000,
+      "status_or_citation_changes": [
+        {
+          "row_index": 565,
+          "case_id": "LOG-1565",
+          "text": "Fixed ladder to the ramp platform in use with two rungs missing",
+          "before": [
+            "VIOLATION",
+            "1910.28"
+          ],
+          "after": [
+            "REVIEW",
+            null
+          ],
+          "reason": "The event does not contain enough scoped evidence for an automatic federal citation."
+        },
+        {
+          "row_index": 575,
+          "case_id": "LOG-1575",
+          "text": "Panel left open with energised parts exposed to the walkway",
+          "before": [
+            "VIOLATION",
+            "1910.333"
+          ],
+          "after": [
+            "REVIEW",
+            null
+          ],
+          "reason": "The event does not contain enough scoped evidence for an automatic federal citation."
+        },
+        {
+          "row_index": 676,
+          "case_id": "LOG-1676",
+          "text": "Fixed ladder to the ramp platform in use with two rungs missing",
+          "before": [
+            "VIOLATION",
+            "1910.28"
+          ],
+          "after": [
+            "REVIEW",
+            null
+          ],
+          "reason": "The event does not contain enough scoped evidence for an automatic federal citation."
+        },
+        {
+          "row_index": 692,
+          "case_id": "LOG-1692",
+          "text": "Fixed ladder to the ramp platform in use with two rungs missing",
+          "before": [
+            "VIOLATION",
+            "1910.28"
+          ],
+          "after": [
+            "REVIEW",
+            null
+          ],
+          "reason": "The event does not contain enough scoped evidence for an automatic federal citation."
+        }
+      ],
+      "changed_cases": 4,
+      "newly_unresolved_cases": 4,
+      "newly_resolved_cases": 0,
+      "automatic_decision_coverage_change_percentage_points": -0.4,
+      "interpretation": "REVIEW withholds a decision. It is not a correct negative prediction; these are known public fixtures, not untouched independent evaluation."
+    }
+  ],
+  "fixture_change_explanation": "A missing rail or gate without a stated employee/activity relation to the platform, and missing ladder rungs, do not establish the automatic person-fall violation previously inferred. An open panel with exposed parts does not establish work on live parts or an actor entering an approach limit. Preserve the old reports; these new decisions are unresolved, not correct negative predictions.",
+  "notebook_observations": [
+    {
+      "event_id": "showcase-crane",
+      "label": "Crane beside energized conductor",
+      "before": {
+        "status": "VIOLATION",
+        "citation": "1910.333",
+        "reason": "Equipment or personnel entered the restricted area around exposed energized parts.",
+        "summary": "A mobile crane boom moved within four feet of an energized overhead conductor",
+        "query_count": 4,
+        "candidate_count": 16,
+        "first_assessment": null,
+        "practical_next_steps": [],
+        "optional_question_count": 0,
+        "evidence_notes": []
+      },
+      "after": {
+        "status": "VIOLATION",
+        "citation": "1910.333",
+        "reason": "Equipment or personnel entered the restricted area around exposed energized parts.",
+        "summary": "A mobile crane boom moved within four feet of an energized overhead conductor",
+        "query_count": 4,
+        "candidate_count": 16,
+        "first_assessment": "The reported electrical condition needs a focused exposure check. Unconfirmed isolation should not be treated as proof that equipment is de-energized.",
+        "practical_next_steps": [
+          "Keep people from approaching exposed parts and have an authorized qualified person verify the energy state and required controls."
+        ],
+        "optional_question_count": 2,
+        "evidence_notes": []
+      }
+    },
+    {
+      "event_id": "showcase-contained-spill",
+      "label": "Leak contained before walkway",
+      "before": {
+        "status": "CLEAR",
+        "citation": null,
+        "reason": "The walking surface was isolated or restored before employee use.",
+        "summary": "A leak was contained in a drip pan before reaching the walkway",
+        "query_count": 2,
+        "candidate_count": 16,
+        "first_assessment": null,
+        "practical_next_steps": [],
+        "optional_question_count": 0,
+        "evidence_notes": []
+      },
+      "after": {
+        "status": "CLEAR",
+        "citation": null,
+        "reason": "The walking surface was isolated or restored before employee use.",
+        "summary": "A leak was contained in a drip pan before reaching the walkway",
+        "query_count": 2,
+        "candidate_count": 16,
+        "first_assessment": "The scoped check supports the reported control. Keep that control in place and check again if the conditions change.",
+        "practical_next_steps": [
+          "Confirm that the reported control still covers the activity; this result does not clear unrelated hazards."
+        ],
+        "optional_question_count": 0,
+        "evidence_notes": []
+      }
+    },
+    {
+      "event_id": "showcase-damaged-sling",
+      "label": "Damaged sling in active lift",
+      "before": {
+        "status": "VIOLATION",
+        "citation": "1910.184",
+        "reason": "Damaged or unidentified sling components remained in lifting service.",
+        "summary": "A wire-rope sling with broken outer wires remained in an active lift",
+        "query_count": 2,
+        "candidate_count": 16,
+        "first_assessment": null,
+        "practical_next_steps": [],
+        "optional_question_count": 0,
+        "evidence_notes": []
+      },
+      "after": {
+        "status": "VIOLATION",
+        "citation": "1910.184",
+        "reason": "Damaged or unidentified sling components remained in lifting service.",
+        "summary": "A wire-rope sling with broken outer wires remained in an active lift",
+        "query_count": 2,
+        "candidate_count": 16,
+        "first_assessment": "Reported damage to lifting equipment warrants attention before further use. The immediate concern is loss of the load or equipment failure.",
+        "practical_next_steps": [
+          "Keep people clear of any suspended load and use the site's safe-stop and inspection procedure.",
+          "Have the responsible qualified person assess the reported damage before further use."
+        ],
+        "optional_question_count": 1,
+        "evidence_notes": []
+      }
+    },
+    {
+      "event_id": "showcase-uncertain-condition",
+      "label": "Electrical state unknown",
+      "before": {
+        "status": "REVIEW",
+        "citation": null,
+        "reason": "The observation explicitly leaves a relevant fact uncertain; confirm it before assigning a citation.",
+        "summary": "A worker is beside a newly opened equipment cabinet. The image does not show whether the equipment is energized or isolated.",
+        "query_count": 3,
+        "candidate_count": 16,
+        "first_assessment": null,
+        "practical_next_steps": [],
+        "optional_question_count": 0,
+        "evidence_notes": []
+      },
+      "after": {
+        "status": "REVIEW",
+        "citation": null,
+        "reason": "The observation explicitly leaves a relevant fact uncertain; confirm it before assigning a citation.",
+        "summary": "A worker is beside a newly opened equipment cabinet. The image does not show whether the equipment is energized or isolated.",
+        "query_count": 3,
+        "candidate_count": 16,
+        "first_assessment": "The reported electrical condition needs a focused exposure check. Unconfirmed isolation should not be treated as proof that equipment is de-energized.",
+        "practical_next_steps": [
+          "Keep people from approaching exposed parts and have an authorized qualified person verify the energy state and required controls."
+        ],
+        "optional_question_count": 2,
+        "evidence_notes": []
+      }
+    },
+    {
+      "event_id": "showcase-scope-question",
+      "label": "Forklift shift context; requested review",
+      "before": {
+        "status": "REVIEW",
+        "citation": null,
+        "reason": "The event does not contain enough scoped evidence for an automatic federal citation.",
+        "summary": "No incident reported",
+        "query_count": 3,
+        "candidate_count": 16,
+        "first_assessment": null,
+        "practical_next_steps": [],
+        "optional_question_count": 0,
+        "evidence_notes": []
+      },
+      "after": {
+        "status": "REVIEW",
+        "citation": null,
+        "reason": "The event does not contain enough scoped evidence for an automatic federal citation.",
+        "summary": "No incident reported",
+        "query_count": 3,
+        "candidate_count": 16,
+        "first_assessment": "A long operator shift merits a fatigue and task-fitness check. Shift length alone does not establish a railroad hours-of-service violation; the person's actual duties matter.",
+        "practical_next_steps": [
+          "If fatigue is affecting safe work, report it and arrange relief or a pause through the site's procedure."
+        ],
+        "optional_question_count": 1,
+        "evidence_notes": []
+      }
+    },
+    {
+      "event_id": "showcase-quiet-scene",
+      "label": "Unchanged scene",
+      "before": {
+        "status": "NO_ACTION",
+        "citation": null,
+        "reason": "No change, anomaly, uncertainty, relationship risk, human flag, or sample trigger.",
+        "summary": "An unchanged loading area with no reported exception",
+        "query_count": 0,
+        "candidate_count": 0,
+        "first_assessment": null,
+        "practical_next_steps": [],
+        "optional_question_count": 0,
+        "evidence_notes": []
+      },
+      "after": {
+        "status": "NO_ACTION",
+        "citation": null,
+        "reason": "No change, anomaly, uncertainty, relationship risk, human flag, or sample trigger.",
+        "summary": "An unchanged loading area with no reported exception",
+        "query_count": 0,
+        "candidate_count": 0,
+        "first_assessment": "No investigation trigger fired for this observation. That is a routing result, not a finding that the area is safe.",
+        "practical_next_steps": [
+          "Continue the usual checks and report a new condition or change."
+        ],
+        "optional_question_count": 0,
+        "evidence_notes": []
+      }
+    }
+  ],
+  "grounding_check": {
+    "before": {
+      "source": "live_controlled_negative_test",
+      "setup": "Electrical authority is deliberately withheld; only housekeeping text is available.",
+      "status": "REVIEW",
+      "citation": null,
+      "reason": "The deterministic policy proposed 1910.333, but that authority was not present in the retrieved candidate set."
+    },
+    "after": {
+      "source": "live_controlled_negative_test",
+      "setup": "Electrical authority is deliberately withheld; only housekeeping text is available.",
+      "status": "REVIEW",
+      "citation": null,
+      "reason": "The deterministic policy proposed 1910.333, but that authority was not present in the retrieved candidate set."
+    }
+  },
+  "simulated_learning_gate_checks": {
+    "before": [
+      {
+        "example": "Unreviewed prediction",
+        "trusted": false,
+        "feedback_type": "quarantine",
+        "verification_source": "model_only",
+        "reason": "No independent label or approved review confirms this model-generated decision.",
+        "correct_verdict": null,
+        "correct_citation": null
+      },
+      {
+        "example": "Matching synthetic label",
+        "trusted": true,
+        "feedback_type": "verified",
+        "verification_source": "ground_truth",
+        "reason": "The result matches labeled ground truth, the governing citation, and retrieved law.",
+        "correct_verdict": "VIOLATION",
+        "correct_citation": "1910.184"
+      },
+      {
+        "example": "Simulated approved review",
+        "trusted": true,
+        "feedback_type": "verified",
+        "verification_source": "human_review",
+        "reason": "The result matches the approved reviewer decision and is grounded.",
+        "correct_verdict": "VIOLATION",
+        "correct_citation": "1910.184"
+      },
+      {
+        "example": "Citation conflicts with the label",
+        "trusted": false,
+        "feedback_type": "pitfall",
+        "verification_source": "ground_truth",
+        "reason": "The result conflicts with labeled ground truth, the governing citation, or retrieved law.",
+        "correct_verdict": "VIOLATION",
+        "correct_citation": "1910.184"
+      }
+    ],
+    "after": [
+      {
+        "example": "Unreviewed prediction",
+        "trusted": false,
+        "feedback_type": "quarantine",
+        "verification_source": "model_only",
+        "reason": "No independent label or approved review confirms this model-generated decision.",
+        "correct_verdict": null,
+        "correct_citation": null
+      },
+      {
+        "example": "Matching synthetic label",
+        "trusted": true,
+        "feedback_type": "verified",
+        "verification_source": "ground_truth",
+        "reason": "The result matches labeled ground truth, the governing citation, and retrieved law.",
+        "correct_verdict": "VIOLATION",
+        "correct_citation": "1910.184"
+      },
+      {
+        "example": "Simulated approved review",
+        "trusted": true,
+        "feedback_type": "verified",
+        "verification_source": "human_review",
+        "reason": "The result matches the approved reviewer decision and is grounded.",
+        "correct_verdict": "VIOLATION",
+        "correct_citation": "1910.184"
+      },
+      {
+        "example": "Citation conflicts with the label",
+        "trusted": false,
+        "feedback_type": "pitfall",
+        "verification_source": "ground_truth",
+        "reason": "The result conflicts with labeled ground truth, the governing citation, or retrieved law.",
+        "correct_verdict": "VIOLATION",
+        "correct_citation": "1910.184"
+      }
+    ]
+  },
+  "reference_retrieval_benchmark": {
+    "before": {
+      "cases": 16,
+      "query_planner": "published_reference_query_planner",
+      "recall_at_1": 0.375,
+      "recall_at_5": 0.6875,
+      "recall_at_16": 1.0,
+      "dataset_sha256": "a01f4e6b6b9d2faf7783fd0ee9a3876d073c275a3ef09387a979fd901a274301",
+      "records": [
+        {
+          "event_id": "LOG-1281",
+          "hazard": "aisle_obstruction",
+          "expected_section": "1910.176",
+          "rank": 10
+        },
+        {
+          "event_id": "LOG-1000",
+          "hazard": "approach_distance",
+          "expected_section": "1910.333",
+          "rank": 8
+        },
+        {
+          "event_id": "LOG-1163",
+          "hazard": "crane_inspection",
+          "expected_section": "1910.179",
+          "rank": 1
+        },
+        {
+          "event_id": "LOG-1006",
+          "hazard": "dockboard",
+          "expected_section": "1910.26",
+          "rank": 2
+        },
+        {
+          "event_id": "LOG-1279",
+          "hazard": "duty_limit",
+          "expected_section": "21103",
+          "rank": 10
+        },
+        {
+          "event_id": "LOG-1224",
+          "hazard": "duty_records",
+          "expected_section": "228.11",
+          "rank": 3
+        },
+        {
+          "event_id": "LOG-1043",
+          "hazard": "electrical_ppe",
+          "expected_section": "1910.335",
+          "rank": 4
+        },
+        {
+          "event_id": "LOG-1027",
+          "hazard": "fall_protection",
+          "expected_section": "1910.28",
+          "rank": 1
+        },
+        {
+          "event_id": "LOG-1046",
+          "hazard": "guardrail",
+          "expected_section": "1910.29",
+          "rank": 5
+        },
+        {
+          "event_id": "LOG-1011",
+          "hazard": "housekeeping",
+          "expected_section": "1910.22",
+          "rank": 14
+        },
+        {
+          "event_id": "LOG-1342",
+          "hazard": "ladder",
+          "expected_section": "1910.23",
+          "rank": 1
+        },
+        {
+          "event_id": "LOG-1239",
+          "hazard": "live_parts",
+          "expected_section": "1910.303",
+          "rank": 5
+        },
+        {
+          "event_id": "LOG-1024",
+          "hazard": "rim_wheel",
+          "expected_section": "1910.177",
+          "rank": 1
+        },
+        {
+          "event_id": "LOG-1071",
+          "hazard": "sling",
+          "expected_section": "1910.184",
+          "rank": 1
+        },
+        {
+          "event_id": "LOG-1051",
+          "hazard": "stairway",
+          "expected_section": "1910.25",
+          "rank": 8
+        },
+        {
+          "event_id": "LOG-1222",
+          "hazard": "truck_defect",
+          "expected_section": "1910.178",
+          "rank": 1
+        }
+      ]
+    },
+    "after": {
+      "cases": 16,
+      "query_planner": "published_reference_query_planner",
+      "recall_at_1": 0.375,
+      "recall_at_5": 0.6875,
+      "recall_at_16": 1.0,
+      "dataset_sha256": "a01f4e6b6b9d2faf7783fd0ee9a3876d073c275a3ef09387a979fd901a274301",
+      "records": [
+        {
+          "event_id": "LOG-1281",
+          "hazard": "aisle_obstruction",
+          "expected_section": "1910.176",
+          "rank": 10
+        },
+        {
+          "event_id": "LOG-1000",
+          "hazard": "approach_distance",
+          "expected_section": "1910.333",
+          "rank": 8
+        },
+        {
+          "event_id": "LOG-1163",
+          "hazard": "crane_inspection",
+          "expected_section": "1910.179",
+          "rank": 1
+        },
+        {
+          "event_id": "LOG-1006",
+          "hazard": "dockboard",
+          "expected_section": "1910.26",
+          "rank": 2
+        },
+        {
+          "event_id": "LOG-1279",
+          "hazard": "duty_limit",
+          "expected_section": "21103",
+          "rank": 10
+        },
+        {
+          "event_id": "LOG-1224",
+          "hazard": "duty_records",
+          "expected_section": "228.11",
+          "rank": 3
+        },
+        {
+          "event_id": "LOG-1043",
+          "hazard": "electrical_ppe",
+          "expected_section": "1910.335",
+          "rank": 4
+        },
+        {
+          "event_id": "LOG-1027",
+          "hazard": "fall_protection",
+          "expected_section": "1910.28",
+          "rank": 1
+        },
+        {
+          "event_id": "LOG-1046",
+          "hazard": "guardrail",
+          "expected_section": "1910.29",
+          "rank": 5
+        },
+        {
+          "event_id": "LOG-1011",
+          "hazard": "housekeeping",
+          "expected_section": "1910.22",
+          "rank": 14
+        },
+        {
+          "event_id": "LOG-1342",
+          "hazard": "ladder",
+          "expected_section": "1910.23",
+          "rank": 1
+        },
+        {
+          "event_id": "LOG-1239",
+          "hazard": "live_parts",
+          "expected_section": "1910.303",
+          "rank": 5
+        },
+        {
+          "event_id": "LOG-1024",
+          "hazard": "rim_wheel",
+          "expected_section": "1910.177",
+          "rank": 1
+        },
+        {
+          "event_id": "LOG-1071",
+          "hazard": "sling",
+          "expected_section": "1910.184",
+          "rank": 1
+        },
+        {
+          "event_id": "LOG-1051",
+          "hazard": "stairway",
+          "expected_section": "1910.25",
+          "rank": 8
+        },
+        {
+          "event_id": "LOG-1222",
+          "hazard": "truck_defect",
+          "expected_section": "1910.178",
+          "rank": 1
+        }
+      ]
+    }
+  },
+  "model_requests": 0,
+  "independent_evaluation_used": false,
+  "calibration_reserve_used": false,
+  "training_performed": false,
+  "learning_memory_modified": false,
+  "model_promoted": false,
+  "limitations": [
+    "Expected outcomes were authored during development; fixing these cases is not an estimate of unseen accuracy.",
+    "Public files named train and holdout were already used in development and published comparisons. Neither is the reserved independent evaluation set.",
+    "The sixteen-case reference benchmark uses the historical planner, not the new focused interactive queries.",
+    "A focused evidence lead does not change its combined candidate rank or establish applicability.",
+    "The local authority corpus is pinned to 2025-01-01. Applicable jurisdiction, current sources and verified facts are still needed.",
+    "No model weights changed, no reviewer approval was fabricated, and no field validation was performed."
+  ]
+}

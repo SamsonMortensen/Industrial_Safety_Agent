@@ -1,0 +1,963 @@
+{
+  "schema": "grouped_wording_retrieval_cases_v1",
+  "split": "comparison",
+  "scope": "Invented, authored development cases. Not independent legal evaluation or reviewer-approved training labels.",
+  "query_input_field": "prompt",
+  "labels_must_not_form_queries": true,
+  "existing_independent_evaluation_used": false,
+  "calibration_reserve_used": false,
+  "groups": 16,
+  "cases": [
+    {
+      "case_id": "W03-1",
+      "group_id": "W03",
+      "family": "walking_surface",
+      "prompt": "Coolant escaped the machine and made the route between benches slick underfoot.",
+      "prompt_style": "colloquial_statement",
+      "fact_state": "hazard_reported",
+      "expectation": {
+        "match_type": "single_authority",
+        "expected_sections": [
+          "1910.22"
+        ],
+        "single_most_aligned_required": true,
+        "supporting_refs": [
+          "walking_surface"
+        ],
+        "violation_label": null,
+        "label_status": "authored_unreviewed_development_reference"
+      }
+    },
+    {
+      "case_id": "W03-2",
+      "group_id": "W03",
+      "family": "walking_surface",
+      "prompt": "When a wet process is unavoidable, what provision discusses drainage and dry places for workers to stand?",
+      "prompt_style": "question",
+      "fact_state": "condition_unknown",
+      "expectation": {
+        "match_type": "single_authority",
+        "expected_sections": [
+          "1910.22"
+        ],
+        "single_most_aligned_required": true,
+        "supporting_refs": [
+          "walking_surface"
+        ],
+        "violation_label": null,
+        "label_status": "authored_unreviewed_development_reference"
+      }
+    },
+    {
+      "case_id": "W03-3",
+      "group_id": "W03",
+      "family": "walking_surface",
+      "prompt": "Drainage carries the process water away and workers stand on dry mats. Show the surface-condition rule relevant to these controls.",
+      "prompt_style": "controlled_statement",
+      "fact_state": "control_reported",
+      "expectation": {
+        "match_type": "single_authority",
+        "expected_sections": [
+          "1910.22"
+        ],
+        "single_most_aligned_required": true,
+        "supporting_refs": [
+          "walking_surface"
+        ],
+        "violation_label": null,
+        "label_status": "authored_unreviewed_development_reference"
+      }
+    },
+    {
+      "case_id": "W04-1",
+      "group_id": "W04",
+      "family": "walking_surface",
+      "prompt": "Ice has accumulated on the outdoor footpath used by employees to enter the loading building.",
+      "prompt_style": "statement",
+      "fact_state": "hazard_reported",
+      "expectation": {
+        "match_type": "single_authority",
+        "expected_sections": [
+          "1910.22"
+        ],
+        "single_most_aligned_required": true,
+        "supporting_refs": [
+          "walking_surface"
+        ],
+        "violation_label": null,
+        "label_status": "authored_unreviewed_development_reference"
+      }
+    },
+    {
+      "case_id": "W04-2",
+      "group_id": "W04",
+      "family": "walking_surface",
+      "prompt": "The employe footpath is icy and slipery. What workplace surface standard fits?",
+      "prompt_style": "typo_question",
+      "fact_state": "hazard_reported",
+      "expectation": {
+        "match_type": "single_authority",
+        "expected_sections": [
+          "1910.22"
+        ],
+        "single_most_aligned_required": true,
+        "supporting_refs": [
+          "walking_surface"
+        ],
+        "violation_label": null,
+        "label_status": "authored_unreviewed_development_reference"
+      }
+    },
+    {
+      "case_id": "W04-3",
+      "group_id": "W04",
+      "family": "walking_surface",
+      "prompt": "Le passage utilisé par les employés est couvert de glace. Quelle exigence concerne cet état du sol au travail ?",
+      "prompt_style": "french_question",
+      "fact_state": "hazard_reported",
+      "expectation": {
+        "match_type": "single_authority",
+        "expected_sections": [
+          "1910.22"
+        ],
+        "single_most_aligned_required": true,
+        "supporting_refs": [
+          "walking_surface"
+        ],
+        "violation_label": null,
+        "label_status": "authored_unreviewed_development_reference"
+      }
+    },
+    {
+      "case_id": "C03-1",
+      "group_id": "C03",
+      "family": "charging_installation",
+      "prompt": "Forklift storage batteries are removed for maintenance and charging in an enclosed room where fumes build up and charging equipment can be hit by trucks.",
+      "prompt_style": "statement",
+      "fact_state": "hazard_reported",
+      "expectation": {
+        "match_type": "single_authority",
+        "expected_sections": [
+          "1910.178"
+        ],
+        "single_most_aligned_required": true,
+        "supporting_refs": [
+          "truck_charging"
+        ],
+        "violation_label": null,
+        "label_status": "authored_unreviewed_development_reference"
+      }
+    },
+    {
+      "case_id": "C03-2",
+      "group_id": "C03",
+      "family": "charging_installation",
+      "prompt": "The lift-truck battery room is where we top up electrolyte and recharge the batteries. Which rule talks about venting battery gas and protecting the charging gear from vehicle impacts?",
+      "prompt_style": "colloquial_question",
+      "fact_state": "condition_unknown",
+      "expectation": {
+        "match_type": "single_authority",
+        "expected_sections": [
+          "1910.178"
+        ],
+        "single_most_aligned_required": true,
+        "supporting_refs": [
+          "truck_charging"
+        ],
+        "violation_label": null,
+        "label_status": "authored_unreviewed_development_reference"
+      }
+    },
+    {
+      "case_id": "C03-3",
+      "group_id": "C03",
+      "family": "charging_installation",
+      "prompt": "In the lift-truck battery maintenance and charging room, ventilation disperses fumes and barriers protect the apparatus from trucks. Which charging provision is relevant?",
+      "prompt_style": "controlled_statement",
+      "fact_state": "control_reported",
+      "expectation": {
+        "match_type": "single_authority",
+        "expected_sections": [
+          "1910.178"
+        ],
+        "single_most_aligned_required": true,
+        "supporting_refs": [
+          "truck_charging"
+        ],
+        "violation_label": null,
+        "label_status": "authored_unreviewed_development_reference"
+      }
+    },
+    {
+      "case_id": "C04-1",
+      "group_id": "C04",
+      "family": "charging_installation",
+      "prompt": "An electrical power supply is mounted against the installation instructions supplied with its listing, and its mounting can move.",
+      "prompt_style": "statement",
+      "fact_state": "hazard_reported",
+      "expectation": {
+        "match_type": "single_authority",
+        "expected_sections": [
+          "1910.303"
+        ],
+        "single_most_aligned_required": true,
+        "supporting_refs": [
+          "listed_installation",
+          "electrical_mounting"
+        ],
+        "violation_label": null,
+        "label_status": "authored_unreviewed_development_reference"
+      }
+    },
+    {
+      "case_id": "C04-2",
+      "group_id": "C04",
+      "family": "charging_installation",
+      "prompt": "For listed electrical equipment, what requirement connects installation and use to the instructions that came with the listing?",
+      "prompt_style": "question",
+      "fact_state": "condition_unknown",
+      "expectation": {
+        "match_type": "single_authority",
+        "expected_sections": [
+          "1910.303"
+        ],
+        "single_most_aligned_required": true,
+        "supporting_refs": [
+          "listed_installation",
+          "electrical_mounting"
+        ],
+        "violation_label": null,
+        "label_status": "authored_unreviewed_development_reference"
+      }
+    },
+    {
+      "case_id": "C04-3",
+      "group_id": "C04",
+      "family": "charging_installation",
+      "prompt": "Does a mounted eletrical cabinet have to be firmly fastened, and do the listed instalation directions matter?",
+      "prompt_style": "typo_question",
+      "fact_state": "condition_unknown",
+      "expectation": {
+        "match_type": "single_authority",
+        "expected_sections": [
+          "1910.303"
+        ],
+        "single_most_aligned_required": true,
+        "supporting_refs": [
+          "listed_installation",
+          "electrical_mounting"
+        ],
+        "violation_label": null,
+        "label_status": "authored_unreviewed_development_reference"
+      }
+    },
+    {
+      "case_id": "E03-1",
+      "group_id": "E03",
+      "family": "electrical_work",
+      "prompt": "A crew is lifting a long conductive pipe beside overhead live wires; the pipe could contact them.",
+      "prompt_style": "colloquial_statement",
+      "fact_state": "hazard_reported",
+      "expectation": {
+        "match_type": "single_authority",
+        "expected_sections": [
+          "1910.333"
+        ],
+        "single_most_aligned_required": true,
+        "supporting_refs": [
+          "electrical_overhead"
+        ],
+        "violation_label": null,
+        "label_status": "authored_unreviewed_development_reference"
+      }
+    },
+    {
+      "case_id": "E03-2",
+      "group_id": "E03",
+      "family": "electrical_work",
+      "prompt": "What provision covers workers handling conductive objects near live overhead lines?",
+      "prompt_style": "question",
+      "fact_state": "condition_unknown",
+      "expectation": {
+        "match_type": "single_authority",
+        "expected_sections": [
+          "1910.333"
+        ],
+        "single_most_aligned_required": true,
+        "supporting_refs": [
+          "electrical_overhead"
+        ],
+        "violation_label": null,
+        "label_status": "authored_unreviewed_development_reference"
+      }
+    },
+    {
+      "case_id": "E03-3",
+      "group_id": "E03",
+      "family": "electrical_work",
+      "prompt": "No crew member or conductive tool is near the overhead wires today. For planning later work, which rule addresses approaching those lines?",
+      "prompt_style": "denial_question",
+      "fact_state": "hazard_denied",
+      "expectation": {
+        "match_type": "single_authority",
+        "expected_sections": [
+          "1910.333"
+        ],
+        "single_most_aligned_required": true,
+        "supporting_refs": [
+          "electrical_overhead"
+        ],
+        "violation_label": null,
+        "label_status": "authored_unreviewed_development_reference"
+      }
+    },
+    {
+      "case_id": "E04-1",
+      "group_id": "E04",
+      "family": "multiple_hazards",
+      "prompt": "An employee is working near exposed live electrical parts. Separately, oil covers the employee walkway. Give relevant provisions for both conditions.",
+      "prompt_style": "multiple_hazard_statement",
+      "fact_state": "hazards_reported",
+      "expectation": {
+        "match_type": "multiple_authorities",
+        "expected_sections": [
+          "1910.22",
+          "1910.333"
+        ],
+        "single_most_aligned_required": false,
+        "supporting_refs": [
+          "walking_surface",
+          "electrical_parts"
+        ],
+        "violation_label": null,
+        "label_status": "authored_unreviewed_development_reference"
+      }
+    },
+    {
+      "case_id": "E04-2",
+      "group_id": "E04",
+      "family": "multiple_hazards",
+      "prompt": "Which provisions address two separate checks: spilled liquid on a walking route and employee work near energized parts?",
+      "prompt_style": "multiple_hazard_question",
+      "fact_state": "conditions_unknown",
+      "expectation": {
+        "match_type": "multiple_authorities",
+        "expected_sections": [
+          "1910.22",
+          "1910.333"
+        ],
+        "single_most_aligned_required": false,
+        "supporting_refs": [
+          "walking_surface",
+          "electrical_parts"
+        ],
+        "violation_label": null,
+        "label_status": "authored_unreviewed_development_reference"
+      }
+    },
+    {
+      "case_id": "E04-3",
+      "group_id": "E04",
+      "family": "multiple_hazards",
+      "prompt": "The oil was removed from the walking route, and the circuit was deenergized before work near its parts. Identify the relevant provisions for each control.",
+      "prompt_style": "multiple_control_statement",
+      "fact_state": "controls_reported",
+      "expectation": {
+        "match_type": "multiple_authorities",
+        "expected_sections": [
+          "1910.22",
+          "1910.333"
+        ],
+        "single_most_aligned_required": false,
+        "supporting_refs": [
+          "walking_surface",
+          "electrical_parts"
+        ],
+        "violation_label": null,
+        "label_status": "authored_unreviewed_development_reference"
+      }
+    },
+    {
+      "case_id": "L03-1",
+      "group_id": "L03",
+      "family": "lifting_slings",
+      "prompt": "A wire-rope lifting sling has ten randomly distributed broken wires in one rope lay and remains available for use.",
+      "prompt_style": "statement",
+      "fact_state": "hazard_reported",
+      "expectation": {
+        "match_type": "single_authority",
+        "expected_sections": [
+          "1910.184"
+        ],
+        "single_most_aligned_required": true,
+        "supporting_refs": [
+          "wire_rope_damage"
+        ],
+        "violation_label": null,
+        "label_status": "authored_unreviewed_development_reference"
+      }
+    },
+    {
+      "case_id": "L03-2",
+      "group_id": "L03",
+      "family": "lifting_slings",
+      "prompt": "What provision gives removal-from-service criteria for a wire rope sling with broken wires, kinking, or crushing?",
+      "prompt_style": "question",
+      "fact_state": "condition_unknown",
+      "expectation": {
+        "match_type": "single_authority",
+        "expected_sections": [
+          "1910.184"
+        ],
+        "single_most_aligned_required": true,
+        "supporting_refs": [
+          "wire_rope_damage"
+        ],
+        "violation_label": null,
+        "label_status": "authored_unreviewed_development_reference"
+      }
+    },
+    {
+      "case_id": "L03-3",
+      "group_id": "L03",
+      "family": "lifting_slings",
+      "prompt": "The wire-rope sling with kinked and crushed strands was removed from service. Which provision supports that action?",
+      "prompt_style": "controlled_statement",
+      "fact_state": "control_reported",
+      "expectation": {
+        "match_type": "single_authority",
+        "expected_sections": [
+          "1910.184"
+        ],
+        "single_most_aligned_required": true,
+        "supporting_refs": [
+          "wire_rope_damage"
+        ],
+        "violation_label": null,
+        "label_status": "authored_unreviewed_development_reference"
+      }
+    },
+    {
+      "case_id": "L04-1",
+      "group_id": "L04",
+      "family": "lifting_slings",
+      "prompt": "The crew shortens lifting-sling legs by tying knots in them before raising a load.",
+      "prompt_style": "statement",
+      "fact_state": "hazard_reported",
+      "expectation": {
+        "match_type": "single_authority",
+        "expected_sections": [
+          "1910.184"
+        ],
+        "single_most_aligned_required": true,
+        "supporting_refs": [
+          "sling_damage"
+        ],
+        "violation_label": null,
+        "label_status": "authored_unreviewed_development_reference"
+      }
+    },
+    {
+      "case_id": "L04-2",
+      "group_id": "L04",
+      "family": "lifting_slings",
+      "prompt": "Can we shorten the lifting straps with knots or makeshift bolts? Which sling practice addresses that?",
+      "prompt_style": "colloquial_question",
+      "fact_state": "condition_unknown",
+      "expectation": {
+        "match_type": "single_authority",
+        "expected_sections": [
+          "1910.184"
+        ],
+        "single_most_aligned_required": true,
+        "supporting_refs": [
+          "sling_damage"
+        ],
+        "violation_label": null,
+        "label_status": "authored_unreviewed_development_reference"
+      }
+    },
+    {
+      "case_id": "L04-3",
+      "group_id": "L04",
+      "family": "lifting_slings",
+      "prompt": "The lifting sling has no knots and was not shortened with a makeshift device. Which safe-operating provision is relevant?",
+      "prompt_style": "denial_question",
+      "fact_state": "hazard_denied",
+      "expectation": {
+        "match_type": "single_authority",
+        "expected_sections": [
+          "1910.184"
+        ],
+        "single_most_aligned_required": true,
+        "supporting_refs": [
+          "sling_damage"
+        ],
+        "violation_label": null,
+        "label_status": "authored_unreviewed_development_reference"
+      }
+    },
+    {
+      "case_id": "A03-1",
+      "group_id": "A03",
+      "family": "material_handling_aisles",
+      "prompt": "The permanent material-handling aisles in the warehouse have no visible markings.",
+      "prompt_style": "statement",
+      "fact_state": "hazard_reported",
+      "expectation": {
+        "match_type": "single_authority",
+        "expected_sections": [
+          "1910.176"
+        ],
+        "single_most_aligned_required": true,
+        "supporting_refs": [
+          "handling_aisles"
+        ],
+        "violation_label": null,
+        "label_status": "authored_unreviewed_development_reference"
+      }
+    },
+    {
+      "case_id": "A03-2",
+      "group_id": "A03",
+      "family": "material_handling_aisles",
+      "prompt": "Is there a rule requiring permanent aisles and passageways to be marked in a mechanical-handling area?",
+      "prompt_style": "question",
+      "fact_state": "condition_unknown",
+      "expectation": {
+        "match_type": "single_authority",
+        "expected_sections": [
+          "1910.176"
+        ],
+        "single_most_aligned_required": true,
+        "supporting_refs": [
+          "handling_aisles"
+        ],
+        "violation_label": null,
+        "label_status": "authored_unreviewed_development_reference"
+      }
+    },
+    {
+      "case_id": "A03-3",
+      "group_id": "A03",
+      "family": "material_handling_aisles",
+      "prompt": "Permanent aisles are clearly marked and kept unobstructed where material-handling equipment travels. What provision is relevant?",
+      "prompt_style": "controlled_statement",
+      "fact_state": "control_reported",
+      "expectation": {
+        "match_type": "single_authority",
+        "expected_sections": [
+          "1910.176"
+        ],
+        "single_most_aligned_required": true,
+        "supporting_refs": [
+          "handling_aisles"
+        ],
+        "violation_label": null,
+        "label_status": "authored_unreviewed_development_reference"
+      }
+    },
+    {
+      "case_id": "A04-1",
+      "group_id": "A04",
+      "family": "material_handling_aisles",
+      "prompt": "Bundled material is stacked in unstable tiers and could slide or collapse into the storage area.",
+      "prompt_style": "statement",
+      "fact_state": "hazard_reported",
+      "expectation": {
+        "match_type": "single_authority",
+        "expected_sections": [
+          "1910.176"
+        ],
+        "single_most_aligned_required": true,
+        "supporting_refs": [
+          "secure_storage"
+        ],
+        "violation_label": null,
+        "label_status": "authored_unreviewed_development_reference"
+      }
+    },
+    {
+      "case_id": "A04-2",
+      "group_id": "A04",
+      "family": "material_handling_aisles",
+      "prompt": "What requirement covers blocking or interlocking tiered material so the stack remains stable?",
+      "prompt_style": "question",
+      "fact_state": "condition_unknown",
+      "expectation": {
+        "match_type": "single_authority",
+        "expected_sections": [
+          "1910.176"
+        ],
+        "single_most_aligned_required": true,
+        "supporting_refs": [
+          "secure_storage"
+        ],
+        "violation_label": null,
+        "label_status": "authored_unreviewed_development_reference"
+      }
+    },
+    {
+      "case_id": "A04-3",
+      "group_id": "A04",
+      "family": "material_handling_aisles",
+      "prompt": "The tiered bundles are stable and blocked against sliding; they are not leaning. Which storage provision describes this requirement?",
+      "prompt_style": "denial_question",
+      "fact_state": "control_reported",
+      "expectation": {
+        "match_type": "single_authority",
+        "expected_sections": [
+          "1910.176"
+        ],
+        "single_most_aligned_required": true,
+        "supporting_refs": [
+          "secure_storage"
+        ],
+        "violation_label": null,
+        "label_status": "authored_unreviewed_development_reference"
+      }
+    },
+    {
+      "case_id": "D03-1",
+      "group_id": "D03",
+      "family": "dockboards",
+      "prompt": "The portable loading bridge is being used by a forklift and load heavier than its stated capacity.",
+      "prompt_style": "statement",
+      "fact_state": "hazard_reported",
+      "expectation": {
+        "match_type": "single_authority",
+        "expected_sections": [
+          "1910.26"
+        ],
+        "single_most_aligned_required": true,
+        "supporting_refs": [
+          "dockboard_load"
+        ],
+        "violation_label": null,
+        "label_status": "authored_unreviewed_development_reference"
+      }
+    },
+    {
+      "case_id": "D03-2",
+      "group_id": "D03",
+      "family": "dockboards",
+      "prompt": "Which dockboard requirement deals with supporting the maximum intended load?",
+      "prompt_style": "question",
+      "fact_state": "condition_unknown",
+      "expectation": {
+        "match_type": "single_authority",
+        "expected_sections": [
+          "1910.26"
+        ],
+        "single_most_aligned_required": true,
+        "supporting_refs": [
+          "dockboard_load"
+        ],
+        "violation_label": null,
+        "label_status": "authored_unreviewed_development_reference"
+      }
+    },
+    {
+      "case_id": "D03-3",
+      "group_id": "D03",
+      "family": "dockboards",
+      "prompt": "The dockboard capacity is sufficient for the loaded vehicle. Which provision explains this capacity check?",
+      "prompt_style": "controlled_statement",
+      "fact_state": "control_reported",
+      "expectation": {
+        "match_type": "single_authority",
+        "expected_sections": [
+          "1910.26"
+        ],
+        "single_most_aligned_required": true,
+        "supporting_refs": [
+          "dockboard_load"
+        ],
+        "violation_label": null,
+        "label_status": "authored_unreviewed_development_reference"
+      }
+    },
+    {
+      "case_id": "D04-1",
+      "group_id": "D04",
+      "family": "dockboards",
+      "prompt": "Workers handling a portable dockboard have no handholds or other means to handle it safely.",
+      "prompt_style": "statement",
+      "fact_state": "hazard_reported",
+      "expectation": {
+        "match_type": "single_authority",
+        "expected_sections": [
+          "1910.26"
+        ],
+        "single_most_aligned_required": true,
+        "supporting_refs": [
+          "dockboard_handholds"
+        ],
+        "violation_label": null,
+        "label_status": "authored_unreviewed_development_reference"
+      }
+    },
+    {
+      "case_id": "D04-2",
+      "group_id": "D04",
+      "family": "dockboards",
+      "prompt": "The removable bridge plate at the loading dock has nowhere safe to grip it. What requirement covers handling that plate?",
+      "prompt_style": "colloquial_question",
+      "fact_state": "condition_unknown",
+      "expectation": {
+        "match_type": "single_authority",
+        "expected_sections": [
+          "1910.26"
+        ],
+        "single_most_aligned_required": true,
+        "supporting_refs": [
+          "dockboard_handholds"
+        ],
+        "violation_label": null,
+        "label_status": "authored_unreviewed_development_reference"
+      }
+    },
+    {
+      "case_id": "D04-3",
+      "group_id": "D04",
+      "family": "dockboards",
+      "prompt": "The portable dockboard has suitable handholds, so the handling concern is not present. What provision describes those means of safe handling?",
+      "prompt_style": "denial_question",
+      "fact_state": "control_reported",
+      "expectation": {
+        "match_type": "single_authority",
+        "expected_sections": [
+          "1910.26"
+        ],
+        "single_most_aligned_required": true,
+        "supporting_refs": [
+          "dockboard_handholds"
+        ],
+        "violation_label": null,
+        "label_status": "authored_unreviewed_development_reference"
+      }
+    },
+    {
+      "case_id": "F03-1",
+      "group_id": "F03",
+      "family": "employee_fall",
+      "prompt": "An employee can fall through an uncovered hole in a work surface to a lower level more than four feet below.",
+      "prompt_style": "statement",
+      "fact_state": "hazard_reported",
+      "expectation": {
+        "match_type": "single_authority",
+        "expected_sections": [
+          "1910.28"
+        ],
+        "single_most_aligned_required": true,
+        "supporting_refs": [
+          "employee_holes"
+        ],
+        "violation_label": null,
+        "label_status": "authored_unreviewed_development_reference"
+      }
+    },
+    {
+      "case_id": "F03-2",
+      "group_id": "F03",
+      "family": "employee_fall",
+      "prompt": "Which employee fall-protection provision discusses holes in walking-working surfaces and using covers or guardrails?",
+      "prompt_style": "question",
+      "fact_state": "condition_unknown",
+      "expectation": {
+        "match_type": "single_authority",
+        "expected_sections": [
+          "1910.28"
+        ],
+        "single_most_aligned_required": true,
+        "supporting_refs": [
+          "employee_holes"
+        ],
+        "violation_label": null,
+        "label_status": "authored_unreviewed_development_reference"
+      }
+    },
+    {
+      "case_id": "F03-3",
+      "group_id": "F03",
+      "family": "employee_fall",
+      "prompt": "A cover protects the floor opening against an employee falling through it. Which fall-protection duty is relevant?",
+      "prompt_style": "controlled_statement",
+      "fact_state": "control_reported",
+      "expectation": {
+        "match_type": "single_authority",
+        "expected_sections": [
+          "1910.28"
+        ],
+        "single_most_aligned_required": true,
+        "supporting_refs": [
+          "employee_holes"
+        ],
+        "violation_label": null,
+        "label_status": "authored_unreviewed_development_reference"
+      }
+    },
+    {
+      "case_id": "F04-1",
+      "group_id": "F04",
+      "family": "falling_objects",
+      "prompt": "Employees are exposed below a work area where loose tools could fall onto them.",
+      "prompt_style": "statement",
+      "fact_state": "hazard_reported",
+      "expectation": {
+        "match_type": "single_authority",
+        "expected_sections": [
+          "1910.28"
+        ],
+        "single_most_aligned_required": true,
+        "supporting_refs": [
+          "falling_objects"
+        ],
+        "violation_label": null,
+        "label_status": "authored_unreviewed_development_reference"
+      }
+    },
+    {
+      "case_id": "F04-2",
+      "group_id": "F04",
+      "family": "falling_objects",
+      "prompt": "Which provision addresses protecting employees from falling objects with measures such as toeboards, screens or barricading the area below?",
+      "prompt_style": "question",
+      "fact_state": "condition_unknown",
+      "expectation": {
+        "match_type": "single_authority",
+        "expected_sections": [
+          "1910.28"
+        ],
+        "single_most_aligned_required": true,
+        "supporting_refs": [
+          "falling_objects"
+        ],
+        "violation_label": null,
+        "label_status": "authored_unreviewed_development_reference"
+      }
+    },
+    {
+      "case_id": "F04-3",
+      "group_id": "F04",
+      "family": "falling_objects",
+      "prompt": "The area where objects could fall is barricaded and employees are prohibited from entering. Which falling-object provision is relevant?",
+      "prompt_style": "controlled_statement",
+      "fact_state": "control_reported",
+      "expectation": {
+        "match_type": "single_authority",
+        "expected_sections": [
+          "1910.28"
+        ],
+        "single_most_aligned_required": true,
+        "supporting_refs": [
+          "falling_objects"
+        ],
+        "violation_label": null,
+        "label_status": "authored_unreviewed_development_reference"
+      }
+    },
+    {
+      "case_id": "X03-1",
+      "group_id": "X03",
+      "family": "corpus_gap",
+      "prompt": "Workers have an eight-hour exposure to loud machinery measured at 95 dBA and need the occupational noise exposure standard.",
+      "prompt_style": "statement",
+      "fact_state": "hazard_reported",
+      "expectation": {
+        "match_type": "authority_not_in_corpus",
+        "expected_sections": [
+          "1910.95"
+        ],
+        "single_most_aligned_required": false,
+        "supporting_refs": [],
+        "violation_label": null,
+        "label_status": "authored_unreviewed_development_reference"
+      }
+    },
+    {
+      "case_id": "X03-2",
+      "group_id": "X03",
+      "family": "corpus_gap",
+      "prompt": "Which general-industry rule covers hearing conservation and occupational noise exposure?",
+      "prompt_style": "question",
+      "fact_state": "condition_unknown",
+      "expectation": {
+        "match_type": "authority_not_in_corpus",
+        "expected_sections": [
+          "1910.95"
+        ],
+        "single_most_aligned_required": false,
+        "supporting_refs": [],
+        "violation_label": null,
+        "label_status": "authored_unreviewed_development_reference"
+      }
+    },
+    {
+      "case_id": "X03-3",
+      "group_id": "X03",
+      "family": "corpus_gap",
+      "prompt": "Engineering controls reduced employee noise exposure, and hearing conservation is being reviewed. Identify the occupational noise provision.",
+      "prompt_style": "controlled_statement",
+      "fact_state": "control_reported",
+      "expectation": {
+        "match_type": "authority_not_in_corpus",
+        "expected_sections": [
+          "1910.95"
+        ],
+        "single_most_aligned_required": false,
+        "supporting_refs": [],
+        "violation_label": null,
+        "label_status": "authored_unreviewed_development_reference"
+      }
+    },
+    {
+      "case_id": "X04-1",
+      "group_id": "X04",
+      "family": "insufficient_facts",
+      "prompt": "Something about this setup feels unsafe. Which regulation is it?",
+      "prompt_style": "ambiguous_question",
+      "fact_state": "insufficient_facts",
+      "expectation": {
+        "match_type": "insufficient_facts",
+        "expected_sections": [],
+        "single_most_aligned_required": false,
+        "supporting_refs": [],
+        "violation_label": null,
+        "label_status": "authored_unreviewed_development_reference"
+      }
+    },
+    {
+      "case_id": "X04-2",
+      "group_id": "X04",
+      "family": "insufficient_facts",
+      "prompt": "Is that allowed at work? Give me the most applicable citation.",
+      "prompt_style": "ambiguous_question",
+      "fact_state": "insufficient_facts",
+      "expectation": {
+        "match_type": "insufficient_facts",
+        "expected_sections": [],
+        "single_most_aligned_required": false,
+        "supporting_refs": [],
+        "violation_label": null,
+        "label_status": "authored_unreviewed_development_reference"
+      }
+    },
+    {
+      "case_id": "X04-3",
+      "group_id": "X04",
+      "family": "insufficient_facts",
+      "prompt": "The machine situation has changed, but I have no description of what changed or who is exposed.",
+      "prompt_style": "ambiguous_statement",
+      "fact_state": "insufficient_facts",
+      "expectation": {
+        "match_type": "insufficient_facts",
+        "expected_sections": [],
+        "single_most_aligned_required": false,
+        "supporting_refs": [],
+        "violation_label": null,
+        "label_status": "authored_unreviewed_development_reference"
+      }
+    }
+  ]
+}

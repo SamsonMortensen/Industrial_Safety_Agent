@@ -1,0 +1,31 @@
+{
+  "schema": "retrieval_compatibility_manifest_v3",
+  "historical_manifest_sha256_lf": "f22a154aaca3d223d0cdaa58c373f5345c5303452c997d21e1a487ee4ecfd2ce",
+  "inputs_sha256_lf": {
+    "data/retrieval_comparison/before.json": "6d06a21954cd17b444a262d41c28522e53851f22698f6da45bbb994caa84d979",
+    "data/retrieval_comparison/after.json": "9a3760d6ccb8a9d01786a5ec4ded817b3973c07a7dea9266d8b89a5b6ffbbe0f",
+    "data/retrieval_comparison/exploration.json": "f0ff4ea2be6e3731daf9b72c51a7f6acbfebf8fd30a62e8e8713eb4a6a211cef",
+    "data/retrieval_comparison/protocol.json": "ea3a9c06e7d1702c011f04e68159d98a7e8b629d4efcb6dfaf2f267604b80b5f",
+    "data/retrieval_comparison/candidate_freeze.json": "4e823a7aed5d5ef5b09c80fb692b6f223e131e4ded442f87b6694e7ed145ffd7",
+    "code/capture_retrieval_run.py": "7b3772ead3b22af9cb3c662dd9454751f4eb60ad45191741273fcfc06903080c",
+    "code/report_retrieval_comparison.py": "d9d07ee8605252c7bc919aef7ff8b0ac33ce3548b0b4f05fdd81e77bfc507ec6",
+    "code/autonomous_investigator.py": "5c2ba322b162c74ce0ce6f980aa49aeb8601ad56607b5cf9fa899979f75b0e7d",
+    "code/public_results.py": "372925fdf9a4841f5f0dc011c1dea08dc9778600bb037f9f04b357a7cccff572",
+    "code/investigation_support.py": "5a902e1f86bd2f77227b7e9ee72357e2cdea0e1ffe758d46b7ecfca4b02d77f2",
+    "docs/results/retrieval_manifest.json": "f22a154aaca3d223d0cdaa58c373f5345c5303452c997d21e1a487ee4ecfd2ce",
+    "data/retrieval_comparison/reproductions/decision_scoring_20261114.json": "50df94f5dc07db5d97f126a5edc805426ff0d84dba1041632694836a07a442a7",
+    "data/retrieval_comparison/reproductions/actionable_investigation_20261115.json": "6762d62fc9a31cbead74ad28c640a7fef27a8eea554933cb025e61a18009075a",
+    "data/retrieval_comparison/reproductions/wording_retrieval_20261115.json": "db2542b5c363e57219bb3d56bc6e473ded803c5ac61e2251d148628e5e19248b",
+    "code/wording_retrieval.py": "cece7b292bb8723bbbb123ee211794117e16c5043ada15234159d671c9daaa6b",
+    "code/evidence_embeddings.py": "33dbc02e9a2a8cca849fb6cddc213a02c229ff53de31a4d4e17eb473a922df45",
+    "code/citation_alignment.py": "06601af5c4c7797b517012929d6e5ef5bbe36e7b2f985c9b1e91573fdbb6c84d"
+  },
+  "outputs_sha256_lf_text_raw_png": {
+    "docs/RETRIEVAL_IMPROVEMENT.md": "bfe400788359ba6d74e8d0bb59325be0de50db04c75ef1d1a5db2acef66c4250",
+    "docs/results/retrieval_comparison.json": "23a17f7f3bb8bd2662e347e83c412ac31966a1b7fa0e40a424830a1474295854",
+    "docs/results/retrieval_cases.csv": "44cf3daeb8cb31ae693fadb31702dd9ffed97e2d69eb1d1a6a649e7e5bc82317",
+    "docs/results/retrieval_before_after.png": "b2ec73d51c1e6d1119c1f1d69c74ecab20e5ab17923922906c63db69af4bca7f",
+    "docs/results/original_nine_misses.png": "4dbfc9322ec22dc5e37ab1d7a65fb574fc629ff050f66c00ee627d0923b5587b",
+    "docs/results/retrieval_rank_cutoffs.png": "3a032318b7f798468bc257ddb3f0047692be1d7cb871bf4cf957fa50d9919104"
+  }
+}

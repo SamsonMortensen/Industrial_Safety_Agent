@@ -1,0 +1,233 @@
+{
+  "schema": "wording_profile_results_v1",
+  "corpus_snapshot": "2025-01-01",
+  "label_scope": "Authored and unreviewed reference labels; no field or independent evaluation",
+  "count_scope": "Correlated wording variants are prompt counts, not independent incidents",
+  "release_decision": "Keep reference primary ranking; wording supplies additional research leads and explicit experimental profiles",
+  "independent_evaluation_used": false,
+  "calibration_reserve_used": false,
+  "training_performed": false,
+  "model_promoted": false,
+  "splits": {
+    "development": {
+      "reference": {
+        "source_replay": "development_before.json",
+        "source_sha256": "73dbd090222fd1c22155c979ac45414c75e6c9096aafaf95ed1a47a370e68777",
+        "wording_source_sha256": null,
+        "prompt_count": 48,
+        "single_authority_prompt_count": 42,
+        "single_authority_group_count": 14,
+        "counts": {
+          "top_1": 23,
+          "top_5": 35,
+          "top_16": 38
+        },
+        "top_1_previous_hits_lost": [],
+        "top_1_new_hits_gained": [],
+        "multiple_authorities": {
+          "prompt_count": 0,
+          "all_expected_sections_in_top_16": 0
+        },
+        "boundary_cases": {
+          "prompt_count": 6,
+          "alignment_instrumented_count": 0,
+          "accepted_as_correct_count": 0,
+          "tentative_lead_displayed_count": 0,
+          "missing_expected_sections": [
+            "1910.212"
+          ],
+          "note": "An unaccepted tentative lead can still be wrong. Zero acceptance does not demonstrate correct rejection."
+        }
+      },
+      "wording": {
+        "source_replay": "development_lexical_final.json",
+        "source_sha256": "fa269900d89422f1d50ddd3bc1e56e6d9a45f224d0ee23c9cf3072812afc4054",
+        "wording_source_sha256": "cece7b292bb8723bbbb123ee211794117e16c5043ada15234159d671c9daaa6b",
+        "prompt_count": 48,
+        "single_authority_prompt_count": 42,
+        "single_authority_group_count": 14,
+        "counts": {
+          "top_1": 28,
+          "top_5": 40,
+          "top_16": 41
+        },
+        "top_1_previous_hits_lost": [
+          "L02-1",
+          "A02-2"
+        ],
+        "top_1_new_hits_gained": [
+          "W01-1",
+          "W02-1",
+          "W02-2",
+          "E02-2",
+          "A01-1",
+          "A02-1",
+          "A02-3"
+        ],
+        "multiple_authorities": {
+          "prompt_count": 0,
+          "all_expected_sections_in_top_16": 0
+        },
+        "boundary_cases": {
+          "prompt_count": 6,
+          "alignment_instrumented_count": 6,
+          "accepted_as_correct_count": 0,
+          "tentative_lead_displayed_count": 4,
+          "missing_expected_sections": [
+            "1910.212"
+          ],
+          "note": "An unaccepted tentative lead can still be wrong. Zero acceptance does not demonstrate correct rejection."
+        }
+      },
+      "wording_semantic": {
+        "source_replay": "development_semantic_final.json",
+        "source_sha256": "5f73669e5767561d9e7554696cc35fa38662c917b87626e7d0dd162b2653f9ff",
+        "wording_source_sha256": "cece7b292bb8723bbbb123ee211794117e16c5043ada15234159d671c9daaa6b",
+        "prompt_count": 48,
+        "single_authority_prompt_count": 42,
+        "single_authority_group_count": 14,
+        "counts": {
+          "top_1": 31,
+          "top_5": 40,
+          "top_16": 42
+        },
+        "top_1_previous_hits_lost": [
+          "A02-2",
+          "F02-2"
+        ],
+        "top_1_new_hits_gained": [
+          "W01-1",
+          "W02-1",
+          "W02-2",
+          "C01-1",
+          "C01-2",
+          "C01-3",
+          "E02-2",
+          "A01-1",
+          "A02-1",
+          "A02-3"
+        ],
+        "multiple_authorities": {
+          "prompt_count": 0,
+          "all_expected_sections_in_top_16": 0
+        },
+        "boundary_cases": {
+          "prompt_count": 6,
+          "alignment_instrumented_count": 6,
+          "accepted_as_correct_count": 0,
+          "tentative_lead_displayed_count": 4,
+          "missing_expected_sections": [
+            "1910.212"
+          ],
+          "note": "An unaccepted tentative lead can still be wrong. Zero acceptance does not demonstrate correct rejection."
+        }
+      }
+    },
+    "frozen_comparison": {
+      "reference": {
+        "source_replay": "comparison_before.json",
+        "source_sha256": "bf6e781e2944ec4969b099046b4cc248e4808ecace6350009370f60a4fbd8ab3",
+        "wording_source_sha256": null,
+        "prompt_count": 48,
+        "single_authority_prompt_count": 39,
+        "single_authority_group_count": 13,
+        "counts": {
+          "top_1": 30,
+          "top_5": 33,
+          "top_16": 35
+        },
+        "top_1_previous_hits_lost": [],
+        "top_1_new_hits_gained": [],
+        "multiple_authorities": {
+          "prompt_count": 3,
+          "all_expected_sections_in_top_16": 0
+        },
+        "boundary_cases": {
+          "prompt_count": 6,
+          "alignment_instrumented_count": 0,
+          "accepted_as_correct_count": 0,
+          "tentative_lead_displayed_count": 0,
+          "missing_expected_sections": [
+            "1910.95"
+          ],
+          "note": "An unaccepted tentative lead can still be wrong. Zero acceptance does not demonstrate correct rejection."
+        }
+      },
+      "wording": {
+        "source_replay": "comparison_lexical.json",
+        "source_sha256": "2781a1eb023e91ea7159dbe1e2ef70f0b29a8f1b651ac4af9508697c11b2c9c4",
+        "wording_source_sha256": "cece7b292bb8723bbbb123ee211794117e16c5043ada15234159d671c9daaa6b",
+        "prompt_count": 48,
+        "single_authority_prompt_count": 39,
+        "single_authority_group_count": 13,
+        "counts": {
+          "top_1": 25,
+          "top_5": 31,
+          "top_16": 38
+        },
+        "top_1_previous_hits_lost": [
+          "C03-1",
+          "C04-2",
+          "E03-3",
+          "D03-3",
+          "F04-1",
+          "F04-2"
+        ],
+        "top_1_new_hits_gained": [
+          "A04-2"
+        ],
+        "multiple_authorities": {
+          "prompt_count": 3,
+          "all_expected_sections_in_top_16": 3
+        },
+        "boundary_cases": {
+          "prompt_count": 6,
+          "alignment_instrumented_count": 6,
+          "accepted_as_correct_count": 0,
+          "tentative_lead_displayed_count": 5,
+          "missing_expected_sections": [
+            "1910.95"
+          ],
+          "note": "An unaccepted tentative lead can still be wrong. Zero acceptance does not demonstrate correct rejection."
+        }
+      },
+      "wording_semantic": {
+        "source_replay": "comparison_semantic.json",
+        "source_sha256": "928ad86d141ca6df4713d84b849ea2ed49d8acdc6e1f659729bf02327a542851",
+        "wording_source_sha256": "cece7b292bb8723bbbb123ee211794117e16c5043ada15234159d671c9daaa6b",
+        "prompt_count": 48,
+        "single_authority_prompt_count": 39,
+        "single_authority_group_count": 13,
+        "counts": {
+          "top_1": 30,
+          "top_5": 37,
+          "top_16": 39
+        },
+        "top_1_previous_hits_lost": [
+          "D03-3",
+          "F04-1",
+          "F04-2"
+        ],
+        "top_1_new_hits_gained": [
+          "W04-3",
+          "C04-3",
+          "A04-2"
+        ],
+        "multiple_authorities": {
+          "prompt_count": 3,
+          "all_expected_sections_in_top_16": 2
+        },
+        "boundary_cases": {
+          "prompt_count": 6,
+          "alignment_instrumented_count": 6,
+          "accepted_as_correct_count": 0,
+          "tentative_lead_displayed_count": 5,
+          "missing_expected_sections": [
+            "1910.95"
+          ],
+          "note": "An unaccepted tentative lead can still be wrong. Zero acceptance does not demonstrate correct rejection."
+        }
+      }
+    }
+  }
+}

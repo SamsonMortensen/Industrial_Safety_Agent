@@ -1,0 +1,1349 @@
+{
+  "schema": "release_profile_equivalence_v1",
+  "status": "passed",
+  "comparisons": [
+    {
+      "split": "development",
+      "profile": "reference",
+      "cases": 48,
+      "every_query_and_candidate_order_identical": true,
+      "metrics": {
+        "cases": 48,
+        "scenario_groups": 16,
+        "single_authority": {
+          "recall_at_1": {
+            "cases": 42,
+            "groups": 14,
+            "group_mean": 0.5476190476190476,
+            "hits": 23,
+            "rate": 0.5476190476190477
+          },
+          "recall_at_3": {
+            "cases": 42,
+            "groups": 14,
+            "group_mean": 0.7619047619047619,
+            "hits": 32,
+            "rate": 0.7619047619047619
+          },
+          "recall_at_5": {
+            "cases": 42,
+            "groups": 14,
+            "group_mean": 0.8333333333333333,
+            "hits": 35,
+            "rate": 0.8333333333333334
+          },
+          "recall_at_16": {
+            "cases": 42,
+            "groups": 14,
+            "group_mean": 0.9047619047619048,
+            "hits": 38,
+            "rate": 0.9047619047619048
+          },
+          "mrr_at_16": {
+            "cases": 42,
+            "groups": 14,
+            "group_mean": 0.6651455026455027,
+            "mean": 0.6651455026455027
+          }
+        },
+        "multiple_authorities": {
+          "all_targets_at_3": {
+            "cases": 0,
+            "groups": 0,
+            "group_mean": null,
+            "hits": 0,
+            "rate": null
+          },
+          "mean_target_recall_at_3": {
+            "cases": 0,
+            "groups": 0,
+            "group_mean": null,
+            "mean": null
+          },
+          "all_targets_at_5": {
+            "cases": 0,
+            "groups": 0,
+            "group_mean": null,
+            "hits": 0,
+            "rate": null
+          },
+          "mean_target_recall_at_5": {
+            "cases": 0,
+            "groups": 0,
+            "group_mean": null,
+            "mean": null
+          },
+          "all_targets_at_16": {
+            "cases": 0,
+            "groups": 0,
+            "group_mean": null,
+            "hits": 0,
+            "rate": null
+          },
+          "mean_target_recall_at_16": {
+            "cases": 0,
+            "groups": 0,
+            "group_mean": null,
+            "mean": null
+          }
+        },
+        "tentative_matches": {
+          "reference_target": {
+            "cases": 42,
+            "groups": 14,
+            "group_mean": 0.5476190476190476,
+            "hits": 23,
+            "rate": 0.5476190476190477
+          },
+          "other_target": {
+            "cases": 42,
+            "groups": 14,
+            "group_mean": 0.4523809523809524,
+            "hits": 19,
+            "rate": 0.4523809523809524
+          },
+          "abstained": {
+            "cases": 42,
+            "groups": 14,
+            "group_mean": 0.0,
+            "hits": 0,
+            "rate": 0.0
+          },
+          "not_available": {
+            "cases": 42,
+            "groups": 14,
+            "group_mean": 0.0,
+            "hits": 0,
+            "rate": 0.0
+          }
+        },
+        "boundary": {
+          "alignment_missing_cases": 0,
+          "false_tentative_lead": {
+            "cases": 6,
+            "groups": 2,
+            "group_mean": 0.5,
+            "hits": 3,
+            "rate": 0.5
+          },
+          "additional_wording_lead_shown": {
+            "cases": 6,
+            "groups": 2,
+            "group_mean": 1.0,
+            "hits": 6,
+            "rate": 1.0
+          },
+          "final_citation_emitted": {
+            "cases": 6,
+            "groups": 2,
+            "group_mean": 0.0,
+            "hits": 0,
+            "rate": 0.0
+          }
+        },
+        "boundary_by_type": {
+          "authority_not_in_corpus": {
+            "alignment_missing_cases": 0,
+            "false_tentative_lead": {
+              "cases": 3,
+              "groups": 1,
+              "group_mean": 1.0,
+              "hits": 3,
+              "rate": 1.0
+            },
+            "additional_wording_lead_shown": {
+              "cases": 3,
+              "groups": 1,
+              "group_mean": 1.0,
+              "hits": 3,
+              "rate": 1.0
+            },
+            "final_citation_emitted": {
+              "cases": 3,
+              "groups": 1,
+              "group_mean": 0.0,
+              "hits": 0,
+              "rate": 0.0
+            }
+          },
+          "insufficient_facts": {
+            "alignment_missing_cases": 0,
+            "false_tentative_lead": {
+              "cases": 0,
+              "groups": 0,
+              "group_mean": null,
+              "hits": 0,
+              "rate": null
+            },
+            "additional_wording_lead_shown": {
+              "cases": 0,
+              "groups": 0,
+              "group_mean": null,
+              "hits": 0,
+              "rate": null
+            },
+            "final_citation_emitted": {
+              "cases": 0,
+              "groups": 0,
+              "group_mean": null,
+              "hits": 0,
+              "rate": null
+            }
+          },
+          "no_safety_authority": {
+            "alignment_missing_cases": 0,
+            "false_tentative_lead": {
+              "cases": 3,
+              "groups": 1,
+              "group_mean": 0.0,
+              "hits": 0,
+              "rate": 0.0
+            },
+            "additional_wording_lead_shown": {
+              "cases": 3,
+              "groups": 1,
+              "group_mean": 1.0,
+              "hits": 3,
+              "rate": 1.0
+            },
+            "final_citation_emitted": {
+              "cases": 3,
+              "groups": 1,
+              "group_mean": 0.0,
+              "hits": 0,
+              "rate": 0.0
+            }
+          }
+        },
+        "final_citation_outside_candidates": 0,
+        "tentative_match_outside_candidates": 0,
+        "accepted_as_correct_claims": 0,
+        "scope": "Counts against authored relevance references. Tentative matches are unverified research leads, not accepted legal accuracy. Group means give each invented scenario group equal weight."
+      },
+      "output_sha256": "7d111138feb13f4f97f422058578d56899d4a2629ec6a2105d9dcd8a33a41977"
+    },
+    {
+      "split": "development",
+      "profile": "wording",
+      "cases": 48,
+      "every_query_and_candidate_order_identical": true,
+      "metrics": {
+        "cases": 48,
+        "scenario_groups": 16,
+        "single_authority": {
+          "recall_at_1": {
+            "cases": 42,
+            "groups": 14,
+            "group_mean": 0.6666666666666667,
+            "hits": 28,
+            "rate": 0.6666666666666666
+          },
+          "recall_at_3": {
+            "cases": 42,
+            "groups": 14,
+            "group_mean": 0.9285714285714286,
+            "hits": 39,
+            "rate": 0.9285714285714286
+          },
+          "recall_at_5": {
+            "cases": 42,
+            "groups": 14,
+            "group_mean": 0.9523809523809524,
+            "hits": 40,
+            "rate": 0.9523809523809523
+          },
+          "recall_at_16": {
+            "cases": 42,
+            "groups": 14,
+            "group_mean": 0.9761904761904762,
+            "hits": 41,
+            "rate": 0.9761904761904762
+          },
+          "mrr_at_16": {
+            "cases": 42,
+            "groups": 14,
+            "group_mean": 0.801984126984127,
+            "mean": 0.8019841269841269
+          }
+        },
+        "multiple_authorities": {
+          "all_targets_at_3": {
+            "cases": 0,
+            "groups": 0,
+            "group_mean": null,
+            "hits": 0,
+            "rate": null
+          },
+          "mean_target_recall_at_3": {
+            "cases": 0,
+            "groups": 0,
+            "group_mean": null,
+            "mean": null
+          },
+          "all_targets_at_5": {
+            "cases": 0,
+            "groups": 0,
+            "group_mean": null,
+            "hits": 0,
+            "rate": null
+          },
+          "mean_target_recall_at_5": {
+            "cases": 0,
+            "groups": 0,
+            "group_mean": null,
+            "mean": null
+          },
+          "all_targets_at_16": {
+            "cases": 0,
+            "groups": 0,
+            "group_mean": null,
+            "hits": 0,
+            "rate": null
+          },
+          "mean_target_recall_at_16": {
+            "cases": 0,
+            "groups": 0,
+            "group_mean": null,
+            "mean": null
+          }
+        },
+        "tentative_matches": {
+          "reference_target": {
+            "cases": 42,
+            "groups": 14,
+            "group_mean": 0.6904761904761905,
+            "hits": 29,
+            "rate": 0.6904761904761905
+          },
+          "other_target": {
+            "cases": 42,
+            "groups": 14,
+            "group_mean": 0.3095238095238095,
+            "hits": 13,
+            "rate": 0.30952380952380953
+          },
+          "abstained": {
+            "cases": 42,
+            "groups": 14,
+            "group_mean": 0.0,
+            "hits": 0,
+            "rate": 0.0
+          },
+          "not_available": {
+            "cases": 42,
+            "groups": 14,
+            "group_mean": 0.0,
+            "hits": 0,
+            "rate": 0.0
+          }
+        },
+        "boundary": {
+          "alignment_missing_cases": 0,
+          "false_tentative_lead": {
+            "cases": 6,
+            "groups": 2,
+            "group_mean": 0.6666666666666666,
+            "hits": 4,
+            "rate": 0.6666666666666666
+          },
+          "additional_wording_lead_shown": {
+            "cases": 6,
+            "groups": 2,
+            "group_mean": 0.0,
+            "hits": 0,
+            "rate": 0.0
+          },
+          "final_citation_emitted": {
+            "cases": 6,
+            "groups": 2,
+            "group_mean": 0.0,
+            "hits": 0,
+            "rate": 0.0
+          }
+        },
+        "boundary_by_type": {
+          "authority_not_in_corpus": {
+            "alignment_missing_cases": 0,
+            "false_tentative_lead": {
+              "cases": 3,
+              "groups": 1,
+              "group_mean": 1.0,
+              "hits": 3,
+              "rate": 1.0
+            },
+            "additional_wording_lead_shown": {
+              "cases": 3,
+              "groups": 1,
+              "group_mean": 0.0,
+              "hits": 0,
+              "rate": 0.0
+            },
+            "final_citation_emitted": {
+              "cases": 3,
+              "groups": 1,
+              "group_mean": 0.0,
+              "hits": 0,
+              "rate": 0.0
+            }
+          },
+          "insufficient_facts": {
+            "alignment_missing_cases": 0,
+            "false_tentative_lead": {
+              "cases": 0,
+              "groups": 0,
+              "group_mean": null,
+              "hits": 0,
+              "rate": null
+            },
+            "additional_wording_lead_shown": {
+              "cases": 0,
+              "groups": 0,
+              "group_mean": null,
+              "hits": 0,
+              "rate": null
+            },
+            "final_citation_emitted": {
+              "cases": 0,
+              "groups": 0,
+              "group_mean": null,
+              "hits": 0,
+              "rate": null
+            }
+          },
+          "no_safety_authority": {
+            "alignment_missing_cases": 0,
+            "false_tentative_lead": {
+              "cases": 3,
+              "groups": 1,
+              "group_mean": 0.3333333333333333,
+              "hits": 1,
+              "rate": 0.3333333333333333
+            },
+            "additional_wording_lead_shown": {
+              "cases": 3,
+              "groups": 1,
+              "group_mean": 0.0,
+              "hits": 0,
+              "rate": 0.0
+            },
+            "final_citation_emitted": {
+              "cases": 3,
+              "groups": 1,
+              "group_mean": 0.0,
+              "hits": 0,
+              "rate": 0.0
+            }
+          }
+        },
+        "final_citation_outside_candidates": 0,
+        "tentative_match_outside_candidates": 0,
+        "accepted_as_correct_claims": 0,
+        "scope": "Counts against authored relevance references. Tentative matches are unverified research leads, not accepted legal accuracy. Group means give each invented scenario group equal weight."
+      },
+      "output_sha256": "660266cff8771c2e7295e1da010df56aba09dde857e9920fbc60ff73746e04f7"
+    },
+    {
+      "split": "development",
+      "profile": "semantic",
+      "cases": 48,
+      "every_query_and_candidate_order_identical": true,
+      "metrics": {
+        "cases": 48,
+        "scenario_groups": 16,
+        "single_authority": {
+          "recall_at_1": {
+            "cases": 42,
+            "groups": 14,
+            "group_mean": 0.7380952380952381,
+            "hits": 31,
+            "rate": 0.7380952380952381
+          },
+          "recall_at_3": {
+            "cases": 42,
+            "groups": 14,
+            "group_mean": 0.9047619047619048,
+            "hits": 38,
+            "rate": 0.9047619047619048
+          },
+          "recall_at_5": {
+            "cases": 42,
+            "groups": 14,
+            "group_mean": 0.9523809523809524,
+            "hits": 40,
+            "rate": 0.9523809523809523
+          },
+          "recall_at_16": {
+            "cases": 42,
+            "groups": 14,
+            "group_mean": 1.0,
+            "hits": 42,
+            "rate": 1.0
+          },
+          "mrr_at_16": {
+            "cases": 42,
+            "groups": 14,
+            "group_mean": 0.835978835978836,
+            "mean": 0.835978835978836
+          }
+        },
+        "multiple_authorities": {
+          "all_targets_at_3": {
+            "cases": 0,
+            "groups": 0,
+            "group_mean": null,
+            "hits": 0,
+            "rate": null
+          },
+          "mean_target_recall_at_3": {
+            "cases": 0,
+            "groups": 0,
+            "group_mean": null,
+            "mean": null
+          },
+          "all_targets_at_5": {
+            "cases": 0,
+            "groups": 0,
+            "group_mean": null,
+            "hits": 0,
+            "rate": null
+          },
+          "mean_target_recall_at_5": {
+            "cases": 0,
+            "groups": 0,
+            "group_mean": null,
+            "mean": null
+          },
+          "all_targets_at_16": {
+            "cases": 0,
+            "groups": 0,
+            "group_mean": null,
+            "hits": 0,
+            "rate": null
+          },
+          "mean_target_recall_at_16": {
+            "cases": 0,
+            "groups": 0,
+            "group_mean": null,
+            "mean": null
+          }
+        },
+        "tentative_matches": {
+          "reference_target": {
+            "cases": 42,
+            "groups": 14,
+            "group_mean": 0.7380952380952381,
+            "hits": 31,
+            "rate": 0.7380952380952381
+          },
+          "other_target": {
+            "cases": 42,
+            "groups": 14,
+            "group_mean": 0.23809523809523808,
+            "hits": 10,
+            "rate": 0.23809523809523808
+          },
+          "abstained": {
+            "cases": 42,
+            "groups": 14,
+            "group_mean": 0.023809523809523808,
+            "hits": 1,
+            "rate": 0.023809523809523808
+          },
+          "not_available": {
+            "cases": 42,
+            "groups": 14,
+            "group_mean": 0.0,
+            "hits": 0,
+            "rate": 0.0
+          }
+        },
+        "boundary": {
+          "alignment_missing_cases": 0,
+          "false_tentative_lead": {
+            "cases": 6,
+            "groups": 2,
+            "group_mean": 0.6666666666666666,
+            "hits": 4,
+            "rate": 0.6666666666666666
+          },
+          "additional_wording_lead_shown": {
+            "cases": 6,
+            "groups": 2,
+            "group_mean": 0.0,
+            "hits": 0,
+            "rate": 0.0
+          },
+          "final_citation_emitted": {
+            "cases": 6,
+            "groups": 2,
+            "group_mean": 0.0,
+            "hits": 0,
+            "rate": 0.0
+          }
+        },
+        "boundary_by_type": {
+          "authority_not_in_corpus": {
+            "alignment_missing_cases": 0,
+            "false_tentative_lead": {
+              "cases": 3,
+              "groups": 1,
+              "group_mean": 1.0,
+              "hits": 3,
+              "rate": 1.0
+            },
+            "additional_wording_lead_shown": {
+              "cases": 3,
+              "groups": 1,
+              "group_mean": 0.0,
+              "hits": 0,
+              "rate": 0.0
+            },
+            "final_citation_emitted": {
+              "cases": 3,
+              "groups": 1,
+              "group_mean": 0.0,
+              "hits": 0,
+              "rate": 0.0
+            }
+          },
+          "insufficient_facts": {
+            "alignment_missing_cases": 0,
+            "false_tentative_lead": {
+              "cases": 0,
+              "groups": 0,
+              "group_mean": null,
+              "hits": 0,
+              "rate": null
+            },
+            "additional_wording_lead_shown": {
+              "cases": 0,
+              "groups": 0,
+              "group_mean": null,
+              "hits": 0,
+              "rate": null
+            },
+            "final_citation_emitted": {
+              "cases": 0,
+              "groups": 0,
+              "group_mean": null,
+              "hits": 0,
+              "rate": null
+            }
+          },
+          "no_safety_authority": {
+            "alignment_missing_cases": 0,
+            "false_tentative_lead": {
+              "cases": 3,
+              "groups": 1,
+              "group_mean": 0.3333333333333333,
+              "hits": 1,
+              "rate": 0.3333333333333333
+            },
+            "additional_wording_lead_shown": {
+              "cases": 3,
+              "groups": 1,
+              "group_mean": 0.0,
+              "hits": 0,
+              "rate": 0.0
+            },
+            "final_citation_emitted": {
+              "cases": 3,
+              "groups": 1,
+              "group_mean": 0.0,
+              "hits": 0,
+              "rate": 0.0
+            }
+          }
+        },
+        "final_citation_outside_candidates": 0,
+        "tentative_match_outside_candidates": 0,
+        "accepted_as_correct_claims": 0,
+        "scope": "Counts against authored relevance references. Tentative matches are unverified research leads, not accepted legal accuracy. Group means give each invented scenario group equal weight."
+      },
+      "output_sha256": "f6f364614aa5e3f33ae8c35da3301a4016f3ae0618aa848f6ff714a8063c9b9e"
+    },
+    {
+      "split": "comparison",
+      "profile": "reference",
+      "cases": 48,
+      "every_query_and_candidate_order_identical": true,
+      "metrics": {
+        "cases": 48,
+        "scenario_groups": 16,
+        "single_authority": {
+          "recall_at_1": {
+            "cases": 39,
+            "groups": 13,
+            "group_mean": 0.7692307692307693,
+            "hits": 30,
+            "rate": 0.7692307692307693
+          },
+          "recall_at_3": {
+            "cases": 39,
+            "groups": 13,
+            "group_mean": 0.8461538461538461,
+            "hits": 33,
+            "rate": 0.8461538461538461
+          },
+          "recall_at_5": {
+            "cases": 39,
+            "groups": 13,
+            "group_mean": 0.8461538461538461,
+            "hits": 33,
+            "rate": 0.8461538461538461
+          },
+          "recall_at_16": {
+            "cases": 39,
+            "groups": 13,
+            "group_mean": 0.8974358974358974,
+            "hits": 35,
+            "rate": 0.8974358974358975
+          },
+          "mrr_at_16": {
+            "cases": 39,
+            "groups": 13,
+            "group_mean": 0.8062678062678063,
+            "mean": 0.8062678062678063
+          }
+        },
+        "multiple_authorities": {
+          "all_targets_at_3": {
+            "cases": 3,
+            "groups": 1,
+            "group_mean": 0.0,
+            "hits": 0,
+            "rate": 0.0
+          },
+          "mean_target_recall_at_3": {
+            "cases": 3,
+            "groups": 1,
+            "group_mean": 0.5,
+            "mean": 0.5
+          },
+          "all_targets_at_5": {
+            "cases": 3,
+            "groups": 1,
+            "group_mean": 0.0,
+            "hits": 0,
+            "rate": 0.0
+          },
+          "mean_target_recall_at_5": {
+            "cases": 3,
+            "groups": 1,
+            "group_mean": 0.5,
+            "mean": 0.5
+          },
+          "all_targets_at_16": {
+            "cases": 3,
+            "groups": 1,
+            "group_mean": 0.0,
+            "hits": 0,
+            "rate": 0.0
+          },
+          "mean_target_recall_at_16": {
+            "cases": 3,
+            "groups": 1,
+            "group_mean": 0.5,
+            "mean": 0.5
+          }
+        },
+        "tentative_matches": {
+          "reference_target": {
+            "cases": 42,
+            "groups": 14,
+            "group_mean": 0.7857142857142857,
+            "hits": 33,
+            "rate": 0.7857142857142857
+          },
+          "other_target": {
+            "cases": 42,
+            "groups": 14,
+            "group_mean": 0.21428571428571427,
+            "hits": 9,
+            "rate": 0.21428571428571427
+          },
+          "abstained": {
+            "cases": 42,
+            "groups": 14,
+            "group_mean": 0.0,
+            "hits": 0,
+            "rate": 0.0
+          },
+          "not_available": {
+            "cases": 42,
+            "groups": 14,
+            "group_mean": 0.0,
+            "hits": 0,
+            "rate": 0.0
+          }
+        },
+        "boundary": {
+          "alignment_missing_cases": 0,
+          "false_tentative_lead": {
+            "cases": 6,
+            "groups": 2,
+            "group_mean": 0.8333333333333333,
+            "hits": 5,
+            "rate": 0.8333333333333334
+          },
+          "additional_wording_lead_shown": {
+            "cases": 6,
+            "groups": 2,
+            "group_mean": 1.0,
+            "hits": 6,
+            "rate": 1.0
+          },
+          "final_citation_emitted": {
+            "cases": 6,
+            "groups": 2,
+            "group_mean": 0.0,
+            "hits": 0,
+            "rate": 0.0
+          }
+        },
+        "boundary_by_type": {
+          "authority_not_in_corpus": {
+            "alignment_missing_cases": 0,
+            "false_tentative_lead": {
+              "cases": 3,
+              "groups": 1,
+              "group_mean": 1.0,
+              "hits": 3,
+              "rate": 1.0
+            },
+            "additional_wording_lead_shown": {
+              "cases": 3,
+              "groups": 1,
+              "group_mean": 1.0,
+              "hits": 3,
+              "rate": 1.0
+            },
+            "final_citation_emitted": {
+              "cases": 3,
+              "groups": 1,
+              "group_mean": 0.0,
+              "hits": 0,
+              "rate": 0.0
+            }
+          },
+          "insufficient_facts": {
+            "alignment_missing_cases": 0,
+            "false_tentative_lead": {
+              "cases": 3,
+              "groups": 1,
+              "group_mean": 0.6666666666666666,
+              "hits": 2,
+              "rate": 0.6666666666666666
+            },
+            "additional_wording_lead_shown": {
+              "cases": 3,
+              "groups": 1,
+              "group_mean": 1.0,
+              "hits": 3,
+              "rate": 1.0
+            },
+            "final_citation_emitted": {
+              "cases": 3,
+              "groups": 1,
+              "group_mean": 0.0,
+              "hits": 0,
+              "rate": 0.0
+            }
+          },
+          "no_safety_authority": {
+            "alignment_missing_cases": 0,
+            "false_tentative_lead": {
+              "cases": 0,
+              "groups": 0,
+              "group_mean": null,
+              "hits": 0,
+              "rate": null
+            },
+            "additional_wording_lead_shown": {
+              "cases": 0,
+              "groups": 0,
+              "group_mean": null,
+              "hits": 0,
+              "rate": null
+            },
+            "final_citation_emitted": {
+              "cases": 0,
+              "groups": 0,
+              "group_mean": null,
+              "hits": 0,
+              "rate": null
+            }
+          }
+        },
+        "final_citation_outside_candidates": 0,
+        "tentative_match_outside_candidates": 0,
+        "accepted_as_correct_claims": 0,
+        "scope": "Counts against authored relevance references. Tentative matches are unverified research leads, not accepted legal accuracy. Group means give each invented scenario group equal weight."
+      },
+      "output_sha256": "6b923a9a616cfae55221b6a35bf145d5c9bd04795a7afb1f55f755c764123d8a"
+    },
+    {
+      "split": "comparison",
+      "profile": "wording",
+      "cases": 48,
+      "every_query_and_candidate_order_identical": true,
+      "metrics": {
+        "cases": 48,
+        "scenario_groups": 16,
+        "single_authority": {
+          "recall_at_1": {
+            "cases": 39,
+            "groups": 13,
+            "group_mean": 0.6410256410256411,
+            "hits": 25,
+            "rate": 0.6410256410256411
+          },
+          "recall_at_3": {
+            "cases": 39,
+            "groups": 13,
+            "group_mean": 0.717948717948718,
+            "hits": 28,
+            "rate": 0.717948717948718
+          },
+          "recall_at_5": {
+            "cases": 39,
+            "groups": 13,
+            "group_mean": 0.7948717948717949,
+            "hits": 31,
+            "rate": 0.7948717948717948
+          },
+          "recall_at_16": {
+            "cases": 39,
+            "groups": 13,
+            "group_mean": 0.9743589743589743,
+            "hits": 38,
+            "rate": 0.9743589743589743
+          },
+          "mrr_at_16": {
+            "cases": 39,
+            "groups": 13,
+            "group_mean": 0.7155372405372405,
+            "mean": 0.7155372405372405
+          }
+        },
+        "multiple_authorities": {
+          "all_targets_at_3": {
+            "cases": 3,
+            "groups": 1,
+            "group_mean": 0.0,
+            "hits": 0,
+            "rate": 0.0
+          },
+          "mean_target_recall_at_3": {
+            "cases": 3,
+            "groups": 1,
+            "group_mean": 0.5,
+            "mean": 0.5
+          },
+          "all_targets_at_5": {
+            "cases": 3,
+            "groups": 1,
+            "group_mean": 0.3333333333333333,
+            "hits": 1,
+            "rate": 0.3333333333333333
+          },
+          "mean_target_recall_at_5": {
+            "cases": 3,
+            "groups": 1,
+            "group_mean": 0.6666666666666666,
+            "mean": 0.6666666666666666
+          },
+          "all_targets_at_16": {
+            "cases": 3,
+            "groups": 1,
+            "group_mean": 1.0,
+            "hits": 3,
+            "rate": 1.0
+          },
+          "mean_target_recall_at_16": {
+            "cases": 3,
+            "groups": 1,
+            "group_mean": 1.0,
+            "mean": 1.0
+          }
+        },
+        "tentative_matches": {
+          "reference_target": {
+            "cases": 42,
+            "groups": 14,
+            "group_mean": 0.5952380952380952,
+            "hits": 25,
+            "rate": 0.5952380952380952
+          },
+          "other_target": {
+            "cases": 42,
+            "groups": 14,
+            "group_mean": 0.38095238095238093,
+            "hits": 16,
+            "rate": 0.38095238095238093
+          },
+          "abstained": {
+            "cases": 42,
+            "groups": 14,
+            "group_mean": 0.023809523809523808,
+            "hits": 1,
+            "rate": 0.023809523809523808
+          },
+          "not_available": {
+            "cases": 42,
+            "groups": 14,
+            "group_mean": 0.0,
+            "hits": 0,
+            "rate": 0.0
+          }
+        },
+        "boundary": {
+          "alignment_missing_cases": 0,
+          "false_tentative_lead": {
+            "cases": 6,
+            "groups": 2,
+            "group_mean": 0.8333333333333333,
+            "hits": 5,
+            "rate": 0.8333333333333334
+          },
+          "additional_wording_lead_shown": {
+            "cases": 6,
+            "groups": 2,
+            "group_mean": 0.0,
+            "hits": 0,
+            "rate": 0.0
+          },
+          "final_citation_emitted": {
+            "cases": 6,
+            "groups": 2,
+            "group_mean": 0.0,
+            "hits": 0,
+            "rate": 0.0
+          }
+        },
+        "boundary_by_type": {
+          "authority_not_in_corpus": {
+            "alignment_missing_cases": 0,
+            "false_tentative_lead": {
+              "cases": 3,
+              "groups": 1,
+              "group_mean": 1.0,
+              "hits": 3,
+              "rate": 1.0
+            },
+            "additional_wording_lead_shown": {
+              "cases": 3,
+              "groups": 1,
+              "group_mean": 0.0,
+              "hits": 0,
+              "rate": 0.0
+            },
+            "final_citation_emitted": {
+              "cases": 3,
+              "groups": 1,
+              "group_mean": 0.0,
+              "hits": 0,
+              "rate": 0.0
+            }
+          },
+          "insufficient_facts": {
+            "alignment_missing_cases": 0,
+            "false_tentative_lead": {
+              "cases": 3,
+              "groups": 1,
+              "group_mean": 0.6666666666666666,
+              "hits": 2,
+              "rate": 0.6666666666666666
+            },
+            "additional_wording_lead_shown": {
+              "cases": 3,
+              "groups": 1,
+              "group_mean": 0.0,
+              "hits": 0,
+              "rate": 0.0
+            },
+            "final_citation_emitted": {
+              "cases": 3,
+              "groups": 1,
+              "group_mean": 0.0,
+              "hits": 0,
+              "rate": 0.0
+            }
+          },
+          "no_safety_authority": {
+            "alignment_missing_cases": 0,
+            "false_tentative_lead": {
+              "cases": 0,
+              "groups": 0,
+              "group_mean": null,
+              "hits": 0,
+              "rate": null
+            },
+            "additional_wording_lead_shown": {
+              "cases": 0,
+              "groups": 0,
+              "group_mean": null,
+              "hits": 0,
+              "rate": null
+            },
+            "final_citation_emitted": {
+              "cases": 0,
+              "groups": 0,
+              "group_mean": null,
+              "hits": 0,
+              "rate": null
+            }
+          }
+        },
+        "final_citation_outside_candidates": 0,
+        "tentative_match_outside_candidates": 0,
+        "accepted_as_correct_claims": 0,
+        "scope": "Counts against authored relevance references. Tentative matches are unverified research leads, not accepted legal accuracy. Group means give each invented scenario group equal weight."
+      },
+      "output_sha256": "6dae57b27ef02eaf9b06b32aba8ca7146b38bf523d149adc49d6404477eca4f0"
+    },
+    {
+      "split": "comparison",
+      "profile": "semantic",
+      "cases": 48,
+      "every_query_and_candidate_order_identical": true,
+      "metrics": {
+        "cases": 48,
+        "scenario_groups": 16,
+        "single_authority": {
+          "recall_at_1": {
+            "cases": 39,
+            "groups": 13,
+            "group_mean": 0.7692307692307693,
+            "hits": 30,
+            "rate": 0.7692307692307693
+          },
+          "recall_at_3": {
+            "cases": 39,
+            "groups": 13,
+            "group_mean": 0.8717948717948718,
+            "hits": 34,
+            "rate": 0.8717948717948718
+          },
+          "recall_at_5": {
+            "cases": 39,
+            "groups": 13,
+            "group_mean": 0.9487179487179488,
+            "hits": 37,
+            "rate": 0.9487179487179487
+          },
+          "recall_at_16": {
+            "cases": 39,
+            "groups": 13,
+            "group_mean": 1.0,
+            "hits": 39,
+            "rate": 1.0
+          },
+          "mrr_at_16": {
+            "cases": 39,
+            "groups": 13,
+            "group_mean": 0.838899988899989,
+            "mean": 0.8388999888999888
+          }
+        },
+        "multiple_authorities": {
+          "all_targets_at_3": {
+            "cases": 3,
+            "groups": 1,
+            "group_mean": 0.0,
+            "hits": 0,
+            "rate": 0.0
+          },
+          "mean_target_recall_at_3": {
+            "cases": 3,
+            "groups": 1,
+            "group_mean": 0.5,
+            "mean": 0.5
+          },
+          "all_targets_at_5": {
+            "cases": 3,
+            "groups": 1,
+            "group_mean": 0.6666666666666666,
+            "hits": 2,
+            "rate": 0.6666666666666666
+          },
+          "mean_target_recall_at_5": {
+            "cases": 3,
+            "groups": 1,
+            "group_mean": 0.8333333333333334,
+            "mean": 0.8333333333333334
+          },
+          "all_targets_at_16": {
+            "cases": 3,
+            "groups": 1,
+            "group_mean": 0.6666666666666666,
+            "hits": 2,
+            "rate": 0.6666666666666666
+          },
+          "mean_target_recall_at_16": {
+            "cases": 3,
+            "groups": 1,
+            "group_mean": 0.8333333333333334,
+            "mean": 0.8333333333333334
+          }
+        },
+        "tentative_matches": {
+          "reference_target": {
+            "cases": 42,
+            "groups": 14,
+            "group_mean": 0.7619047619047619,
+            "hits": 32,
+            "rate": 0.7619047619047619
+          },
+          "other_target": {
+            "cases": 42,
+            "groups": 14,
+            "group_mean": 0.21428571428571427,
+            "hits": 9,
+            "rate": 0.21428571428571427
+          },
+          "abstained": {
+            "cases": 42,
+            "groups": 14,
+            "group_mean": 0.023809523809523808,
+            "hits": 1,
+            "rate": 0.023809523809523808
+          },
+          "not_available": {
+            "cases": 42,
+            "groups": 14,
+            "group_mean": 0.0,
+            "hits": 0,
+            "rate": 0.0
+          }
+        },
+        "boundary": {
+          "alignment_missing_cases": 0,
+          "false_tentative_lead": {
+            "cases": 6,
+            "groups": 2,
+            "group_mean": 0.8333333333333333,
+            "hits": 5,
+            "rate": 0.8333333333333334
+          },
+          "additional_wording_lead_shown": {
+            "cases": 6,
+            "groups": 2,
+            "group_mean": 0.0,
+            "hits": 0,
+            "rate": 0.0
+          },
+          "final_citation_emitted": {
+            "cases": 6,
+            "groups": 2,
+            "group_mean": 0.0,
+            "hits": 0,
+            "rate": 0.0
+          }
+        },
+        "boundary_by_type": {
+          "authority_not_in_corpus": {
+            "alignment_missing_cases": 0,
+            "false_tentative_lead": {
+              "cases": 3,
+              "groups": 1,
+              "group_mean": 1.0,
+              "hits": 3,
+              "rate": 1.0
+            },
+            "additional_wording_lead_shown": {
+              "cases": 3,
+              "groups": 1,
+              "group_mean": 0.0,
+              "hits": 0,
+              "rate": 0.0
+            },
+            "final_citation_emitted": {
+              "cases": 3,
+              "groups": 1,
+              "group_mean": 0.0,
+              "hits": 0,
+              "rate": 0.0
+            }
+          },
+          "insufficient_facts": {
+            "alignment_missing_cases": 0,
+            "false_tentative_lead": {
+              "cases": 3,
+              "groups": 1,
+              "group_mean": 0.6666666666666666,
+              "hits": 2,
+              "rate": 0.6666666666666666
+            },
+            "additional_wording_lead_shown": {
+              "cases": 3,
+              "groups": 1,
+              "group_mean": 0.0,
+              "hits": 0,
+              "rate": 0.0
+            },
+            "final_citation_emitted": {
+              "cases": 3,
+              "groups": 1,
+              "group_mean": 0.0,
+              "hits": 0,
+              "rate": 0.0
+            }
+          },
+          "no_safety_authority": {
+            "alignment_missing_cases": 0,
+            "false_tentative_lead": {
+              "cases": 0,
+              "groups": 0,
+              "group_mean": null,
+              "hits": 0,
+              "rate": null
+            },
+            "additional_wording_lead_shown": {
+              "cases": 0,
+              "groups": 0,
+              "group_mean": null,
+              "hits": 0,
+              "rate": null
+            },
+            "final_citation_emitted": {
+              "cases": 0,
+              "groups": 0,
+              "group_mean": null,
+              "hits": 0,
+              "rate": null
+            }
+          }
+        },
+        "final_citation_outside_candidates": 0,
+        "tentative_match_outside_candidates": 0,
+        "accepted_as_correct_claims": 0,
+        "scope": "Counts against authored relevance references. Tentative matches are unverified research leads, not accepted legal accuracy. Group means give each invented scenario group equal weight."
+      },
+      "output_sha256": "35aa9e7db6a06336b3ef9391f684fce1f5a45cc2bf35cf3526a744049dca3fb0"
+    }
+  ],
+  "comparison_consumed": true,
+  "performance_estimate_repeated": false,
+  "independent_evaluation_used": false,
+  "calibration_reserve_used": false,
+  "training_performed": false,
+  "model_promoted": false,
+  "source_sha256_lf": {
+    "code/evaluate_wording_retrieval.py": "a9f592832c8384f73417ef41b28d0802942b783efefac7b72e83d5bd7a6cc54b",
+    "code/showcase.py": "97d72d646ec3d0b14f897205de3eb0f77f066c11bb6cb2febf5e45ce59f62126",
+    "code/autonomous_investigator.py": "5c2ba322b162c74ce0ce6f980aa49aeb8601ad56607b5cf9fa899979f75b0e7d",
+    "code/hybrid_policy.py": "d5b37142521ea03d463bccf947e4a947d122e87273df53a0a36398382522c095",
+    "code/investigation_support.py": "5a902e1f86bd2f77227b7e9ee72357e2cdea0e1ffe758d46b7ecfca4b02d77f2",
+    "code/wording_retrieval.py": "cece7b292bb8723bbbb123ee211794117e16c5043ada15234159d671c9daaa6b",
+    "code/evidence_embeddings.py": "33dbc02e9a2a8cca849fb6cddc213a02c229ff53de31a4d4e17eb473a922df45",
+    "code/citation_alignment.py": "06601af5c4c7797b517012929d6e5ef5bbe36e7b2f985c9b1e91573fdbb6c84d",
+    "code/learning_policy.py": "a1d398dffedc2213815dcc539f3f3b7fc4ab1e6eedc761847052669be67e5b6c",
+    "code/ollama_config.py": "fa0ebe6cafee494d2884685aa88fffabecbe23a663f614ec4d6fb767e3993676"
+  },
+  "changed_since_original_freeze": [
+    "code/showcase.py",
+    "code/citation_alignment.py"
+  ],
+  "reason": "Default ranking release gate and explicit profile selection; additional evidence kept outside decisions; hypothetical prefix correctness fix."
+}
